@@ -1,14 +1,13 @@
 function [x, fval] = trust_region(...
     funcs, initial_points, initial_fvalues, ...
-    bl, bu, options)
+    bl, bu, options,fid)
 % TRUST_REGION - Derivative-free trust-region algorithm
-%   
 
 % --------------------------------------------------------------------
 defaultoptions = struct(...
     'tol_radius', 1e-5, ...
     'tol_f', 1e-6, ...
-    'eps_c', 1e-5, ... 
+    'eps_c', 1e-5, ...
     'eta_0', 0, ...
     'eta_1', 0.05, ...
     'pivot_threshold', 1/16, ...
@@ -24,7 +23,7 @@ defaultoptions = struct(...
     'criticality_omega', 0.5, ...
     'basis', 'diagonal hessian', ...
     'iter_max', 10000);
-      
+
 % --------------------------------------------------------------------
 if nargin < 6
     options = [];
@@ -63,39 +62,71 @@ dimension = size(initial_points, 1);
 % --------------------------------------------------------------------
 if (~isempty(bl) && ~isempty(find(initial_points(:, 1) < bl, 1))) || ...
   (~isempty(bu) && ~isempty(find(initial_points(:, 1) > bu, 1)))
+
   if isempty(initial_fvalues)
+
      % Replace
-    initial_points(:, 1) = project_to_bounds(initial_points(:, 1), bl, bu);
+     initial_points(:, 1) = ...
+     project_to_bounds(initial_points(:, 1), bl, bu);
+
    else
+
      % Add
-     initial_points = [project_to_bounds(initial_points(:, 1), bl, bu), ...
-     initial_points];
-     initial_fvalues(:, 1) = evaluate_new_fvalues(funcs, initial_points(:, 1));
-   end
- end
+     initial_points = ...
+     [project_to_bounds(initial_points(:, 1), bl, bu), initial_points];
+
+     initial_fvalues(:, 1) = ...
+     evaluate_new_fvalues(funcs, initial_points(:, 1));
+
+  end
+
+end
 
 % --------------------------------------------------------------------
+% Print initial point to file
+frmt = repmat('%12.12f ', 1, size(initial_points,1));
+fprintf(fid, frmt, initial_points);
+
+% --------------------------------------------------------------------
+% Compute 2nd point
 n_initial_points = size(initial_points, 2);
 if n_initial_points == 1
-    % Finding a random second point
-    old_seed = rng('default');
-    second_point = rand(size(initial_points));
-    rng(old_seed);
-    while norm(second_point, inf) < rel_pivot_threshold
-        % Second point must not be too close
-        second_point = 2*second_point;
-    end
-    second_point = (second_point - 0.5)*initial_radius;
-    second_point = initial_points(:, 1) + second_point;
-    if ~isempty(bu)
-        second_point = min(bu, second_point);
-    end
-    if ~isempty(bl)
-        second_point = max(bl, second_point);
-    end
-    initial_points(:, 2) = second_point;
-    n_initial_points = 2;
+
+  % ------------------------------------------------------------------
+  % Finding a random second point
+  old_seed = rng('default');
+  second_point = rand(size(initial_points));
+  rng(old_seed);
+
+  % ------------------------------------------------------------------
+  while norm(second_point, inf) < rel_pivot_threshold
+      % Second point must not be too close
+      second_point = 2*second_point;
+  end
+
+  % ------------------------------------------------------------------
+  second_point = (second_point - 0.5)*initial_radius;
+  second_point = initial_points(:, 1) + second_point;
+
+  if ~isempty(bu)
+      second_point = min(bu, second_point);
+  end
+
+  if ~isempty(bl)
+      second_point = max(bl, second_point);
+  end
+
+  % ------------------------------------------------------------------
+  initial_points(:, 2) = second_point;
+  n_initial_points = 2;
+
 end
+
+% --------------------------------------------------------------------
+% Print 2nd point to file
+fprintf(fid, frmt, second_point);
+
+% --------------------------------------------------------------------
 % Calculating function values for other points of the set
 if length(initial_fvalues) < n_initial_points
     for k = 1:n_initial_points
@@ -106,7 +137,7 @@ if length(initial_fvalues) < n_initial_points
     end
 end
 
-
+% --------------------------------------------------------------------
 % Initializing model structure
 model = tr_model(initial_points, initial_fvalues, initial_radius);
 model = rebuild_model(model, options);
@@ -137,7 +168,7 @@ for iter = 1:iter_max
         x_current = model.points_abs(:, model.tr_center);
         err_model = check_interpolation(model);
     end
-    
+
     % Criticality step -- if we are possibly close to the optimum
     criticality_step_performed = false;
     if norm(measure_criticality(model, bl, bu)) <= eps_c
@@ -151,7 +182,7 @@ for iter = 1:iter_max
 
     % Print summary
     print_iteration(iter, fval_current, rho, model.radius, size(model.points_abs, 2));
-    
+
     % Compute step
     [trial_point, predicted_red] = solve_tr_subproblem(model, bl, bu, options);
     trial_step = trial_point - x_current;
@@ -165,7 +196,7 @@ for iter = 1:iter_max
     else
         % Evaluate objective at trial point
         fval_trial = evaluate_new_fvalues(funcs, trial_point);
-        
+
         % Actual reduction
         ared = fval_current - fval_trial;
         % Agreement factor
@@ -218,7 +249,7 @@ for iter = 1:iter_max
         % rho == -inf -> too short step size
         % mchange_flag == 4 -> Couldn't add point, had to rebuild model
         if model.radius <= 2*tol_radius/gamma_1
-            delay_reduction = delay_reduction + 1; 
+            delay_reduction = delay_reduction + 1;
         else
             delay_reduction = 0;
         end
