@@ -1,8 +1,10 @@
 % run_all_probs.m
 
-fid = fopen('w','solns.out');
+prob = struct();
+prob.fid = fopen('solns.out','w');
+prob.pn = 'prob1';
+prob1;
 
-prob1(fid);
 % prob2;
 % prob3;
 % prob4;
