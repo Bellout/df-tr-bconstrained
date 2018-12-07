@@ -20,9 +20,10 @@ case 1
   % --------------------------------------------------------------------
   % Print prob name
   ln = repmat('=',1,30);
-  fprintf(prob.fid, ['\n\n\n' tab '// ' ln ln ln '\n'], prob.pn);
+  ln2 = repmat('-',1,30);
+  fprintf(prob.fid, ['\n' tab '// ' ln ln ln '\n'], prob.pn);
   fprintf(prob.fid, [tab '// ' ln '  %s  ' ln '\n'], prob.pn);
-  fprintf(prob.fid, [tab '// ' ln ln ln '\n'], prob.pn);
+  fprintf(prob.fid, [tab '// ' ln ln ln '\n\n'], prob.pn);
 
   % --------------------------------------------------------------------
   % Print seed
@@ -35,6 +36,7 @@ case 2
   % --------------------------------------------------------------------
   % Print initial points + obj.fvals to file
   fprintf(prob.fid, [tab '// --- %s ---\n'], 'Initial points');
+
   for ii = 1 : size(initial_points, 2)
     fprintf(prob.fid, ...
             [tab '// x' num2str(ii) ': ' frmt1], initial_points(:, ii));
@@ -42,9 +44,13 @@ case 2
             [tab '// f' num2str(ii) ': ' frmt2], initial_fvalues(:, ii));
   end
 
+  % fprintf(prob.fid,'\n');
+
   % --------------------------------------------------------------------
-  % C++
-  fprintf(prob.fid, '\n%s\n', ...
+  tlt = [ 'C++ [PRINT RESIZE] INITIAL POINTS' ];
+  fprintf(prob.fid, '\n%s\n%s\n\n', [tab '// ' ln2 ln2 ln2], [ tab '// ' tlt]);
+
+  fprintf(prob.fid, '%s\n', ...
     [tab prob.pn '.xm.resize(' ...
     num2str(size(initial_points, 1)) ',' ...
     num2str(size(initial_points, 2)) ');']);
@@ -53,6 +59,9 @@ case 2
     [tab prob.pn '.fm.resize(' ...
     num2str(size(initial_fvalues, 1)) ',' ...
     num2str(size(initial_fvalues, 2)) ');']);
+
+  % --------------------------------------------------------------------
+  % C++ [PRINT DATA] CALLS FOR INITIAL POINTS
 
   for ii = 1 : size(initial_points, 2)
     fprintf(prob.fid, ...
@@ -78,11 +87,13 @@ case 3
 
   % model.pivot_polynomials;
   % -> 1×6 struct array with fields: dimension, coefficients
-  pm = model.pivot_polynomials; 
+  pm = model.pivot_polynomials;
   vm = model.pivot_values;
 
   % --------------------------------------------------------------------
-  % C++ [RESIZE]
+  tlt = [ 'C++ [PRINT RESIZE] TR_CENTER, TR_RADIUS, POINTS_SHIFTED' ];
+  fprintf(prob.fid, '\n%s\n%s\n\n', [tab '// ' ln2 ln2 ln2], [ tab '// ' tlt]);
+
   fprintf(prob.fid, '%s\n', ...
     [tab prob.pn '.cm.resize(' ...
     num2str(size(cm, 1)) ',' ...
@@ -98,32 +109,14 @@ case 3
     num2str(size(sm, 1)) ',' ...
     num2str(size(sm, 2)) '); // points_shifted']);
 
-  fprintf(prob.fid, '%s\n', ...
-    [tab prob.pn '.pcm.resize(' ...
-    num2str(size(pm(1).coefficients, 1)) ',' ...
-    num2str(size(pm, 2)) '); // model.pivot_polynomials.coefficients']);
-
-  fprintf(prob.fid, '%s\n', ...
-    [tab prob.pn '.pdm.resize(' ...
-    num2str(size(pm(1).dimension, 1)) ',' ...
-    num2str(size(pm, 2)) '); // model.pivot_polynomials.dimension']);
-
-  fprintf(prob.fid, '%s\n\n', ...
-    [tab prob.pn '.vm.resize(' ...
-    num2str(size(vm, 1)) ',' ...
-    num2str(size(vm, 2)) '); // model.pivot_values']);
-
   % --------------------------------------------------------------------
-  % C++ [INST]
+  % C++ [FORMAT]
   frmt_cm = [ repmat([mf ', '], 1, size(cm,1)-1) [mf '; \n']];
   frmt_rm = [ repmat([mf ', '], 1, size(rm,1)-1) [mf '; \n']];
   frmt_sm = [ repmat([mf ', '], 1, size(sm,1)-1) [mf '; \n']];
-  
-  frmt_pcm = [ repmat([mf ', '], 1, size(pm(1).coefficients,1)-1) [mf '; \n']];
-  frmt_pdm = [ repmat([mf ', '], 1, size(pm(1).dimension,1)-1) [mf '; \n']];
-  frmt_vm = [ repmat([mf ', '], 1, size(vm,2)-1) [mf '; \n']];
 
   % --------------------------------------------------------------------
+  % C++ [PRINT DATA] CALLS FOR TR_CENTER, TR_RADIUS, POINTS_SHIFTED
   fprintf(prob.fid, [tab '// Trust region center:\n']);
   for ii = 1 : size(cm, 2)
     fprintf(prob.fid, ...
@@ -146,6 +139,40 @@ case 3
   end
 
   % --------------------------------------------------------------------
+  tlt = [ 'C++ [PRINT RESIZE] CALLS FOR PIVOT_POLYNOMIALS.COEFFICIENTS, ' ...
+  'PIVOT_POLYNOMIALS.DIMENSION, MODEL.PIVOT_VALUES' ];
+  fprintf(prob.fid, '\n%s\n%s\n\n', [tab '// ' ln2 ln2 ln2], [ tab '// ' tlt]);
+
+  % Matrix ([6x6]) of column vectors ([6x1])
+  fprintf(prob.fid, [tab '// Matrix ([6x6]) of column vectors ([6x1])\n']);
+  fprintf(prob.fid, '%s\n', ...
+    [tab prob.pn '.pcm.resize(' ...
+    num2str(size(pm(1).coefficients, 1)) ',' ...
+    num2str(size(pm, 2)) '); // model.pivot_polynomials.coefficients']);
+
+  % Matrix ([1x6]) of column vectors ([1x1])
+  fprintf(prob.fid, [tab '// Matrix ([1x6]) of column vectors ([1x1])\n']);
+  fprintf(prob.fid, '%s\n', ...
+    [tab prob.pn '.pdm.resize(' ...
+    num2str(size(pm(1).dimension, 1)) ',' ...
+    num2str(size(pm, 2)) '); // model.pivot_polynomials.dimension']);
+
+  % Column vector ([6x1])
+  fprintf(prob.fid, [tab '// Column vector ([6x1])\n']);
+  fprintf(prob.fid, '%s\n', ...
+    [tab prob.pn '.vm.resize(' ...
+    num2str(size(vm, 2)) ',' ...
+    num2str(size(vm, 1)) '); // model.pivot_values']);
+
+  % --------------------------------------------------------------------
+  % C++ [FORMAT]
+  frmt_pcm = [ repmat([mf ', '], 1, size(pm(1).coefficients,1)-1) [mf '; \n']];
+  frmt_pdm = [ repmat([mf ', '], 1, size(pm(1).dimension,1)-1) [mf '; \n']];
+  frmt_vm = [ repmat([mf ', '], 1, size(vm,2)-1) [mf '; \n']];
+
+  % --------------------------------------------------------------------
+  % C++ [PRINT DATA] CALLS FOR PIVOT_POLYNOMIALS.COEFFICIENTS,
+  % PIVOT_POLYNOMIALS.DIMENSION, MODEL.PIVOT_VALUES
   fprintf(prob.fid, '\n');
   fprintf(prob.fid, [tab '// Pivot polynomials (coeff):\n']);
   for ii = 1 : size(pm, 2)
@@ -171,4 +198,4 @@ case 3
 case 4
 
 
-end  
+end
