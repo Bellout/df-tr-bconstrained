@@ -41,6 +41,8 @@ fprintf(prob.fid, '%s\n', '            Eigen::MatrixXd pdm; // tr_model.pivot_po
 fprintf(prob.fid, '%s\n', '');
 fprintf(prob.fid, '%s\n', '            Eigen::MatrixXd vm; // tr_model.pivot_values');
 fprintf(prob.fid, '%s\n', '');
+fprintf(prob.fid, '%s\n', '            vector<int> idx;; // ');
+fprintf(prob.fid, '%s\n', '');
 fprintf(prob.fid, '%s\n', '        };');
 fprintf(prob.fid, '%s\n', '');
 fprintf(prob.fid, '%s\n', '        // Trust region problems from C.Guliani');
