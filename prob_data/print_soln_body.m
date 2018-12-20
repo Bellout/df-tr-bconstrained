@@ -197,5 +197,20 @@ case 3
 
 case 4
 
+  % --------------------------------------------------------------------
+  %  Collect data
+
+  % model.modeling_polynomials;
+  % cell struct containing structs -> {[1×1 struct]}
+  % each struct constains fields:
+  % dimension: [double]
+  % coefficients: [6×1 double]
+
+  mcm = model.modeling_polynomials{1}
+  % mdm = model.modeling_polynomials
+
+  model.modeling_polynomials
+
+  % --------------------------------------------------------------------
 
 end
