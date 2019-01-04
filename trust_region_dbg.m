@@ -307,9 +307,12 @@ for iter = 1:iter_max
   % ------------------------------------------------------------------
   % Radius update
   if rho > eta_1
+      
       radius_inc = max(1, gamma_2*(step_size/model.radius));
       model.radius = min(radius_inc*model.radius, radius_max);
-  elseif (iteration_model_fl && (rho == -inf || mchange_flag == 4 || criticality_step_performed))
+
+  elseif (iteration_model_fl 
+    && (rho == -inf || mchange_flag == 4 || criticality_step_performed))
 
       % A good model should have provided a better point
       % We reduce the radius, since the error is related to the
