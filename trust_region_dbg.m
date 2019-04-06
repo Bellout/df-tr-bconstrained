@@ -146,7 +146,7 @@ model = tr_model(initial_points, initial_fvalues, initial_radius);
 
 % --------------------------------------------------------------------
 % Rebuild model
-model = rebuild_model(model, options);
+model = rebuild_model(model, options)
 
 % --------------------------------------------------------------------
 % Print model data: model.tr_center, model.tr_radius, 
@@ -156,18 +156,11 @@ part=3; print_soln_body;
 
 % --------------------------------------------------------------------
 % Move to best point
-model = move_to_best_point(model, bl, bu);
+model = move_to_best_point(model, bl, bu)
 
 % --------------------------------------------------------------------
 %basis = band_prioritizing_basis(size(model.points_shifted, 1));
-model.modeling_polynomials = compute_polynomial_models(model)
-
-% --------------------------------------------------------------------
-% Print model data: model.modeling_polynomials.coefficients,
-% model.modeling_polynomials.dimension
-part=4; print_soln_body;
-
-% --------------------------------------------------------------------
+model.modeling_polynomials = compute_polynomial_models(model);
 if size(model.points_abs, 2) < 2
     [model, exitflag] = ...
     ensure_improvement(model, funcs, bl, bu, options);

@@ -24,13 +24,13 @@ x0 = [-1.2;
 [x, fval] = trust_region_dbg({f}, x0,[],[],[],[],prob);
 
 % --------------------------------------------------------------------
-% prob.pn = 'prob2';
-% f = @(x) log1p(x(1)^2) + x(2)^2;
+prob.pn = 'prob2';
+f = @(x) log1p(x(1)^2) + x(2)^2;
 
-% x0 = [2;
-%       2];
+x0 = [2;
+      2];
 
-% [x, fval] = trust_region_dbg({f}, x0,[],[],[],[],prob);
+[x, fval] = trust_region_dbg({f}, x0,[],[],[],[],prob);
 
 % % --------------------------------------------------------------------
 prob.pn = 'prob3';
@@ -137,4 +137,4 @@ x0 = [0;
 print_soln_tail;
 fclose(prob.fid);
 
-% system(['cp ' data_file_src ' ' data_file_trg ])
+system(['cp ' data_file_src ' ' data_file_trg ])
