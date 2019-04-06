@@ -2,7 +2,7 @@
 
 % --------------------------------------------------------------------
 data_file_src = [ ...
-'/home/bellout/git/MB/df-tr-bconstrained/' ...
+'/home/bellout/git/MB/df-tr-bconstrained/' ... 
 'prob_data/test_tr-model-data_loc.hpp'];
 
 data_file_trg = [...
@@ -35,13 +35,13 @@ x0 = [2;
 % % --------------------------------------------------------------------
 % prob.pn = 'prob3';
 
-f = @(x) sin(pi*x(1)/12)*cos(pi*x(2)/16);
+% f = @(x) sin(pi*x(1)/12)*cos(pi*x(2)/16);
 
 
-x0 = [0;
-      0];
+% x0 = [0;
+%       0];
 
-[x, fval] = trust_region_dbg({f}, x0,[],[],[],[],prob);
+% [x, fval] = trust_region_dbg({f}, x0,[],[],[],[],prob);
 
 % % --------------------------------------------------------------------
 % prob.pn = 'prob4';
