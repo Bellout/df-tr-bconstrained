@@ -1,6 +1,6 @@
 function [x, fval] = trust_region(...
     funcs, initial_points, initial_fvalues, ...
-    bl, bu, options)
+    bl, bu, options,fid)
 % TRUST_REGION - Derivative-free trust-region algorithm
 
 % --------------------------------------------------------------------
@@ -83,6 +83,11 @@ if (~isempty(bl) && ~isempty(find(initial_points(:, 1) < bl, 1))) || ...
 end
 
 % --------------------------------------------------------------------
+% Print initial point to file
+frmt = repmat('%12.12f ', 1, size(initial_points,1));
+fprintf(fid, frmt, initial_points);
+
+% --------------------------------------------------------------------
 % Compute 2nd point
 n_initial_points = size(initial_points, 2);
 if n_initial_points == 1
@@ -116,6 +121,10 @@ if n_initial_points == 1
   n_initial_points = 2;
 
 end
+
+% --------------------------------------------------------------------
+% Print 2nd point to file
+fprintf(fid, frmt, second_point);
 
 % --------------------------------------------------------------------
 % Calculating function values for other points of the set
