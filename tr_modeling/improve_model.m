@@ -1,4 +1,4 @@
-function [model, exitflag, prob] = improve_model(model, ff, bl, bu, options, complete_only)
+function [model, exitflag] = improve_model(model, ff, bl, bu, options, complete_only)
 % IMPROVE_MODEL improves model to be lambda-poised (for some
 % lambda)
 
@@ -100,7 +100,7 @@ function [model, exitflag, prob] = improve_model(model, ff, bl, bu, options, com
                            new_fvalues, ...
                            fvalues(:, pivot_index:end)];
 
-                [new_value prob] = evaluate_polynomial(chosen_poly, new_point, prob);
+                new_value = evaluate_polynomial(chosen_poly, new_point);
                 pivot_absvalues_lin(pivot_index) = abs(new_value);
                 % I should double check interpolation set here
                 interpolation_set_changed = true;
@@ -174,7 +174,7 @@ function [model, exitflag, prob] = improve_model(model, ff, bl, bu, options, com
                                    new_fvalues, ...
                                    fvalues(:, point_index:end)];
 
-                        [new_value prob] = evaluate_polynomial(chosen_poly, new_point, prob);
+                        new_value = evaluate_polynomial(chosen_poly, new_point);
                         pivot_absvalues_quad(pivot_index) = abs(new_value);
                         % I should double check interpolation set here
                         interpolation_set_changed = true;
@@ -216,7 +216,7 @@ function [model, exitflag, prob] = improve_model(model, ff, bl, bu, options, com
         M = zeros(points_used_num);
         for m = 1:points_used_num
             for n = 1:linear_basis_size
-                [M(m, n) prob] = evaluate_polynomial(basis(n), points_scaled(:, m), prob);
+                M(m, n) = evaluate_polynomial(basis(n), points_scaled(:, m));
             end
         end
     %         [L, U, P] = lu(M);
@@ -249,7 +249,7 @@ function [model, exitflag, prob] = improve_model(model, ff, bl, bu, options, com
         M = zeros(points_used_num);
         for m = 1:points_used_num
             for n = 1:basis_size
-                [M(m, n) prob] = evaluate_polynomial(basis(n), points_scaled(:, m), prob);
+                M(m, n) = evaluate_polynomial(basis(n), points_scaled(:, m));
             end
         end
         M0 = M(:, 1);

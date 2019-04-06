@@ -1,4 +1,4 @@
-function [fvalues, succeeded, prob] = evaluate_new_fvalues(funcs, point, prob)
+function [fvalues, succeeded] = evaluate_new_fvalues(funcs, point)
 
 
     functions_num = length(funcs);

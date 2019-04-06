@@ -1,5 +1,4 @@
-function [point, value, prob] = ...
-    find_other_point_with_bounds(polynomial, bl, bu, radius, prob)
+function [point, value] = find_other_point_with_bounds(polynomial, bl, bu, radius)
 % FIND_OTHER_POINT tries to find a point in which polynomial
 % assumes a sufficiently high value.
 %
@@ -58,7 +57,7 @@ X = [x0, x1, x2, x3, x4];
 value = 0;
 for k = 1:size(X, 2)
     x = project_to_bounds(X(:, k), bl, bu);
-    [v prob] = evaluate_polynomial(polynomial, x, prob);
+    v = evaluate_polynomial(polynomial, x);
     if v > 0
         Hn = -H;
         gn = -(g + H*x);
@@ -80,7 +79,7 @@ for k = 1:size(X, 2)
     if norm(x) > radius
         x = (x/norm(x))*radius;
     end
-    [v prob] = evaluate_polynomial(polynomial, x, prob);
+    v = evaluate_polynomial(polynomial, x);
     if abs(v) >= abs(value)
        value = v;
        point = x;

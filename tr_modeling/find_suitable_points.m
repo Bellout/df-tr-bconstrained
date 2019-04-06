@@ -1,4 +1,4 @@
-function [new_point, new_value, prob] = find_suitable_points(polynomial, bl, bu, attempt, prob)
+function [new_point, new_value] = find_suitable_points(polynomial, bl, bu, attempt)
 
     if attempt == 1
         % Minimize inside TR
@@ -21,23 +21,23 @@ function [new_point, new_value, prob] = find_suitable_points(polynomial, bl, bu,
         [cp, gp, Hp] = coefficients_to_matrices(polynomial.dimension, polynomial.coefficients);
         if norm(gp, inf) == 0
             new_point = gp;
-            [new_value prob] = evaluate_polynomial(polynomial, new_point, prob);
+            new_value = evaluate_polynomial(polynomial, new_point);
         else
             new_point = round(gp/max(gp));
             new_point = new_point/norm(new_point);
             new_point = min(bu, max(bl, new_point));
-            [new_value prob] = evaluate_polynomial(polynomial, new_point);
+            new_value = evaluate_polynomial(polynomial, new_point);
         end
     elseif attempt == 6
         [cp, gp, Hp] = coefficients_to_matrices(polynomial.dimension, polynomial.coefficients);
         if norm(gp, inf) == 0
             new_point = gp;
-            [new_value prob] = evaluate_polynomial(polynomial, new_point, prob);
+            new_value = evaluate_polynomial(polynomial, new_point);
         else
             new_point = round(gp/max(gp));
             new_point = -new_point/norm(new_point);
             new_point = min(bu, max(bl, new_point));
-            [new_value prob] = evaluate_polynomial(polynomial, new_point);
+            new_value = evaluate_polynomial(polynomial, new_point);
         end
     else
         [cp, gp, Hp] = coefficients_to_matrices(polynomial.dimension, polynomial.coefficients);
@@ -49,11 +49,11 @@ function [new_point, new_value, prob] = find_suitable_points(polynomial, bl, bu,
         if attempt == 7
             new_point = zeros(dim, 1);
             new_point(v1) = min(bu(v1), max(bl(v1), 1));
-            [new_value prob] = evaluate_polynomial(polynomial, new_point, prob);
+            new_value = evaluate_polynomial(polynomial, new_point);
         elseif attempt == 8
             new_point = zeros(dim, 1);
             new_point(v1) = min(bu(v1), max(bl(v1), -1));
-            [new_value prob] = evaluate_polynomial(polynomial, new_point, prob);
+            new_value = evaluate_polynomial(polynomial, new_point);
         elseif attempt == 9
             
         end
@@ -65,7 +65,7 @@ function [new_point, new_value, prob] = find_suitable_points(polynomial, bl, bu,
 
         new_point = zeros(dim, 1);
         new_point(v2) = min(bu(v2), max(bl(v2), 1));
-        [new_value prob] = evaluate_polynomial(polynomial, new_point, prob);
+        new_value = evaluate_polynomial(polynomial, new_point);
     elseif attempt == 9
         if v1 == v2
             continue
@@ -74,7 +74,7 @@ function [new_point, new_value, prob] = find_suitable_points(polynomial, bl, bu,
         new_point(v1) = 1/sqrt(2);
         new_point(v2) = 1/sqrt(2);
         new_point = min(bu, max(bl, 1));
-        [new_value prob] = evaluate_polynomial(polynomial, new_point, prob);
+        new_value = evaluate_polynomial(polynomial, new_point);
     else
         error('cmg:pivot_not_found', 'Pivot not found');
     end

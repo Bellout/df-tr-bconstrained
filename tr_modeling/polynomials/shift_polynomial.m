@@ -1,4 +1,4 @@
-function [polynomial_shifted prob] = shift_polynomial(polynomial, s, prob)
+function polynomial_shifted = shift_polynomial(polynomial, s)
     
     [c, g, H] = get_matrices(polynomial);
 

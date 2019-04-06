@@ -1,4 +1,4 @@
-function [p prob] = combine_polynomials(polynomials, coefficients, prob)
+function p = combine_polynomials(polynomials, coefficients)
 
     terms = length(polynomials);
     if terms == 0 || length(coefficients) ~= terms

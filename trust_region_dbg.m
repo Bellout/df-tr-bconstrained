@@ -115,8 +115,8 @@ if n_initial_points == 1
   end
 
   % ------------------------------------------------------------------
-  initial_points(:, 2) = second_point;
-  n_initial_points = 2;
+  % initial_points(:, 2) = second_point;
+  % n_initial_points = 2;
 
 end
 
@@ -148,7 +148,7 @@ model = tr_model(initial_points, initial_fvalues, initial_radius);
 
 % --------------------------------------------------------------------
 % Rebuild model
-model = rebuild_model(model, options, prob);
+model = rebuild_model(model, options);
 
 % --------------------------------------------------------------------
 % Print model data: model.tr_center, model.tr_radius,
@@ -161,9 +161,8 @@ part=3; print_soln_body;
 model = move_to_best_point(model, bl, bu);
 
 % --------------------------------------------------------------------
-% basis = band_prioritizing_basis(size(model.points_shifted, 1));
-[ model.modeling_polynomials, prob ] = compute_polynomial_models(model, prob)
-model.modeling_polynomials{1}.coefficients
+%basis = band_prioritizing_basis(size(model.points_shifted, 1));
+model.modeling_polynomials = compute_polynomial_models(model)
 
 % --------------------------------------------------------------------
 % Print model data: model.modeling_polynomials.coefficients,
@@ -205,7 +204,7 @@ for iter = 1:iter_max
     % Move among points that are part of the model
     model = move_to_best_point(model, bl, bu);
 
-    model.modeling_polynomials = compute_polynomial_models(model, prob);
+    model.modeling_polynomials = compute_polynomial_models(model);
 
     fval_current = model.fvalues(1, model.tr_center);
     x_current = model.points_abs(:, model.tr_center);
@@ -219,7 +218,7 @@ for iter = 1:iter_max
   criticality_step_performed = false;
   if norm(measure_criticality(model, bl, bu)) <= eps_c
 
-    model = criticality_step(model, funcs, bl, bu, options, prob);
+    model = criticality_step(model, funcs, bl, bu, options);
     criticality_step_performed = true;
     if norm(measure_criticality(model, bl, bu)) < tol_f
       break;
@@ -250,7 +249,7 @@ for iter = 1:iter_max
     (predicted_red < tol_f*abs(fval_current)*1e-3))
 
     rho = -inf;
-    [model, mchange_flag] = ensure_improvement(model, funcs, bl, bu, options, prob);
+    [model, mchange_flag] = ensure_improvement(model, funcs, bl, bu, options);
 
   else
 
@@ -277,7 +276,7 @@ for iter = 1:iter_max
       % Including this new point as the TR center
       [model, mchange_flag] = change_tr_center(model, trial_point, ...
                                                fval_trial, ...
-                                               options, prob);
+                                               options);
 
       % --------------------------------------------------------------
       % this mchange_flag is not being used (rho > eta_1)
@@ -288,8 +287,7 @@ for iter = 1:iter_max
           [model, mchange_flag] = ensure_improvement(model, ...
                                                      funcs, ...
                                                      bl, bu, ...
-                                                     options, ...
-                                                     prob);
+                                                     options, prob);
           % this mchange_flag is not being used (rho > eta_1)
       end
 
@@ -300,8 +298,7 @@ for iter = 1:iter_max
                                                trial_point, ...
                                                fval_trial, ...
                                                funcs, bl, bu, ...
-                                               options, ...
-                                               prob);
+                                               options, prob);
      % if mchange_flag == 4, we had to rebuild the model
      % and the radius will be reduced
     end
