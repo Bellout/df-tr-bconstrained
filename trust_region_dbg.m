@@ -122,7 +122,7 @@ end
 
 % --------------------------------------------------------------------
 % Set formats for x and f
-mf = '%20.16f';
+mf = '%14.12f';
 tab = '            ';
 % tab = '';
 
@@ -135,14 +135,9 @@ frmt2_cpp = [ mf ';\n\n' ];
 frmt3 = [ repmat('%12.1f ', 1, size(old_seed.State,1)) '\n\n'];
 
 % --------------------------------------------------------------------
-% Print prob name
-ln = repmat('=',1,30);
-fprintf(prob.fid, ['\n\n\n' tab '// ' ln ln ln '\n'], prob.pn);
-fprintf(prob.fid, [tab '// ' ln '  %s  ' ln '\n'], prob.pn);
-fprintf(prob.fid, [tab '// ' ln ln ln '\n'], prob.pn);
-
-% --------------------------------------------------------------------
 % Print seed
+ln = repmat('=',1,10);
+fprintf(prob.fid, [tab '// ' ln ' %s ' ln '\n'], prob.pn);
 fprintf(prob.fid, [tab '// seed.Type: ' '%s\n'], old_seed.Type);
 fprintf(prob.fid, [tab '// seed.Seed: ' '%6.0f\n'], old_seed.Seed);
 fprintf(prob.fid, [tab '// seed.State:' frmt3], old_seed.State);
@@ -411,6 +406,4 @@ for iter = 1:iter_max
 end
 x = model.points_abs(:, model.tr_center);
 fval = model.fvalues(1, model.tr_center);
-
-
 
