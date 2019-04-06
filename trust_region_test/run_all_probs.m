@@ -1,17 +1,8 @@
 % run_all_probs.m
 
 % --------------------------------------------------------------------
-data_file_src = [ ...
-'/home/bellout/git/MB/df-tr-bconstrained/' ... 
-'prob_data/test_tr-model-data_loc.hpp'];
-
-data_file_trg = [...
-'/home/bellout/git/IOC/FieldOpt-Research/FieldOpt' ...
-'/Optimization/tests/optimizers/test_tr-model-data.hpp'];
-
-% --------------------------------------------------------------------
 prob = struct();
-prob.fid = fopen(data_file_src,'w');
+prob.fid = fopen('solns.out','w');
 print_soln_head;
 
 % --------------------------------------------------------------------
@@ -29,6 +20,7 @@ f = @(x) log1p(x(1)^2) + x(2)^2;
 
 x0 = [2;
       2];
+
 
 [x, fval] = trust_region_dbg({f}, x0,[],[],[],[],prob);
 
@@ -137,5 +129,3 @@ x0 = [2;
 % --------------------------------------------------------------------
 print_soln_tail;
 fclose(prob.fid);
-
-system(['cp ' data_file_src ' ' data_file_trg ])
