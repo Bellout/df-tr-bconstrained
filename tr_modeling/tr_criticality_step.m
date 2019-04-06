@@ -1,5 +1,5 @@
-function [model, epsilon] = tr_criticality_step(model, ff, epsilon, p_mu, ...
-                                                bl, bu, options, one_pass)
+function [model, epsilon, prob] = tr_criticality_step(model, ff, epsilon, p_mu, ...
+                                                bl, bu, options, one_pass, prob)
 % CRITICALITY_STEP -- ensures model is sufficiently poised and with
 % a radius comparable to the gradient
 %

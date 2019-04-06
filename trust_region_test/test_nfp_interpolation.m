@@ -30,7 +30,7 @@ for position = 2:6
         orthogonalize_to_other_polynomials(nfp_polynomials, ...
                                                 position, points, ...
                                                 position - 1);
-    hopefully_one = evaluate_polynomial(nfp_polynomials(position), points(:, position));
+    [hopefully_one prob] = evaluate_polynomial(nfp_polynomials(position), points(:, position));
     if abs(hopefully_one - 1) > 10*eps
         1;
     end

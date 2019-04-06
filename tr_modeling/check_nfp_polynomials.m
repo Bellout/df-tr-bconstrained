@@ -1,10 +1,11 @@
-function result = check_nfp_polynomials(model)
+function [result, prob] = check_nfp_polynomials(model, prob)
 
     points_shifted = model.points_shifted;
     nfp_polynomials = model.pivot_polynomials;
     [dim, points_num] = size(points_shifted);
     tol = 1e-6;
     result = 0;
+    
     for point_i = 1:points_num
         if point_i == 1
             block_beginning = 1;
@@ -14,7 +15,7 @@ function result = check_nfp_polynomials(model)
             block_beginning = dim + 2;
         end
         for poly_i = block_beginning:points_num
-            val = evaluate_polynomial(nfp_polynomials(poly_i), points_shifted(:, point_i));
+            [val prob] = evaluate_polynomial(nfp_polynomials(poly_i), points_shifted(:, point_i), prob);
             if point_i == poly_i
                 correct_val = 1;
             else

@@ -1,4 +1,4 @@
-function [x, fval, exitflag] = minimize_tr(polynomial, x_tr_center, ...
+function [x, fval, exitflag, prob] = minimize_tr(polynomial, x_tr_center, ...
                                           radius, bl, bu, prob, prnt)
 
   % ------------------------------------------------------------------
@@ -33,13 +33,6 @@ function [x, fval, exitflag] = minimize_tr(polynomial, x_tr_center, ...
   bl_mod(bl_active) = bl(bl_active);
   bu_mod(bu_active) = bu(bu_active);
   
-  % ------------------------------------------------------------------
-  % Print bounds/tolerance data (intermediate data)
-  if (prnt)
-    part=0; print_soln_body;
-    part=8; print_soln_body;
-  end
-
   % ------------------------------------------------------------------
   [c, g, H] = get_matrices(polynomial);
   f = @(x) quadratic(H, g, c, x);
@@ -148,6 +141,18 @@ function [x, fval, exitflag] = minimize_tr(polynomial, x_tr_center, ...
       fval = f(x);
       exitflag = 0;
   end
+
+  % ------------------------------------------------------------------
+  % Print bounds/tolerance data (intermediate data)
+
+  gx = g'*x;
+  xHx = 0.5.*x'*H*x;
+
+  if (prnt)
+    part=0; print_soln_body;
+    part=8; print_soln_body;
+  end  
+
 end
 
   

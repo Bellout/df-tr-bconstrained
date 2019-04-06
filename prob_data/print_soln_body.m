@@ -102,7 +102,7 @@ case 3
   fprintf(prob.fid, '%s\n', ...
     [tab prob.pn '.cm.resize(' ...
     num2str(size(cm, 1)) ',' ...
-    num2str(size(cm, 2)) '); // model.tr_center']);
+    num2str(size(cm, 2)) '); // model.tr_center [index]']);
 
   fprintf(prob.fid, '%s\n', ...
     [tab prob.pn '.rm.resize(' ...
@@ -306,6 +306,7 @@ case 7
   frmt_newp = [ repmat([mf ', '], 1, size(new_points,1)-1) [mf '; \n']];
 
   % --------------------------------------------------------------------
+  fprintf(prob.fid, '\n');
   fprintf(prob.fid, [tab '// New points (output data) - > new_points = [new_point_max, new_point_min];:\n']);
   fprintf(prob.fid, [tab '// ' frmt_newp ], new_points);
 
@@ -314,13 +315,26 @@ case 8
   % --------------------------------------------------------------------
   % C++ [FORMAT]
   frmt_bnd = [ repmat([mE ', '], 1, size(bl_mod,1)-1) [mE '; \n']];
+  frmt_x = [ repmat([mE ', '], 1, size(x,1)-1) [mE '; \n']];
+  frmt_g = [ repmat([mE ', '], 1, size(g,1)-1) [mE '; \n']];
+  frmt_H = [ repmat([mE ', '], 1, size(H,1)-1) [mE '; \n']];
 
   % --------------------------------------------------------------------
   fprintf(prob.fid, '\n');
+  fprintf(prob.fid, [tab '// [ From minimize_tr(): ]\n']);  
   fprintf(prob.fid, [tab '// Bounds/tolerance computed (intermediate data):\n']);
   fprintf(prob.fid, [tab '// bl_mod: ' frmt_bnd ], bl_mod);
   fprintf(prob.fid, [tab '// bu_mod: ' frmt_bnd ], bu_mod);
   fprintf(prob.fid, [tab '// tol_tr: ' mE '; \n' ], tol_tr);
+
+  fprintf(prob.fid, '\n');
+  fprintf(prob.fid, [tab '// x: ' frmt_x ], x);
+  fprintf(prob.fid, [tab '// c: ' [mE '; \n'] ], c);
+  fprintf(prob.fid, [tab '// gx: ' [mE '; \n'] ], gx);
+  fprintf(prob.fid, [tab '// xHx: ' [mE '; \n'] ], xHx);
+  fprintf(prob.fid, [tab '// fval: ' [mE '; \n'] ], fval);  
+  % fprintf(prob.fid, [tab '// g: ' frmt_g ], g);
+  % fprintf(prob.fid, [tab '// H: ' frmt_H ], H);
 
 case 9
 
@@ -335,5 +349,14 @@ case 9
   % --------------------------------------------------------------------
   fprintf(prob.fid, [tab '// Trial point found (output data):\n']);
   fprintf(prob.fid, [tab '// ' frmt_trlp ], trial_point);
+
+case 10  
+
+  frmt_pts_shifted = [ repmat([mE ', '], 1, size(points_shifted,1)-1) [mE '; \n']];
+  frmt_shift_center = [ repmat([mE ', '], 1, size(shift_center,1)-1) [mE '; \n']];
+
+  fprintf(prob.fid, [tab '// [ From improve_model_nfp(): ]\n']);  
+  fprintf(prob.fid, [tab '// points_shifted: ' frmt_pts_shifted ], points_shifted);
+  fprintf(prob.fid, [tab '// points_shifted: ' frmt_shift_center ], frmt_shift_center);
 
 end

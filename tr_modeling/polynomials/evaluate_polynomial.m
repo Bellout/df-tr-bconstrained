@@ -1,6 +1,17 @@
-function value = evaluate_polynomial(polynomial, point)
+function [ value prob ] = evaluate_polynomial(polynomial, point, prob)
 % Evaluates polynomial in given point
 
+[ nr nc ] = size(polynomial.coefficients);
+
+% ----------------------------------------------------------
+if (~strcmp(prob.cf_prev, prob.cf))
+  fprintf(prob.fidpc, '[ %s (%s)]\n', prob.cf, prob.cf_prev);
+end
+prob.cf_prev = prob.cf;
+% fprintf(prob.fidpc, [ repmat('%20.16f ', 1, nr) '\n'] , polynomial.coefficients);
+fprintf(prob.fidpc, [ repmat('%22.12e ', 1, nr) '\n'] , polynomial.coefficients);
+
+% ----------------------------------------------------------
 [c, g, H] = coefficients_to_matrices(polynomial.dimension, ...
                                      polynomial.coefficients);
 

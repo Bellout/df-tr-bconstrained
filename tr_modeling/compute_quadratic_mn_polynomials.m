@@ -1,4 +1,5 @@
-function polynomials = compute_quadratic_mn_polynomials(points, center_i, fvalues)
+function [polynomials prob] = ...
+    compute_quadratic_mn_polynomials(points, center_i, fvalues, prob)
 
     [dim, points_num] = size(points);
     functions_num = size(fvalues, 1);
