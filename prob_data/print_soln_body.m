@@ -1,21 +1,14 @@
 
 switch(part)
 
-case 0
+case 1
 
   % --------------------------------------------------------------------
   % Set formats for x and f
   mf = '%20.16f';
-  mE = '%20.16E';
   tab = '            ';
   % tab = '';
 
-  ln = repmat('=',1,30);
-  ln2 = repmat('-',1,30);
-
-case 1
-
-  % --------------------------------------------------------------------
   frmt1 = [ repmat(mf, 1, size(initial_points,1)) '\n'];
   frmt1_cpp = ...
   [ repmat([mf ', '], 1, size(initial_points,1)-1) [mf '; \n']];
@@ -26,6 +19,8 @@ case 1
 
   % --------------------------------------------------------------------
   % Print prob name
+  ln = repmat('=',1,30);
+  ln2 = repmat('-',1,30);
   fprintf(prob.fid, ['\n' tab '// ' ln ln ln '\n'], prob.pn);
   fprintf(prob.fid, [tab '// ' ln '  %s  ' ln '\n'], prob.pn);
   fprintf(prob.fid, [tab '// ' ln ln ln '\n\n'], prob.pn);
@@ -253,87 +248,5 @@ case 4
             [tab prob.pn '.mdm.col(' num2str(ii-1) ') << ' frmt_mdm], ...
             mp{ii}.dimension);
   end
-
-case 5
-
-  % --------------------------------------------------------------------
-  %  Collect data
-  pnp = polynomial;
-
-  % --------------------------------------------------------------------
-  tlt = [ 'C++ POINT NEW FUNCTION ' ];
-  fprintf(prob.fid, '\n%s\n%s\n\n', [tab '// ' ln2 ln2 ln2], [ tab '// ' tlt]);
-
-  % --------------------------------------------------------------------
-  % C++ [FORMAT]
-  frmt_pnp = [ repmat([mf ', '], 1, size(pnp.coefficients,1)-1) [mf '; \n']];
-
-  % --------------------------------------------------------------------
-  % C++ [PRINT DATA] CALLS FOR NEW POINT POLYNOMIALS.COEFFICIENTS,
-  fprintf(prob.fid, [tab '// Polynomial [-polynomial_max] (input data):\n']);
-  fprintf(prob.fid, ...
-        [tab prob.pn '.pnp.col(' num2str(1-1) ') << ' frmt_pnp], ...
-        pnp.coefficients);
-  fprintf(prob.fid, [tab 'v_pnp.push_back(' prob.pn '.pnp);\n' ]);
-
-case 6
-
-  % --------------------------------------------------------------------
-  %  Collect data
-  obp = obj_pol ;
-
-  % --------------------------------------------------------------------
-  tlt = [ 'C++ POINT SOLVE TR SUBPROBLEM ' ];
-  fprintf(prob.fid, '\n%s\n%s\n\n', [tab '// ' ln2 ln2 ln2], [ tab '// ' tlt]);
-
-  % --------------------------------------------------------------------
-  % C++ [FORMAT]
-  frmt_obp = [ repmat([mf ', '], 1, size(obp.coefficients,1)-1) [mf '; \n']];
-
-  % --------------------------------------------------------------------
-  % C++ [PRINT DATA] CALLS FOR NEW POINT POLYNOMIALS.COEFFICIENTS,
-  fprintf(prob.fid, [tab '// Polynomial [-polynomial_max] (input data):\n']);
-  fprintf(prob.fid, ...
-        [tab prob.pn '.obp.col(' num2str(1-1) ') << ' frmt_obp], ...
-        obp.coefficients);
-  fprintf(prob.fid, [tab 'v_obp.push_back(' prob.pn '.obp);\n' ]);
-
-
-case 7
-
-  % --------------------------------------------------------------------
-  % C++ [FORMAT]
-  frmt_newp = [ repmat([mf ', '], 1, size(new_points,1)-1) [mf '; \n']];
-
-  % --------------------------------------------------------------------
-  fprintf(prob.fid, [tab '// New points (output data) - > new_points = [new_point_max, new_point_min];:\n']);
-  fprintf(prob.fid, [tab '// ' frmt_newp ], new_points);
-
-case 8
-
-  % --------------------------------------------------------------------
-  % C++ [FORMAT]
-  frmt_bnd = [ repmat([mE ', '], 1, size(bl_mod,1)-1) [mE '; \n']];
-
-  % --------------------------------------------------------------------
-  fprintf(prob.fid, '\n');
-  fprintf(prob.fid, [tab '// Bounds/tolerance computed (intermediate data):\n']);
-  fprintf(prob.fid, [tab '// bl_mod: ' frmt_bnd ], bl_mod);
-  fprintf(prob.fid, [tab '// bu_mod: ' frmt_bnd ], bu_mod);
-  fprintf(prob.fid, [tab '// tol_tr: ' mE '; \n' ], tol_tr);
-
-case 9
-
-  % --------------------------------------------------------------------
-  % tlt = [ 'C++ SOLVE TR SUBPROBLEM (POST) ' ];
-  % fprintf(prob.fid, '\n%s\n%s\n\n', [tab '// ' ln2 ln2 ln2], [ tab '// ' tlt]);  
-
-  % --------------------------------------------------------------------
-  % C++ [FORMAT]
-  frmt_trlp = [ repmat([mf ', '], 1, size(trial_point,1)-1) [mf '; \n']];
-
-  % --------------------------------------------------------------------
-  fprintf(prob.fid, [tab '// Trial point found (output data):\n']);
-  fprintf(prob.fid, [tab '// ' frmt_trlp ], trial_point);
 
 end

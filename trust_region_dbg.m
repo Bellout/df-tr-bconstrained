@@ -115,15 +115,13 @@ if n_initial_points == 1
   end
 
   % ------------------------------------------------------------------
-  % initial_points(:, 2) = second_point;
-  % n_initial_points = 2;
+  initial_points(:, 2) = second_point;
+  n_initial_points = 2;
 
 end
 
-% Set formats for x and f --------------------------------------------
-part=0; print_soln_body;
-
-% Set prob names -----------------------------------------------------
+% --------------------------------------------------------------------
+% Set formats for x and f
 part=1; print_soln_body;
 
 % --------------------------------------------------------------------
@@ -172,7 +170,7 @@ part=4; print_soln_body;
 % --------------------------------------------------------------------
 if size(model.points_abs, 2) < 2
     [model, exitflag] = ...
-    ensure_improvement(model, funcs, bl, bu, options, prob);
+    ensure_improvement(model, funcs, bl, bu, options);
 end
 
 % ====================================================================
@@ -229,17 +227,11 @@ for iter = 1:iter_max
 
   % ------------------------------------------------------------------
   % Print summary
-  print_iteration(iter, ...
-                  fval_current, ...
-                  rho, model.radius, ...
-                  size(model.points_abs, 2));
+  print_iteration(iter, fval_current, rho, model.radius, size(model.points_abs, 2));
 
   % ------------------------------------------------------------------
   % Compute step
-  [trial_point, predicted_red] = solve_tr_subproblem(model, ...
-                                                     bl, bu, ...
-                                                     options, ...
-                                                     prob);
+  [trial_point, predicted_red] = solve_tr_subproblem(model, bl, bu, options);
   trial_step = trial_point - x_current;
 
   % ------------------------------------------------------------------
@@ -286,8 +278,7 @@ for iter = 1:iter_max
           % This shouldn't happen
           [model, mchange_flag] = ensure_improvement(model, ...
                                                      funcs, ...
-                                                     bl, bu, ...
-                                                     options, prob);
+                                                     bl, bu, options);
           % this mchange_flag is not being used (rho > eta_1)
       end
 
@@ -298,7 +289,7 @@ for iter = 1:iter_max
                                                trial_point, ...
                                                fval_trial, ...
                                                funcs, bl, bu, ...
-                                               options, prob);
+                                               options);
      % if mchange_flag == 4, we had to rebuild the model
      % and the radius will be reduced
     end
@@ -320,7 +311,8 @@ for iter = 1:iter_max
       radius_inc = max(1, gamma_2*(step_size/model.radius));
       model.radius = min(radius_inc*model.radius, radius_max);
 
-  elseif (iteration_model_fl && (rho == -inf || mchange_flag == 4 || criticality_step_performed))
+  elseif (iteration_model_fl 
+    && (rho == -inf || mchange_flag == 4 || criticality_step_performed))
 
       % A good model should have provided a better point
       % We reduce the radius, since the error is related to the
