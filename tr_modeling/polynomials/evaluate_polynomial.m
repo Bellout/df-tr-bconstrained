@@ -7,7 +7,6 @@ fprintf(fid, [ repmat('%22.12e ', 1, nr) '\n'] , polynomial.coefficients);
 fclose(fid);
 
 % ----------------------------------------------------------
-
 [c, g, H] = coefficients_to_matrices(polynomial.dimension, ...
                                      polynomial.coefficients);
 
