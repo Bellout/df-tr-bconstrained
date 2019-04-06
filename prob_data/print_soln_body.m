@@ -200,53 +200,17 @@ case 4
   % --------------------------------------------------------------------
   %  Collect data
 
-  % model.modeling_polynomials:
+  % model.modeling_polynomials;
   % cell struct containing structs -> {[1×1 struct]}
   % each struct constains fields:
   % dimension: [double]
   % coefficients: [6×1 double]
 
-  mp = model.modeling_polynomials;
+  mcm = model.modeling_polynomials{1}
+  % mdm = model.modeling_polynomials
+
+  model.modeling_polynomials
 
   % --------------------------------------------------------------------
-  tlt = [ 'C++ [PRINT RESIZE] MODELING COEFFICIENTS' ];
-  fprintf(prob.fid, '\n%s\n%s\n\n', [tab '// ' ln2 ln2 ln2], [ tab '// ' tlt]);
-
-  % Matrix ([6x6]) of column vectors ([6x1])
-  fprintf(prob.fid, [tab '// Matrix ([6x6]) of column vectors ([6x1])\n']);
-  fprintf(prob.fid, '%s\n', ...
-    [tab prob.pn '.mcm.resize(' ...
-    num2str(size(mp{1}.coefficients, 1)) ',' ...
-    num2str(size(mp, 2)) '); // model.modeling_polynomials.coefficients']);
-
-  % Matrix ([1x6]) of column vectors ([1x1])
-  fprintf(prob.fid, [tab '// Matrix ([1x6]) of column vectors ([1x1])\n']);
-  fprintf(prob.fid, '%s\n', ...
-    [tab prob.pn '.mdm.resize(' ...
-    num2str(size(mp{1}.dimension, 1)) ',' ...
-    num2str(size(mp, 2)) '); // model.modeling_polynomials.dimension']);
-
-  % --------------------------------------------------------------------
-  % C++ [FORMAT]
-  frmt_mcm = [ repmat([mf ', '], 1, size(mp{1}.coefficients,1)-1) [mf '; \n']];
-  frmt_mdm = [ repmat([mf ', '], 1, size(mp{1}.dimension,1)-1) [mf '; \n']];
-
-  % --------------------------------------------------------------------
-  % C++ [PRINT DATA] CALLS FOR MODELING_POLYNOMIALS.COEFFICIENTS,
-  % MODELING_POLYNOMIALS.DIMENSION
-  fprintf(prob.fid, '\n');
-  fprintf(prob.fid, [tab '// Modeling polynomials (coeff):\n']);
-  for ii = 1 : size(mp, 2)
-    fprintf(prob.fid, ...
-            [tab prob.pn '.mcm.col(' num2str(ii-1) ') << ' frmt_mcm], ...
-            mp{ii}.coefficients);
-  end
-
-  fprintf(prob.fid, [tab '// Pivot polynomials (dim):\n']);
-  for ii = 1 : size(mp, 2)
-    fprintf(prob.fid, ...
-            [tab prob.pn '.mdm.col(' num2str(ii-1) ') << ' frmt_mdm], ...
-            mp{ii}.dimension);
-  end
 
 end
