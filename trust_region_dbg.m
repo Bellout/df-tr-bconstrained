@@ -162,8 +162,11 @@ model = move_to_best_point(model, bl, bu);
 
 % --------------------------------------------------------------------
 % basis = band_prioritizing_basis(size(model.points_shifted, 1));
-[ model.modeling_polynomials, prob ] = compute_polynomial_models(model, prob)
-model.modeling_polynomials{1}.coefficients
+[ model.modeling_polynomials, prob ] = compute_polynomial_models(model, prob);
+
+fprintf(['\npoints_abs:\n' repmat('%22.12e %22.12e\n',1,2) '\n'], model.points_abs);
+fprintf(['\npoints_shifted:\n' repmat('%22.12e %22.12e\n',1,2) '\n'], model.points_shifted);
+fprintf(['\nmodel.modeling_polynomials{1}.coefficients:\n' repmat('%22.12e',1,6) '\n\n'], model.modeling_polynomials{1}.coefficients);
 
 % --------------------------------------------------------------------
 % Print model data: model.modeling_polynomials.coefficients,
@@ -172,7 +175,7 @@ part=4; print_soln_body;
 
 % --------------------------------------------------------------------
 if size(model.points_abs, 2) < 2
-    [model, exitflag] = ...
+    [model, exitflag, prob] = ...
     ensure_improvement(model, funcs, bl, bu, options, prob);
 end
 
@@ -192,7 +195,7 @@ sum_rho_sqr = 0;
 delay_reduction = 0;
 
 % --------------------------------------------------------------------
-for iter = 1:iter_max
+for iter = 1%:iter_max
 
   % ------------------------------------------------------------------
   if (model.radius < tol_radius)

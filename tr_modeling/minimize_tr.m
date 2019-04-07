@@ -148,6 +148,9 @@ function [x, fval, exitflag, prob] = minimize_tr(polynomial, x_tr_center, ...
   gx = g'*x;
   xHx = 0.5.*x'*H*x;
 
+  fprintf(['\nx:\n' repmat('%22.12e',1,2) '\n'], x);
+  % fprintf(['\nx:\n' repmat('%22.12e',1,2) '\n'], x);
+  
   if (prnt)
     part=0; print_soln_body;
     part=8; print_soln_body;

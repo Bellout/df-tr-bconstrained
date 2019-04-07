@@ -1,5 +1,6 @@
 function [polynomials prob] = compute_polynomial_models(model, prob)
     
+    fprintf('%s\n', 'Calling compute_polynomial_models');
     [dim, points_num] = size(model.points_abs);
     functions_num = size(model.fvalues, 1);
     
@@ -8,7 +9,9 @@ function [polynomials prob] = compute_polynomial_models(model, prob)
     lastwarn('');
 
     if  linear_terms < points_num && points_num < full_q_terms
+
         % Compute quadratic model
+        fprintf('%s\n', 'Calling compute quadratic model');
         [polynomials prob] = compute_quadratic_mn_polynomials(model.points_abs, ...
                                                        model.tr_center, ...
                                                        model.fvalues, ...
@@ -17,7 +20,9 @@ function [polynomials prob] = compute_polynomial_models(model, prob)
     [~, wid] = lastwarn();
     if points_num <= linear_terms || points_num == full_q_terms || ...
             strcmp(wid, 'cmg:badly_conditioned_system')
+
         % Compute model with incomplete (complete) basis
+        fprintf('%s\n', 'Compute model with incomplete (complete) basis');
         [l_alpha prob] = nfp_finite_differences(model.points_shifted, ...
                                          model.fvalues, ...
                                          model.pivot_polynomials(1: ...
@@ -33,5 +38,6 @@ function [polynomials prob] = compute_polynomial_models(model, prob)
                                                      model.points_shifted(:, model.tr_center),...
                                                      prob);
         end
+        fprintf(['\nl_alpha:\n' repmat('%22.12e',1,2) '\n'], l_alpha);
     end
 end

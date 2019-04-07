@@ -99,7 +99,11 @@ function [model, exitflag, prob] = improve_model_nfp(model, ...
               
               new_point_shifted = new_points_shifted(:, found_i);
               new_pivot_value = new_pivots(found_i);
+
+              fprintf('\nshift_center: %22.12e %22.12e\n', shift_center);
+              fprintf('new_point_shifted: %22.12e %22.12e\n', new_point_shifted);
               new_point_abs = unshift_point(new_point_shifted);
+              fprintf('new_point_abs: %22.12e %22.12e\n\n', new_point_abs);
 
               [new_fvalues, f_succeeded, prob] = ...
                   evaluate_new_fvalues(funcs, new_point_abs, prob);

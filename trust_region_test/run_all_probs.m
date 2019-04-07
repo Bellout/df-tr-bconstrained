@@ -29,10 +29,10 @@ prob.pn = 'prob1';
 prob.fidpc = fopen([polyn_coeff_src prob.pn '.txt'], 'w');
 polyn_coeff_trg = [ polyn_coeff_trg prob.pn '.txt'];
 
-if (~strcmp(prob.cf_prev, prob.cf))
-  fprintf(prob.fidpc, '[ %s ]\n', prob.cf);
-end
-prob.cf_prev = prob.cf;
+% if (~strcmp(prob.cf_prev, prob.cf))
+%   fprintf(prob.fidpc, '[ %s ]\n', prob.cf);
+% end
+% prob.cf_prev = prob.cf;
 
 f = @(x) (1 - x(1))^2;
 
