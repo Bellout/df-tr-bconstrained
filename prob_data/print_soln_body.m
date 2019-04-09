@@ -7,6 +7,7 @@ case 0
   % Set formats for x and f
   mf = '%20.16f';
   mE = '%20.16E';
+  m22_12 = '%22.12e';
   tab = '            ';
   % tab = '';
 
@@ -314,27 +315,43 @@ case 8
 
   % --------------------------------------------------------------------
   % C++ [FORMAT]
-  frmt_bnd = [ repmat([mE ', '], 1, size(bl_mod,1)-1) [mE '; \n']];
-  frmt_x = [ repmat([mE ', '], 1, size(x,1)-1) [mE '; \n']];
-  frmt_g = [ repmat([mE ', '], 1, size(g,1)-1) [mE '; \n']];
-  frmt_H = [ repmat([mE ', '], 1, size(H,1)-1) [mE '; \n']];
+  frmt_bnd  = [ '[' repmat([m22_12 ', '], 1, size(bl_mod,1)-1) [m22_12 ' ] \n']];
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(x,1)-1) [m22_12 ' ] \n']];
+  frmt_g    = [ '[' repmat([m22_12 ', '], 1, size(g,1)-1) [m22_12 ' ] \n']];
+  frmt_H    = [ '[' repmat([m22_12 ', '], 1, size(H,1)-1) [m22_12 ' ] \n']];
+  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(polynomial.coefficients,1)-1) [m22_12 ' ] \n']];
+  frmt_tr_c = [ '[' repmat([m22_12 ', '], 1, size(x_tr_center,1)-1) [m22_12 ' ] \n']];
 
   % --------------------------------------------------------------------
-  fprintf(prob.fid, '\n');
-  fprintf(prob.fid, [tab '// [ From minimize_tr(): ]\n']);  
-  fprintf(prob.fid, [tab '// Bounds/tolerance computed (intermediate data):\n']);
-  fprintf(prob.fid, [tab '// bl_mod: ' frmt_bnd ], bl_mod);
-  fprintf(prob.fid, [tab '// bu_mod: ' frmt_bnd ], bu_mod);
-  fprintf(prob.fid, [tab '// tol_tr: ' mE '; \n' ], tol_tr);
+  % fprintf(prob.fid, '\n');
+  % fprintf(prob.fid, [tab '// [ From minimize_tr(): ]\n']);  
 
-  fprintf(prob.fid, '\n');
-  fprintf(prob.fid, [tab '// x: ' frmt_x ], x);
-  fprintf(prob.fid, [tab '// c: ' [mE '; \n'] ], c);
-  fprintf(prob.fid, [tab '// gx: ' [mE '; \n'] ], gx);
-  fprintf(prob.fid, [tab '// xHx: ' [mE '; \n'] ], xHx);
-  fprintf(prob.fid, [tab '// fval: ' [mE '; \n'] ], fval);  
-  % fprintf(prob.fid, [tab '// g: ' frmt_g ], g);
-  % fprintf(prob.fid, [tab '// H: ' frmt_H ], H);
+  fprintf(prob.fidmtr, ['Debug input polyn/x_tr_center/radius:\n']);
+  fprintf(prob.fidmtr, ['polyn.coeffs ' frmt_p ], polynomial.coefficients);
+  fprintf(prob.fidmtr, ['x_tr_center  ' frmt_tr_c ], x_tr_center');
+  fprintf(prob.fidmtr, ['radius ' m22_12 ' | tol_tr ' m22_12 '\n' ], radius, tol_tr);
+
+  fprintf(prob.fidmtr, '\n');
+  fprintf(prob.fidmtr, ['Debug x0 + bounds_mod:\n']);
+  fprintf(prob.fidmtr, ['x0     ' frmt_x ], x0);
+  fprintf(prob.fidmtr, ['bl_mod ' frmt_bnd ], bl_mod);
+  fprintf(prob.fidmtr, ['bu_mod ' frmt_bnd ], bu_mod);
+
+  fprintf(prob.fidmtr, '\n');
+  fprintf(prob.fidmtr, ['Debug p-matrices c, g, H:\n']);
+  fprintf(prob.fidmtr, ['c [ ' [m22_12 ' ]\n'] ], c);
+  fprintf(prob.fidmtr, ['g  ' frmt_g ], g);
+  fprintf(prob.fidmtr, ['H  ' frmt_H ], H);
+
+  fprintf(prob.fidmtr, '\n');
+  fprintf(prob.fidmtr, ['Debug computed gx, xHx values:\n']);
+  fprintf(prob.fidmtr, ['gx  [ ' [m22_12 ' ]\n'] ], gx);
+  fprintf(prob.fidmtr, ['xHx [ ' [m22_12 ' ]\n'] ], xHx);
+
+  fprintf(prob.fidmtr, '\n');
+  fprintf(prob.fidmtr, ['Debug xsol, fval [fminncon/SNOPT]::\n']);
+  fprintf(prob.fidmtr, ['xsol ' frmt_x ], x);
+  fprintf(prob.fidmtr, ['fval [' [m22_12 ' ]\n'] ], fval);  
 
 case 9
 
@@ -358,5 +375,89 @@ case 10
   fprintf(prob.fid, [tab '// [ From improve_model_nfp(): ]\n']);  
   fprintf(prob.fid, [tab '// points_shifted: ' frmt_pts_shifted ], points_shifted);
   fprintf(prob.fid, [tab '// points_shifted: ' frmt_shift_center ], frmt_shift_center);
+
+case 11
+
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(model.points_abs,1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fidchkintrp, ['Debug checkInterpolation function:\n']);
+  fprintf(prob.fidchkintrp, ['radius      [' [m22_12 ' ]\n'] ], model.radius);
+  fprintf(prob.fidchkintrp, ['tol_1 ' m22_12 ' | tol_2 ' m22_12 '\n' ], tol_1, tol_2);
+  fprintf(prob.fidchkintrp, ['idx_tr_center  [ ' [m22_12 ' ]\n'] ], model.tr_center);
+  fprintf(prob.fidchkintrp, ['n_points       [ ' [m22_12 ' ]\n'] ], n_points);
+  fprintf(prob.fidchkintrp, ['x_tr_center ' frmt_x ], model.points_abs(:, model.tr_center)');
+
+  for c = size(h,2):-1:1
+    fprintf(prob.fidchkintrp, ['h(:, c)       ' frmt_x ], h(:, c));
+  end
+
+case 12
+
+  frmt_g    = [ '[' repmat([m22_12 ', '], 1, size(g,1)-1) [m22_12 ' ] \n']];
+  frmt_H    = [ '[' repmat([m22_12 ', '], 1, size(H,1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fidchkintrp, '\n');
+  fprintf(prob.fidchkintrp, ['Debug p-matrices c, g, H:\n']);
+  fprintf(prob.fidchkintrp, ['c  [' [m22_12 ' ]\n'] ], c);
+  fprintf(prob.fidchkintrp, ['g  ' frmt_g ], g);
+  fprintf(prob.fidchkintrp, ['H  ' frmt_H ], H);
+
+case 13
+
+  frmt_A    = [ '[' repmat([m22_12 ', '], 1, size(A,2)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fidchkintrp, '\n');
+  fprintf(prob.fidchkintrp, ['this_value  [' [m22_12 ' ]\n'] ], this_value);
+  fprintf(prob.fidchkintrp, ['difference  [' [m22_12 ' ]\n'] ], difference);
+  fprintf(prob.fidchkintrp, ['max_diff    [' [m22_12 ' ]\n'] ], max_diff);
+
+  fprintf(prob.fidchkintrp, '\n');
+  fprintf(prob.fidchkintrp, ['A: fvalues(k, :)      ' frmt_x ], A');
+  fprintf(prob.fidchkintrp, ['B: max(fvalues(k, :)) [' [m22_12 ' ]\n'] ], B);
+  fprintf(prob.fidchkintrp, ['C: tol_1*B            [' [m22_12 ' ]\n'] ], C);
+  fprintf(prob.fidchkintrp, ['D: max(C, tol_2)      [' [m22_12 ' ]\n'] ], D);
+
+case 14
+  
+  m22_12 = prob.m22_12;
+  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(obj_pol.coefficients,1)-1) [m22_12 ' ] \n']];
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(x_tr_center,1)-1) [m22_12 ' ] \n']];
+
+  % fprintf(prob.fidslvtrsub, '\n');
+  fprintf(prob.fidslvtrsub, ['Debug solveTrSubproblem:\n']);
+  fprintf(prob.fidslvtrsub, ['idx_tr_center    [ ' [m22_12 ' ]\n'] ], model.tr_center);
+  fprintf(prob.fidslvtrsub, ['x_tr_center      ' frmt_x ], x_tr_center');
+  fprintf(prob.fidslvtrsub, ['orig.p.coeffs    ' frmt_p ], obj_pol.coefficients);
+  fprintf(prob.fidslvtrsub, ['shifted.p.coeffs ' frmt_p ], obj_pol2.coefficients);
+
+case 15
+
+  m22_12 = prob.m22_12;
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_abs,1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fidrecntrpts, ['Debug reCenterPoints:\n']);
+  fprintf(prob.fidrecntrpts, ['points_abs      ' frmt_x ], points_abs);
+  fprintf(prob.fidrecntrpts, ['fvalues      ' frmt_x ], fvalues');
+
+case 16
+
+  m22_12 = prob.m22_12;
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_shifted,1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fidrecntrpts, '\n');
+  fprintf(prob.fidrecntrpts, ['points_shifted ' frmt_x ], points_shifted);
+  fprintf(prob.fidrecntrpts, '\n');
+  fprintf(prob.fidrecntrpts, ['points_abs ' frmt_x ], points_abs);
+  fprintf(prob.fidrecntrpts, ['fvalues    ' frmt_x ], fvalues');
+
+case 17
+
+  m22_12 = prob.m22_12;
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_abs,1)-1) [m22_12 ' ] \n']];
+
+  % fprintf(prob.fidrecntrpts, ['Debug reCenterPoints:\n']);
+  fprintf(prob.fidrecntrpts, '\n');
+  fprintf(prob.fidrecntrpts, ['points_abs ' frmt_x ], points_abs);
+  fprintf(prob.fidrecntrpts, ['fvalues    ' frmt_x ], fvalues');
 
 end
