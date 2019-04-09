@@ -213,7 +213,7 @@ for iter = 1%:iter_max
     fval_current = model.fvalues(1, model.tr_center);
     x_current = model.points_abs(:, model.tr_center);
 
-    err_model = check_interpolation(model);
+    [err_model, prob] = check_interpolation(model, prob);
 
   end
 

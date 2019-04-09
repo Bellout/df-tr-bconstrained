@@ -9,25 +9,54 @@ data_file_trg = [...
 '/home/bellout/git/IOC/FieldOpt-Research/FieldOpt' ...
 '/Optimization/tests/optimizers/test_tr-model-data.hpp'];
 
-polyn_coeff_src = [...
+dbg_file_src = [...
 '/home/bellout/git/MB/df-tr-bconstrained/' ...
-'prob_data/polyn_coeff_'];
+'prob_data/'];
 
-polyn_coeff_trg = [...
+dbg_file_trg = [...
 '/home/bellout/git/IOC/FieldOpt-Research/FieldOpt' ...
-'/Optimization/tests/optimizers/polyn_coeff_'];
+'/Optimization/tests/optimizers/'];
+
+% mintr_src = [...
+% '/home/bellout/git/MB/df-tr-bconstrained/' ...
+% 'prob_data/mintr_'];
+
+% mintr_trg = [...
+% '/home/bellout/git/IOC/FieldOpt-Research/FieldOpt' ...
+% '/Optimization/tests/optimizers/mintr_'];
 
 % --------------------------------------------------------------------
 prob = struct();
 prob.fid = fopen(data_file_src,'w');
 print_soln_head;
-prob.cf = 'run_all_probs';
-prob.cf_prev = '';
+
+prob.m22_12 = '%22.12e';
+
+
+
+% prob.cf = 'run_all_probs';
+
 
 % --------------------------------------------------------------------
 prob.pn = 'prob1';
-prob.fidpc = fopen([polyn_coeff_src prob.pn '.txt'], 'w');
-polyn_coeff_trg = [ polyn_coeff_trg prob.pn '.txt'];
+prob.fidpc = fopen([dbg_file_src '/pfoeffs_' prob.pn '_cgmat.txt'], 'w');
+polyn_coeff_trg = [dbg_file_src '/pfoeffs_' prob.pn '_cgmat.txt'];
+
+% --------------------------------------------------------------------
+prob.fidmtr = fopen([dbg_file_src '/mintr_' prob.pn '_cgmat.txt'], 'w');
+mintr_trg = [ dbg_file_src '/mintr_' prob.pn '_cgmat.txt'];
+
+% --------------------------------------------------------------------
+prob.fidchkintrp = fopen([dbg_file_src '/chkintrp_' prob.pn '_cgmat.txt'], 'w');
+chkintrp_trg = [ dbg_file_src '/chkintrp_' prob.pn '_cgmat.txt'];
+
+% --------------------------------------------------------------------
+prob.fidslvtrsub = fopen([dbg_file_src '/slvtrsub_' prob.pn '_cgmat.txt'], 'w');
+slvtrsub_trg = [ dbg_file_src '/slvtrsub_' prob.pn '_cgmat.txt'];
+
+% --------------------------------------------------------------------
+prob.fidrecntrpts = fopen([dbg_file_src '/recntrpts_' prob.pn '_cgmat.txt'], 'w');
+recntrpts_trg = [ dbg_file_src '/recntrpts_' prob.pn '_cgmat.txt'];
 
 % if (~strcmp(prob.cf_prev, prob.cf))
 %   fprintf(prob.fidpc, '[ %s ]\n', prob.cf);
