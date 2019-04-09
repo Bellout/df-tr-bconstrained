@@ -31,15 +31,6 @@ prob.m22_12 = '%22.12e';
 prob.pn = 'prob1';
 prob = set_filenames(prob);
 
-% ----------------------------------------------------------
-prob.fidrecntrpts = fopen([dbg_file_src '/recntrpts_' prob.pn '_cgmat.txt'], 'w');
-recntrpts_trg = [ dbg_file_src '/recntrpts_' prob.pn '_cgmat.txt'];
-
-% if (~strcmp(prob.cf_prev, prob.cf))
-%   fprintf(prob.fidpc, '[ %s ]\n', prob.cf);
-% end
-% prob.cf_prev = prob.cf;
-
 f = @(x) (1 - x(1))^2;
 
 x0 = [-1.2;
@@ -47,7 +38,7 @@ x0 = [-1.2;
 
 [x, fval] = trust_region_dbg({f}, x0,[],[],[],[],prob);
 
-fclose(prob.fidpc);
+close_all_files(prob);
 
 % % ----------------------------------------------------------
 % prob.pn = 'prob2';
