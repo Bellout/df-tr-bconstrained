@@ -11,7 +11,7 @@ function [trial_point, trial_decrease, prob] = ...
   obj_pol = model.modeling_polynomials{1};
   x_tr_center = model.points_abs(:, model.tr_center);
 
-  obj_pol2 = shift_polynomial(obj_pol, -x_tr_center); % Shift to origin
+  obj_pol2 = shift_polynomial(obj_pol, -x_tr_center, prob); % Shift to origin
   radius = model.radius;
   part=14; print_soln_body;
 

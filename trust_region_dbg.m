@@ -158,7 +158,7 @@ part=3; print_soln_body;
 
 % --------------------------------------------------------------------
 % Move to best point
-model = move_to_best_point(model, bl, bu);
+model = move_to_best_point(model, bl, bu, [], prob);
 
 % --------------------------------------------------------------------
 % basis = band_prioritizing_basis(size(model.points_shifted, 1));
@@ -206,7 +206,7 @@ for iter = 1%:iter_max
   if true || is_lambda_poised(model, options)
 
     % Move among points that are part of the model
-    model = move_to_best_point(model, bl, bu);
+    model = move_to_best_point(model, bl, bu, [], prob);
 
     model.modeling_polynomials = compute_polynomial_models(model, prob);
 
@@ -220,7 +220,7 @@ for iter = 1%:iter_max
   % ------------------------------------------------------------------
   % Criticality step -- if we are possibly close to the optimum
   criticality_step_performed = false;
-  if norm(measure_criticality(model, bl, bu)) <= eps_c
+  if norm(measure_criticality(model, bl, bu, prob)) <= eps_c
 
     model = criticality_step(model, funcs, bl, bu, options, prob);
     criticality_step_performed = true;

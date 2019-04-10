@@ -99,3 +99,76 @@ namespace TestResources {
             prob1.xm.col(1) <<  -0.8852763136068210,   2.4057919370756191; 
             prob1.fm.col(1) <<   3.5542667786469249;
 
+
+            // ------------------------------------------------------------------------------------------
+            // C++ [PRINT RESIZE] TR_CENTER, TR_RADIUS, POINTS_SHIFTED
+
+            prob1.cm.resize(1,1); // model.tr_center [index]
+            prob1.rm.resize(1,1); // model.tr_radius
+            prob1.sm.resize(2,2); // points_shifted
+
+            // Trust region center:
+            prob1.cm.col(0) <<   1.0000000000000000; 
+            // Trust region radius:
+            prob1.rm.col(0) <<   1.0000000000000000; 
+            // Points shifted:
+            prob1.sm.col(0) <<   0.0000000000000000,   0.0000000000000000; 
+            prob1.sm.col(1) <<   0.3147236863931789,   0.4057919370756191; 
+
+            // ------------------------------------------------------------------------------------------
+            // C++ [PRINT RESIZE] CALLS FOR PIVOT_POLYNOMIALS.COEFFICIENTS, PIVOT_POLYNOMIALS.DIMENSION, MODEL.PIVOT_VALUES
+
+            // Matrix ([6x6]) of column vectors ([6x1])
+            prob1.pcm.resize(6,6); // model.pivot_polynomials.coefficients
+            // Matrix ([1x6]) of column vectors ([1x1])
+            prob1.pdm.resize(1,6); // model.pivot_polynomials.dimension
+            // Column vector ([6x1])
+            prob1.vm.resize(6,1); // model.pivot_values
+
+            // Pivot polynomials (coeff):
+            prob1.pcm.col(0) <<   1.0000000000000000,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000; 
+            prob1.pcm.col(1) <<   0.0000000000000000,   3.1773903370930814,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000; 
+            prob1.pcm.col(2) <<   0.0000000000000000,  -1.2893593797343559,   1.0000000000000000,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000; 
+            prob1.pcm.col(3) <<   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   2.0000000000000000,   0.0000000000000000,   0.0000000000000000; 
+            prob1.pcm.col(4) <<   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   1.0000000000000000,   0.0000000000000000; 
+            prob1.pcm.col(5) <<   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   2.0000000000000000; 
+            // Pivot polynomials (dim):
+            prob1.pdm.col(0) <<   2.0000000000000000; 
+            prob1.pdm.col(1) <<   2.0000000000000000; 
+            prob1.pdm.col(2) <<   2.0000000000000000; 
+            prob1.pdm.col(3) <<   2.0000000000000000; 
+            prob1.pdm.col(4) <<   2.0000000000000000; 
+            prob1.pdm.col(5) <<   2.0000000000000000; 
+            // Pivot values:
+            prob1.vm.col(0) <<   1.0000000000000000,   0.3147236863931789,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000; 
+
+            // ------------------------------------------------------------------------------------------
+            // C++ [PRINT RESIZE] MODELING COEFFICIENTS
+
+            // Matrix ([6x6]) of column vectors ([6x1])
+            prob1.mcm.resize(6,1); // model.modeling_polynomials.coefficients
+            // Matrix ([1x6]) of column vectors ([1x1])
+            prob1.mdm.resize(1,1); // model.modeling_polynomials.dimension
+
+            // Modeling polynomials (coeff):
+            prob1.mcm.col(0) <<   3.5542667786469249,  -4.0852763136068235,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000; 
+            // Pivot polynomials (dim):
+            prob1.mdm.col(0) <<   2.0000000000000000; 
+
+            // ------------------------------------------------------------------------------------------
+            // C++ POINT SOLVE TR SUBPROBLEM 
+
+            // Polynomial [-polynomial_max] (input data):
+            prob1.obp.col(0) <<  -0.0623315763281873,  -4.0852763136068235,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000,   0.0000000000000000; 
+            v_obp.push_back(prob1.obp);
+            // Trial point found (output data):
+            //   0.1147236863931558,   2.4057919370756120; 
+
+
+        }
+
+    };
+
+}
+
+#endif //FIELDOPT_TEST_TR_DFO_DATA_H

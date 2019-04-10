@@ -1,4 +1,4 @@
-function m = measure_criticality(model, bl, bu)
+function m = measure_criticality(model, bl, bu, prob)
     % MEASURE_CRITICALITY gives the gradient of the model, calculated
     % in absolute coordinates in the current point.
     %
@@ -21,6 +21,11 @@ function m = measure_criticality(model, bl, bu)
     % Projected gradient
     x_center = model.points_abs(:, model.tr_center);
     
-    m = min(bu, max(bl, (x_center - grad))) - x_center;
+    A = (x_center - grad);
+    B = max(bl, A);
+    C = min(bu, B);
+    m = C - x_center;
+
+    part=20; print_soln_body;
 
 end
