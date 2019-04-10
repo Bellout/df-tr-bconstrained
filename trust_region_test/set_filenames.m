@@ -2,7 +2,7 @@
 function [ prob ] = set_filenames(prob)
 
 tag = '_cgmat';
-pdir = [ prob.dbg_file_src '/' prob.pn ]
+pdir = [ prob.dbg_file_src '/' prob.pn ];
 % --------------------------------------------------------------------
 fn = [ prob.pn '_moveToBestPoint' tag '.txt' ];
 prob.fid_moveToBestPoint = fopen([ pdir '/' fn ], 'w');
