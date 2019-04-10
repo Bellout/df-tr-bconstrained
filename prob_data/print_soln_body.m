@@ -358,7 +358,7 @@ case 8
   frmt_tr_c = [ '[' repmat([m22_12 ', '], 1, size(x_tr_center,1)-1) [m22_12 ' ] \n']];
 
   % ------------------------------------------------------------------
-  fprintf(prob.fid_minimizeTr, [tab '[ minimize_tr() ]\n']);  
+  fprintf(prob.fid_minimizeTr, ['[ minimizeTr() ]\n']);  
 
   fprintf(prob.fid_minimizeTr, ['Debug input polyn/x_tr_center/radius:\n']);
   fprintf(prob.fid_minimizeTr, ['polyn.coeffs ' frmt_p ], polynomial.coefficients);
@@ -373,7 +373,7 @@ case 8
 
   fprintf(prob.fid_minimizeTr, '\n');
   fprintf(prob.fid_minimizeTr, ['Debug p-matrices c, g, H:\n']);
-  fprintf(prob.fid_minimizeTr, ['c [ ' [m22_12 ' ]\n'] ], c);
+  fprintf(prob.fid_minimizeTr, ['c  [' [m22_12 ' ]\n'] ], c);
   fprintf(prob.fid_minimizeTr, ['g  ' frmt_g ], g);
   fprintf(prob.fid_minimizeTr, ['H  ' frmt_H ], H);
 
@@ -383,7 +383,7 @@ case 8
   fprintf(prob.fid_minimizeTr, ['xHx [ ' [m22_12 ' ]\n'] ], xHx);
 
   fprintf(prob.fid_minimizeTr, '\n');
-  fprintf(prob.fid_minimizeTr, ['Debug xsol, fval [fminncon/SNOPT]::\n']);
+  fprintf(prob.fid_minimizeTr, ['Debug xsol, fval [fmincon/SNOPT]::\n']);
   fprintf(prob.fid_minimizeTr, ['xsol ' frmt_x ], x);
   fprintf(prob.fid_minimizeTr, ['fval [' [m22_12 ' ]\n'] ], fval);  
 
@@ -460,7 +460,7 @@ case 14
 
   % fprintf(prob.fid_solveTrSubproblem, '\n');
   fprintf(prob.fid_solveTrSubproblem, ['[ solveTrSubproblem() ]\n']);
-  fprintf(prob.fid_solveTrSubproblem, ['idx_tr_center    [ ' [m22_12 ' ]\n'] ], model.tr_center);
+  fprintf(prob.fid_solveTrSubproblem, ['idx_tr_center    [' [m22_12 ' ]\n'] ], model.tr_center);
   fprintf(prob.fid_solveTrSubproblem, ['x_tr_center      ' frmt_x ], x_tr_center');
   fprintf(prob.fid_solveTrSubproblem, ['orig.p.coeffs    ' frmt_p ], obj_pol.coefficients);
   fprintf(prob.fid_solveTrSubproblem, ['shifted.p.coeffs ' frmt_p ], obj_pol2.coefficients);
@@ -502,5 +502,72 @@ case 17
   fprintf(prob.fid_reCenterPoints, '\n');
   fprintf(prob.fid_reCenterPoints, ['points_abs ' frmt_x ], points_abs);
   fprintf(prob.fid_reCenterPoints, ['fvalues    ' frmt_x ], fvalues');
+
+case 18
+
+  % ------------------------------------------------------------------
+  % moveToBestPoint()
+
+  m22_12 = prob.m22_12;
+  fprintf(prob.fid_moveToBestPoint, ['[ moveToBestPoint() ]\n']);
+  fprintf(prob.fid_moveToBestPoint, ['idx_tr_center [ ' [m22_12 ' ]\n'] ], model.tr_center);
+  fprintf(prob.fid_moveToBestPoint, ['idx_best_i    [ ' [m22_12 ' ]\n'] ], best_i);
+
+case 19
+
+  % ------------------------------------------------------------------
+  % moveToBestPoint()
+
+  m22_12 = prob.m22_12;
+  fprintf(prob.fid_moveToBestPoint, ['idx_tr_center [ ' [m22_12 ' ]\n'] ], model.tr_center);  
+
+case 20
+
+  % ------------------------------------------------------------------
+  % measureCriticality()
+
+  m22_12 = prob.m22_12;
+  frmt_g    = [ '[' repmat([m22_12 ', '], 1, size(grad,1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fid_measureCriticality, ['[ measureCriticality() ]\n']);
+  fprintf(prob.fid_measureCriticality, ['Debug p-matrices g:\n']);
+  fprintf(prob.fid_measureCriticality, ['g  ' frmt_g ], grad);
+
+  fprintf(prob.fid_measureCriticality, '\n');
+  fprintf(prob.fid_measureCriticality, ['x_center             ' frmt_g ], x_center');
+  fprintf(prob.fid_measureCriticality, ['A: (x_center - grad) ' frmt_g ], A');
+  fprintf(prob.fid_measureCriticality, ['B: max(bl, A)        ' frmt_g ], B');
+  fprintf(prob.fid_measureCriticality, ['C: min(bu, B)        ' frmt_g ], C');
+  fprintf(prob.fid_measureCriticality, ['D: C - x_center      ' frmt_g ], m');  
+
+case 21
+
+  % ------------------------------------------------------------------
+  % shiftPolynomial()
+
+  m22_12 = prob.m22_12;
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(s,1)-1) [m22_12 ' ] \n']];
+  frmt_g    = [ '[' repmat([m22_12 ', '], 1, size(g,1)-1) [m22_12 ' ] \n']];
+  frmt_H    = [ '[' repmat([m22_12 ', '], 1, size(H,1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fid_shiftPolynomial, '\n');
+  fprintf(prob.fid_shiftPolynomial, ['[ shiftPolynomial() ]\n']);
+  fprintf(prob.fid_shiftPolynomial, ['s ' frmt_x ], s);
+
+  fprintf(prob.fid_shiftPolynomial, '\n');
+  fprintf(prob.fid_shiftPolynomial, ['Debug p-matrices c, g, H:\n']);
+  fprintf(prob.fid_shiftPolynomial, ['c  [' [m22_12 ' ]\n'] ], c);
+  fprintf(prob.fid_shiftPolynomial, ['g  ' frmt_g ], g);
+  fprintf(prob.fid_shiftPolynomial, ['H  ' frmt_H ], H);
+
+  fprintf(prob.fid_shiftPolynomial, '\n');
+  fprintf(prob.fid_shiftPolynomial, ['Debug p-matrices c, g, H:\n']);
+  fprintf(prob.fid_shiftPolynomial, ['c  [' [m22_12 ' ]\n'] ], c_mod);
+  fprintf(prob.fid_shiftPolynomial, ['g  ' frmt_g ], g_mod);
+
+case 22
+
+  % ------------------------------------------------------------------
+  % computePolynomialModels()
 
 end
