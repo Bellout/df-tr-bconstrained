@@ -195,7 +195,7 @@ sum_rho_sqr = 0;
 delay_reduction = 0;
 
 % --------------------------------------------------------------------
-for iter = 1%:iter_max
+for iter = 1:iter_max
 
   % ------------------------------------------------------------------
   if (model.radius < tol_radius)
@@ -224,7 +224,7 @@ for iter = 1%:iter_max
 
     model = criticality_step(model, funcs, bl, bu, options, prob);
     criticality_step_performed = true;
-    if norm(measure_criticality(model, bl, bu)) < tol_f
+    if norm(measure_criticality(model, bl, bu, prob)) < tol_f
       break;
     end
 

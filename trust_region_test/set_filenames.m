@@ -14,6 +14,11 @@ prob.fid_measureCriticality = fopen([ pdir '/' fn ], 'w');
 prob.trg_measureCriticality = [ pdir '/' fn ];
 
 % --------------------------------------------------------------------
+fn = [ prob.pn '_getModelMatrices' tag '.txt' ];
+prob.fid_getModelMatrices = fopen([ pdir '/' fn ], 'w');
+prob.trg_getModelMatrices = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
 fn = [ prob.pn '_criticalityStep' tag '.txt' ];
 prob.fid_criticalityStep = fopen([ pdir '/' fn ], 'w');
 prob.trg_criticalityStep = [ pdir '/' fn ];

@@ -3,6 +3,7 @@ function close_all_files(prob)
 
 fclose(prob.fid_moveToBestPoint);
 fclose(prob.fid_measureCriticality);
+fclose(prob.fid_getModelMatrices);
 fclose(prob.fid_criticalityStep);
 fclose(prob.fid_checkInterpolation);
 fclose(prob.fid_submitTempInitCases);

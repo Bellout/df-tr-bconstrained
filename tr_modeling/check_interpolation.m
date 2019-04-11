@@ -29,8 +29,9 @@ part=0; print_soln_body;
 part=11; print_soln_body;
 
 % ----------------------------------------------------------
+prob.prev = 'checkInterpolation';
 for k = 1:n_functions
-    [c, g, H] = get_model_matrices(model, k-1);
+    [c, g, H, prob] = get_model_matrices(model, k-1, prob);
     part=12; print_soln_body;
 
     for m = 1:n_points

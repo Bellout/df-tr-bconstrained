@@ -24,7 +24,10 @@ initial_radius = model.radius;
 if ~is_lambda_poised(model, options)
     model = improve_model(model, ff, bl, bu, options);
 end
-[~, fmodel.g] = get_model_matrices(model, 0);
+
+prob.prev = 'TrCriticalityStep1';
+[~, fmodel.g, ~, prob] = get_model_matrices(model, 0, prob);
+
 cmodel = extract_constraints_from_tr_model(model);
 [ind_eactive, ~] = identify_new_constraints(cmodel, epsilon, []);
 [N, Q, R, ind_qr] = update_factorization(cmodel, [], [], ind_eactive, true);
@@ -43,7 +46,7 @@ pseudo_gradient = l1_pseudo_gradient(fmodel.g, p_mu, cmodel, ind_qr, true);
 % Criticality measure
 measure = l1_criticality_measure(x, pseudo_gradient, Q, R, bl, bu, [cmodel(ind_qr).c]');
 
-
+prob.prev = 'TrCriticalityStep2';
 while (model.radius > crit_mu*measure)
     model.radius = omega*model.radius;
     epsilon = factor_epsilon*epsilon;
@@ -52,7 +55,7 @@ while (model.radius > crit_mu*measure)
     while ~is_lambda_poised(model, options)
         model = improve_model(model, ff, bl, bu, options);
     end
-    [~, fmodel.g] = get_model_matrices(model, 0);
+    [~, fmodel.g, ~, prob] = get_model_matrices(model, 0, prob);
     cmodel = extract_constraints_from_tr_model(model);
     [ind_eactive, ~] = identify_new_constraints(cmodel, ...
                                                       epsilon, []);

@@ -16,7 +16,8 @@ function m = measure_criticality(model, bl, bu, prob)
         bu = inf;
     end
     % Just the gradient, measured on the tr_center
-    [~, grad] = get_model_matrices(model, 0);
+    prob.prev = 'measureCriticality';
+    [c, grad, H, prob] = get_model_matrices(model, 0, prob);
     
     % Projected gradient
     x_center = model.points_abs(:, model.tr_center);
