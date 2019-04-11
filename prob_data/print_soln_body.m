@@ -350,6 +350,7 @@ case 8
   % minimize_tr()
 
   % C++ [FORMAT]
+  m22_12 = prob.m22_12;
   frmt_bnd  = [ '[' repmat([m22_12 ', '], 1, size(bl_mod,1)-1) [m22_12 ' ] \n']];
   frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(x,1)-1) [m22_12 ' ] \n']];
   frmt_g    = [ '[' repmat([m22_12 ', '], 1, size(g,1)-1) [m22_12 ' ] \n']];
@@ -404,9 +405,10 @@ case 11
   % ------------------------------------------------------------------ 
   % checkInterpolation()
 
+  m22_12 = prob.m22_12;
   frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(model.points_abs,1)-1) [m22_12 ' ] \n']];
 
-  fprintf(prob.fid_checkInterpolation, ['[ checkInterpolation() ]\n']);
+  fprintf(prob.fid_checkInterpolation, ['\n[ checkInterpolation() ]\n']);
   fprintf(prob.fid_checkInterpolation, ['radius      [' [m22_12 ' ]\n'] ], model.radius);
   fprintf(prob.fid_checkInterpolation, ['tol_1 ' m22_12 ' | tol_2 ' m22_12 '\n' ], tol_1, tol_2);
   fprintf(prob.fid_checkInterpolation, ['idx_tr_center  [ ' [m22_12 ' ]\n'] ], model.tr_center);
@@ -422,6 +424,7 @@ case 12
   % ------------------------------------------------------------------ 
   % checkInterpolation()
 
+  m22_12 = prob.m22_12;
   frmt_g    = [ '[' repmat([m22_12 ', '], 1, size(g,1)-1) [m22_12 ' ] \n']];
   frmt_H    = [ '[' repmat([m22_12 ', '], 1, size(H,1)-1) [m22_12 ' ] \n']];
 
@@ -436,6 +439,7 @@ case 13
   % ------------------------------------------------------------------ 
   % checkInterpolation()
 
+  m22_12 = prob.m22_12;
   frmt_A    = [ '[' repmat([m22_12 ', '], 1, size(A,2)-1) [m22_12 ' ] \n']];
 
   fprintf(prob.fid_checkInterpolation, '\n');
@@ -529,8 +533,8 @@ case 20
   m22_12 = prob.m22_12;
   frmt_g    = [ '[' repmat([m22_12 ', '], 1, size(grad,1)-1) [m22_12 ' ] \n']];
 
-  fprintf(prob.fid_measureCriticality, ['[ measureCriticality() ]\n']);
-  fprintf(prob.fid_measureCriticality, ['Debug p-matrices g:\n']);
+  fprintf(prob.fid_measureCriticality, ['\n[ measureCriticality() ]\n']);
+  % fprintf(prob.fid_measureCriticality, ['Debug p-matrices g:\n']);
   fprintf(prob.fid_measureCriticality, ['g  ' frmt_g ], grad);
 
   fprintf(prob.fid_measureCriticality, '\n');
@@ -538,7 +542,7 @@ case 20
   fprintf(prob.fid_measureCriticality, ['A: (x_center - grad) ' frmt_g ], A');
   fprintf(prob.fid_measureCriticality, ['B: max(bl, A)        ' frmt_g ], B');
   fprintf(prob.fid_measureCriticality, ['C: min(bu, B)        ' frmt_g ], C');
-  fprintf(prob.fid_measureCriticality, ['D: C - x_center      ' frmt_g ], m');  
+  fprintf(prob.fid_measureCriticality, ['D: C - x_center      ' frmt_g ], m');
 
 case 21
 
@@ -566,6 +570,63 @@ case 21
   fprintf(prob.fid_shiftPolynomial, ['g  ' frmt_g ], g_mod);
 
 case 22
+
+  % ------------------------------------------------------------------
+  % getModelMatrices()
+
+  m22_12 = prob.m22_12;
+  frmt_g    = [ '[' repmat([m22_12 ', '], 1, size(g,1)-1) [m22_12 ' ] \n']];
+  frmt_H    = [ '[' repmat([m22_12 ', '], 1, size(H,1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fid_getModelMatrices, ['[ %s() ] -> [ getModelMatrices() ]\n'], prob.prev);
+  fprintf(prob.fid_getModelMatrices, ['Debug p-matrices c, g, H:\n']);
+  fprintf(prob.fid_getModelMatrices, ['c  [' [m22_12 ' ]\n'] ], c);
+  fprintf(prob.fid_getModelMatrices, ['g  ' frmt_g ], g);
+  fprintf(prob.fid_getModelMatrices, ['H  ' frmt_H ], H);
+
+case 23
+
+  % ------------------------------------------------------------------
+  % criticalityStep()
+
+  m22_12 = prob.m22_12;
+  % frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(model.x_tr_center,1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fid_criticalityStep, ['[ criticalityStep() ]\n']);
+
+  fprintf(prob.fid_criticalityStep, '\n');
+  fprintf(prob.fid_criticalityStep, ['A: ~is_lambda_poised() [' [m22_12 ' ]\n'] ], A);
+  fprintf(prob.fid_criticalityStep, ['B: is_old()            [' [m22_12 ' ]\n'] ], B);
+
+  % fprintf(prob.fid_criticalityStep, ['x_center             ' frmt_x ], model.x_tr_center');
+  % fprintf(prob.fid_criticalityStep, ['crit_measure         ' frmt_x ], crit_measure);
+
+case 24
+
+  % ------------------------------------------------------------------
+  % criticalityStep()
+
+  m22_12 = prob.m22_12;
+  fprintf(prob.fid_criticalityStep, ['[ criticalityStep() -> break]\n']);
+
+  fprintf(prob.fid_criticalityStep, '\n');
+  fprintf(prob.fid_criticalityStep, ['C: (radius < tol_rad)  [' [m22_12 ' ]\n'] ], C);
+  fprintf(prob.fid_criticalityStep, ['D: norm(measr_crit)    [' [m22_12 ' ]\n'] ], D);
+  fprintf(prob.fid_criticalityStep, ['E: (beta*B < tol_f)    [' [m22_12 ' ]\n'] ], E);
+  fprintf(prob.fid_criticalityStep, ['F: (rad < 100*tol_rad) [' [m22_12 ' ]\n'] ], F);
+  fprintf(prob.fid_criticalityStep, ['G: (A || C && D)  <-?  [' [m22_12 ' ]\n'] ], G);
+
+case 25
+
+  % ------------------------------------------------------------------
+  % criticalityStep()
+
+  m22_12 = prob.m22_12;
+  fprintf(prob.fid_criticalityStep, '\n');
+  fprintf(prob.fid_criticalityStep, ['H: norm(masr_crit)  [' [m22_12 ' ]\n'] ], H);
+  fprintf(prob.fid_criticalityStep, ['I: beta*A           [' [m22_12 ' ]\n'] ], I);
+  fprintf(prob.fid_criticalityStep, ['J: max(radius, B)   [' [m22_12 ' ]\n'] ], J);
+  fprintf(prob.fid_criticalityStep, ['K: min(C, init_rad) [' [m22_12 ' ]\n'] ], K);
 
   % ------------------------------------------------------------------
   % computePolynomialModels()
