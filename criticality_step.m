@@ -37,7 +37,7 @@ end
 % --------------------------------------------------------------------
 
 crit_measure = mu*measure_criticality(model, bl, bu, prob);
-part=23; print_soln_body;
+part=31; print_soln_body;
 
 % --------------------------------------------------------------------
 while (model.radius > crit_measure)
@@ -70,7 +70,7 @@ while (model.radius > crit_measure)
         % Better break.
         % Not the end of this algorithm, but satisfies 
         % stopping condition for outer algorithm anyway...
-        part=24; print_soln_body;
+        part=32; print_soln_body;
         break;
     end
 end
@@ -82,6 +82,6 @@ I = beta*H;
 J = max(model.radius, I);
 K = min(J, initial_radius);
 model.radius = K;
-part=25; print_soln_body;
+part=33; print_soln_body;
 
 end

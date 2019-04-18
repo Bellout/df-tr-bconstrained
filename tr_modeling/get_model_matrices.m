@@ -3,7 +3,7 @@ function [c, g, H, prob] = get_model_matrices(model, m, prob)
 %   Detailed explanation goes here
 
     [c, g, H] = get_matrices(model.modeling_polynomials{m + 1});
-    part=22; print_soln_body;
+    part=30; print_soln_body;
     
 
 end

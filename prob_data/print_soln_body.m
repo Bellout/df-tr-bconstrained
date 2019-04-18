@@ -476,10 +476,14 @@ case 15
 
   m22_12 = prob.m22_12;
   frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_abs,1)-1) [m22_12 ' ] \n']];
+  frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
 
-  fprintf(prob.fid_reCenterPoints, ['[ reCenterPoints() ]\n']);
-  fprintf(prob.fid_reCenterPoints, ['points_abs      ' frmt_x ], points_abs);
-  fprintf(prob.fid_reCenterPoints, ['fvalues      ' frmt_x ], fvalues');
+  fprintf(prob.fid_reCenterPoints, ['\n[ reCenterPoints() ]\n']);
+  fprintf(prob.fid_reCenterPoints, ['rebuildModel() -> reCenterPoints()\n']);
+
+  fprintf(prob.fid_reCenterPoints, ['\nValues b/f reCentering\n']);
+  fprintf(prob.fid_reCenterPoints, ['all_points      ' frmt_x ], points_abs);
+  fprintf(prob.fid_reCenterPoints, ['all_fvalues     ' frmt_f ], fvalues');
 
 case 16
 
@@ -488,26 +492,170 @@ case 16
 
   m22_12 = prob.m22_12;
   frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_shifted,1)-1) [m22_12 ' ] \n']];
+  frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
 
-  fprintf(prob.fid_reCenterPoints, '\n');
-  fprintf(prob.fid_reCenterPoints, ['points_shifted ' frmt_x ], points_shifted);
-  fprintf(prob.fid_reCenterPoints, '\n');
-  fprintf(prob.fid_reCenterPoints, ['points_abs ' frmt_x ], points_abs);
-  fprintf(prob.fid_reCenterPoints, ['fvalues    ' frmt_x ], fvalues');
+  fprintf(prob.fid_reCenterPoints, ['\nValues a/f reCentering\n']);
+  fprintf(prob.fid_reCenterPoints, ['all_points      ' frmt_x ], points_abs);
+  fprintf(prob.fid_reCenterPoints, ['all_fvalues     ' frmt_f ], fvalues');
+
+  fprintf(prob.fid_reCenterPoints, '\nPoints shifted / distances\n');
+  fprintf(prob.fid_reCenterPoints, ['points_shifted  ' frmt_x ], points_shifted);
+  fprintf(prob.fid_reCenterPoints, ['distances       ' frmt_f ], distances');
 
 case 17
 
   % ------------------------------------------------------------------
-  % reCenterPoints() -> reBuildModel()
+  % rowPivotGaussianElimination() -> reBuildModel()
 
   m22_12 = prob.m22_12;
   frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_abs,1)-1) [m22_12 ' ] \n']];
+  frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
 
-  fprintf(prob.fid_reCenterPoints, '\n');
-  fprintf(prob.fid_reCenterPoints, ['points_abs ' frmt_x ], points_abs);
-  fprintf(prob.fid_reCenterPoints, ['fvalues    ' frmt_x ], fvalues');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['\n[ rowPivotGaussianElimination() ]\n']);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['rebuildModel() -> rowPivotGaussianElimination()\n']);
+
+  fprintf(prob.fid_rowPivotGaussianElimination, ['\nValues b/f rowPivotGaussianElimination\n']);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['all_points      ' frmt_x ], points_abs);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['all_fvalues     ' frmt_f ], fvalues');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['points_shifted  ' frmt_x ], points_shifted);
 
 case 18
+
+  % ------------------------------------------------------------------
+  % rowPivotGaussianElimination() -> reBuildModel()
+
+  m22_12 = prob.m22_12;
+  piv_p = pivot_polynomials(poly_i).coefficients;
+  frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
+  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(piv_p,2)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fid_rowPivotGaussianElimination, '\n');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_threshold ' frmt_f ], pivot_threshold');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['farthest_pt     ' frmt_f ], distances(end));
+  fprintf(prob.fid_rowPivotGaussianElimination, ['dist_farthest_pt' frmt_f ], distances(end)/radius);
+
+  fprintf(prob.fid_rowPivotGaussianElimination, '\n');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_p.coeffs  ' frmt_p ], piv_p');
+
+case 19
+
+  % ------------------------------------------------------------------
+  % rowPivotGaussianElimination() -> reBuildModel()
+
+  m22_12 = prob.m22_12;
+  frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fid_rowPivotGaussianElimination, ['\n%s\n'], str_blck);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['max_layer       ' frmt_f ], maxlayer);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['dist_farthest_pt' frmt_f ], distances(end)/radius);
+
+  fprintf(prob.fid_rowPivotGaussianElimination, ['iter            ' frmt_f ], iter);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['block_beginning ' frmt_f ], block_beginning);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['block_end       ' frmt_f ], block_end);
+
+case 20
+
+  % ------------------------------------------------------------------
+  % rowPivotGaussianElimination() -> reBuildModel()
+
+  m22_12 = prob.m22_12;
+  frmt_l    = [ '[' repmat([m22_12 ', '], 1, size(all_layers,1)-1) [m22_12 ' ] \n']];
+  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(pivot_values,1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fid_rowPivotGaussianElimination, '\n');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['all_layers      ' frmt_l ], all_layers);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_values    ' frmt_p ], pivot_values);
+
+case 21
+
+  % ------------------------------------------------------------------
+  % rowPivotGaussianElimination() -> reBuildModel()
+  
+  m22_12 = prob.m22_12;
+  piv_p = pivot_polynomials(poly_i).coefficients;
+  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(piv_p,2)-1) [m22_12 ' ] \n']];
+
+  frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_shifted(:, n),1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fid_rowPivotGaussianElimination, '\n');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['n               ' frmt_f ], n);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['distances(n)    ' frmt_f ], distances(n));
+  fprintf(prob.fid_rowPivotGaussianElimination, ['val             ' frmt_f ], val);
+
+  fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_p.coeffs  ' frmt_p ], piv_p');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['points_shifted  ' frmt_x ], points_shifted(:, n));
+
+case 22
+
+  % ------------------------------------------------------------------
+  % rowPivotGaussianElimination() -> reBuildModel()
+  
+  m22_12 = prob.m22_12;
+  piv_p = pivot_polynomials(poly_i).coefficients;
+  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(piv_p,2)-1) [m22_12 ' ] \n']];
+
+  frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_shifted(:, n),1)-1) [m22_12 ' ] \n']];
+
+  if (pt_next ~= pt_max)
+    fprintf(prob.fid_rowPivotGaussianElimination, '\n');
+    fprintf(prob.fid_rowPivotGaussianElimination, ['points_shifted  ' frmt_x ], points_shifted(:, n));
+    fprintf(prob.fid_rowPivotGaussianElimination, ['all_points      ' frmt_x ], points_abs);
+    fprintf(prob.fid_rowPivotGaussianElimination, ['all_fvalues     ' frmt_f ], fvalues');
+    fprintf(prob.fid_rowPivotGaussianElimination, ['distances       ' frmt_f ], distances');
+  end
+
+  fprintf(prob.fid_rowPivotGaussianElimination, '\n');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['max_absval       ' frmt_f ], max_absval);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_values     ' frmt_p ], pivot_values);
+
+case 23
+  % ------------------------------------------------------------------
+  % rowPivotGaussianElimination() -> reBuildModel()
+  
+  m22_12 = prob.m22_12;
+  piv_p = pivot_polynomials(poly_i).coefficients;
+  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(piv_p,2)-1) [m22_12 ' ] \n']];  
+
+  fprintf(prob.fid_rowPivotGaussianElimination, '\northogonalizeToOtherP\n');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_p.coeffs  ' frmt_p ], piv_p');
+
+case 24
+  % ------------------------------------------------------------------
+  % rowPivotGaussianElimination() -> reBuildModel()
+  
+  m22_12 = prob.m22_12;
+
+  [pr pc] = size(pivot_polynomials); % [1 6]
+  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(pivot_polynomials(1).coefficients,2)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fid_rowPivotGaussianElimination, ['\n%s'], str_pts);
+
+  for (ii=1:6)
+    p = pivot_polynomials(ii).coefficients;
+    fprintf(prob.fid_rowPivotGaussianElimination, '\n');
+    fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_p.coeffs  ' frmt_p ], p');
+  end
+
+case 25
+  % ------------------------------------------------------------------
+  % rowPivotGaussianElimination() -> reBuildModel()
+  
+  m22_12 = prob.m22_12;
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_abs,1)-1) [m22_12 ' ] \n']];
+  frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
+
+  fprintf(prob.fid_rowPivotGaussianElimination, '\nValues a/f rowPivotGaussianElimination\n');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['all_points      ' frmt_x ], model.points_abs);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['all_fvalues     ' frmt_f ], model.fvalues');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['points_shifted  ' frmt_x ], points_shifted);
+
+  fprintf(prob.fid_rebuildModel, ['\n[ rebuildModel() ]\n']);
+  fprintf(prob.fid_rebuildModel, ['last_pt_included [ ' [m22_12 ' ]\n'] ], last_pt_included);
+  fprintf(prob.fid_rebuildModel, ['n_points         [ ' [m22_12 ' ]\n'] ], p_ini);
+
+case 26
 
   % ------------------------------------------------------------------
   % moveToBestPoint()
@@ -517,7 +665,7 @@ case 18
   fprintf(prob.fid_moveToBestPoint, ['idx_tr_center [ ' [m22_12 ' ]\n'] ], model.tr_center);
   fprintf(prob.fid_moveToBestPoint, ['idx_best_i    [ ' [m22_12 ' ]\n'] ], best_i);
 
-case 19
+case 27
 
   % ------------------------------------------------------------------
   % moveToBestPoint()
@@ -525,7 +673,7 @@ case 19
   m22_12 = prob.m22_12;
   fprintf(prob.fid_moveToBestPoint, ['idx_tr_center [ ' [m22_12 ' ]\n'] ], model.tr_center);  
 
-case 20
+case 28
 
   % ------------------------------------------------------------------
   % measureCriticality()
@@ -544,7 +692,7 @@ case 20
   fprintf(prob.fid_measureCriticality, ['C: min(bu, B)        ' frmt_g ], C');
   fprintf(prob.fid_measureCriticality, ['D: C - x_center      ' frmt_g ], m');
 
-case 21
+case 29
 
   % ------------------------------------------------------------------
   % shiftPolynomial()
@@ -569,7 +717,7 @@ case 21
   fprintf(prob.fid_shiftPolynomial, ['c  [' [m22_12 ' ]\n'] ], c_mod);
   fprintf(prob.fid_shiftPolynomial, ['g  ' frmt_g ], g_mod);
 
-case 22
+case 30
 
   % ------------------------------------------------------------------
   % getModelMatrices()
@@ -584,7 +732,7 @@ case 22
   fprintf(prob.fid_getModelMatrices, ['g  ' frmt_g ], g);
   fprintf(prob.fid_getModelMatrices, ['H  ' frmt_H ], H);
 
-case 23
+case 31
 
   % ------------------------------------------------------------------
   % criticalityStep()
@@ -601,7 +749,7 @@ case 23
   % fprintf(prob.fid_criticalityStep, ['x_center             ' frmt_x ], model.x_tr_center');
   % fprintf(prob.fid_criticalityStep, ['crit_measure         ' frmt_x ], crit_measure);
 
-case 24
+case 32
 
   % ------------------------------------------------------------------
   % criticalityStep()
@@ -616,7 +764,7 @@ case 24
   fprintf(prob.fid_criticalityStep, ['F: (rad < 100*tol_rad) [' [m22_12 ' ]\n'] ], F);
   fprintf(prob.fid_criticalityStep, ['G: (A || C && D)  <-?  [' [m22_12 ' ]\n'] ], G);
 
-case 25
+case 33
 
   % ------------------------------------------------------------------
   % criticalityStep()

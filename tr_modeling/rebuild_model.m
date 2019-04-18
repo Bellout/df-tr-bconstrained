@@ -42,12 +42,33 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
   
   part=16; print_soln_body;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  % NEW FUNCTION: rowPivotGaussianElimination()
+
+
   % ------------------------------------------------------------------
   % Building model
   pivot_polynomials = nfp_basis(dim); % Basis of Newton
                                       % Fundamental Polynomials
   polynomials_num = length(pivot_polynomials);
   pivot_values = zeros(1, polynomials_num);
+
+  part=17; print_soln_body;
 
   % ------------------------------------------------------------------
   % Constant term
@@ -60,15 +81,21 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
       % Gaussian elimination (using previuos points)
       [pivot_polynomials(poly_i) prob] = ...
           orthogonalize_to_other_polynomials(pivot_polynomials, ...
-                                                  poly_i, ...
-                                                  points_shifted, ...
-                                                  last_pt_included, ...
-                                                  prob);
+                                             poly_i, ...
+                                             points_shifted, ...
+                                             last_pt_included, ...
+                                             prob);
+          
+      part=18; print_soln_body;
+
       if poly_i <= dim+1
           block_beginning = 2;
           block_end = dim+1;
-          % Linear block -- we allow more points (*2)
+          % Linear block (we allow more points (*2))
           maxlayer = min(2*radius_factor, distances(end)/radius);
+
+          str_blck = 'Linear block (we allow more points (*2))';
+          part=19; print_soln_body;
           if iter > dim+1
               % We already tested all linear terms
               % We do not have points to build a FL model
@@ -76,13 +103,19 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
               break
           end
       else
-          % Quadratic block -- being more carefull
+          % Quadratic block -- being more careful
           maxlayer = min(radius_factor, distances(end)/radius);
           block_beginning = dim+2;
           block_end = polynomials_num;
+
+          str_blck = 'Quadratic block  (being more careful)';
+          part=19; print_soln_body;
       end
       maxlayer = max(1, maxlayer);
       all_layers = linspace(1, maxlayer, ceil(maxlayer));
+
+      part=20; print_soln_body;
+
       max_absval = 0;
       pt_max = 0;
       for layer = all_layers
@@ -99,11 +132,15 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
                   max_absval = val;
                   pt_max = n;
               end
+
+              part=21; print_soln_body;
+
           end
           if abs(max_absval) > pivot_threshold
               break % for(layer)
           end
       end
+
       if abs(max_absval) > pivot_threshold
           % Point accepted
           pt_next = last_pt_included + 1;
@@ -117,12 +154,15 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
           distances([pt_next, pt_max]) = distances([pt_max, pt_next]);
 
           pivot_values(pt_next) = max_absval;
+
+          part=22; print_soln_body;
           
           % Normalize polynomial value
           [pivot_polynomials(poly_i) prob] = ...
               normalize_polynomial(pivot_polynomials(poly_i), ...
                                    points_shifted(:, pt_next), ...
                                    prob);
+
 
           % Re-orthogonalize (just to make sure it still assumes
           % 0 in previous points). Unnecessary in infinite precision
@@ -132,19 +172,25 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
                                                       points_shifted, ...
                                                       last_pt_included, ...
                                                       prob);
+
+          part=23; print_soln_body;
           
           % Orthogonalize polynomials on present block (deffering
           % subsequent ones)
-          [pivot_polynomials prob] = orthogonalize_block(pivot_polynomials, ...
-                                                  points_shifted(:, ...
-                                                            poly_i), ...
-                                                  poly_i, ...
-                                                  block_beginning, poly_i, ...
-                                                  prob);
+          [pivot_polynomials prob] = ...
+            orthogonalize_block(pivot_polynomials, ...
+                                points_shifted(:, poly_i), ...
+                                poly_i, ...
+                                block_beginning, poly_i, ...
+                                prob);
 
           already_included(pt_max) = true;
           last_pt_included = pt_next;
           poly_i = poly_i + 1;
+
+          str_pts = 'Points accepted (a/f orthogonalize_block)';
+          part=24; % print_soln_body;
+
       else
           % These points don't render good pivot value for this
           % specific polynomial
@@ -155,18 +201,24 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
           % Comment [1]:
           % If we are on the linear block, this means we won't be
           % able to build a Fully Linear model
+
+          str_pts = 'Points exchanged (a/f pivot exchange)';
+          part=24;
       end
+      print_soln_body;
   
   end
-  
+
   model.tr_center = 1;
   model.points_abs = points_abs(:, 1:last_pt_included);
   model.points_shifted = points_shifted(:, 1:last_pt_included);
   model.fvalues = fvalues(:, 1:last_pt_included);
+
   cache_size = min(p_ini - last_pt_included, 3*dim^2);
   model.pivot_polynomials = pivot_polynomials;
   model.pivot_values = pivot_values;
   model.modeling_polynomials = {};
+
   % Points not included
   model.cached_points = points_abs(:, last_pt_included+1:last_pt_included ...
                                    + cache_size);
@@ -174,6 +226,9 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
                                  + cache_size);
 
   model_changed = last_pt_included < p_ini; % REMOVE ME
+
+  part=25; print_soln_body;
+
 end
 
 

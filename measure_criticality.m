@@ -27,6 +27,6 @@ function m = measure_criticality(model, bl, bu, prob)
     C = min(bu, B);
     m = C - x_center;
 
-    part=20; print_soln_body;
+    part=28; print_soln_body;
 
 end
