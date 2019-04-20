@@ -5,9 +5,9 @@ function [p prob] = combine_polynomials(polynomials, coefficients, prob)
         error();
     end
 
-    p = multiply_p(polynomials(1), coefficients(1));
+    [p prob] = multiply_p(polynomials(1), coefficients(1), prob);
     for k = 2:terms
-        p = add_p(p, multiply_p(polynomials(k), coefficients(k)));
+        [p prob] = add_p(p, multiply_p(polynomials(k), coefficients(k), prob), prob);
     end
 
 end

@@ -19,7 +19,7 @@ tol_f = options.tol_f;
 % --------------------------------------------------------------------
 initial_radius = model.radius;
 A = ~is_lambda_poised(model, options);
-B = is_old(model, options);
+B = is_old(model, options, prob);
 while (A || B)
 
     [model, model_changed, prob] = ensure_improvement(model, ...
@@ -45,7 +45,7 @@ while (model.radius > crit_measure)
     model.radius = omega*model.radius;
 
     % ----------------------------------------------------------------
-    while ~is_lambda_poised(model, options) || is_old(model, options)
+    while ~is_lambda_poised(model, options) || is_old(model, options, prob)
         
         [model, model_changed, prob] = ensure_improvement(model, ...
                                                           funcs, bl, bu, ...

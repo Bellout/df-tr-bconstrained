@@ -22,7 +22,7 @@ x = model.points(:, 1);
 initial_radius = model.radius;
 % I should be testing if it is not already FL
 if ~is_lambda_poised(model, options)
-    model = improve_model(model, ff, bl, bu, options);
+    [model prob] = improve_model(model, ff, bl, bu, options, false, prob);
 end
 
 prob.prev = 'TrCriticalityStep1';
@@ -51,9 +51,9 @@ while (model.radius > crit_mu*measure)
     model.radius = omega*model.radius;
     epsilon = factor_epsilon*epsilon;
     
-    model = improve_model(model, ff, bl, bu, options);
+    [model prob] = improve_model(model, ff, bl, bu, options, false, prob);
     while ~is_lambda_poised(model, options)
-        model = improve_model(model, ff, bl, bu, options);
+        [model prob] = improve_model(model, ff, bl, bu, options, false, prob);
     end
     [~, fmodel.g, ~, prob] = get_model_matrices(model, 0, prob);
     cmodel = extract_constraints_from_tr_model(model);

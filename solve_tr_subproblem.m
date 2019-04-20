@@ -8,14 +8,14 @@ function [trial_point, trial_decrease, prob] = ...
   % subproblem.
 
   % ------------------------------------------------------------------
-  obj_pol = model.modeling_polynomials{1};
+  obj_pol_o = model.modeling_polynomials{1};
   x_tr_center = model.points_abs(:, model.tr_center);
 
-  obj_pol2 = shift_polynomial(obj_pol, -x_tr_center, prob); % Shift to origin
+  fprintf(prob.fid_shiftPolynomial, ['\n[ solveTrSubproblem() ]\n']);
+  obj_pol_s = shift_polynomial(obj_pol_o, -x_tr_center, prob); % Shift to origin
   radius = model.radius;
-  part=14; print_soln_body;
 
-  obj_pol = obj_pol2;
+  obj_pol = obj_pol_s;
 
   % ------------------------------------------------------------------
   % Print polynomial [-polynomial_max] (input data)
@@ -32,6 +32,8 @@ function [trial_point, trial_decrease, prob] = ...
 
   trial_decrease = current_fval - trial_fval;
 
+  part=14; subp=1; print_soln_body;
+
   % ------------------------------------------------------------------  
   if current_fval <= trial_fval
      1; 
@@ -44,9 +46,12 @@ function [trial_point, trial_decrease, prob] = ...
   for k = 1:n_points
     [val prob] = evaluate_polynomial(obj_pol, model.points_abs(:, k), prob);
     error_interp = abs(val - model.fvalues(1, k));
+
+    part=14; subp=2; print_soln_body;
     if error_interp > tol_interp
         1;
     end
+
   end
 
   % ------------------------------------------------------------------

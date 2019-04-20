@@ -3,7 +3,7 @@ function [polynomial, prob] = ...
 
     [val prob] = evaluate_polynomial(polynomial, point, prob);
     for k = 1:3
-        polynomial = multiply_p(polynomial, 1/val);
+        [polynomial prob] = multiply_p(polynomial, 1/val, prob);
         [val prob] = evaluate_polynomial(polynomial, point, prob);
         if ((val - 1) == 0)
             break

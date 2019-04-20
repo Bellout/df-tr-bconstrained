@@ -10,7 +10,7 @@ p = p1;
 
 iter = 1;
 while px ~= 0
-    p = add_p(p, multiply_p(p2, -px/p2x));
+    [p prob] = add_p(p, multiply_p(p2, -px/p2x, prob), prob);
     [px prob] = evaluate_polynomial(p, x, prob);
     if iter >= 2
         break

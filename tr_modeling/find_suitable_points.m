@@ -7,16 +7,14 @@ function [new_point, new_value, prob] = find_suitable_points(polynomial, bl, bu,
     elseif attempt == 2
         % Maximize inside TR
         [new_point, new_value] = ...
-            minimize_polynomial_with_bounds(multiply_p(polynomial, ...
-                                   -1), bl, bu, smaller_radius);
+            minimize_polynomial_with_bounds(multiply_p(polynomial, -1, prob), bl, bu, smaller_radius);
     elseif attempt == 3
         % Minimize in larger region
         [new_point, new_value] = minimize_polynomial_with_bounds(polynomial, bl, bu, 1);
     elseif attempt == 4
         % Maximize in larger region
         [new_point, new_value] = ...
-            minimize_polynomial_with_bounds(multiply_p(polynomial, ...
-                                   -1), bl, bu, 1);
+            minimize_polynomial_with_bounds(multiply_p(polynomial, -1, prob), bl, bu, 1);
     elseif attempt == 5
         [cp, gp, Hp] = coefficients_to_matrices(polynomial.dimension, polynomial.coefficients);
         if norm(gp, inf) == 0

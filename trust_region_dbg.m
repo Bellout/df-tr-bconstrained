@@ -1,4 +1,4 @@
-function [x, fval] = trust_region(...
+function [x, fval] = trust_region_dbg(...
     funcs, initial_points, initial_fvalues, ...
     bl, bu, options, prob)
 % TRUST_REGION - Derivative-free trust-region algorithm
@@ -115,8 +115,8 @@ if n_initial_points == 1
   end
 
   % ------------------------------------------------------------------
-  initial_points(:, 2) = second_point;
-  n_initial_points = 2;
+  % initial_points(:, 2) = second_point;
+  % n_initial_points = 2;
 
 end
 

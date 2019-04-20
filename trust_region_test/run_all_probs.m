@@ -26,6 +26,10 @@ prob.dbg_file_trg = [...
 prob.fid = fopen(prob.data_file_src,'w');
 print_soln_head;
 prob.m22_12 = '%22.12e';
+prob.m22_12 = '%20.10e';
+
+
+digits(128)
 
 % ----------------------------------------------------------
 prob.pn = 'prob1';
@@ -35,8 +39,10 @@ f = @(x) (1 - x(1))^2;
 
 x0 = [-1.2;
       2];
-
-[x, fval] = trust_region_dbg({f}, x0,[],[],[],[],prob);
+                                    % fi  bl  bu  opt 
+% fi=[]; bl=[]; bu=[]; opt=[];
+fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
+[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 
 close_all_files(prob);
 

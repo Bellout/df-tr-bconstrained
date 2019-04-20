@@ -1,4 +1,4 @@
-function result = is_complete(model)
+function [result prob] = is_complete(model, prob)
 %IS_COMPLETE Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -11,6 +11,8 @@ function result = is_complete(model)
     if points_num > max_terms
         warning('cmg:possible_error', 'Too many points');
     end
+
+    part=71; subp=1; print_soln_body;
 
 end
 
