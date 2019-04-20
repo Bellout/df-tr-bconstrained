@@ -54,23 +54,17 @@ f = @(x) log1p(x(1)^2) + x(2)^2;
 x0 = [2;
       2];
 
-fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
+% fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
+fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
 [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 
 close_all_files(prob);
 
-% % ----------------------------------------------------------
+% ----------------------------------------------------------
 % prob.pn = 'prob3';
-% prob.fidpc = fopen([polyn_coeff_src prob.pn '.txt'], 'w');
-% polyn_coeff_trg = [ polyn_coeff_trg prob.pn '.txt'];
-
-% if (~strcmp(prob.cf_prev, prob.cf))
-%   fprintf(prob.fidpc, '[ %s ]\n', prob.cf);
-% end
-% prob.cf_prev = prob.cf;
+% prob = set_filenames(prob);
 
 % f = @(x) sin(pi*x(1)/12)*cos(pi*x(2)/16);
-
 
 % x0 = [0;
 %       0];
