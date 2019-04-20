@@ -28,41 +28,36 @@ print_soln_head;
 prob.m22_12 = '%22.12e';
 prob.m22_12 = '%20.10e';
 
-
-digits(128)
+% digits(128)
 
 % ----------------------------------------------------------
-prob.pn = 'prob1';
+% prob.pn = 'prob1';
+% prob = set_filenames(prob);
+
+% f = @(x) (1 - x(1))^2;
+
+% x0 = [-1.2;
+%       2];
+%                                     % fi  bl  bu  opt 
+% % fi=[]; bl=[]; bu=[]; opt=[];
+% fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
+% [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+
+% close_all_files(prob);
+
+% ----------------------------------------------------------
+prob.pn = 'prob2';
 prob = set_filenames(prob);
 
-f = @(x) (1 - x(1))^2;
+f = @(x) log1p(x(1)^2) + x(2)^2;
 
-x0 = [-1.2;
+x0 = [2;
       2];
-                                    % fi  bl  bu  opt 
-% fi=[]; bl=[]; bu=[]; opt=[];
+
 fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 
 close_all_files(prob);
-
-% % ----------------------------------------------------------
-% prob.pn = 'prob2';
-% prob.fidpc = fopen([polyn_coeff_src prob.pn '.txt'], 'w');
-% polyn_coeff_trg = [ polyn_coeff_trg prob.pn '.txt'];
-
-% if (~strcmp(prob.cf_prev, prob.cf))
-%   fprintf(prob.fidpc, '[ %s (%s)]\n', prob.cf, prob.cf_prev);
-% end
-% prob.cf_prev = prob.cf;
-
-% f = @(x) log1p(x(1)^2) + x(2)^2;
-
-% x0 = [2;
-%       2];
-
-% [x, fval] = trust_region_dbg({f}, x0,[],[],[],[],prob);
-% fclose(prob.fidpc);
 
 % % ----------------------------------------------------------
 % prob.pn = 'prob3';

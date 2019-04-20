@@ -401,14 +401,15 @@ case 11
   frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(model.points_abs,1)-1) [m22_12 ' ] \n']];
 
   fprintf(prob.fid_checkInterpolation, ['\n[ checkInterpolation() ]\n']);
-  fprintf(prob.fid_checkInterpolation, ['radius      [' [m22_12 ' ]\n'] ], model.radius);
-  fprintf(prob.fid_checkInterpolation, ['tol_1 ' m22_12 ' | tol_2 ' m22_12 '\n' ], tol_1, tol_2);
-  fprintf(prob.fid_checkInterpolation, ['idx_tr_center  [ ' [m22_12 ' ]\n'] ], model.tr_center);
-  fprintf(prob.fid_checkInterpolation, ['n_points       [ ' [m22_12 ' ]\n'] ], n_points);
-  fprintf(prob.fid_checkInterpolation, ['x_tr_center ' frmt_x ], model.points_abs(:, model.tr_center)');
+  fprintf(prob.fid_checkInterpolation, ['radius         [ ' m22_12 ' ]\n' ], model.radius);
+  fprintf(prob.fid_checkInterpolation, ['tol_1          [ ' m22_12 ' ]\n' ], tol_1);
+  fprintf(prob.fid_checkInterpolation, ['tol_2          [ ' m22_12 ' ]\n' ], tol_2);
+  fprintf(prob.fid_checkInterpolation, ['idx_tr_center  [ %i ]\n' ], model.tr_center);
+  fprintf(prob.fid_checkInterpolation, ['n_points       [ %i ]\n' ], n_points);
+  fprintf(prob.fid_checkInterpolation, ['x_tr_center    ' frmt_x ], model.points_abs(:, model.tr_center)');
 
   for c = size(h,2):-1:1
-    fprintf(prob.fid_checkInterpolation, ['h(:, c)       ' frmt_x ], h(:, c));
+    fprintf(prob.fid_checkInterpolation, ['h(:, c)      ' frmt_x ], h(:, c));
   end
 
 case 12
@@ -435,8 +436,8 @@ case 13
   frmt_A    = [ '[' repmat([m22_12 ', '], 1, size(A,2)-1) [m22_12 ' ] \n']];
 
   fprintf(prob.fid_checkInterpolation, '\n');
-  fprintf(prob.fid_checkInterpolation, ['this_value  [' [m22_12 ' ]\n'] ], this_value);
-  fprintf(prob.fid_checkInterpolation, ['difference  [' [m22_12 ' ]\n'] ], difference);
+  fprintf(prob.fid_checkInterpolation, ['cval        [' [m22_12 ' ]\n'] ], this_value);
+  fprintf(prob.fid_checkInterpolation, ['cdiff       [' [m22_12 ' ]\n'] ], difference);
   fprintf(prob.fid_checkInterpolation, ['max_diff    [' [m22_12 ' ]\n'] ], max_diff);
 
   fprintf(prob.fid_checkInterpolation, '\n');
@@ -1062,35 +1063,35 @@ case 60
 case 61
   % ------------------------------------------------------------------
   % ensure_improvement()
-  fprintf(prob.fid_ensureImprovement, ['model_changed is true (exit_flag = %i remains)\n'], exitflag);
+  fprintf(prob.fid_ensureImprovement, ['model_changed is true (success = %i)\n'], success);
+  fprintf(prob.fid_ensureImprovement, ['(!!! exitflag not set for this outcome !!!))\n']);
+  fprintf(prob.fid_ensureImprovement, ['[After call of improve_model_nfp() is model is ' ...
+  'not complete, or choose_and_replace_point()\n']);
 
 case 62
   % ------------------------------------------------------------------
   % ensure_improvement()
-  fprintf(prob.fid_ensureImprovement, ['Model is old\n'], exitflag);
+  fprintf(prob.fid_ensureImprovement, ['exit_flag=%i [after model is old]\n'], exitflag);
 
 case 63
   % ------------------------------------------------------------------
   % ensure_improvement()
-  fprintf(prob.fid_ensureImprovement, ['Model has changed/is new\n'], exitflag);
+  fprintf(prob.fid_ensureImprovement, ['exit_flag=%i [after model has changed/is new]\n'], exitflag);
 
 case 64
   % ------------------------------------------------------------------
   % ensure_improvement()  
- fprintf(prob.fid_ensureImprovement, 'exit_flag=%i\n', exitflag);
+ fprintf(prob.fid_ensureImprovement, [ 'exit_flag=%i [is no success after improve_model_nfp()' ...
+         ' or choose_and_replace_point()]\n' ], exitflag);
 
 
 case 65
-  
   % ------------------------------------------------------------------
-  % solveTrSubproblem()  
+  % ensure_improvement()
+  fprintf(prob.fid_ensureImprovement, 'exit_flag=%i [after choose_and_replace_point]\n', exitflag);
 
-  fprintf(prob.fid_isLambdaPoised, ['\n[  ]\n']);
-  
 
-  % ------------------------------------------------------------------
-  % solveTrSubproblem()  
- fprintf(prob.fid_ensureImprovement, 'exit_flag=%i\n', exitflag);
+
 
 
 
@@ -1209,11 +1210,25 @@ case 72
 
 case 73
   % ------------------------------------------------------------------
+  % chooseAndReplacePoint()
+
+  switch subp
+    case 1
+      fprintf(prob.fid_chooseAndReplacePoint, ['[ chooseAndReplacePoint() ]\n']);
+
+    case 2
+
+
+
+  end  
+
+case 74
+  % ------------------------------------------------------------------
   % evaluatePolynomial()
 
   switch subp
     case 1
-      fprintf(prob.fid_isComplete, ['[ nfpFiniteDifferences() ]\n']);
+      fprintf(prob.fid_chooseAndReplacePoint, ['[ nfpFiniteDifferences() ]\n']);
   end  
 
 end

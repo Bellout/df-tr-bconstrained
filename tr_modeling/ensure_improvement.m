@@ -37,6 +37,8 @@ function [model, exitflag, prob] = ensure_improvement(model, ...
                                                 prob);
     if success
         exitflag = 2;
+        % exit_flag=%i [after choose_and_replace_point]
+        part=65; print_soln_body;
     end
 
   end
@@ -71,18 +73,24 @@ function [model, exitflag, prob] = ensure_improvement(model, ...
                                                     prob);
       end
     else
-      part=61; print_soln_body;
       success = true;
+      % After call of improve_model_nfp() is model is
+      % not complete, or choose_and_replace_point()
+      part=61; print_soln_body;
     end
 
     % ----------------------------------------------------------------
     if model_old
-      part=62; print_soln_body;
       exitflag = 3;
+      % exit_flag=%i [after model is old
+      part=62; print_soln_body;
     else
-      part=63; print_soln_body;
       exitflag = 4;
+      % exit_flag=%i [after model has changed/is new]
+      part=63; print_soln_body;
     end
   end
+  % exit_flag=%i [is no success after improve_model_nfp()
+  % or choose_and_replace_point()
   part=64; print_soln_body;
 end
