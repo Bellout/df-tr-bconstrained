@@ -8,8 +8,9 @@ function [model, succeeded, pt_i, prob] = ...
     pivot_polynomials = model.pivot_polynomials;
     center_i = model.tr_center;
     
-    
+    % ----------------------------------------------------------------
     if last_p >= 2
+
         shift_center = model.points_abs(:, 1);
         new_point_shifted = new_point - shift_center;
         points_shifted = model.points_shifted;
@@ -20,14 +21,17 @@ function [model, succeeded, pt_i, prob] = ...
             block_beginning = dim+2;
             block_end = last_p;
         end
+
+        % ------------------------------------------------------------
         max_val = 0;
         max_poly_i = 0;
+
         for poly_i = block_end:-1:block_beginning
             if poly_i ~= center_i
                 [temp_val prob] = ...
                 evaluate_polynomial(pivot_polynomials(poly_i), ...
-                new_point_shifted, ...
-                prob);
+                                    new_point_shifted, ...
+                                    prob);
                 val = model.pivot_values(poly_i)*temp_val;
 
                 if abs(max_val) < abs(val)
@@ -39,11 +43,15 @@ function [model, succeeded, pt_i, prob] = ...
         new_pivot_val = max_val;
         if abs(new_pivot_val) > pivot_threshold
             points_shifted(:, max_poly_i) = new_point_shifted;
+
+            % --------------------------------------------------------
             % Normalize polynomial value
             [pivot_polynomials(max_poly_i) prob] = ...
             normalize_polynomial(pivot_polynomials(max_poly_i), ...
                                  new_point_shifted, ...
                                  prob);
+
+            % --------------------------------------------------------
             % Re-orthogonalize
             [pivot_polynomials(max_poly_i) prob] = ...
             orthogonalize_to_other_polynomials(pivot_polynomials, ...
@@ -52,6 +60,7 @@ function [model, succeeded, pt_i, prob] = ...
                                                last_p, ...
                                                prob);
             
+            % --------------------------------------------------------
             % Orthogonalize polynomials on present block (until end)
             [pivot_polynomials prob] = orthogonalize_block(pivot_polynomials, ...
                                                     new_point_shifted, ...

@@ -46,7 +46,7 @@ for k = 1:n_functions
         end
 
         % --------------------------------------------------
-        A = model.fvalues(k, :);
+        A = abs(model.fvalues(k, :));
         B = max(A);
         C = tol_1*B;
         D =  max(C, tol_2);

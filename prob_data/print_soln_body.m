@@ -752,13 +752,19 @@ case 31
   % criticalityStep()
 
   m22_12 = prob.m22_12;
-  % frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(model.x_tr_center,1)-1) [m22_12 ' ] \n']];
 
-  fprintf(prob.fid_criticalityStep, ['[ criticalityStep() ]\n']);
+  switch subp
+    case 1
+        fprintf(prob.fid_criticalityStep, ['[ criticalityStep() ]\n']);
+  
+    case 2
+        fprintf(prob.fid_criticalityStep, '\n');
+        fprintf(prob.fid_criticalityStep, ['A: ~is_lambda_poised() [' [m22_12 ' ]\n'] ], ~is_lambda_poised(model, options));
+        fprintf(prob.fid_criticalityStep, ['B: is_old()            [' [m22_12 ' ]\n'] ], is_old(model, options, prob));      
 
-  fprintf(prob.fid_criticalityStep, '\n');
-  fprintf(prob.fid_criticalityStep, ['A: ~is_lambda_poised() [' [m22_12 ' ]\n'] ], A);
-  fprintf(prob.fid_criticalityStep, ['B: is_old()            [' [m22_12 ' ]\n'] ], B);
+    case 3      
+
+   end  
 
   % fprintf(prob.fid_criticalityStep, ['x_center             ' frmt_x ], model.x_tr_center');
   % fprintf(prob.fid_criticalityStep, ['crit_measure         ' frmt_x ], crit_measure);

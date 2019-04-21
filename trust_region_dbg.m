@@ -115,8 +115,8 @@ if n_initial_points == 1
   end
 
   % ------------------------------------------------------------------
-  % initial_points(:, 2) = second_point;
-  % n_initial_points = 2;
+  initial_points(:, 2) = second_point;
+  n_initial_points = 2;
 
 end
 
@@ -236,7 +236,8 @@ for iter = 1:iter_max
   print_iteration(iter, ...
                   fval_current, ...
                   rho, model.radius, ...
-                  size(model.points_abs, 2));
+                  size(model.points_abs, 2), ...
+                  prob);
 
   % ------------------------------------------------------------------
   % Compute step

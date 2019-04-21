@@ -23,6 +23,8 @@ function [polynomials prob] = compute_polynomial_models(model, prob)
                                              model.fvalues, ...
                                              prob);
     end
+    
+    % ----------------------------------------------------------
     [~, wid] = lastwarn();
 
     cc = (points_num <= linear_terms);
@@ -30,6 +32,7 @@ function [polynomials prob] = compute_polynomial_models(model, prob)
     ce = strcmp(wid, 'cmg:badly_conditioned_system');
     if cc || cdd || ce
 
+        % --------------------------------------------------
         % Compute model with incomplete (complete) basis
         % fprintf('%s\n', 'Compute model with incomplete (complete) basis');
         [l_alpha prob] = ...
@@ -38,6 +41,7 @@ function [polynomials prob] = compute_polynomial_models(model, prob)
                                    model.pivot_polynomials(1:points_num), ...
                                    prob);
         
+        % ----------------------------------------------------------
         for k = functions_num:-1:1
             
             [polynomials{k} prob]  = ...
@@ -50,6 +54,5 @@ function [polynomials prob] = compute_polynomial_models(model, prob)
                                                      prob);
         end
         part=66; subp=3; print_soln_body;
-        % fprintf(['\nl_alpha:\n' repmat('%22.12e',1,2) '\n'], l_alpha);
     end
 end
