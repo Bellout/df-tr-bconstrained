@@ -2,6 +2,7 @@ function [model, exitflag, prob] = add_point(model, new_point, ...
     new_fvalues, relative_pivot_threshold, prob)
 
     
+    fprintf('%s\n', 'Calling add_point');
     pivot_threshold = min(1, model.radius)*relative_pivot_threshold;
     
     [dim, last_p] = size(model.points_abs);

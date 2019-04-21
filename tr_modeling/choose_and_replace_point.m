@@ -1,20 +1,24 @@
 function [model, success, prob] = ...
     choose_and_replace_point(model, funcs, bl, bu, options, prob)
    
+    % ------------------------------------------------------
     pivot_threshold = options.exchange_threshold;
     radius = model.radius;
     
     % pivot_threshold = min(1, radius)*rel_pivot_threshold;
 
+    % ------------------------------------------------------
+    fprintf('%s\n', 'Calling choose_and_replace_point');
     points_shifted = model.points_shifted;
     [dim, p_ini] = size(points_shifted);
     shift_center = model.points_abs(:, 1);
     tr_center = model.tr_center;
     tr_center_x = model.points_shifted(:, tr_center);
 
+    % ------------------------------------------------------    
     pivot_values = model.pivot_values;
     pivot_polynomials = model.pivot_polynomials;
-    
+
     points_shifted = model.points_shifted;
     [dim, points_num] = size(points_shifted);
     linear_terms = dim+1;
@@ -25,12 +29,22 @@ function [model, success, prob] = ...
     if isempty(bu)
         bu = inf(dim, 1);
     end
+
     bl_shifted = bl - shift_center;
     bu_shifted = bu - shift_center;
     unshift_point = @(x) max(min(x + shift_center, bu), bl);
     tol_shift = 10*eps(max(1, norm(shift_center, inf)));
 
-    
+    part=73; subp=1; print_soln_body;
+
+
+
+
+
+
+
+
+    % ------------------------------------------------------
     [~, piv_order] = sort(abs(pivot_values(1:points_num)));
     polynomials_num = length(pivot_polynomials);
    
@@ -52,8 +66,8 @@ function [model, success, prob] = ...
                 new_point_shifted = new_points_shifted(:, found_i);
                 new_pivot_value = new_pivots(found_i);
                 new_point_abs = unshift_point(new_point_shifted);
-                [new_fvalues, f_succeeded] = ...
-                    evaluate_new_fvalues(funcs, new_point_abs);
+                [new_fvalues, f_succeeded, prob] = ...
+                    evaluate_new_fvalues(funcs, new_point_abs, prob);
                 if f_succeeded
                     break
                 else

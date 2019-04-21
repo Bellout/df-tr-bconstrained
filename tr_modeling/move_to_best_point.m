@@ -1,4 +1,4 @@
-function model = move_to_best_point(model, bl, bu, f)
+function [model prob] = move_to_best_point(model, bl, bu, f, prob)
 %MOVE_TO_BEST_POINT Changes TR center pointer to best point
 %   bl, bu (optional) are lower and upper bounds on variables
 %   f (optional) is a function for comparison of points. It receives a
@@ -15,10 +15,17 @@ function model = move_to_best_point(model, bl, bu, f)
         f = [];
     end  
 
+
     best_i = find_best_point(model, bl, bu, f);
+    part=26; print_soln_body;
+
+
     if best_i ~= model.tr_center
         model.tr_center = best_i;
     end
+    part=27; print_soln_body;
+
+    
     % Here should rebuild polynomials!!!
     
 

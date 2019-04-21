@@ -19,6 +19,7 @@ function [model, exitflag, prob] = improve_model(model, ff, bl, bu, options, com
     basis = model.basis;
     basis_size = length(basis);
 
+    fprintf('%s\n', 'Calling improve_model');
     % pivot_threshold is constant through the algorithm. Ensures we can
     % obtain lambda-poised models when needed
     tol_pivot = options.pivot_threshold;

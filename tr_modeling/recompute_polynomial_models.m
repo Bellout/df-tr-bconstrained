@@ -1,10 +1,11 @@
-function [polynomials prob] = recompute_polynomial_models(shifted_points, fvalues, basis)
+function [polynomials prob] = recompute_polynomial_models(shifted_points, fvalues, basis, prob)
 
     [dim, points_num] = size(shifted_points);
     n_interpolating_functions = size(fvalues, 1);
     linear_basis_size = dim + 1;
     basis_size = length(basis);
     
+    fprintf('%s\n', 'Calling recompute_polynomial_models');
     if points_num <= linear_basis_size
         % Linear interpolation
 
@@ -12,7 +13,7 @@ function [polynomials prob] = recompute_polynomial_models(shifted_points, fvalue
         M = zeros(points_num, linear_basis_size);
         for m = 1:points_num
             for n = 1:linear_basis_size
-                [M(m, n) prob] = evaluate_polynomial(basis(n), shifted_points(:, m));
+                [M(m, n) prob] = evaluate_polynomial(basis(n), shifted_points(:, m), prob);
             end
         end
         
@@ -39,7 +40,7 @@ function [polynomials prob] = recompute_polynomial_models(shifted_points, fvalue
         M = zeros(points_num, basis_size);
         for m = 1:points_num
             for n = 1:basis_size
-                [M(m, n) prob] = evaluate_polynomial(basis(n), shifted_points(:, m));
+                [M(m, n) prob] = evaluate_polynomial(basis(n), shifted_points(:, m), prob);
             end
         end
         M0 = M(:, 1);

@@ -1,4 +1,4 @@
-function result = is_old(model, options)
+function result = is_old(model, options, prob)
 %IS_OLD Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -7,6 +7,7 @@ function result = is_old(model, options)
     distance = norm(model.points_abs(:, 1) - model.points_abs(:, model.tr_center), inf);
     
     result = distance > radius*radius_factor;
+    part=72; subp=1; print_soln_body;
 
 end
 

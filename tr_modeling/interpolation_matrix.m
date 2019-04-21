@@ -1,4 +1,4 @@
-function [M prob] = interpolation_matrix(polynomials, points)
+function [M prob] = interpolation_matrix(polynomials, points, prob)
 
     prob.cf = 'interpolation_matrix';
 

@@ -26,7 +26,7 @@ function [new_point, new_value, prob] = find_suitable_points(polynomial, bl, bu,
             new_point = round(gp/max(gp));
             new_point = new_point/norm(new_point);
             new_point = min(bu, max(bl, new_point));
-            [new_value prob] = evaluate_polynomial(polynomial, new_point);
+            [new_value prob] = evaluate_polynomial(polynomial, new_point, prob);
         end
     elseif attempt == 6
         [cp, gp, Hp] = coefficients_to_matrices(polynomial.dimension, polynomial.coefficients);
@@ -37,7 +37,7 @@ function [new_point, new_value, prob] = find_suitable_points(polynomial, bl, bu,
             new_point = round(gp/max(gp));
             new_point = -new_point/norm(new_point);
             new_point = min(bu, max(bl, new_point));
-            [new_value prob] = evaluate_polynomial(polynomial, new_point);
+            [new_value prob] = evaluate_polynomial(polynomial, new_point, prob);
         end
     else
         [cp, gp, Hp] = coefficients_to_matrices(polynomial.dimension, polynomial.coefficients);

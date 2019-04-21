@@ -3,6 +3,7 @@ function model = move_trust_region(model, new_center, new_center_fvals, ...
 % MOVE_TRUST_REGION accepts a TR step. The new point is the
 % center of the new trust-region.
 
+    fprintf('%s\n', 'Calling move_trust_region');
     % Adding the point to the beggining of the list of points it will be
     % considered the center. Also, it is associated with the
     % monomial 1 (constant).
