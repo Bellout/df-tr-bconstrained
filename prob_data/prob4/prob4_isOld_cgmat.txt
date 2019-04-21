@@ -1,0 +1,360 @@
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    1.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    1.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    1.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    1.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    1.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    1.9999999183e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    1.9999999183e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    3.9999993933e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    2.4999991781e-01 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    2.4999991781e-01 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    2.4999991781e-01 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    3.1249447127e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    3.1249447127e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    3.1249447127e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    5.6339738047e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    4.2827326850e-01 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    1.2235860787e-01 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    6.1176255207e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    6.1176255207e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    6.1176255207e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    6.1176255207e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    9.1721818404e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    1.4318231946e-03 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    4.6531000005e-03 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    1.9301446909e-01 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    3.8794903399e-01 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    3.8794903399e-01 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    3.8794903399e-01 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    3.8794903399e-01 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    2.4287479838e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    2.4260776282e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    6.0615201744e-02 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    4.2089565319e-05 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    4.2089565319e-05 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]

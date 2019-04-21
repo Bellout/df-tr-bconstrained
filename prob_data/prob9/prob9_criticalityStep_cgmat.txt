@@ -1,0 +1,12 @@
+[ criticalityStep() ]
+
+H: norm(masr_crit)  [    5.1286386060e-01 ]
+I: beta*A           [    5.1286386060e+00 ]
+J: max(radius, B)   [    5.1286386060e+00 ]
+K: min(C, init_rad) [    4.0353264861e+00 ]
+[ criticalityStep() ]
+
+H: norm(masr_crit)  [    2.3177486250e-07 ]
+I: beta*A           [    2.3177486250e-06 ]
+J: max(radius, B)   [    1.5393548912e-05 ]
+K: min(C, init_rad) [    1.5393548912e-05 ]

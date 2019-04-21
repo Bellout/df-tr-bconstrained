@@ -1,4 +1,4 @@
-function result = is_old(model, options, prob)
+function [result prob] = is_old(model, options, prob)
 %IS_OLD Summary of this function goes here
 %   Detailed explanation goes here
 

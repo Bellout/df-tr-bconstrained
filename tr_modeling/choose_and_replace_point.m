@@ -8,7 +8,6 @@ function [model, success, prob] = ...
     % pivot_threshold = min(1, radius)*rel_pivot_threshold;
 
     % ------------------------------------------------------
-    fprintf('%s\n', 'Calling choose_and_replace_point');
     points_shifted = model.points_shifted;
     [dim, p_ini] = size(points_shifted);
     shift_center = model.points_abs(:, 1);
@@ -59,15 +58,14 @@ function [model, success, prob] = ...
         current_pivot_value = pivot_values(pos);
         [new_points_shifted, new_pivots, point_found, prob] = ...
             point_new(pivot_polynomials(pos), tr_center_x, radius, ...
-                      bl_shifted, bu_shifted, pivot_threshold, ...
-                      prob);
+                      bl_shifted, bu_shifted, pivot_threshold, prob);
         if point_found
             for found_i = 1:length(new_points_shifted)
                 new_point_shifted = new_points_shifted(:, found_i);
                 new_pivot_value = new_pivots(found_i);
                 new_point_abs = unshift_point(new_point_shifted);
-                [new_fvalues, f_succeeded, prob] = ...
-                    evaluate_new_fvalues(funcs, new_point_abs, prob);
+                [new_fvalues, f_succeeded] = ...
+                    evaluate_new_fvalues(funcs, new_point_abs);
                 if f_succeeded
                     break
                 else

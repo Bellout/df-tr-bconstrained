@@ -5,9 +5,9 @@ function [model, exitflag, prob] = ensure_improvement(model, ...
                                                 prob)
 
   % ------------------------------------------------------------------
-  model_complete = is_complete(model, prob);
+  [model_complete prob] = is_complete(model, prob);
   model_fl = is_lambda_poised(model, options);
-  model_old = is_old(model, options, prob);
+  [model_old prob] = is_old(model, options, prob);
   success = false;
 
   % ------------------------------------------------------------------  

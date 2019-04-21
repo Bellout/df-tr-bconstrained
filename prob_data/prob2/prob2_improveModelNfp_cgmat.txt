@@ -1,0 +1,781 @@
+[ improveModelNfp() ]
+shift_center   [    2.0000000000e+00,     2.0000000000e+00 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.1472368639e-01,     4.0579193708e-01 ] 
+points_shifted [   -1.0000000000e+00,    -4.4408920985e-16 ] 
+points_shifted [   -3.0000000000e+00,    -2.0000000000e+00 ] 
+tr_center_pt   [   -3.0000000000e+00,    -2.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 5)
+
+2 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/2)
+nfp_new_point_shifted [   -6.9999998428e+00,     1.9999996911e+00 ] 
+nfp_new_point_abs     [   -4.9999998428e+00,     3.9999996911e+00 ] 
+nfp_new_pivots        [   -4.7582015642e+01 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [    2.0000000000e+00,     2.0000000000e+00 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.1472368639e-01,     4.0579193708e-01 ] 
+points_shifted [   -1.0000000000e+00,    -4.4408920985e-16 ] 
+points_shifted [   -3.0000000000e+00,    -2.0000000000e+00 ] 
+tr_center_pt   [   -3.0000000000e+00,    -2.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 5)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/2)
+nfp_new_point_abs#0  [   -4.9999998428e+00,     3.9999996911e+00 ] 
+nfp_new_fvalues#0    [    1.9258094006e+01 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(5)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       6
+poly_i:                        5
+next_position:                 5
+points_shifted_.cols():        4
+points_shifted_.rows():        2
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.1472368639e-01,     4.0579193708e-01 ] 
+points_shifted_#3:             [   -1.0000000000e+00,    -4.4408920985e-16 ] 
+points_shifted_#4:             [   -3.0000000000e+00,    -2.0000000000e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 2
+nfp_new_point_shifted_#1       [   -6.9999998428e+00,     1.9999996911e+00 ] 
+points_abs_.cols():            4
+points_abs_.rows():            2
+points_abs_#1:                 [    2.0000000000e+00,     2.0000000000e+00 ] 
+points_abs_#2:                 [    2.3147236864e+00,     2.4057919371e+00 ] 
+points_abs_#3:                 [    1.0000000000e+00,     2.0000000000e+00 ] 
+points_abs_#4:                 [   -1.0000000000e+00,     5.7222548973e-12 ] 
+fvalues_.cols():               4
+fvalues_.rows():               1
+fvalues_#1:                    [    5.6094379124e+00 ] 
+fvalues_#2:                    [    7.6375401735e+00 ] 
+fvalues_#3:                    [    4.6931471806e+00 ] 
+fvalues_#4:                    [    6.9314718056e-01 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       6
+poly_i:                        5
+next_position:                 5
+points_shifted_.cols():        5
+points_shifted_.rows():        2
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.1472368639e-01,     4.0579193708e-01 ] 
+points_shifted_#3:             [   -1.0000000000e+00,    -4.4408920985e-16 ] 
+points_shifted_#4:             [   -3.0000000000e+00,    -2.0000000000e+00 ] 
+points_shifted_#5:             [   -6.9999998428e+00,     1.9999996911e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 2
+nfp_new_point_shifted_#1       [   -6.9999998428e+00,     1.9999996911e+00 ] 
+points_abs_.cols():            5
+points_abs_.rows():            2
+points_abs_#1:                 [    2.0000000000e+00,     2.0000000000e+00 ] 
+points_abs_#2:                 [    2.3147236864e+00,     2.4057919371e+00 ] 
+points_abs_#3:                 [    1.0000000000e+00,     2.0000000000e+00 ] 
+points_abs_#4:                 [   -1.0000000000e+00,     5.7222548973e-12 ] 
+points_abs_#5:                 [   -4.9999998428e+00,     3.9999996911e+00 ] 
+fvalues_.cols():               5
+fvalues_.rows():               1
+fvalues_#1:                    [    5.6094379124e+00 ] 
+fvalues_#2:                    [    7.6375401735e+00 ] 
+fvalues_#3:                    [    4.6931471806e+00 ] 
+fvalues_#4:                    [    6.9314718056e-01 ] 
+fvalues_#5:                    [    1.9258094006e+01 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.2178224506e-02,     1.2387120437e-02 ] 
+points_shifted [    1.4834735330e-03,    -4.7625965809e-03 ] 
+points_shifted [    1.4811441196e-02,     5.5205381001e-03 ] 
+points_shifted [   -3.5371166910e-02,    -1.5894507847e-01 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 6)
+
+2 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/2)
+nfp_new_point_shifted [   -3.1248411605e-02,     3.1248153891e-02 ] 
+nfp_new_point_abs     [   -3.1257277237e-02,     3.1250646007e-02 ] 
+nfp_new_pivots        [   -7.5680562601e-03 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.2178224506e-02,     1.2387120437e-02 ] 
+points_shifted [    1.4834735330e-03,    -4.7625965809e-03 ] 
+points_shifted [    1.4811441196e-02,     5.5205381001e-03 ] 
+points_shifted [   -3.5371166910e-02,    -1.5894507847e-01 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 6)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/2)
+nfp_new_point_abs#0  [   -3.1257277237e-02,     3.1250646007e-02 ] 
+nfp_new_fvalues#0    [    1.9531432853e-03 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(6)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       6
+poly_i:                        6
+next_position:                 6
+points_shifted_.cols():        5
+points_shifted_.rows():        2
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.2178224506e-02,     1.2387120437e-02 ] 
+points_shifted_#3:             [    1.4834735330e-03,    -4.7625965809e-03 ] 
+points_shifted_#4:             [    1.4811441196e-02,     5.5205381001e-03 ] 
+points_shifted_#5:             [   -3.5371166910e-02,    -1.5894507847e-01 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 2
+nfp_new_point_shifted_#1       [   -3.1248411605e-02,     3.1248153891e-02 ] 
+points_abs_.cols():            5
+points_abs_.rows():            2
+points_abs_#1:                 [   -8.8656310369e-06,     2.4921162242e-06 ] 
+points_abs_#2:                 [    3.2169358875e-02,     1.2389612553e-02 ] 
+points_abs_#3:                 [    1.4746079019e-03,    -4.7601044646e-03 ] 
+points_abs_#4:                 [    1.4802575565e-02,     5.5230302163e-03 ] 
+points_abs_#5:                 [   -3.5380032541e-02,    -1.5894258636e-01 ] 
+fvalues_.cols():               5
+fvalues_.rows():               1
+fvalues_#1:                    [    8.4810056954e-11 ] 
+fvalues_#2:                    [    1.1878350432e-03 ] 
+fvalues_#3:                    [    2.4833060615e-05 ] 
+fvalues_#4:                    [    2.4959610367e-04 ] 
+fvalues_#5:                    [    2.6513709678e-02 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       6
+poly_i:                        6
+next_position:                 6
+points_shifted_.cols():        6
+points_shifted_.rows():        2
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.2178224506e-02,     1.2387120437e-02 ] 
+points_shifted_#3:             [    1.4834735330e-03,    -4.7625965809e-03 ] 
+points_shifted_#4:             [    1.4811441196e-02,     5.5205381001e-03 ] 
+points_shifted_#5:             [   -3.5371166910e-02,    -1.5894507847e-01 ] 
+points_shifted_#6:             [   -3.1248411605e-02,     3.1248153891e-02 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 2
+nfp_new_point_shifted_#1       [   -3.1248411605e-02,     3.1248153891e-02 ] 
+points_abs_.cols():            6
+points_abs_.rows():            2
+points_abs_#1:                 [   -8.8656310369e-06,     2.4921162242e-06 ] 
+points_abs_#2:                 [    3.2169358875e-02,     1.2389612553e-02 ] 
+points_abs_#3:                 [    1.4746079019e-03,    -4.7601044646e-03 ] 
+points_abs_#4:                 [    1.4802575565e-02,     5.5230302163e-03 ] 
+points_abs_#5:                 [   -3.5380032541e-02,    -1.5894258636e-01 ] 
+points_abs_#6:                 [   -3.1257277237e-02,     3.1250646007e-02 ] 
+fvalues_.cols():               6
+fvalues_.rows():               1
+fvalues_#1:                    [    8.4810056954e-11 ] 
+fvalues_#2:                    [    1.1878350432e-03 ] 
+fvalues_#3:                    [    2.4833060615e-05 ] 
+fvalues_#4:                    [    2.4959610367e-04 ] 
+fvalues_#5:                    [    2.6513709678e-02 ] 
+fvalues_#6:                    [    1.9531432853e-03 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.1240845101e-03,     2.3309285184e-03 ] 
+points_shifted [    1.4834735330e-03,    -4.7625965809e-03 ] 
+points_shifted [    8.3539355285e-03,     7.5348494571e-03 ] 
+points_shifted [    1.4811441196e-02,     5.5205381001e-03 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 6)
+
+2 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/2)
+nfp_new_point_shifted [   -1.9521673423e-03,    -1.9516715540e-03 ] 
+nfp_new_point_abs     [   -1.9610329733e-03,    -1.9491794378e-03 ] 
+nfp_new_pivots        [   -1.1276392178e-03 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.1240845101e-03,     2.3309285184e-03 ] 
+points_shifted [    1.4834735330e-03,    -4.7625965809e-03 ] 
+points_shifted [    8.3539355285e-03,     7.5348494571e-03 ] 
+points_shifted [    1.4811441196e-02,     5.5205381001e-03 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 6)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/2)
+nfp_new_point_abs#0  [   -1.9610329733e-03,    -1.9491794378e-03 ] 
+nfp_new_fvalues#0    [    7.6449434085e-06 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(6)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       6
+poly_i:                        6
+next_position:                 6
+points_shifted_.cols():        5
+points_shifted_.rows():        2
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.1240845101e-03,     2.3309285184e-03 ] 
+points_shifted_#3:             [    1.4834735330e-03,    -4.7625965809e-03 ] 
+points_shifted_#4:             [    8.3539355285e-03,     7.5348494571e-03 ] 
+points_shifted_#5:             [    1.4811441196e-02,     5.5205381001e-03 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 2
+nfp_new_point_shifted_#1       [   -1.9521673423e-03,    -1.9516715540e-03 ] 
+points_abs_.cols():            5
+points_abs_.rows():            2
+points_abs_#1:                 [   -8.8656310369e-06,     2.4921162242e-06 ] 
+points_abs_#2:                 [   -2.1329501411e-03,     2.3334206346e-03 ] 
+points_abs_#3:                 [    1.4746079019e-03,    -4.7601044646e-03 ] 
+points_abs_#4:                 [    8.3450698975e-03,     7.5373415733e-03 ] 
+points_abs_#5:                 [    1.4802575565e-02,     5.5230302163e-03 ] 
+fvalues_.cols():               5
+fvalues_.rows():               1
+fvalues_#1:                    [    8.4810056954e-11 ] 
+fvalues_#2:                    [    9.9943178138e-06 ] 
+fvalues_#3:                    [    2.4833060615e-05 ] 
+fvalues_#4:                    [    1.2644928482e-04 ] 
+fvalues_#5:                    [    2.4959610367e-04 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       6
+poly_i:                        6
+next_position:                 6
+points_shifted_.cols():        6
+points_shifted_.rows():        2
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.1240845101e-03,     2.3309285184e-03 ] 
+points_shifted_#3:             [    1.4834735330e-03,    -4.7625965809e-03 ] 
+points_shifted_#4:             [    8.3539355285e-03,     7.5348494571e-03 ] 
+points_shifted_#5:             [    1.4811441196e-02,     5.5205381001e-03 ] 
+points_shifted_#6:             [   -1.9521673423e-03,    -1.9516715540e-03 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 2
+nfp_new_point_shifted_#1       [   -1.9521673423e-03,    -1.9516715540e-03 ] 
+points_abs_.cols():            6
+points_abs_.rows():            2
+points_abs_#1:                 [   -8.8656310369e-06,     2.4921162242e-06 ] 
+points_abs_#2:                 [   -2.1329501411e-03,     2.3334206346e-03 ] 
+points_abs_#3:                 [    1.4746079019e-03,    -4.7601044646e-03 ] 
+points_abs_#4:                 [    8.3450698975e-03,     7.5373415733e-03 ] 
+points_abs_#5:                 [    1.4802575565e-02,     5.5230302163e-03 ] 
+points_abs_#6:                 [   -1.9610329733e-03,    -1.9491794378e-03 ] 
+fvalues_.cols():               6
+fvalues_.rows():               1
+fvalues_#1:                    [    8.4810056954e-11 ] 
+fvalues_#2:                    [    9.9943178138e-06 ] 
+fvalues_#3:                    [    2.4833060615e-05 ] 
+fvalues_#4:                    [    1.2644928482e-04 ] 
+fvalues_#5:                    [    2.4959610367e-04 ] 
+fvalues_#6:                    [    7.6449434085e-06 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -5.1364817578e-04,    -3.2161195483e-04 ] 
+points_shifted [   -1.9521673423e-03,    -1.9516715540e-03 ] 
+points_shifted [   -2.1240845101e-03,     2.3309285184e-03 ] 
+points_shifted [    1.4834735330e-03,    -4.7625965809e-03 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+
+End-if: (point_found)
+End-for-loop[2]: (poly_i <= block_end)
+End-for-loop[1]: (attempts<=3)
+exit_flag=0
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -5.1364817578e-04,    -3.2161195483e-04 ] 
+points_shifted [   -1.9521673423e-03,    -1.9516715540e-03 ] 
+points_shifted [   -2.1240845101e-03,     2.3309285184e-03 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+
+End-if: (point_found)
+End-for-loop[2]: (poly_i <= block_end)
+End-for-loop[1]: (attempts<=3)
+exit_flag=0
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -5.1364817578e-04,    -3.2161195483e-04 ] 
+points_shifted [   -1.9521673423e-03,    -1.9516715540e-03 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+
+End-if: (point_found)
+End-for-loop[2]: (poly_i <= block_end)
+End-for-loop[1]: (attempts<=3)
+exit_flag=0
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -1.2207025429e-04,     1.2207027420e-04 ] 
+points_shifted [   -5.1364817578e-04,    -3.2161195483e-04 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+
+End-if: (point_found)
+End-for-loop[2]: (poly_i <= block_end)
+End-for-loop[1]: (attempts<=3)
+exit_flag=0
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -1.2207025429e-04,     1.2207027420e-04 ] 
+points_shifted [   -5.1364817578e-04,    -3.2161195483e-04 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+
+End-if: (point_found)
+End-for-loop[2]: (poly_i <= block_end)
+End-for-loop[1]: (attempts<=3)
+exit_flag=0
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -1.2207025429e-04,     1.2207027420e-04 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 3)
+
+2 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/2)
+nfp_new_point_shifted [    3.0517578123e-05,     3.0517578123e-05 ] 
+nfp_new_point_abs     [    2.1651947086e-05,     3.3009694347e-05 ] 
+nfp_new_pivots        [   -6.1035161224e-05 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -1.2207025429e-04,     1.2207027420e-04 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 3)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/2)
+nfp_new_point_abs#0  [    2.1651947086e-05,     3.3009694347e-05 ] 
+nfp_new_fvalues#0    [    1.5584467334e-09 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(3)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       6
+poly_i:                        3
+next_position:                 3
+points_shifted_.cols():        2
+points_shifted_.rows():        2
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -1.2207025429e-04,     1.2207027420e-04 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 2
+nfp_new_point_shifted_#1       [    3.0517578123e-05,     3.0517578123e-05 ] 
+points_abs_.cols():            2
+points_abs_.rows():            2
+points_abs_#1:                 [   -8.8656310369e-06,     2.4921162242e-06 ] 
+points_abs_#2:                 [   -1.3093588532e-04,     1.2456239042e-04 ] 
+fvalues_.cols():               2
+fvalues_.rows():               1
+fvalues_#1:                    [    8.4810056954e-11 ] 
+fvalues_#2:                    [    3.2659995026e-08 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       6
+poly_i:                        3
+next_position:                 3
+points_shifted_.cols():        3
+points_shifted_.rows():        2
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -1.2207025429e-04,     1.2207027420e-04 ] 
+points_shifted_#3:             [    3.0517578123e-05,     3.0517578123e-05 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 2
+nfp_new_point_shifted_#1       [    3.0517578123e-05,     3.0517578123e-05 ] 
+points_abs_.cols():            3
+points_abs_.rows():            2
+points_abs_#1:                 [   -8.8656310369e-06,     2.4921162242e-06 ] 
+points_abs_#2:                 [   -1.3093588532e-04,     1.2456239042e-04 ] 
+points_abs_#3:                 [    2.1651947086e-05,     3.3009694347e-05 ] 
+fvalues_.cols():               3
+fvalues_.rows():               1
+fvalues_#1:                    [    8.4810056954e-11 ] 
+fvalues_#2:                    [    3.2659995026e-08 ] 
+fvalues_#3:                    [    1.5584467334e-09 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -1.2207025429e-04,     1.2207027420e-04 ] 
+points_shifted [    3.0517578123e-05,     3.0517578123e-05 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+
+End-if: (point_found)
+End-for-loop[2]: (poly_i <= block_end)
+End-for-loop[1]: (attempts<=3)
+exit_flag=0
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.0517578123e-05,     3.0517578123e-05 ] 
+points_shifted [   -1.2207025429e-04,     1.2207027420e-04 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+
+End-if: (point_found)
+End-for-loop[2]: (poly_i <= block_end)
+End-for-loop[1]: (attempts<=3)
+exit_flag=0
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.0517578123e-05,     3.0517578123e-05 ] 
+points_shifted [   -1.2207025429e-04,     1.2207027420e-04 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+
+End-if: (point_found)
+End-for-loop[2]: (poly_i <= block_end)
+End-for-loop[1]: (attempts<=3)
+exit_flag=0
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.0517578123e-05,     3.0517578123e-05 ] 
+points_shifted [   -1.2207025429e-04,     1.2207027420e-04 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+
+End-if: (point_found)
+End-for-loop[2]: (poly_i <= block_end)
+End-for-loop[1]: (attempts<=3)
+exit_flag=0
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -8.8656310369e-06,     2.4921162242e-06 ] 
+bl_shifted     [                -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.0517578123e-05,     3.0517578123e-05 ] 
+points_shifted [   -1.2207025429e-04,     1.2207027420e-04 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+
+End-if: (point_found)
+End-for-loop[2]: (poly_i <= block_end)
+End-for-loop[1]: (attempts<=3)
+exit_flag=0
+=====================================
+
+

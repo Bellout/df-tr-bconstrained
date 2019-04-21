@@ -6,5 +6,7 @@ function [polynomial_shifted prob] = shift_polynomial(polynomial, s, prob)
     g_mod = g + H*s;
     
     polynomial_shifted = matrices_to_polynomial(c_mod, g_mod, H);
+
+    part=29; print_soln_body;
     
 end

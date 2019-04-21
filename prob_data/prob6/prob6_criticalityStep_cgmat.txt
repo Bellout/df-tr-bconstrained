@@ -1,0 +1,26 @@
+[ criticalityStep() ]
+[ criticalityStep() -> break]
+
+C: (radius < tol_rad)  [    1.0000000000e+00 ]
+D: norm(measr_crit)    [    1.0619096765e+01 ]
+E: (beta*B < tol_f)    [    0.0000000000e+00 ]
+F: (rad < 100*tol_rad) [    1.0000000000e+00 ]
+G: (A || C && D)  <-?  [    1.0000000000e+00 ]
+
+H: norm(masr_crit)  [    1.0619096765e+01 ]
+I: beta*A           [    1.0619096765e+02 ]
+J: max(radius, B)   [    1.0619096765e+02 ]
+K: min(C, init_rad) [    7.9999998971e+00 ]
+[ criticalityStep() ]
+[ criticalityStep() -> break]
+
+C: (radius < tol_rad)  [    1.0000000000e+00 ]
+D: norm(measr_crit)    [    1.7852459431e-07 ]
+E: (beta*B < tol_f)    [    0.0000000000e+00 ]
+F: (rad < 100*tol_rad) [    1.0000000000e+00 ]
+G: (A || C && D)  <-?  [    1.0000000000e+00 ]
+
+H: norm(masr_crit)  [    1.7852459431e-07 ]
+I: beta*A           [    1.7852459431e-06 ]
+J: max(radius, B)   [    7.6293944331e-06 ]
+K: min(C, init_rad) [    7.6293944331e-06 ]

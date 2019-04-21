@@ -8,7 +8,7 @@ function [model, exitflag, prob] = ...
   point_added = false;
   
   % ------------------------------------------------------------------
-  if ~is_complete(model)
+  if ~is_complete(model, prob)
     % Add this point
     relative_pivot_threshold = options.add_threshold;
     [model, point_added, prob] = add_point(model, new_point, ...

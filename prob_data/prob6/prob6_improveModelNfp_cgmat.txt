@@ -1,0 +1,1409 @@
+[ improveModelNfp() ]
+shift_center   [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+tr_center_pt   [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 4)
+
+3 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_shifted [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+nfp_new_point_abs     [   -2.6852763134e+00,     3.4057919371e+00,     2.6269868163e+00 ] 
+nfp_new_pivots        [   -3.8384455167e+00 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+tr_center_pt   [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 4)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_abs#0  [   -2.6852763134e+00,     3.4057919371e+00,     2.6269868163e+00 ] 
+nfp_new_fvalues#0    [    3.6913562251e+01 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(4)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        4
+next_position:                 4
+points_shifted_.cols():        3
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#3:             [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+points_abs_.cols():            3
+points_abs_.rows():            3
+points_abs_#1:                 [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+points_abs_#2:                 [   -3.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#3:                 [   -2.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+fvalues_.cols():               3
+fvalues_.rows():               1
+fvalues_#1:                    [    1.3000000000e+01 ] 
+fvalues_#2:                    [    9.3282384830e+00 ] 
+fvalues_#3:                    [    5.7692697299e+00 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        4
+next_position:                 4
+points_shifted_.cols():        4
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#3:             [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#4:             [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+points_abs_.cols():            4
+points_abs_.rows():            3
+points_abs_#1:                 [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+points_abs_#2:                 [   -3.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#3:                 [   -2.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#4:                 [   -2.6852763134e+00,     3.4057919371e+00,     2.6269868163e+00 ] 
+fvalues_.cols():               4
+fvalues_.rows():               1
+fvalues_#1:                    [    1.3000000000e+01 ] 
+fvalues_#2:                    [    9.3282384830e+00 ] 
+fvalues_#3:                    [    5.7692697299e+00 ] 
+fvalues_#4:                    [    3.6913562251e+01 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+tr_center_pt   [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 5)
+
+3 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_shifted [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+nfp_new_point_abs     [   -6.8527671361e-01,     3.4057881727e+00,    -1.3730094193e+00 ] 
+nfp_new_pivots        [   -8.1251710135e+00 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+tr_center_pt   [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 0 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 5)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_abs#0  [   -6.8527671361e-01,     3.4057881727e+00,    -1.3730094193e+00 ] 
+nfp_new_fvalues#0    [    1.1533372059e+01 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(5)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        5
+next_position:                 5
+points_shifted_.cols():        4
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#3:             [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#4:             [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+points_abs_.cols():            4
+points_abs_.rows():            3
+points_abs_#1:                 [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+points_abs_#2:                 [   -3.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#3:                 [   -2.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#4:                 [   -2.6852763134e+00,     3.4057919371e+00,     2.6269868163e+00 ] 
+fvalues_.cols():               4
+fvalues_.rows():               1
+fvalues_#1:                    [    1.3000000000e+01 ] 
+fvalues_#2:                    [    9.3282384830e+00 ] 
+fvalues_#3:                    [    5.7692697299e+00 ] 
+fvalues_#4:                    [    3.6913562251e+01 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        5
+next_position:                 5
+points_shifted_.cols():        5
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#3:             [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#4:             [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+points_shifted_#5:             [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+points_abs_.cols():            5
+points_abs_.rows():            3
+points_abs_#1:                 [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+points_abs_#2:                 [   -3.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#3:                 [   -2.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#4:                 [   -2.6852763134e+00,     3.4057919371e+00,     2.6269868163e+00 ] 
+points_abs_#5:                 [   -6.8527671361e-01,     3.4057881727e+00,    -1.3730094193e+00 ] 
+fvalues_.cols():               5
+fvalues_.rows():               1
+fvalues_#1:                    [    1.3000000000e+01 ] 
+fvalues_#2:                    [    9.3282384830e+00 ] 
+fvalues_#3:                    [    5.7692697299e+00 ] 
+fvalues_#4:                    [    3.6913562251e+01 ] 
+fvalues_#5:                    [    1.1533372059e+01 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+points_shifted [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+points_shifted [    5.9036275411e-01,     2.4014218130e+00,    -2.3730131592e+00 ] 
+points_shifted [    4.0281146027e+00,    -1.5985781356e+00,    -1.3668172915e+00 ] 
+tr_center_pt   [    4.0281146027e+00,    -1.5985781356e+00,    -1.3668172915e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 8)
+
+3 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_shifted [    1.2028114491e+01,     6.4014217007e+00,     6.6331825885e+00 ] 
+nfp_new_point_abs     [    8.0281144910e+00,     7.4014217007e+00,     7.6331825885e+00 ] 
+nfp_new_pivots        [   -1.7682171343e+03 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+points_shifted [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+points_shifted [    5.9036275411e-01,     2.4014218130e+00,    -2.3730131592e+00 ] 
+points_shifted [    4.0281146027e+00,    -1.5985781356e+00,    -1.3668172915e+00 ] 
+tr_center_pt   [    4.0281146027e+00,    -1.5985781356e+00,    -1.3668172915e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 8)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_abs#0  [    8.0281144910e+00,     7.4014217007e+00,     7.6331825885e+00 ] 
+nfp_new_fvalues#0    [    4.6410991322e+02 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(8)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        8
+next_position:                 8
+points_shifted_.cols():        7
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#3:             [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#4:             [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+points_shifted_#5:             [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+points_shifted_#6:             [    5.9036275411e-01,     2.4014218130e+00,    -2.3730131592e+00 ] 
+points_shifted_#7:             [    4.0281146027e+00,    -1.5985781356e+00,    -1.3668172915e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    1.2028114491e+01,     6.4014217007e+00,     6.6331825885e+00 ] 
+points_abs_.cols():            7
+points_abs_.rows():            3
+points_abs_#1:                 [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+points_abs_#2:                 [   -3.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#3:                 [   -2.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#4:                 [   -2.6852763134e+00,     3.4057919371e+00,     2.6269868163e+00 ] 
+points_abs_#5:                 [   -6.8527671361e-01,     3.4057881727e+00,    -1.3730094193e+00 ] 
+points_abs_#6:                 [   -3.4096372459e+00,     3.4014218130e+00,    -1.3730131592e+00 ] 
+points_abs_#7:                 [    2.8114602688e-02,    -5.9857813556e-01,    -3.6681729147e-01 ] 
+fvalues_.cols():               7
+fvalues_.rows():               1
+fvalues_#1:                    [    1.3000000000e+01 ] 
+fvalues_#2:                    [    9.3282384830e+00 ] 
+fvalues_#3:                    [    5.7692697299e+00 ] 
+fvalues_#4:                    [    3.6913562251e+01 ] 
+fvalues_#5:                    [    1.1533372059e+01 ] 
+fvalues_#6:                    [    4.1145091602e+00 ] 
+fvalues_#7:                    [    1.2574169729e+00 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        8
+next_position:                 8
+points_shifted_.cols():        8
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#3:             [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#4:             [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+points_shifted_#5:             [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+points_shifted_#6:             [    5.9036275411e-01,     2.4014218130e+00,    -2.3730131592e+00 ] 
+points_shifted_#7:             [    4.0281146027e+00,    -1.5985781356e+00,    -1.3668172915e+00 ] 
+points_shifted_#8:             [    1.2028114491e+01,     6.4014217007e+00,     6.6331825885e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    1.2028114491e+01,     6.4014217007e+00,     6.6331825885e+00 ] 
+points_abs_.cols():            8
+points_abs_.rows():            3
+points_abs_#1:                 [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+points_abs_#2:                 [   -3.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#3:                 [   -2.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#4:                 [   -2.6852763134e+00,     3.4057919371e+00,     2.6269868163e+00 ] 
+points_abs_#5:                 [   -6.8527671361e-01,     3.4057881727e+00,    -1.3730094193e+00 ] 
+points_abs_#6:                 [   -3.4096372459e+00,     3.4014218130e+00,    -1.3730131592e+00 ] 
+points_abs_#7:                 [    2.8114602688e-02,    -5.9857813556e-01,    -3.6681729147e-01 ] 
+points_abs_#8:                 [    8.0281144910e+00,     7.4014217007e+00,     7.6331825885e+00 ] 
+fvalues_.cols():               8
+fvalues_.rows():               1
+fvalues_#1:                    [    1.3000000000e+01 ] 
+fvalues_#2:                    [    9.3282384830e+00 ] 
+fvalues_#3:                    [    5.7692697299e+00 ] 
+fvalues_#4:                    [    3.6913562251e+01 ] 
+fvalues_#5:                    [    1.1533372059e+01 ] 
+fvalues_#6:                    [    4.1145091602e+00 ] 
+fvalues_#7:                    [    1.2574169729e+00 ] 
+fvalues_#8:                    [    4.6410991322e+02 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+points_shifted [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+points_shifted [    5.9036275411e-01,     2.4014218130e+00,    -2.3730131592e+00 ] 
+points_shifted [    4.0281146027e+00,    -1.5985781356e+00,    -1.3668172915e+00 ] 
+points_shifted [    1.2028114491e+01,     6.4014217007e+00,     6.6331825885e+00 ] 
+points_shifted [    2.2797452503e+00,     2.4649980728e-01,    -2.4210982184e+00 ] 
+tr_center_pt   [    2.2797452503e+00,     2.4649980728e-01,    -2.4210982184e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 10)
+
+3 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_shifted [   -4.0990731267e+00,    -7.7535000506e+00,    -6.6875881945e+00 ] 
+nfp_new_point_abs     [   -8.0990731267e+00,    -6.7535000506e+00,    -5.6875881945e+00 ] 
+nfp_new_pivots        [   -2.2754888554e+02 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+points_shifted [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+points_shifted [    5.9036275411e-01,     2.4014218130e+00,    -2.3730131592e+00 ] 
+points_shifted [    4.0281146027e+00,    -1.5985781356e+00,    -1.3668172915e+00 ] 
+points_shifted [    1.2028114491e+01,     6.4014217007e+00,     6.6331825885e+00 ] 
+points_shifted [    2.2797452503e+00,     2.4649980728e-01,    -2.4210982184e+00 ] 
+tr_center_pt   [    2.2797452503e+00,     2.4649980728e-01,    -2.4210982184e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 10)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_abs#0  [   -8.0990731267e+00,    -6.7535000506e+00,    -5.6875881945e+00 ] 
+nfp_new_fvalues#0    [    3.7537960671e+02 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(10)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        10
+next_position:                 10
+points_shifted_.cols():        9
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#3:             [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#4:             [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+points_shifted_#5:             [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+points_shifted_#6:             [    5.9036275411e-01,     2.4014218130e+00,    -2.3730131592e+00 ] 
+points_shifted_#7:             [    4.0281146027e+00,    -1.5985781356e+00,    -1.3668172915e+00 ] 
+points_shifted_#8:             [    1.2028114491e+01,     6.4014217007e+00,     6.6331825885e+00 ] 
+points_shifted_#9:             [    2.2797452503e+00,     2.4649980728e-01,    -2.4210982184e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [   -4.0990731267e+00,    -7.7535000506e+00,    -6.6875881945e+00 ] 
+points_abs_.cols():            9
+points_abs_.rows():            3
+points_abs_#1:                 [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+points_abs_#2:                 [   -3.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#3:                 [   -2.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#4:                 [   -2.6852763134e+00,     3.4057919371e+00,     2.6269868163e+00 ] 
+points_abs_#5:                 [   -6.8527671361e-01,     3.4057881727e+00,    -1.3730094193e+00 ] 
+points_abs_#6:                 [   -3.4096372459e+00,     3.4014218130e+00,    -1.3730131592e+00 ] 
+points_abs_#7:                 [    2.8114602688e-02,    -5.9857813556e-01,    -3.6681729147e-01 ] 
+points_abs_#8:                 [    8.0281144910e+00,     7.4014217007e+00,     7.6331825885e+00 ] 
+points_abs_#9:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+fvalues_.cols():               9
+fvalues_.rows():               1
+fvalues_#1:                    [    1.3000000000e+01 ] 
+fvalues_#2:                    [    9.3282384830e+00 ] 
+fvalues_#3:                    [    5.7692697299e+00 ] 
+fvalues_#4:                    [    3.6913562251e+01 ] 
+fvalues_#5:                    [    1.1533372059e+01 ] 
+fvalues_#6:                    [    4.1145091602e+00 ] 
+fvalues_#7:                    [    1.2574169729e+00 ] 
+fvalues_#8:                    [    4.6410991322e+02 ] 
+fvalues_#9:                    [    2.5492835062e-01 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        10
+next_position:                 10
+points_shifted_.cols():        10
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [    3.1472368639e-01,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#3:             [    1.3147236864e+00,     4.0579193708e-01,    -3.7301318371e-01 ] 
+points_shifted_#4:             [    1.3147236866e+00,     2.4057919371e+00,     1.6269868163e+00 ] 
+points_shifted_#5:             [    3.3147232864e+00,     2.4057881727e+00,    -2.3730094193e+00 ] 
+points_shifted_#6:             [    5.9036275411e-01,     2.4014218130e+00,    -2.3730131592e+00 ] 
+points_shifted_#7:             [    4.0281146027e+00,    -1.5985781356e+00,    -1.3668172915e+00 ] 
+points_shifted_#8:             [    1.2028114491e+01,     6.4014217007e+00,     6.6331825885e+00 ] 
+points_shifted_#9:             [    2.2797452503e+00,     2.4649980728e-01,    -2.4210982184e+00 ] 
+points_shifted_#10:             [   -4.0990731267e+00,    -7.7535000506e+00,    -6.6875881945e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [   -4.0990731267e+00,    -7.7535000506e+00,    -6.6875881945e+00 ] 
+points_abs_.cols():            10
+points_abs_.rows():            3
+points_abs_#1:                 [   -4.0000000000e+00,     1.0000000000e+00,     1.0000000000e+00 ] 
+points_abs_#2:                 [   -3.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#3:                 [   -2.6852763136e+00,     1.4057919371e+00,     6.2698681629e-01 ] 
+points_abs_#4:                 [   -2.6852763134e+00,     3.4057919371e+00,     2.6269868163e+00 ] 
+points_abs_#5:                 [   -6.8527671361e-01,     3.4057881727e+00,    -1.3730094193e+00 ] 
+points_abs_#6:                 [   -3.4096372459e+00,     3.4014218130e+00,    -1.3730131592e+00 ] 
+points_abs_#7:                 [    2.8114602688e-02,    -5.9857813556e-01,    -3.6681729147e-01 ] 
+points_abs_#8:                 [    8.0281144910e+00,     7.4014217007e+00,     7.6331825885e+00 ] 
+points_abs_#9:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+points_abs_#10:                 [   -8.0990731267e+00,    -6.7535000506e+00,    -5.6875881945e+00 ] 
+fvalues_.cols():               10
+fvalues_.rows():               1
+fvalues_#1:                    [    1.3000000000e+01 ] 
+fvalues_#2:                    [    9.3282384830e+00 ] 
+fvalues_#3:                    [    5.7692697299e+00 ] 
+fvalues_#4:                    [    3.6913562251e+01 ] 
+fvalues_#5:                    [    1.1533372059e+01 ] 
+fvalues_#6:                    [    4.1145091602e+00 ] 
+fvalues_#7:                    [    1.2574169729e+00 ] 
+fvalues_#8:                    [    4.6410991322e+02 ] 
+fvalues_#9:                    [    2.5492835062e-01 ] 
+fvalues_#10:                    [    3.7537960671e+02 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 6)
+
+3 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_shifted [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+nfp_new_point_abs     [    2.5373810939e+00,     5.4626187344e+00,     2.5373804742e+00 ] 
+nfp_new_pivots        [   -3.5370551662e+01 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 6)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_abs#0  [    2.5373810939e+00,     5.4626187344e+00,     2.5373804742e+00 ] 
+nfp_new_fvalues#0    [    1.2799998459e+02 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(6)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        6
+next_position:                 6
+points_shifted_.cols():        5
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted_#3:             [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted_#4:             [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted_#5:             [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_abs_.cols():            5
+points_abs_.rows():            3
+points_abs_#1:                 [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+points_abs_#2:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+points_abs_#3:                 [   -1.3504953971e+00,     3.7350945506e-01,    -6.4332685169e-01 ] 
+points_abs_#4:                 [   -3.1676024077e+00,     2.3842993741e+00,    -3.0643905446e+00 ] 
+points_abs_#5:                 [   -9.4626187165e+00,     9.4626187736e+00,     6.5373810312e+00 ] 
+fvalues_.cols():               5
+fvalues_.rows():               1
+fvalues_#1:                    [    3.3763949470e-15 ] 
+fvalues_#2:                    [    2.5492835062e-01 ] 
+fvalues_#3:                    [    1.0273029584e+00 ] 
+fvalues_#4:                    [    1.0760876428e+00 ] 
+fvalues_#5:                    [    2.5599999375e+02 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        6
+next_position:                 6
+points_shifted_.cols():        6
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted_#3:             [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted_#4:             [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted_#5:             [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted_#6:             [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_abs_.cols():            6
+points_abs_.rows():            3
+points_abs_#1:                 [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+points_abs_#2:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+points_abs_#3:                 [   -1.3504953971e+00,     3.7350945506e-01,    -6.4332685169e-01 ] 
+points_abs_#4:                 [   -3.1676024077e+00,     2.3842993741e+00,    -3.0643905446e+00 ] 
+points_abs_#5:                 [   -9.4626187165e+00,     9.4626187736e+00,     6.5373810312e+00 ] 
+points_abs_#6:                 [    2.5373810939e+00,     5.4626187344e+00,     2.5373804742e+00 ] 
+fvalues_.cols():               6
+fvalues_.rows():               1
+fvalues_#1:                    [    3.3763949470e-15 ] 
+fvalues_#2:                    [    2.5492835062e-01 ] 
+fvalues_#3:                    [    1.0273029584e+00 ] 
+fvalues_#4:                    [    1.0760876428e+00 ] 
+fvalues_#5:                    [    2.5599999375e+02 ] 
+fvalues_#6:                    [    1.2799998459e+02 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 7)
+
+3 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_shifted [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+nfp_new_point_abs     [    2.5373811122e+00,     5.4626143957e+00,    -5.4626187719e+00 ] 
+nfp_new_pivots        [   -7.5272191004e+01 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 7)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_abs#0  [    2.5373811122e+00,     5.4626143957e+00,    -5.4626187719e+00 ] 
+nfp_new_fvalues#0    [    6.3999928126e+01 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(7)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        7
+next_position:                 7
+points_shifted_.cols():        6
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted_#3:             [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted_#4:             [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted_#5:             [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted_#6:             [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+points_abs_.cols():            6
+points_abs_.rows():            3
+points_abs_#1:                 [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+points_abs_#2:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+points_abs_#3:                 [   -1.3504953971e+00,     3.7350945506e-01,    -6.4332685169e-01 ] 
+points_abs_#4:                 [   -3.1676024077e+00,     2.3842993741e+00,    -3.0643905446e+00 ] 
+points_abs_#5:                 [   -9.4626187165e+00,     9.4626187736e+00,     6.5373810312e+00 ] 
+points_abs_#6:                 [    2.5373810939e+00,     5.4626187344e+00,     2.5373804742e+00 ] 
+fvalues_.cols():               6
+fvalues_.rows():               1
+fvalues_#1:                    [    3.3763949470e-15 ] 
+fvalues_#2:                    [    2.5492835062e-01 ] 
+fvalues_#3:                    [    1.0273029584e+00 ] 
+fvalues_#4:                    [    1.0760876428e+00 ] 
+fvalues_#5:                    [    2.5599999375e+02 ] 
+fvalues_#6:                    [    1.2799998459e+02 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        7
+next_position:                 7
+points_shifted_.cols():        7
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted_#3:             [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted_#4:             [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted_#5:             [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted_#6:             [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted_#7:             [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+points_abs_.cols():            7
+points_abs_.rows():            3
+points_abs_#1:                 [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+points_abs_#2:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+points_abs_#3:                 [   -1.3504953971e+00,     3.7350945506e-01,    -6.4332685169e-01 ] 
+points_abs_#4:                 [   -3.1676024077e+00,     2.3842993741e+00,    -3.0643905446e+00 ] 
+points_abs_#5:                 [   -9.4626187165e+00,     9.4626187736e+00,     6.5373810312e+00 ] 
+points_abs_#6:                 [    2.5373810939e+00,     5.4626187344e+00,     2.5373804742e+00 ] 
+points_abs_#7:                 [    2.5373811122e+00,     5.4626143957e+00,    -5.4626187719e+00 ] 
+fvalues_.cols():               7
+fvalues_.rows():               1
+fvalues_#1:                    [    3.3763949470e-15 ] 
+fvalues_#2:                    [    2.5492835062e-01 ] 
+fvalues_#3:                    [    1.0273029584e+00 ] 
+fvalues_#4:                    [    1.0760876428e+00 ] 
+fvalues_#5:                    [    2.5599999375e+02 ] 
+fvalues_#6:                    [    1.2799998459e+02 ] 
+fvalues_#7:                    [    6.3999928126e+01 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 8)
+
+3 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_shifted [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+nfp_new_point_abs     [    2.5373809240e+00,     8.1938115490e-01,    -8.6850313943e-01 ] 
+nfp_new_pivots        [   -2.1559643910e+01 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 8)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_abs#0  [    2.5373809240e+00,     8.1938115490e-01,    -8.6850313943e-01 ] 
+nfp_new_fvalues#0    [    1.1270264624e+01 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(8)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        8
+next_position:                 8
+points_shifted_.cols():        7
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted_#3:             [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted_#4:             [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted_#5:             [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted_#6:             [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted_#7:             [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+points_abs_.cols():            7
+points_abs_.rows():            3
+points_abs_#1:                 [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+points_abs_#2:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+points_abs_#3:                 [   -1.3504953971e+00,     3.7350945506e-01,    -6.4332685169e-01 ] 
+points_abs_#4:                 [   -3.1676024077e+00,     2.3842993741e+00,    -3.0643905446e+00 ] 
+points_abs_#5:                 [   -9.4626187165e+00,     9.4626187736e+00,     6.5373810312e+00 ] 
+points_abs_#6:                 [    2.5373810939e+00,     5.4626187344e+00,     2.5373804742e+00 ] 
+points_abs_#7:                 [    2.5373811122e+00,     5.4626143957e+00,    -5.4626187719e+00 ] 
+fvalues_.cols():               7
+fvalues_.rows():               1
+fvalues_#1:                    [    3.3763949470e-15 ] 
+fvalues_#2:                    [    2.5492835062e-01 ] 
+fvalues_#3:                    [    1.0273029584e+00 ] 
+fvalues_#4:                    [    1.0760876428e+00 ] 
+fvalues_#5:                    [    2.5599999375e+02 ] 
+fvalues_#6:                    [    1.2799998459e+02 ] 
+fvalues_#7:                    [    6.3999928126e+01 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        8
+next_position:                 8
+points_shifted_.cols():        8
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted_#3:             [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted_#4:             [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted_#5:             [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted_#6:             [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted_#7:             [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+points_shifted_#8:             [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+points_abs_.cols():            8
+points_abs_.rows():            3
+points_abs_#1:                 [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+points_abs_#2:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+points_abs_#3:                 [   -1.3504953971e+00,     3.7350945506e-01,    -6.4332685169e-01 ] 
+points_abs_#4:                 [   -3.1676024077e+00,     2.3842993741e+00,    -3.0643905446e+00 ] 
+points_abs_#5:                 [   -9.4626187165e+00,     9.4626187736e+00,     6.5373810312e+00 ] 
+points_abs_#6:                 [    2.5373810939e+00,     5.4626187344e+00,     2.5373804742e+00 ] 
+points_abs_#7:                 [    2.5373811122e+00,     5.4626143957e+00,    -5.4626187719e+00 ] 
+points_abs_#8:                 [    2.5373809240e+00,     8.1938115490e-01,    -8.6850313943e-01 ] 
+fvalues_.cols():               8
+fvalues_.rows():               1
+fvalues_#1:                    [    3.3763949470e-15 ] 
+fvalues_#2:                    [    2.5492835062e-01 ] 
+fvalues_#3:                    [    1.0273029584e+00 ] 
+fvalues_#4:                    [    1.0760876428e+00 ] 
+fvalues_#5:                    [    2.5599999375e+02 ] 
+fvalues_#6:                    [    1.2799998459e+02 ] 
+fvalues_#7:                    [    6.3999928126e+01 ] 
+fvalues_#8:                    [    1.1270264624e+01 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+points_shifted [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 9)
+
+3 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_shifted [    1.4303118368e+00,    -3.9999998105e+00,    -3.9999997147e+00 ] 
+nfp_new_point_abs     [   -3.2306982553e-02,    -2.5373809340e+00,    -5.4626185805e+00 ] 
+nfp_new_pivots        [   -6.3756794365e+01 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+points_shifted [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 9)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_abs#0  [   -3.2306982553e-02,    -2.5373809340e+00,    -5.4626185805e+00 ] 
+nfp_new_fvalues#0    [    7.0603288220e+01 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(9)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        9
+next_position:                 9
+points_shifted_.cols():        8
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted_#3:             [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted_#4:             [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted_#5:             [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted_#6:             [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted_#7:             [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+points_shifted_#8:             [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    1.4303118368e+00,    -3.9999998105e+00,    -3.9999997147e+00 ] 
+points_abs_.cols():            8
+points_abs_.rows():            3
+points_abs_#1:                 [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+points_abs_#2:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+points_abs_#3:                 [   -1.3504953971e+00,     3.7350945506e-01,    -6.4332685169e-01 ] 
+points_abs_#4:                 [   -3.1676024077e+00,     2.3842993741e+00,    -3.0643905446e+00 ] 
+points_abs_#5:                 [   -9.4626187165e+00,     9.4626187736e+00,     6.5373810312e+00 ] 
+points_abs_#6:                 [    2.5373810939e+00,     5.4626187344e+00,     2.5373804742e+00 ] 
+points_abs_#7:                 [    2.5373811122e+00,     5.4626143957e+00,    -5.4626187719e+00 ] 
+points_abs_#8:                 [    2.5373809240e+00,     8.1938115490e-01,    -8.6850313943e-01 ] 
+fvalues_.cols():               8
+fvalues_.rows():               1
+fvalues_#1:                    [    3.3763949470e-15 ] 
+fvalues_#2:                    [    2.5492835062e-01 ] 
+fvalues_#3:                    [    1.0273029584e+00 ] 
+fvalues_#4:                    [    1.0760876428e+00 ] 
+fvalues_#5:                    [    2.5599999375e+02 ] 
+fvalues_#6:                    [    1.2799998459e+02 ] 
+fvalues_#7:                    [    6.3999928126e+01 ] 
+fvalues_#8:                    [    1.1270264624e+01 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        9
+next_position:                 9
+points_shifted_.cols():        9
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted_#3:             [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted_#4:             [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted_#5:             [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted_#6:             [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted_#7:             [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+points_shifted_#8:             [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+points_shifted_#9:             [    1.4303118368e+00,    -3.9999998105e+00,    -3.9999997147e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [    1.4303118368e+00,    -3.9999998105e+00,    -3.9999997147e+00 ] 
+points_abs_.cols():            9
+points_abs_.rows():            3
+points_abs_#1:                 [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+points_abs_#2:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+points_abs_#3:                 [   -1.3504953971e+00,     3.7350945506e-01,    -6.4332685169e-01 ] 
+points_abs_#4:                 [   -3.1676024077e+00,     2.3842993741e+00,    -3.0643905446e+00 ] 
+points_abs_#5:                 [   -9.4626187165e+00,     9.4626187736e+00,     6.5373810312e+00 ] 
+points_abs_#6:                 [    2.5373810939e+00,     5.4626187344e+00,     2.5373804742e+00 ] 
+points_abs_#7:                 [    2.5373811122e+00,     5.4626143957e+00,    -5.4626187719e+00 ] 
+points_abs_#8:                 [    2.5373809240e+00,     8.1938115490e-01,    -8.6850313943e-01 ] 
+points_abs_#9:                 [   -3.2306982553e-02,    -2.5373809340e+00,    -5.4626185805e+00 ] 
+fvalues_.cols():               9
+fvalues_.rows():               1
+fvalues_#1:                    [    3.3763949470e-15 ] 
+fvalues_#2:                    [    2.5492835062e-01 ] 
+fvalues_#3:                    [    1.0273029584e+00 ] 
+fvalues_#4:                    [    1.0760876428e+00 ] 
+fvalues_#5:                    [    2.5599999375e+02 ] 
+fvalues_#6:                    [    1.2799998459e+02 ] 
+fvalues_#7:                    [    6.3999928126e+01 ] 
+fvalues_#8:                    [    1.1270264624e+01 ] 
+fvalues_#9:                    [    7.0603288220e+01 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+
+[ improveModelNfp() ]
+shift_center   [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+points_shifted [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+points_shifted [    1.4303118368e+00,    -3.9999998105e+00,    -3.9999997147e+00 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 10)
+
+3 new pts/pivot-pts found (T/F:1)
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_shifted [   -3.9999972467e+00,     3.9999997269e+00,    -5.0918031364e-01 ] 
+nfp_new_point_abs     [   -5.4626160660e+00,     5.4626186034e+00,    -1.9717991795e+00 ] 
+nfp_new_pivots        [   -2.0465738610e+01 ] 
+
+new_case -> impr_case
+Return-for-loop[3]: issue return->iterate()
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[ improveModelNfp() ]
+shift_center   [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+bl_shifted     [                -Inf,                 -Inf,                 -Inf ] 
+bu_shifted     [                 Inf,                  Inf,                  Inf ] 
+points_shifted [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+points_shifted [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+points_shifted [    1.4303118368e+00,    -3.9999998105e+00,    -3.9999997147e+00 ] 
+tr_center_pt   [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+
+A: (tr_center_pt.lpNorm<Inf>() > radius_fac*radius) [ 0 ]
+B: (p_ini > dim+1)                                  [ 1 ]
+
+Model is not old
+Model is not complete, i.e., not yet fully linear (p_ini < dim+1)=(1)
+For-loop[1]: (attempts<=3) Try smaller radius:  1/3
+For-loop[2]: (poly_i <= block_end) Iter through avail. polyn. (poly_i= 10)
+
+Using previously computed pts/pivot-vals
+For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (1/3)
+nfp_new_point_abs#0  [   -5.4626160660e+00,     5.4626186034e+00,    -1.9717991795e+00 ] 
+nfp_new_fvalues#0    [    1.2185820250e+01 ] 
+
+c->GetState(): PEND
+Setting -> setAreImprPointsComputed(false)
+
+Break-for-loop[3]: (found_i < new_points_shifted.cols()) since f_succeeded.all()=1
+End-for-loop[3]: (found_i < new_points_shifted.cols())
+
+Break-if: (point_found)
+Stop trying pivot polynomials for poly_i=(10)
+End-for-loop[2]: (poly_i <= block_end)
+Break-for-loop[1]: (attempts<=3)
+End-for-loop[1]: (attempts<=3)
+Setting -> setAreImprPointsComputed(false)
+Update this polynomial in set
+Swap polynomials
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        10
+next_position:                 10
+points_shifted_.cols():        9
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted_#3:             [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted_#4:             [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted_#5:             [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted_#6:             [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted_#7:             [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+points_shifted_#8:             [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+points_shifted_#9:             [    1.4303118368e+00,    -3.9999998105e+00,    -3.9999997147e+00 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [   -3.9999972467e+00,     3.9999997269e+00,    -5.0918031364e-01 ] 
+points_abs_.cols():            9
+points_abs_.rows():            3
+points_abs_#1:                 [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+points_abs_#2:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+points_abs_#3:                 [   -1.3504953971e+00,     3.7350945506e-01,    -6.4332685169e-01 ] 
+points_abs_#4:                 [   -3.1676024077e+00,     2.3842993741e+00,    -3.0643905446e+00 ] 
+points_abs_#5:                 [   -9.4626187165e+00,     9.4626187736e+00,     6.5373810312e+00 ] 
+points_abs_#6:                 [    2.5373810939e+00,     5.4626187344e+00,     2.5373804742e+00 ] 
+points_abs_#7:                 [    2.5373811122e+00,     5.4626143957e+00,    -5.4626187719e+00 ] 
+points_abs_#8:                 [    2.5373809240e+00,     8.1938115490e-01,    -8.6850313943e-01 ] 
+points_abs_#9:                 [   -3.2306982553e-02,    -2.5373809340e+00,    -5.4626185805e+00 ] 
+fvalues_.cols():               9
+fvalues_.rows():               1
+fvalues_#1:                    [    3.3763949470e-15 ] 
+fvalues_#2:                    [    2.5492835062e-01 ] 
+fvalues_#3:                    [    1.0273029584e+00 ] 
+fvalues_#4:                    [    1.0760876428e+00 ] 
+fvalues_#5:                    [    2.5599999375e+02 ] 
+fvalues_#6:                    [    1.2799998459e+02 ] 
+fvalues_#7:                    [    6.3999928126e+01 ] 
+fvalues_#8:                    [    1.1270264624e+01 ] 
+fvalues_#9:                    [    7.0603288220e+01 ] 
+------------------------------------------
+
+Add point
+Normalize polynomial value
+Re-orthogonalize
+Orthogonalize polynomials on present block -- (deffering subsequent ones)
+Update model and recompute polynomials
+Resize points_abs_
+Resize fvalues_
+
+------------------------------------------
+If: (nfp_point_found_ && f_succeeded.all()
+pivot_polynomials_.sz():       10
+poly_i:                        10
+next_position:                 10
+points_shifted_.cols():        10
+points_shifted_.rows():        3
+points_shifted_#1:             [    0.0000000000e+00,     0.0000000000e+00,     0.0000000000e+00 ] 
+points_shifted_#2:             [   -2.5763593030e-01,    -2.1611906923e-01,     4.1520647468e-02 ] 
+points_shifted_#3:             [    1.1212342233e-01,    -1.0891094214e+00,     8.1929201418e-01 ] 
+points_shifted_#4:             [   -1.7049835883e+00,     9.2168049754e-01,    -1.6017716787e+00 ] 
+points_shifted_#5:             [   -7.9999998971e+00,     7.9999998971e+00,     7.9999998971e+00 ] 
+points_shifted_#6:             [    3.9999999133e+00,     3.9999998579e+00,     3.9999993401e+00 ] 
+points_shifted_#7:             [    3.9999999316e+00,     3.9999955192e+00,    -3.9999999060e+00 ] 
+points_shifted_#8:             [    3.9999997434e+00,    -6.4323772160e-01,     5.9411572644e-01 ] 
+points_shifted_#9:             [    1.4303118368e+00,    -3.9999998105e+00,    -3.9999997147e+00 ] 
+points_shifted_#10:             [   -3.9999972467e+00,     3.9999997269e+00,    -5.0918031364e-01 ] 
+nfp_new_point_shifted_.cols(): 1
+nfp_new_point_shifted_.rows(): 3
+nfp_new_point_shifted_#1       [   -3.9999972467e+00,     3.9999997269e+00,    -5.0918031364e-01 ] 
+points_abs_.cols():            10
+points_abs_.rows():            3
+points_abs_#1:                 [   -1.4626188194e+00,     1.4626188765e+00,    -1.4626188659e+00 ] 
+points_abs_#2:                 [   -1.7202547497e+00,     1.2464998073e+00,    -1.4210982184e+00 ] 
+points_abs_#3:                 [   -1.3504953971e+00,     3.7350945506e-01,    -6.4332685169e-01 ] 
+points_abs_#4:                 [   -3.1676024077e+00,     2.3842993741e+00,    -3.0643905446e+00 ] 
+points_abs_#5:                 [   -9.4626187165e+00,     9.4626187736e+00,     6.5373810312e+00 ] 
+points_abs_#6:                 [    2.5373810939e+00,     5.4626187344e+00,     2.5373804742e+00 ] 
+points_abs_#7:                 [    2.5373811122e+00,     5.4626143957e+00,    -5.4626187719e+00 ] 
+points_abs_#8:                 [    2.5373809240e+00,     8.1938115490e-01,    -8.6850313943e-01 ] 
+points_abs_#9:                 [   -3.2306982553e-02,    -2.5373809340e+00,    -5.4626185805e+00 ] 
+points_abs_#10:                 [   -5.4626160660e+00,     5.4626186034e+00,    -1.9717991795e+00 ] 
+fvalues_.cols():               10
+fvalues_.rows():               1
+fvalues_#1:                    [    3.3763949470e-15 ] 
+fvalues_#2:                    [    2.5492835062e-01 ] 
+fvalues_#3:                    [    1.0273029584e+00 ] 
+fvalues_#4:                    [    1.0760876428e+00 ] 
+fvalues_#5:                    [    2.5599999375e+02 ] 
+fvalues_#6:                    [    1.2799998459e+02 ] 
+fvalues_#7:                    [    6.3999928126e+01 ] 
+fvalues_#8:                    [    1.1270264624e+01 ] 
+fvalues_#9:                    [    7.0603288220e+01 ] 
+fvalues_#10:                    [    1.2185820250e+01 ] 
+------------------------------------------
+
+exit_flag=1
+=====================================
+
+

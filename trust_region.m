@@ -1,6 +1,6 @@
 function [x, fval] = trust_region(...
     funcs, initial_points, initial_fvalues, ...
-    bl, bu, options)
+    bl, bu, options, prob)
 % TRUST_REGION - Derivative-free trust-region algorithm
 
 % --------------------------------------------------------------------
@@ -172,7 +172,7 @@ for iter = 1:iter_max
     iteration_model_fl = is_lambda_poised(model, options);
 
     % Print summary
-    print_iteration(iter, fval_current, rho, model.radius, size(model.points_abs, 2));
+    print_iteration(iter, fval_current, rho, model.radius, size(model.points_abs, 2), prob);
 
     % Compute step
     [trial_point, predicted_red] = solve_tr_subproblem(model, bl, bu, options);

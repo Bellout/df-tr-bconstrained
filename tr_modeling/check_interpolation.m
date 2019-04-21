@@ -1,7 +1,5 @@
 function [max_diff, prob] = check_interpolation(model, prob)
 
-fprintf('%s\n', 'Calling check_interpolation');
-
 % ----------------------------------------------------------
 % Tolerance
 if model.radius < 1e-3 

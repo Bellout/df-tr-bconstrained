@@ -1,0 +1,64 @@
+
+[ rebuildModel() ]
+last_pt_included [     2.0000000000e+00 ]
+n_points         [     2.0000000000e+00 ]
+
+[ rebuildModel() ]
+last_pt_included [     1.5000000000e+01 ]
+n_points         [     2.8000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     4.0000000000e+00 ]
+n_points         [     2.9000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     1.5000000000e+01 ]
+n_points         [     5.2000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     1.5000000000e+01 ]
+n_points         [     5.3000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     7.0000000000e+00 ]
+n_points         [     5.4000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     1.5000000000e+01 ]
+n_points         [     7.1000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     1.5000000000e+01 ]
+n_points         [     6.4000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     1.5000000000e+01 ]
+n_points         [     6.4000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     5.0000000000e+00 ]
+n_points         [     6.5000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     6.0000000000e+00 ]
+n_points         [     5.4000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     2.0000000000e+00 ]
+n_points         [     5.5000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     4.0000000000e+00 ]
+n_points         [     5.3000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     3.0000000000e+00 ]
+n_points         [     5.3000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     5.0000000000e+00 ]
+n_points         [     5.3000000000e+01 ]
+
+[ rebuildModel() ]
+last_pt_included [     4.0000000000e+00 ]
+n_points         [     5.3000000000e+01 ]

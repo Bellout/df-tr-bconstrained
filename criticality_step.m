@@ -1,4 +1,4 @@
-function [model, prob] = ...
+    function [model, prob] = ...
   criticality_step(model, funcs, ...
     bl, bu, options, prob)
 
@@ -18,15 +18,16 @@ tol_f = options.tol_f;
 
 % --------------------------------------------------------------------
 initial_radius = model.radius;
-A = ~is_lambda_poised(model, options);
-B = is_old(model, options, prob);
-while (A || B)
+part=31; subp=1; print_soln_body;
 
+while ~is_lambda_poised(model, options) || is_old(model, options, prob)
+
+    part=31; subp=2; print_soln_body;
     [model, model_changed, prob] = ensure_improvement(model, ...
                                                       funcs, bl, bu, ...
                                                       options, prob);
 
-    [model.modeling_polynomials prob] = compute_polynomial_models(model, prob);
+    model.modeling_polynomials = compute_polynomial_models(model, prob);
     
     if ~model_changed
         warning('cmg:model_didnt_change', 'Model didnt change');
@@ -34,13 +35,10 @@ while (A || B)
     end
 end
 
-% --------------------------------------------------------------------
-
-crit_measure = mu*measure_criticality(model, bl, bu, prob);
-part=31; print_soln_body;
+part=31; subp=3; print_soln_body;
 
 % --------------------------------------------------------------------
-while (model.radius > crit_measure)
+while (model.radius > mu*measure_criticality(model, bl, bu, prob))
     
     model.radius = omega*model.radius;
 
@@ -57,7 +55,6 @@ while (model.radius > crit_measure)
             warning('cmg:model_didnt_change', 'Model didnt change');
             break
         end
-
     end
     
     % ----------------------------------------------------------------

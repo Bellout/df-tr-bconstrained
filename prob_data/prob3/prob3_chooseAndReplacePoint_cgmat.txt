@@ -1,0 +1,3 @@
+[ chooseAndReplacePoint() ]
+[ chooseAndReplacePoint() ]
+[ chooseAndReplacePoint() ]

@@ -1,0 +1,421 @@
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 2 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 1 ]
+(points_num == full_q_terms): [ 0 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [    0.0000000000e+00 ] 
+l_alpha:                      [    8.2040168883e-02 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    2.6067363986e-01 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 2 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 1 ]
+(points_num == full_q_terms): [ 0 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [    0.0000000000e+00 ] 
+l_alpha:                      [    8.2040168883e-02 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    2.6067363986e-01 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 3 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 1 ]
+(points_num == full_q_terms): [ 0 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [    0.0000000000e+00 ] 
+l_alpha:                      [    8.2040168883e-02 ] 
+l_alpha:                      [   -2.5881904510e-01 ] 
+p[0].coeffs:                  [   -2.5881904510e-01 ] 
+p[0].coeffs:                  [    2.5881904510e-01 ] 
+p[0].coeffs:                  [    1.4383846660e-03 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 4 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 6 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 0 ]
+(points_num == full_q_terms): [ 1 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [    0.0000000000e+00 ] 
+l_alpha:                      [    8.2040168883e-02 ] 
+l_alpha:                      [   -2.5881904510e-01 ] 
+l_alpha:                      [    1.2605235985e-01 ] 
+l_alpha:                      [    9.1645744618e-01 ] 
+l_alpha:                      [    8.7455539168e-01 ] 
+p[0].coeffs:                  [   -9.0112252431e-01 ] 
+p[0].coeffs:                  [   -2.2531696973e-02 ] 
+p[0].coeffs:                  [    3.2127265762e-02 ] 
+p[0].coeffs:                  [    4.5154627366e-02 ] 
+p[0].coeffs:                  [   -2.6810589633e-03 ] 
+p[0].coeffs:                  [   -1.5662416567e-02 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 6 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 0 ]
+(points_num == full_q_terms): [ 1 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [   -9.0112252431e-01 ] 
+l_alpha:                      [    9.8316269319e-01 ] 
+l_alpha:                      [    1.2748937272e+00 ] 
+l_alpha:                      [   -4.8570936325e-01 ] 
+l_alpha:                      [   -4.0639451949e-01 ] 
+l_alpha:                      [    6.7254794272e-01 ] 
+p[0].coeffs:                  [   -9.0112252431e-01 ] 
+p[0].coeffs:                  [   -9.2995726870e-02 ] 
+p[0].coeffs:                  [   -5.6320746323e-02 ] 
+p[0].coeffs:                  [    8.1762999832e-02 ] 
+p[0].coeffs:                  [   -2.2498833138e-02 ] 
+p[0].coeffs:                  [    2.5694538259e-02 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 6 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 0 ]
+(points_num == full_q_terms): [ 1 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [   -9.0112252431e-01 ] 
+l_alpha:                      [    2.4784098287e-01 ] 
+l_alpha:                      [    3.7611829170e-02 ] 
+l_alpha:                      [    1.2488534149e-01 ] 
+l_alpha:                      [    5.8595659316e-01 ] 
+l_alpha:                      [    1.0603941529e+00 ] 
+p[0].coeffs:                  [   -9.0112252431e-01 ] 
+p[0].coeffs:                  [   -3.3533647249e-02 ] 
+p[0].coeffs:                  [   -5.2808754658e-02 ] 
+p[0].coeffs:                  [    5.0870387505e-02 ] 
+p[0].coeffs:                  [   -1.8677143010e-03 ] 
+p[0].coeffs:                  [    2.6651977287e-02 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 6 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 0 ]
+(points_num == full_q_terms): [ 1 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [   -9.0112252431e-01 ] 
+l_alpha:                      [    2.4784098287e-01 ] 
+l_alpha:                      [    3.7611829170e-02 ] 
+l_alpha:                      [    1.2488534149e-01 ] 
+l_alpha:                      [    5.8595659316e-01 ] 
+l_alpha:                      [   -9.2350318379e-02 ] 
+p[0].coeffs:                  [   -9.9953113099e-01 ] 
+p[0].coeffs:                  [   -1.4232193960e-03 ] 
+p[0].coeffs:                  [   -6.7036349409e-04 ] 
+p[0].coeffs:                  [    5.2763187277e-02 ] 
+p[0].coeffs:                  [   -1.4507834235e-03 ] 
+p[0].coeffs:                  [    4.2018908520e-02 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 6 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 0 ]
+(points_num == full_q_terms): [ 1 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [   -9.9972013078e-01 ] 
+l_alpha:                      [    3.4643858935e-01 ] 
+l_alpha:                      [    1.3620943565e-01 ] 
+l_alpha:                      [    2.2332852083e-01 ] 
+l_alpha:                      [    1.5866329973e-01 ] 
+l_alpha:                      [    4.0938925537e-01 ] 
+p[0].coeffs:                  [   -9.9972013078e-01 ] 
+p[0].coeffs:                  [   -6.8786546382e-06 ] 
+p[0].coeffs:                  [    2.4635000398e-06 ] 
+p[0].coeffs:                  [    5.2772734693e-02 ] 
+p[0].coeffs:                  [   -1.4486803944e-03 ] 
+p[0].coeffs:                  [    4.2096420415e-02 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 1 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 1 ]
+(points_num == full_q_terms): [ 0 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [   -9.9972013078e-01 ] 
+p[0].coeffs:                  [   -9.9972013078e-01 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [   -0.0000000000e+00 ] 
+p[0].coeffs:                  [   -0.0000000000e+00 ] 
+p[0].coeffs:                  [   -0.0000000000e+00 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 2 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 1 ]
+(points_num == full_q_terms): [ 0 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [   -9.9972013078e-01 ] 
+l_alpha:                      [    1.4996801945e-06 ] 
+p[0].coeffs:                  [   -9.9972013078e-01 ] 
+p[0].coeffs:                  [   -6.1443851047e-03 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [   -0.0000000000e+00 ] 
+p[0].coeffs:                  [   -0.0000000000e+00 ] 
+p[0].coeffs:                  [   -0.0000000000e+00 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 3 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 1 ]
+(points_num == full_q_terms): [ 0 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [   -9.9972013078e-01 ] 
+l_alpha:                      [    1.4996801945e-06 ] 
+l_alpha:                      [   -1.5280650711e-07 ] 
+p[0].coeffs:                  [   -9.9972013078e-01 ] 
+p[0].coeffs:                  [   -6.1443851047e-03 ] 
+p[0].coeffs:                  [    6.2606816294e-04 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 3 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 1 ]
+(points_num == full_q_terms): [ 0 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [   -9.9972013078e-01 ] 
+l_alpha:                      [   -1.6484044593e-06 ] 
+l_alpha:                      [   -1.5280650711e-07 ] 
+p[0].coeffs:                  [   -9.9972177919e-01 ] 
+p[0].coeffs:                  [   -6.1276622107e-03 ] 
+p[0].coeffs:                  [    6.2606816295e-04 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+p[0].coeffs:                  [    0.0000000000e+00 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 6 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 0 ]
+(points_num == full_q_terms): [ 1 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [   -9.9972505686e-01 ] 
+l_alpha:                      [    3.2776754780e-06 ] 
+l_alpha:                      [    4.7732734302e-06 ] 
+l_alpha:                      [    2.5984926629e-04 ] 
+l_alpha:                      [    2.7092530295e-04 ] 
+l_alpha:                      [    1.8760323370e-03 ] 
+p[0].coeffs:                  [   -9.9999357568e-01 ] 
+p[0].coeffs:                  [   -1.6138129342e-04 ] 
+p[0].coeffs:                  [    6.9341888979e-04 ] 
+p[0].coeffs:                  [    6.8528992797e-02 ] 
+p[0].coeffs:                  [    2.5586918585e-06 ] 
+p[0].coeffs:                  [    3.8551010256e-02 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 6 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 0 ]
+(points_num == full_q_terms): [ 1 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [   -9.9972505686e-01 ] 
+l_alpha:                      [    3.2776754780e-06 ] 
+l_alpha:                      [    4.7732734302e-06 ] 
+l_alpha:                      [    2.5984926629e-04 ] 
+l_alpha:                      [    2.7844195060e-04 ] 
+l_alpha:                      [    1.8760323370e-03 ] 
+p[0].coeffs:                  [   -1.0000000000e+00 ] 
+p[0].coeffs:                  [    3.5593456373e-07 ] 
+p[0].coeffs:                  [    8.4951069365e-08 ] 
+p[0].coeffs:                  [    6.8529072841e-02 ] 
+p[0].coeffs:                  [    7.6171526526e-07 ] 
+p[0].coeffs:                  [    3.8544630839e-02 ] 
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 5 ]
+
+Compute quadratic model
+(linear_terms < points_num):  [ 1 ]
+(points_num < full_q_terms):  [ 1 ]
+
+[ computePolynomialModels() ]
+linear terms:                 [ 3 ]
+full quad terms:              [ 6 ]
+points_num:                   [ 6 ]
+
+Compute model w/ incomplete (complete) basis
+(points_num <= linear_terms): [ 0 ]
+(points_num == full_q_terms): [ 1 ]
+cmg:badly_conditioned_system: [ 0 ]
+l_alpha:                      [   -1.0000000000e+00 ] 
+l_alpha:                      [    6.4243197035e-06 ] 
+l_alpha:                      [    4.0866245962e-05 ] 
+l_alpha:                      [    6.8015544095e-06 ] 
+l_alpha:                      [    3.6817633869e-05 ] 
+l_alpha:                      [   -1.2965027370e-06 ] 
+p[0].coeffs:                  [   -1.0000000000e+00 ] 
+p[0].coeffs:                  [    6.5671821665e-07 ] 
+p[0].coeffs:                  [    4.5886535944e-08 ] 
+p[0].coeffs:                  [    6.8537780480e-02 ] 
+p[0].coeffs:                  [   -6.4981561188e-08 ] 
+p[0].coeffs:                  [    3.8552998674e-02 ] 

@@ -4,7 +4,7 @@ function [status, point_abs, fvalues, f_evaluations, prob] = ...
     
     smaller_radius = 0.618*radius;
     n_interpolating_functions = length(ff);
-    neg_polynomial = multiply_p(polynomial, -1);
+    [neg_polynomial prob] = multiply_p(polynomial, -1, prob);
     status = false;
     f_evaluations = 0;
     max_attempts = 3;

@@ -1,0 +1,455 @@
+
+[ isComplete() ]
+points_abs_.cols():        [ 2 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 2 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 3 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 3 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 3 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 5 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 5 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 6 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 6 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 7 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 7 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 8 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 8 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 9 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 9 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 8 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 8 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 9 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 9 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 7 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 8 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 8 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 9 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 9 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 9 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 5 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 5 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 6 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 6 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 7 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 7 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 8 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 8 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 9 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 9 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 10 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 1 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 5 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 5 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 3 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 3 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 3 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]
+
+[ isComplete() ]
+points_abs_.cols():        [ 4 ]
+max_terms:                 [ 10 ]
+(points_num >= max_terms): [ 0 ]

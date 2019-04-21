@@ -1,4 +1,4 @@
-function [model prob] = move_to_best_point(model, bl, bu, f, prob)
+function model = move_to_best_point(model, bl, bu, f, prob)
 %MOVE_TO_BEST_POINT Changes TR center pointer to best point
 %   bl, bu (optional) are lower and upper bounds on variables
 %   f (optional) is a function for comparison of points. It receives a

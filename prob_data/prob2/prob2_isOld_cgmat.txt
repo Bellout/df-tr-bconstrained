@@ -1,0 +1,135 @@
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    3.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    2.1589425864e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    4.7625965809e-03 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]
+
+[ isOld() ]
+distance.lpNorm<Inf>:      [    0.0000000000e+00 ] 
+tr_rad_fac:                [    6.0000000000e+00 ] 
+(dist > tr_rad_fac):       [ 0 ]

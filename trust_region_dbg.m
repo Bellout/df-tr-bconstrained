@@ -1,4 +1,4 @@
-function [x, fval] = trust_region(...
+function [x, fval] = trust_region_dbg(...
     funcs, initial_points, initial_fvalues, ...
     bl, bu, options, prob)
 % TRUST_REGION - Derivative-free trust-region algorithm
@@ -158,12 +158,15 @@ part=3; print_soln_body;
 
 % --------------------------------------------------------------------
 % Move to best point
-model = move_to_best_point(model, bl, bu);
+model = move_to_best_point(model, bl, bu, [], prob);
 
 % --------------------------------------------------------------------
 % basis = band_prioritizing_basis(size(model.points_shifted, 1));
-[ model.modeling_polynomials, prob ] = compute_polynomial_models(model, prob)
-model.modeling_polynomials{1}.coefficients
+[ model.modeling_polynomials, prob ] = compute_polynomial_models(model, prob);
+
+fprintf(['\npoints_abs:\n' repmat('%22.12e %22.12e\n',1,2) '\n'], model.points_abs);
+fprintf(['\npoints_shifted:\n' repmat('%22.12e %22.12e\n',1,2) '\n'], model.points_shifted);
+fprintf(['\nmodel.modeling_polynomials{1}.coefficients:\n' repmat('%22.12e',1,6) '\n\n'], model.modeling_polynomials{1}.coefficients);
 
 % --------------------------------------------------------------------
 % Print model data: model.modeling_polynomials.coefficients,
@@ -172,7 +175,7 @@ part=4; print_soln_body;
 
 % --------------------------------------------------------------------
 if size(model.points_abs, 2) < 2
-    [model, exitflag] = ...
+    [model, exitflag, prob] = ...
     ensure_improvement(model, funcs, bl, bu, options, prob);
 end
 
@@ -203,25 +206,25 @@ for iter = 1:iter_max
   if true || is_lambda_poised(model, options)
 
     % Move among points that are part of the model
-    model = move_to_best_point(model, bl, bu);
+    model = move_to_best_point(model, bl, bu, [], prob);
 
     model.modeling_polynomials = compute_polynomial_models(model, prob);
 
     fval_current = model.fvalues(1, model.tr_center);
     x_current = model.points_abs(:, model.tr_center);
 
-    err_model = check_interpolation(model);
+    [err_model, prob] = check_interpolation(model, prob);
 
   end
 
   % ------------------------------------------------------------------
   % Criticality step -- if we are possibly close to the optimum
   criticality_step_performed = false;
-  if norm(measure_criticality(model, bl, bu)) <= eps_c
+  if norm(measure_criticality(model, bl, bu, prob)) <= eps_c
 
     model = criticality_step(model, funcs, bl, bu, options, prob);
     criticality_step_performed = true;
-    if norm(measure_criticality(model, bl, bu)) < tol_f
+    if norm(measure_criticality(model, bl, bu, prob)) < tol_f
       break;
     end
 
@@ -233,7 +236,8 @@ for iter = 1:iter_max
   print_iteration(iter, ...
                   fval_current, ...
                   rho, model.radius, ...
-                  size(model.points_abs, 2), prob);
+                  size(model.points_abs, 2), ...
+                  prob);
 
   % ------------------------------------------------------------------
   % Compute step

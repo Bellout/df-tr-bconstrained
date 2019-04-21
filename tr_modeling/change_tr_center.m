@@ -2,17 +2,17 @@ function [model, exitflag, prob] = ...
     change_tr_center(model, new_point, ...
                      new_fvalues, options, prob)
 
-    fprintf('%s\n', 'Calling change_tr_center');
     point_added = false;
     point_exchanged = false;
-    
+
     if ~is_complete(model, prob)
         % Add this point
         relative_pivot_threshold = options.pivot_threshold;
         [model, point_added, prob] = add_point(model, ...
                                                new_point, ...
                                                new_fvalues, ...
-                                               relative_pivot_threshold, prob);
+                                               relative_pivot_threshold, ...
+                                               prob);
     end
     if point_added
         % Function add_point adds this as the last.

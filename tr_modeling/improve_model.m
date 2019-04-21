@@ -1,4 +1,4 @@
-function [model, exitflag, prob] = improve_model(model, ff, bl, bu, options, complete_only)
+function [model, exitflag, prob] = improve_model(model, ff, bl, bu, options, complete_only, prob)
 % IMPROVE_MODEL improves model to be lambda-poised (for some
 % lambda)
 
@@ -305,14 +305,16 @@ function [model, exitflag, prob] = improve_model(model, ff, bl, bu, options, com
 
     model_polynomial = polynomial_zero(dim);
     for m = 1:basis_size
-       model_polynomial = add_p(model_polynomial, ...
-                                multiply_p(basis(m), coefficients_basis(m, 1)));
+       [model_polynomial prob] = add_p(model_polynomial, ...
+                                multiply_p(basis(m), coefficients_basis(m, 1), prob), ...
+                                prob);
     end
     for nf = n_interpolating_functions:-1:2
         c_polynomial = polynomial_zero(dim);
         for m = 1:basis_size
-           c_polynomial = add_p(c_polynomial, ...
-                                    multiply_p(basis(m), coefficients_basis(m, nf)));
+           [c_polynomial prob] = add_p(c_polynomial, ...
+                                    multiply_p(basis(m), coefficients_basis(m, nf), prob), ...
+                                    prob);
         end
         other_polynomials{nf-1} = c_polynomial;
     end

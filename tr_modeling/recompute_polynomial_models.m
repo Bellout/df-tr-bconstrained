@@ -96,8 +96,8 @@ function [polynomials prob] = recompute_polynomial_models(shifted_points, fvalue
     for nf = n_interpolating_functions:-1:1
         c_polynomial = polynomial_zero(dim);
         for m = 1:basis_size
-           c_polynomial = add_p(c_polynomial, ...
-                                    multiply_p(basis(m), coefficients_basis(m, nf)));
+           [c_polynomial prob] = add_p(c_polynomial, ...
+                                    multiply_p(basis(m), coefficients_basis(m, nf)), prob);
         end
         polynomials{nf} = c_polynomial;
     end
