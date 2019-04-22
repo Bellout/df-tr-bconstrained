@@ -3,7 +3,7 @@
 % ----------------------------------------------------------
 prob = struct();
 
-prob.dbg_file='prob-soln-data-orig-reg-p8.txt';
+prob.dbg_file='prob-soln-data-orig-reg-master.txt';
 prob.dbg_file_fid = fopen(prob.dbg_file, 'w');
 
 % ----------------------------------------------------------
@@ -11,9 +11,13 @@ prob.data_file_src = [ ...
 '/home/bellout/git/MB/df-tr-bconstrained/' ...
 'prob_data/test_tr-model-data_loc.hpp'];
 
+% prob.data_file_trg = [...
+% '/home/bellout/git/IOC/FieldOpt-Research/FieldOpt' ...
+% '/Optimization/tests/optimizers/test_tr-model-data.hpp'];
+
 prob.data_file_trg = [...
-'/home/bellout/git/IOC/FieldOpt-Research/FieldOpt' ...
-'/Optimization/tests/optimizers/test_tr-model-data.hpp'];
+'/home/bellout/git/MB/FOEx/FOEx' ...
+'/dc_5Optimization/tests/optimizers/dc_5test_tr-model-data.hpp'];
 
 % ----------------------------------------------------------
 prob.dbg_file_src = [...
@@ -34,21 +38,21 @@ prob.m22_12 = '%20.10e';
 % digits(128)
 
 
-% % ----------------------------------------------------------
-% fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB1');
-% prob.pn = 'prob1';
-% prob = set_filenames(prob);
+% ----------------------------------------------------------
+fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB1');
+prob.pn = 'prob1';
+prob = set_filenames(prob);
 
-% f = @(x) (1 - x(1))^2;
+f = @(x) (1 - x(1))^2;
 
-% x0 = [-1.2;
-%       2];
+x0 = [-1.2;
+      2];
 
-% % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
-% fi=[]; bl=[]; bu=[]; opt=[];
-% [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-% printxf(x,fval,prob);
-% close_all_files(prob);
+% fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
+fi=[]; bl=[]; bu=[]; opt=[];
+[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,prob);
+close_all_files(prob);
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB2');
@@ -149,24 +153,24 @@ prob.m22_12 = '%20.10e';
 % printxf(x,fval,prob);
 % close_all_files(prob);
 
-% ----------------------------------------------------------
-fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB8');
-prob.pn = 'prob8';
-prob = set_filenames(prob);
+% % ----------------------------------------------------------
+% fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB8');
+% prob.pn = 'prob8';
+% prob = set_filenames(prob);
 
-f = @(x) (x(1)*x(2)*x(3)*x(4))^2;
+% f = @(x) (x(1)*x(2)*x(3)*x(4))^2;
 
-x0 = [0.8;
-      0.8;
-      0.8;
-      0.8];
+% x0 = [0.8;
+%       0.8;
+%       0.8;
+%       0.8];
 
 
-% fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
-fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
-close_all_files(prob);
+% % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
+% fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
+% [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+% printxf(x,fval,prob);
+% close_all_files(prob);
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB9');
@@ -206,7 +210,7 @@ close_all_files(prob);
 % printxf(x,fval,prob);
 % close_all_files(prob);
 
-% ----------------------------------------------------------
+% % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB11');
 % prob.pn = 'prob11';
 % prob = set_filenames(prob);
@@ -226,7 +230,7 @@ print_soln_tail;
 fclose(prob.fid);
 fclose(prob.dbg_file_fid);
 
-% system(['cp ' data_file_src ' ' data_file_trg ])
+system(['cp ' prob.data_file_src ' ' prob.data_file_trg ]);
 
 function [] = printxf(x, fval, prob)
   fprintf(prob.dbg_file_fid, [ '\nx= ' repmat('%20.10e', 1, size(x, 1))], x);

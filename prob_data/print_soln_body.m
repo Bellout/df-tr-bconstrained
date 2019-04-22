@@ -30,6 +30,7 @@ case 1
   fprintf(prob.fid, ['\n' tab '// ' ln ln ln '\n'], prob.pn);
   fprintf(prob.fid, [tab '// ' ln '  %s  ' ln '\n'], prob.pn);
   fprintf(prob.fid, [tab '// ' ln ln ln '\n\n'], prob.pn);
+  fprintf(prob.fid, [tab '%s.name = "%s";\n' ], prob.pn, prob.pn);
 
   % ------------------------------------------------------------------
   % Print seed
@@ -265,6 +266,11 @@ case 5
   tlt = [ 'C++ POINT NEW FUNCTION ' ];
   fprintf(prob.fid, '\n%s\n%s\n\n', [tab '// ' ln2 ln2 ln2], [ tab '// ' tlt]);
 
+  fprintf(prob.fid, '%s\n', ...
+    [tab prob.pn '.pnp.resize(' ...
+    num2str(size(pnp.coefficients, 1)) ',' ...
+    num2str(size(pnp.coefficients, 2)) ');']);
+
   % ------------------------------------------------------------------
   % C++ [FORMAT]
   frmt_pnp = [ repmat([mf ', '], 1, size(pnp.coefficients,1)-1) [mf '; \n']];
@@ -275,7 +281,7 @@ case 5
   fprintf(prob.fid, ...
         [tab prob.pn '.pnp.col(' num2str(1-1) ') << ' frmt_pnp], ...
         pnp.coefficients);
-  fprintf(prob.fid, [tab 'v_pnp.push_back(' prob.pn '.pnp);\n' ]);
+  fprintf(prob.fid, [tab prob.pn '.v_pnp.push_back(' prob.pn '.pnp);\n' ]);
 
 case 6
 
@@ -287,6 +293,11 @@ case 6
   tlt = [ 'C++ POINT SOLVE TR SUBPROBLEM ' ];
   fprintf(prob.fid, '\n%s\n%s\n\n', [tab '// ' ln2 ln2 ln2], [ tab '// ' tlt]);
 
+  fprintf(prob.fid, '%s\n', ...
+    [tab prob.pn '.obp.resize(' ...
+    num2str(size(obp.coefficients, 1)) ',' ...
+    num2str(size(obp.coefficients, 2)) ');']);
+
   % ------------------------------------------------------------------
   % C++ [FORMAT]
   frmt_obp = [ repmat([mf ', '], 1, size(obp.coefficients,1)-1) [mf '; \n']];
@@ -297,7 +308,7 @@ case 6
   fprintf(prob.fid, ...
         [tab prob.pn '.obp.col(' num2str(1-1) ') << ' frmt_obp], ...
         obp.coefficients);
-  fprintf(prob.fid, [tab 'v_obp.push_back(' prob.pn '.obp);\n' ]);
+  fprintf(prob.fid, [tab prob.pn '.v_obp.push_back(' prob.pn '.obp);\n' ]);
 
 
 case 7
@@ -355,22 +366,23 @@ case 8
   frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(x,1)-1) [m22_12 ' ] \n']];
   frmt_g    = [ '[' repmat([m22_12 ', '], 1, size(g,1)-1) [m22_12 ' ] \n']];
   frmt_H    = [ '[' repmat([m22_12 ', '], 1, size(H,1)-1) [m22_12 ' ] \n']];
-  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(polynomial.coefficients,1)-1) [m22_12 ' ] \n']];
+  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(polynomial.coefficients,2)-1) [m22_12 ' ] \n']];
   frmt_tr_c = [ '[' repmat([m22_12 ', '], 1, size(x_tr_center,1)-1) [m22_12 ' ] \n']];
 
   % ------------------------------------------------------------------
-  fprintf(prob.fid_minimizeTr, ['[ minimizeTr() ]\n']);  
+  fprintf(prob.fid_minimizeTr, ['\n[ minimizeTr() ]\n']);  
 
-  fprintf(prob.fid_minimizeTr, ['Debug input polyn/x_tr_center/radius:\n']);
-  fprintf(prob.fid_minimizeTr, ['polyn.coeffs ' frmt_p ], polynomial.coefficients);
-  fprintf(prob.fid_minimizeTr, ['x_tr_center  ' frmt_tr_c ], x_tr_center');
-  fprintf(prob.fid_minimizeTr, ['radius ' m22_12 ' | tol_tr ' m22_12 '\n' ], radius, tol_tr);
+  % fprintf(prob.fid_minimizeTr, ['Debug input polyn/x_tr_center/radius:\n']);
+  fprintf(prob.fid_minimizeTr, ['radius                         [' m22_12 ' ]\n' ], radius);
+  fprintf(prob.fid_minimizeTr, ['x_tr_center.lpNorm<Infinity>() [' m22_12 ' ]\n' ], tol_arg);
+  fprintf(prob.fid_minimizeTr, ['tol_tr                         [' m22_12 ' ]\n' ], tol_tr);
+  fprintf(prob.fid_minimizeTr, ['p.coeffs                       ' frmt_p ], polynomial.coefficients');
 
   fprintf(prob.fid_minimizeTr, '\n');
   fprintf(prob.fid_minimizeTr, ['Debug x0 + bounds_mod:\n']);
-  fprintf(prob.fid_minimizeTr, ['x0     ' frmt_x ], x0);
-  fprintf(prob.fid_minimizeTr, ['bl_mod ' frmt_bnd ], bl_mod);
-  fprintf(prob.fid_minimizeTr, ['bu_mod ' frmt_bnd ], bu_mod);
+  fprintf(prob.fid_minimizeTr, ['x0 = x_tr_center               ' frmt_x ], x0);
+  fprintf(prob.fid_minimizeTr, ['bl_mod                         ' frmt_bnd ], bl_mod);
+  fprintf(prob.fid_minimizeTr, ['bu_mod                         ' frmt_bnd ], bu_mod);
 
   fprintf(prob.fid_minimizeTr, '\n');
   fprintf(prob.fid_minimizeTr, ['Debug p-matrices c, g, H:\n']);
@@ -380,13 +392,14 @@ case 8
 
   fprintf(prob.fid_minimizeTr, '\n');
   fprintf(prob.fid_minimizeTr, ['Debug computed gx, xHx values:\n']);
-  fprintf(prob.fid_minimizeTr, ['gx  [ ' [m22_12 ' ]\n'] ], gx);
-  fprintf(prob.fid_minimizeTr, ['xHx [ ' [m22_12 ' ]\n'] ], xHx);
+  fprintf(prob.fid_minimizeTr, ['gx:    [ ' [m22_12 ' ]\n'] ], gx);
+  fprintf(prob.fid_minimizeTr, ['xHx:   [ ' [m22_12 ' ]\n'] ], xHx);
 
   fprintf(prob.fid_minimizeTr, '\n');
   fprintf(prob.fid_minimizeTr, ['Debug xsol, fval [fmincon/SNOPT]::\n']);
-  fprintf(prob.fid_minimizeTr, ['xsol ' frmt_x ], x);
-  fprintf(prob.fid_minimizeTr, ['fval [' [m22_12 ' ]\n'] ], fval);  
+  fprintf(prob.fid_minimizeTr, ['xsol      ' frmt_x ], x);
+  fprintf(prob.fid_minimizeTr, ['fval      [' [m22_12 ' ]\n'] ], fval);
+  fprintf(prob.fid_minimizeTr, ['exitflag: [ %i ]\n' ], exitflag);  
 
 case 10  
 
