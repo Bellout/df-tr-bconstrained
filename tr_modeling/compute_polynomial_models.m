@@ -12,9 +12,9 @@ function [polynomials prob] = compute_polynomial_models(model, prob)
 
     ca = (linear_terms < points_num);
     cb = (points_num < full_q_terms);
+    part=66; subp=2; print_soln_body;    
     if  ca && cb
 
-        part=66; subp=2; print_soln_body;
         % Compute quadratic model
         % fprintf('%s\n', 'Calling compute quadratic model');
         [polynomials prob] = ...
@@ -30,6 +30,7 @@ function [polynomials prob] = compute_polynomial_models(model, prob)
     cc = (points_num <= linear_terms);
     cdd = (points_num == full_q_terms);
     ce = strcmp(wid, 'cmg:badly_conditioned_system');
+    part=66; subp=3; print_soln_body;
     if cc || cdd || ce
 
         % --------------------------------------------------
@@ -53,6 +54,6 @@ function [polynomials prob] = compute_polynomial_models(model, prob)
                                                      model.points_shifted(:, model.tr_center),...
                                                      prob);
         end
-        part=66; subp=3; print_soln_body;
+        part=66; subp=4; print_soln_body;
     end
 end

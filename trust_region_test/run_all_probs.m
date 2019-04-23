@@ -230,7 +230,7 @@ print_soln_tail;
 fclose(prob.fid);
 fclose(prob.dbg_file_fid);
 
-system(['cp ' prob.data_file_src ' ' prob.data_file_trg ]);
+% system(['cp ' prob.data_file_src ' ' prob.data_file_trg ]);
 
 function [] = printxf(x, fval, prob)
   fprintf(prob.dbg_file_fid, [ '\nx= ' repmat('%20.10e', 1, size(x, 1))], x);

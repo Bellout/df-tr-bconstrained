@@ -13,17 +13,25 @@ function [polynomials prob] = ...
         fvalues_diff(:, m2) = fvalues(:, m) - fvalues(:, center_i);
         m2 = m2 + 1;
     end
-    
+
+    % ------------------------------------------------------------------
     M = points_shifted'*points_shifted;
     M = 0.5*(M.^2) + M;
     
+    part=73; subp=1; print_soln_body;
+
     
+    % ------------------------------------------------------------------
     % Solve symmetric system
     sym_opts.SYM = true;
     [mult_mn, M_rcond] = linsolve(M, fvalues_diff', sym_opts);
+    part=73; subp=2; print_soln_body;
+
+
     if M_rcond < 1e4*eps(1)
         % This shouldn't happen
         warning('cmg:badly_conditioned_system', 'Badly conditioned system');
+        part=73; subp=3; print_soln_body;
     end
     
     for n = 1:functions_num
@@ -37,6 +45,7 @@ function [polynomials prob] = ...
         c = fvalues(n, center_i);
 
         polynomials{n} = matrices_to_polynomial(c, g, H);
+        part=73; subp=4; print_soln_body;
     end
 
 end

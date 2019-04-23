@@ -454,7 +454,7 @@ case 13
   fprintf(prob.fid_checkInterpolation, ['max_diff    [' [m22_12 ' ]\n'] ], max_diff);
 
   fprintf(prob.fid_checkInterpolation, '\n');
-  fprintf(prob.fid_checkInterpolation, ['A: fvalues(k, :)      ' frmt_x ], A');
+  fprintf(prob.fid_checkInterpolation, ['A: fvalues(k, :)      ' frmt_A ], A');
   fprintf(prob.fid_checkInterpolation, ['B: max(fvalues(k, :)) [' [m22_12 ' ]\n'] ], B);
   fprintf(prob.fid_checkInterpolation, ['C: tol_1*B            [' [m22_12 ' ]\n'] ], C);
   fprintf(prob.fid_checkInterpolation, ['D: max(C, tol_2)      [' [m22_12 ' ]\n'] ], D);
@@ -820,8 +820,6 @@ case 33
 
 
 
-
-
 case 34
 
   % ------------------------------------------------------------------
@@ -1139,7 +1137,9 @@ switch subp
     fprintf(prob.fid_computePolynomialModels, ['(points_num <= linear_terms): [ %i ]\n'], cc);
     fprintf(prob.fid_computePolynomialModels, ['(points_num == full_q_terms): [ %i ]\n'], cdd);
     fprintf(prob.fid_computePolynomialModels, ['cmg:badly_conditioned_system: [ %i ]\n'], ce);
+    fprintf(prob.fid_computePolynomialModels, ['last warning:                 [ %s  ]\n'], wid);
 
+  case 4
     fprintf(prob.fid_computePolynomialModels, ['l_alpha:                      ' frmt_x ], l_alpha');
     fprintf(prob.fid_computePolynomialModels, ['p[0].coeffs:                  ' frmt_x ], ...
             polynomials{1}.coefficients');
@@ -1229,13 +1229,22 @@ case 72
 
 case 73
   % ------------------------------------------------------------------
-  % chooseAndReplacePoint()
+  % computeQuadraticMNPolynomials()
+  m22_12 = prob.m22_12;
+  frmt_ps = [ '[' repmat([m22_12 ', '], 1, size(points_shifted,1)-1) [m22_12 ' ] \n']];
+  frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
 
   switch subp
     case 1
-      fprintf(prob.fid_chooseAndReplacePoint, ['[ chooseAndReplacePoint() ]\n']);
+      fprintf(prob.fid_computeQuadraticMNPolynomials, ['[ computeQuadraticMNPolynomials() ]\n']);
+      fprintf(prob.fid_computeQuadraticMNPolynomials, ['ps: points_shifted             ' frmt_ps ], points_shifted);
+      fprintf(prob.fid_computeQuadraticMNPolynomials, ['fvalues_diff                   ' frmt_f ], fvalues_diff'); 
+      fprintf(prob.fid_computeQuadraticMNPolynomials, ['M = 0.5*(M.^2) + M; M=ps''*ps  [' [m22_12 ' ]\n'] ], M); 
 
     case 2
+      fprintf(prob.fid_computeQuadraticMNPolynomials, ['Solve symmetric system\n']);
+      fprintf(prob.fid_computeQuadraticMNPolynomials, ['M_rcond                        [' [m22_12 ' ]\n'] ], M_rcond); 
+      fprintf(prob.fid_computeQuadraticMNPolynomials, ['mult_mn                        [' [m22_12 ' ]\n'] ], mult_mn); 
 
 
 
