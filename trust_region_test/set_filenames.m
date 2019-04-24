@@ -181,6 +181,15 @@ fn = [ prob.pn CN '_minimizeTr' tag '.txt' ];
 prob.fid_minimizeTr = fopen([ pdir '/' fn ], 'w');
 prob.trg_minimizeTr = [ pdir '/' fn ];
 
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_tryToAddPoint' tag '.txt' ];
+prob.fid_tryToAddPoint = fopen([ pdir '/' fn ], 'w');
+prob.trg_tryToAddPoint = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_addPoint' tag '.txt' ];
+prob.fid_addPoint = fopen([ pdir '/' fn ], 'w');
+prob.trg_addPoint = [ pdir '/' fn ];
 
 % MATH
 % --------------------------------------------------------------------

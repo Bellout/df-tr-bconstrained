@@ -16,6 +16,8 @@ function [model, exitflag, prob] = add_point(model, new_point, ...
     else
         false; % should this ever happen?
     end
+
+    part=77; subp=1; print_soln_body;
     
     next_position = last_p+1;
     if next_position == 1

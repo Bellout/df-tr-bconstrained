@@ -11,7 +11,7 @@ function [trial_point, trial_decrease, prob] = ...
   obj_pol_o = model.modeling_polynomials{1};
   x_tr_center = model.points_abs(:, model.tr_center);
 
-  fprintf(prob.fid_shiftPolynomial, ['\n[ solveTrSubproblem() ]\n']);
+  fprintf(prob.fid_shiftPolynomial, ['[ solveTrSubproblem() ]\n']);
   obj_pol_s = shift_polynomial(obj_pol_o, -x_tr_center, prob); % Shift to origin
   radius = model.radius;
 
@@ -23,6 +23,7 @@ function [trial_point, trial_decrease, prob] = ...
   part=6; print_soln_body;  
 
   % ------------------------------------------------------------------
+  fprintf(prob.fid_minimizeTr, ['[ solveTrSubproblem() ]\n']);
   [trial_point, trial_fval, exitflag, prob] = ...
       minimize_tr(obj_pol, x_tr_center, radius, ...
                   bl, bu, prob, true);

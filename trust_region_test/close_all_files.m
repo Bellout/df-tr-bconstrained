@@ -36,6 +36,8 @@ fclose(prob.fid_isOld);
 fclose(prob.fid_chooseAndReplacePoint);
 fclose(prob.fid_pointNew);
 fclose(prob.fid_minimizeTr);
+fclose(prob.fid_tryToAddPoint);
+fclose(prob.fid_addPoint);
 fclose(prob.fid_sortVectorByIndex);
 fclose(prob.fid_sortVectorByIndexRow);
 fclose(prob.fid_sortMatrixByIndex);
