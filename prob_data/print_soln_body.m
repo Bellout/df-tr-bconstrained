@@ -1365,7 +1365,7 @@ case 76
       fprintf(prob.fid_tryToAddPoint, ['cached_points      ' frmt_cf ], model.cached_points);
 
     case 4
-      fprintf(prob.fid_tryToAddPoint, ['exitflag:            [ %i ]\n' ], exitflag);
+      fprintf(prob.fid_tryToAddPoint, ['exitflag:          [ %i ]\n' ], exitflag);
       fprintf(prob.fid_tryToAddPoint, ENDSTR);
 
   end  
@@ -1398,7 +1398,7 @@ case 78
       fprintf(prob.fid_changeTrCenter, ['[ changeTrCenter() ]\n']);
 
     case 2
-      fprintf(prob.fid_tryToAddPoint, ['(!is_complete):    [ %i ]\n'], ~is_complete(model, prob));      
+      fprintf(prob.fid_changeTrCenter, ['(!is_complete):    [ %i ]\n'], ~is_complete(model, prob));      
       % fprintf(prob.fid_addPoint, ['pivot_threshold:   [' [m22_12 ' ]\n'] ], pivot_threshold);
       % fprintf(prob.fid_addPoint, ['new_point_shifted: ' frmt_x ], new_point_shifted);
       % fprintf(prob.fid_addPoint, ['shift_center:      ' frmt_x ], shift_center);
@@ -1417,5 +1417,261 @@ case 78
 
 
 
+
+
+
+
+
+case 99
+  % ------------------------------------------------------------------
+  % TrustRegionModel()
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(new_point,1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(TrustRegionModel, ['[ TrustRegionModel() ]\n']);
+
+    case 2
+
+    case 3
+
+      fprintf(prob.TrustRegionModel, ENDSTR);
+
+  end 
+
+case 100
+  % ------------------------------------------------------------------
+  % TrustRegionOptimization()
+  % frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(new_point,1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_TrustRegionOptimization, ['[ TrustRegionOptimization() ]\n']);
+
+    case 2
+
+    case 3
+
+      fprintf(prob.fid_TrustRegionOptimization, ENDSTR);
+
+  end 
+
+case 101
+  % ------------------------------------------------------------------
+  % iterate()
+  
+  frmt_x = [ '[' repmat([m22_12 ', '], 1, size(initial_points(:, 1),1)-1) [m22_12 ' ] \n']];
+  % frmt_f = [ '[' repmat([m22_12 ', '], 1, size(initial_fvalues(:, 1),1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_iterate, ['[ iterate() ]\n']);
+      fprintf(prob.fid_iterate, ['Iteration#    [ %i ];\n'], 0);
+
+    case 2
+      fprintf(prob.fid_iterate, ['Iteration #0\n']);      
+
+    case 3
+
+      fprintf(prob.fid_iterate, ENDSTR);
+
+  end 
+
+case 102
+  % ------------------------------------------------------------------
+  % handleEvaluatedCase()
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(initial_points(:, k),1)-1) [m22_12 ' ] \n']];
+  frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(initial_fvalues(:, k),1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_handleEvaluatedCase, ['[ handleEvaluatedCase() ]\n']);
+      fprintf(prob.fid_handleEvaluatedCase, ['iteration#    [ %i ];\n'], 0);
+      fprintf(prob.fid_handleEvaluatedCase, ['point:        ' frmt_x ], initial_points(:, k));
+      fprintf(prob.fid_handleEvaluatedCase, ['fvalue:       ' frmt_f ], initial_fvalues(:, k));
+
+    case 2
+
+      fprintf(prob.fid_handleEvaluatedCase, ['[ handleEvaluatedCase() ]\n']);
+      fprintf(prob.fid_handleEvaluatedCase, ['iteration#    [ %i ];\n'], 0);
+      fprintf(prob.fid_handleEvaluatedCase, ['point:        ' frmt_x ], initial_points(:, k));
+      fprintf(prob.fid_handleEvaluatedCase, ['fvalue:       ' frmt_f ], initial_fvalues(:, k));
+
+    case 3
+
+      fprintf(prob.fid_handleEvaluatedCase, ENDSTR);
+
+  end 
+
+case 103
+  % ------------------------------------------------------------------
+  % updateRadius()
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(new_point,1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_updateRadius, ['[ updateRadius() ]\n']);
+
+    case 2
+
+    case 3
+
+      fprintf(prob.fid_updateRadius, ENDSTR);
+
+  end
+
+case 104
+  % ------------------------------------------------------------------
+  % computeInitialPoints()
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(initial_points(:, 1),1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_computeInitialPoints, ['[ computeInitialPoints() ]\n']);
+      fprintf(prob.fid_computeInitialPoints, ['init_point:        ' frmt_x ], initial_points(:, 1));
+
+      fprintf(prob.fid_addInitializationCase, ['init_point:        ' frmt_x ], initial_points(:, 1));
+      
+
+    case 2
+      fprintf(prob.fid_computeInitialPoints, ['scnd_point:        ' frmt_x ], initial_points(:, 2));
+      fprintf(prob.fid_computeInitialPoints, ENDSTR);
+
+      fprintf(prob.fid_addInitializationCase, ['scnd_point:        ' frmt_x ], initial_points(:, 1));
+
+    case 3
+
+  end
+
+case 105
+  % ------------------------------------------------------------------
+  % setLowerUpperBounds()
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(new_point,1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_setLowerUpperBounds, ['[ setLowerUpperBounds() ]\n']);
+
+    case 2
+
+    case 3
+
+      fprintf(prob.fid_setLowerUpperBounds, ENDSTR);
+
+  end
+
+case 106
+  % ------------------------------------------------------------------
+  % IsFinished()
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(new_point,1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_IsFinished, ['[ IsFinished() ]\n']);
+
+    case 2
+
+    case 3
+
+      fprintf(prob.fid_IsFinished, ENDSTR);
+
+  end
+
+
+case 107
+  % ------------------------------------------------------------------
+  % areInitPointsComputed()
+  % frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(new_point,1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_areInitPointsComputed, ['[ areInitPointsComputed() ]\n']);
+      fprintf(prob.fid_areInitPointsComputed, ['init_points_computed_: [ 0 ];\n']);
+
+    case 2
+      fprintf(prob.fid_areInitPointsComputed, ['init_points_computed_: [ 1 ];\n']);
+      fprintf(prob.fid_areInitPointsComputed, ENDSTR);
+
+    case 3
+
+  end 
+
+case 108
+  % ------------------------------------------------------------------
+  % isInitialized()
+  % frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(new_point,1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_isInitialized, ['[ isInitialized() ]\n']);
+      fprintf(prob.fid_isInitialized, ['is_initialized_: [ 0 ];\n']);
+
+    case 2
+
+    case 3
+
+      fprintf(prob.fid_isInitialized, ENDSTR);
+
+  end
+
+case 109
+  % ------------------------------------------------------------------
+  % getInitializationCases()
+  % frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(new_point,1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_getInitializationCases, ['[ getInitializationCases() ]\n']);
+      fprintf(prob.fid_getInitializationCases, ['#cases: [ %i ];\n'], n_initial_points);
+      fprintf(prob.fid_getInitializationCases, ENDSTR);
+
+  end
+
+case 110
+  % ------------------------------------------------------------------
+  % projectToBounds()
+  % frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(new_point,1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_projectToBounds, ['[ projectToBounds() ]\n']);
+
+    case 2
+
+    case 3
+
+      fprintf(prob.fid_projectToBounds, ENDSTR);
+
+  end 
+
+case 111
+  % ------------------------------------------------------------------
+  % projectToBounds()
+  % frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(new_point,1)-1) [m22_12 ' ] \n']];
+
+  switch subp
+    
+    case 1
+      fprintf(prob.fid_projectToBounds, ['[ projectToBounds() ]\n']);
+
+    case 2
+
+    case 3
+
+      fprintf(prob.fid_projectToBounds, ENDSTR);
+
+  end 
 
 end

@@ -44,3 +44,21 @@ fclose(prob.fid_sortMatrixByIndex);
 fclose(prob.fid_nfpBasis);
 fclose(prob.fid_matricesToPolynomial);
 fclose(prob.fid_coefficientsToMatrices);
+fclose(prob.fid_TrustRegionModel);
+
+fclose(prob.fid_addInitializationCase);
+fclose(prob.fid_areInitPointsComputed);
+fclose(prob.fid_isInitialized);
+fclose(prob.fid_getInitializationCases);
+
+
+% OPT
+fclose(prob.fid_TrustRegionOptimization);
+fclose(prob.fid_iterate);
+fclose(prob.fid_handleEvaluatedCase);
+fclose(prob.fid_updateRadius);
+fclose(prob.fid_computeInitialPoints);
+fclose(prob.fid_setLowerUpperBounds);
+fclose(prob.fid_IsFinished);
+fclose(prob.fid_projectToBounds);
+

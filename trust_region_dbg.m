@@ -43,6 +43,8 @@ if nargin < 3
 end
 
 % --------------------------------------------------------------------
+part=100; subp=1;print_soln_body;
+
 debugging_on = false;
 tol_radius = options.tol_radius;
 tol_f = options.tol_f;
@@ -80,10 +82,10 @@ if (~isempty(bl) && ~isempty(find(initial_points(:, 1) < bl, 1))) || ...
 
      initial_fvalues(:, 1) = ...
      evaluate_new_fvalues(funcs, initial_points(:, 1));
-
+     
   end
-
 end
+part=104; subp=1;print_soln_body;
 
 % --------------------------------------------------------------------
 % Compute 2nd point
@@ -119,6 +121,19 @@ if n_initial_points == 1
   n_initial_points = 2;
 
 end
+part=104; subp=2; print_soln_body;
+
+
+
+
+
+
+
+
+
+
+
+
 
 % Set formats for x and f --------------------------------------------
 part=0; print_soln_body;
@@ -127,15 +142,30 @@ part=0; print_soln_body;
 part=1; print_soln_body;
 
 % --------------------------------------------------------------------
+part=100; subp=1; print_soln_body; % TrustRegionOptimization()
+
+part=107; subp=1; print_soln_body; % areInitPointsComputed() to false
+part=108; subp=1; print_soln_body;  % set isInitialized() to false
+
 % Calculating function values for other points of the set
 if length(initial_fvalues) < n_initial_points
+  part=101; subp=1; print_soln_body; % iterate()
+  part=109; subp=1; print_soln_body; % getInitializationCases()
+
   for k = 1:n_initial_points
+
     [initial_fvalues(:, k), succeeded] = ...
     evaluate_new_fvalues(funcs, initial_points(:, k));
+    part=102; subp=1; print_soln_body; %% handleEvaluatedCase()
+
+
     if ~succeeded
       error('cmg:bad_starting_point', 'Bad starting point');
     end
   end
+
+  part=101; subp=2; print_soln_body; % iterate()
+  part=107; subp=2; print_soln_body; % areInitPointsComputed() to true
 end
 
 % --------------------------------------------------------------------

@@ -222,12 +222,79 @@ fn = [ prob.pn CN '_coefficientsToMatrices' tag '.txt' ];
 prob.fid_coefficientsToMatrices = fopen([ pdir '/' fn ], 'w');
 prob.trg_coefficientsToMatrices = [ pdir '/' fn ];
 
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_TrustRegionModel' tag '.txt' ];
+prob.fid_TrustRegionModel = fopen([ pdir '/' fn ], 'w');
+prob.trg_TrustRegionModel = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_addInitializationCase' tag '.txt' ];
+prob.fid_addInitializationCase = fopen([ pdir '/' fn ], 'w');
+prob.trg_addInitializationCase = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_areInitPointsComputed' tag '.txt' ];
+prob.fid_areInitPointsComputed = fopen([ pdir '/' fn ], 'w');
+prob.trg_areInitPointsComputed = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_isInitialized' tag '.txt' ];
+prob.fid_isInitialized = fopen([ pdir '/' fn ], 'w');
+prob.trg_isInitialized = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_getInitializationCases' tag '.txt' ];
+prob.fid_getInitializationCases = fopen([ pdir '/' fn ], 'w');
+prob.trg_getInitializationCases = [ pdir '/' fn ];
+
+
+
 % SOLVER
 
 
 % ====================================================================
 
 CN = '_TROpt_';
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_TrustRegionOptimization' tag '.txt' ];
+prob.fid_TrustRegionOptimization = fopen([ pdir '/' fn ], 'w');
+prob.trg_TrustRegionOptimization = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_iterate' tag '.txt' ];
+prob.fid_iterate = fopen([ pdir '/' fn ], 'w');
+prob.trg_iterate = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_handleEvaluatedCase' tag '.txt' ];
+prob.fid_handleEvaluatedCase = fopen([ pdir '/' fn ], 'w');
+prob.trg_handleEvaluatedCase = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_updateRadius' tag '.txt' ];
+prob.fid_updateRadius = fopen([ pdir '/' fn ], 'w');
+prob.trg_updateRadius = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_computeInitialPoints' tag '.txt' ];
+prob.fid_computeInitialPoints = fopen([ pdir '/' fn ], 'w');
+prob.trg_computeInitialPoints = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_setLowerUpperBounds' tag '.txt' ];
+prob.fid_setLowerUpperBounds = fopen([ pdir '/' fn ], 'w');
+prob.trg_setLowerUpperBounds = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_IsFinished' tag '.txt' ];
+prob.fid_IsFinished = fopen([ pdir '/' fn ], 'w');
+prob.trg_IsFinished = [ pdir '/' fn ];
+
+% --------------------------------------------------------------------
+fn = [ prob.pn CN '_projectToBounds' tag '.txt' ];
+prob.fid_projectToBounds = fopen([ pdir '/' fn ], 'w');
+prob.trg_projectToBounds = [ pdir '/' fn ];
 
 
 

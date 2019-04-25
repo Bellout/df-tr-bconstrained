@@ -13,7 +13,7 @@ function [model, exitflag, prob] = ...
 
     % Add this point
     relative_pivot_threshold = options.add_threshold;
-    
+
     part=76; subp=2; print_soln_body;
     fprintf(prob.fid_addPoint, ['[ tryToAddPoint() ]\n']);
     [model, point_added, prob] = add_point(model, new_point, ...
@@ -43,4 +43,5 @@ function [model, exitflag, prob] = ...
     exitflag = 1;
   end
 
+part=76; subp=4; print_soln_body;
 end
