@@ -17,13 +17,13 @@ function model = move_to_best_point(model, bl, bu, f, prob)
 
 
     best_i = find_best_point(model, bl, bu, f);
-    part=26; print_soln_body;
+    part=26; subp=1; print_soln_body;
 
 
     if best_i ~= model.tr_center
         model.tr_center = best_i;
     end
-    part=27; print_soln_body;
+    part=26; subp=2; print_soln_body;
 
     
     % Here should rebuild polynomials!!!

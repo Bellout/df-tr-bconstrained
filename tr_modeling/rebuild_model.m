@@ -13,15 +13,24 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
   % All points we know
   points_abs = [model.points_abs, model.cached_points];
   fvalues = [model.fvalues, model.cached_fvalues];
+
+  part=116; subp=1; print_soln_body; % setUpTempAllPoints() -- 13
+
   [dim, p_ini] = size(points_abs); % dimension, number of points
 
-  part=15; print_soln_body;
+  part=15; print_soln_body; % reCenterPoints() -> reBuildModel()
+
+
+
+
+
+
 
   % ------------------------------------------------------------------
   % Center will be first
   points_abs(:, [1, model.tr_center]) = points_abs(:, [model.tr_center, 1]);
   fvalues(:, [1, model.tr_center]) = fvalues(:, [model.tr_center, 1]);
-    
+
   % Calculate distances
   points_shifted = zeros(dim, p_ini);
   distances = zeros(1, p_ini);
@@ -40,15 +49,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
   points_abs = points_abs(:, pt_order);
   fvalues = fvalues(:, pt_order);
   
-  part=16; print_soln_body;
-
-
-
-
-
-
-
-
+  part=16; print_soln_body; % reCenterPoints() -> reBuildModel()
 
 
 
@@ -63,7 +64,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
 
   % ------------------------------------------------------------------
   % Building model
-  pivot_polynomials = nfp_basis(dim); % Basis of Newton
+  pivot_polynomials = nfp_basis(dim, prob); % Basis of Newton
                                       % Fundamental Polynomials
   polynomials_num = length(pivot_polynomials);
   pivot_values = zeros(1, polynomials_num);

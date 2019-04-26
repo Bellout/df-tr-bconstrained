@@ -43,7 +43,8 @@ if nargin < 3
 end
 
 % --------------------------------------------------------------------
-part=100; subp=1;print_soln_body;
+part=100; subp=1;print_soln_body; % TrustRegionOptimization() -- 0
+part=105; subp=1; print_soln_body; % setLowerUpperBounds() -- 1
 
 debugging_on = false;
 tol_radius = options.tol_radius;
@@ -63,6 +64,16 @@ iter_max = options.iter_max;
 initial_radius = options.initial_radius;
 radius_max = options.radius_max;
 dimension = size(initial_points, 1);
+
+% --------------------------------------------------------------------
+part=99; subp=1; print_soln_body; % TrustRegionModel() -- 2
+part=107; subp=1; print_soln_body; % areInitPointsComputed() -- 3 to false
+part=108; subp=1; print_soln_body;  % areImprPointsComputed() -- 4
+part=109; subp=1; print_soln_body;  % areReplacementPointsComputed() -- 5
+part=110; subp=1; print_soln_body;  % isInitialized() -- 6
+part=111; subp=1; print_soln_body;  % isImprovementNeeded() -- 7
+part=112; subp=1; print_soln_body;  % isReplacementNeeded() -- 8
+part=113; subp=1; print_soln_body;  % hasModelChanged() -- 9
 
 % --------------------------------------------------------------------
 if (~isempty(bl) && ~isempty(find(initial_points(:, 1) < bl, 1))) || ...
@@ -85,7 +96,7 @@ if (~isempty(bl) && ~isempty(find(initial_points(:, 1) < bl, 1))) || ...
      
   end
 end
-part=104; subp=1;print_soln_body;
+part=104; subp=1;print_soln_body; % computeInitialPoints() -- 10
 
 % --------------------------------------------------------------------
 % Compute 2nd point
@@ -121,7 +132,7 @@ if n_initial_points == 1
   n_initial_points = 2;
 
 end
-part=104; subp=2; print_soln_body;
+part=104; subp=2; print_soln_body; % computeInitialPoints() -- 10
 
 
 
@@ -141,32 +152,26 @@ part=0; print_soln_body;
 % Set prob names -----------------------------------------------------
 part=1; print_soln_body;
 
-% --------------------------------------------------------------------
-part=100; subp=1; print_soln_body; % TrustRegionOptimization()
-
-part=107; subp=1; print_soln_body; % areInitPointsComputed() to false
-part=108; subp=1; print_soln_body;  % set isInitialized() to false
 
 % Calculating function values for other points of the set
 if length(initial_fvalues) < n_initial_points
   part=101; subp=1; print_soln_body; % iterate()
-  part=109; subp=1; print_soln_body; % getInitializationCases()
+  part=114; subp=1; print_soln_body; % getInitializationCases()
 
   for k = 1:n_initial_points
 
     [initial_fvalues(:, k), succeeded] = ...
     evaluate_new_fvalues(funcs, initial_points(:, k));
     part=102; subp=1; print_soln_body; %% handleEvaluatedCase()
-
-
+    
     if ~succeeded
       error('cmg:bad_starting_point', 'Bad starting point');
     end
   end
 
-  part=101; subp=2; print_soln_body; % iterate()
-  part=107; subp=2; print_soln_body; % areInitPointsComputed() to true
+  part=101; subp=1; print_soln_body; % iterate()  
 end
+part=107; subp=2; print_soln_body; % areInitPointsComputed() to true
 
 % --------------------------------------------------------------------
 % Print initial points + obj.fvals to file
@@ -178,7 +183,13 @@ model = tr_model(initial_points, initial_fvalues, initial_radius);
 
 % --------------------------------------------------------------------
 % Rebuild model
+part=101; subp=1; print_soln_body; % iterate()
 model = rebuild_model(model, options, prob);
+
+part=107; subp=2; print_soln_body; % areInitPointsComputed() -- 3 to true
+part=108; subp=3; print_soln_body;  % areImprPointsComputed() -- 4
+part=109; subp=3; print_soln_body;  % areReplacementPointsComputed() -- 5
+part=110; subp=3; print_soln_body;  % isInitialized() -- 6
 
 % --------------------------------------------------------------------
 % Print model data: model.tr_center, model.tr_radius,
@@ -188,15 +199,16 @@ part=3; print_soln_body;
 
 % --------------------------------------------------------------------
 % Move to best point
+% fprintf(prob.fid_moveToBestPoint, ['[ moveToBestPoint() ]\n']);
 model = move_to_best_point(model, bl, bu, [], prob);
 
 % --------------------------------------------------------------------
 % basis = band_prioritizing_basis(size(model.points_shifted, 1));
 [ model.modeling_polynomials, prob ] = compute_polynomial_models(model, prob);
 
-fprintf(['\npoints_abs:\n' repmat('%22.12e %22.12e\n',1,2) '\n'], model.points_abs);
-fprintf(['\npoints_shifted:\n' repmat('%22.12e %22.12e\n',1,2) '\n'], model.points_shifted);
-fprintf(['\nmodel.modeling_polynomials{1}.coefficients:\n' repmat('%22.12e',1,6) '\n\n'], model.modeling_polynomials{1}.coefficients);
+% fprintf(['\npoints_abs:\n' repmat('%22.12e %22.12e\n',1,2) '\n'], model.points_abs);
+% fprintf(['\npoints_shifted:\n' repmat('%22.12e %22.12e\n',1,2) '\n'], model.points_shifted);
+% fprintf(['\nmodel.modeling_polynomials{1}.coefficients:\n' repmat('%22.12e',1,6) '\n\n'], model.modeling_polynomials{1}.coefficients);
 
 % --------------------------------------------------------------------
 % Print model data: model.modeling_polynomials.coefficients,
@@ -207,6 +219,8 @@ part=4; print_soln_body;
 if size(model.points_abs, 2) < 2
     [model, exitflag, prob] = ...
     ensure_improvement(model, funcs, bl, bu, options, prob);
+    part=118; subp=1; print_soln_body; % getImprovementCases() -- 20
+    part=119; subp=1; print_soln_body; % getReplacementCases() -- 21
 end
 
 % ====================================================================
@@ -226,6 +240,8 @@ delay_reduction = 0;
 
 % --------------------------------------------------------------------
 for iter = 1:iter_max
+
+  part=101; subp=2; print_soln_body; % iterate()
 
   % ------------------------------------------------------------------
   if (model.radius < tol_radius)

@@ -1,6 +1,6 @@
 function [p prob] = combine_polynomials(polynomials, coefficients, prob)
 
-    fprintf('%s\n', 'Calling combine_polynomials');
+    % fprintf('%s\n', 'Calling combine_polynomials');
     terms = length(polynomials);
     if terms == 0 || length(coefficients) ~= terms
         error();

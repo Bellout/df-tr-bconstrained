@@ -1,4 +1,4 @@
-function basis = nfp_basis(dimension)
+function basis = nfp_basis(dimension, prob)
 
     % Number of terms
     poly_num =  (dimension + 1)*(dimension + 2)/2;
@@ -34,5 +34,7 @@ function basis = nfp_basis(dimension)
             n = m;
         end
     end
+
+    part=117; subp=1; print_soln_body; % nfpBasis() -- 15
 
 end
