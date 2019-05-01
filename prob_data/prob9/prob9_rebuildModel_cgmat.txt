@@ -1,8 +1,0 @@
-
-[ rebuildModel() ]
-last_pt_included [     2.0000000000e+00 ]
-n_points         [     2.0000000000e+00 ]
-
-[ rebuildModel() ]
-last_pt_included [     6.0000000000e+00 ]
-n_points         [     2.5000000000e+01 ]
