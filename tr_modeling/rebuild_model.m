@@ -96,7 +96,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
           maxlayer = min(2*radius_factor, distances(end)/radius);
 
           str_blck = 'Linear block (we allow more points (*2))';
-          part=19; print_soln_body;
+          part=19; subp=1; print_soln_body;
           if iter > dim+1
               % We already tested all linear terms
               % We do not have points to build a FL model
@@ -110,7 +110,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
           block_end = polynomials_num;
 
           str_blck = 'Quadratic block  (being more careful)';
-          part=19; print_soln_body;
+          part=19; subp=2; print_soln_body;
       end
       maxlayer = max(1, maxlayer);
       all_layers = linspace(1, maxlayer, ceil(maxlayer));
@@ -190,7 +190,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
           poly_i = poly_i + 1;
 
           str_pts = 'Points accepted (a/f orthogonalize_block)';
-          part=24; % print_soln_body;
+          part=24; subp=1;  % print_soln_body;
 
       else
           % These points don't render good pivot value for this
@@ -204,7 +204,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
           % able to build a Fully Linear model
 
           str_pts = 'Points exchanged (a/f pivot exchange)';
-          part=24;
+          part=24; subp=2;
       end
       print_soln_body;
 

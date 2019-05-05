@@ -3,7 +3,7 @@
 % ----------------------------------------------------------
 prob = struct();
 
-prob.dbg_file='prob-soln-data-orig-reg-master.txt';
+prob.dbg_file='prob-soln-data-orig-reg-master-xe.txt';
 prob.dbg_file_fid = fopen(prob.dbg_file, 'w');
 
 % ----------------------------------------------------------
@@ -53,8 +53,9 @@ fi=[]; bl=[]; bu=[]; opt=[];
 [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 printxf(x,fval,prob);
 close_all_files(prob);
+fprintf('----------------------------------------------------\n\n');
 
-% % ----------------------------------------------------------
+% ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB2');
 % prob.pn = 'prob2';
 % prob = set_filenames(prob);
@@ -69,6 +70,7 @@ close_all_files(prob);
 % [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 % printxf(x,fval,prob);
 % close_all_files(prob);
+% fprintf('----------------------------------------------------\n\n');
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB3');
@@ -85,6 +87,7 @@ close_all_files(prob);
 % [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 % printxf(x,fval,prob);
 % close_all_files(prob);
+% fprintf('----------------------------------------------------\n\n');
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB4');
@@ -102,6 +105,7 @@ close_all_files(prob);
 % [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 % printxf(x,fval,prob);
 % close_all_files(prob);
+% fprintf('----------------------------------------------------\n\n');
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB5');
@@ -117,6 +121,7 @@ close_all_files(prob);
 % [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 % printxf(x,fval,prob);
 % close_all_files(prob);
+% fprintf('----------------------------------------------------\n\n');
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB6');
@@ -134,6 +139,7 @@ close_all_files(prob);
 % [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 % printxf(x,fval,prob);
 % close_all_files(prob);
+% fprintf('----------------------------------------------------\n\n');
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB7');
@@ -152,6 +158,7 @@ close_all_files(prob);
 % [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 % printxf(x,fval,prob);
 % close_all_files(prob);
+% fprintf('----------------------------------------------------\n\n');
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB8');
@@ -171,6 +178,7 @@ close_all_files(prob);
 % [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 % printxf(x,fval,prob);
 % close_all_files(prob);
+% fprintf('----------------------------------------------------\n\n');
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB9');
@@ -189,6 +197,7 @@ close_all_files(prob);
 % [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 % printxf(x,fval,prob);
 % close_all_files(prob);
+% fprintf('----------------------------------------------------\n\n');
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB10');
@@ -209,6 +218,7 @@ close_all_files(prob);
 % [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 % printxf(x,fval,prob);
 % close_all_files(prob);
+% fprintf('----------------------------------------------------\n\n');
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB11');
@@ -224,6 +234,7 @@ close_all_files(prob);
 % [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
 % printxf(x,fval,prob);
 % close_all_files(prob);
+% fprintf('----------------------------------------------------\n\n');
 
 % ----------------------------------------------------------
 print_soln_tail;
