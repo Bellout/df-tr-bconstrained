@@ -1,5 +1,5 @@
 function [model, model_changed, prob] = rebuild_model(model, options, prob)
-    
+
   % ------------------------------------------------------------------
   % Region considered to use points
   radius_factor = options.radius_factor;
@@ -18,7 +18,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
 
   [dim, p_ini] = size(points_abs); % dimension, number of points
 
-  part=15; print_soln_body; % reCenterPoints() -> reBuildModel()
+  part=15; subp=1; print_soln_body; % reCenterPoints() -> reBuildModel()
 
 
 
@@ -48,8 +48,8 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
 
   points_abs = points_abs(:, pt_order);
   fvalues = fvalues(:, pt_order);
-  
-  part=16; print_soln_body; % reCenterPoints() -> reBuildModel()
+
+  part=16; subp=1; print_soln_body; % reCenterPoints() -> reBuildModel()
 
 
 
@@ -78,7 +78,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
   poly_i = 2;
 
   for iter = 2:polynomials_num
-    
+
       % Gaussian elimination (using previuos points)
       [pivot_polynomials(poly_i) prob] = ...
           orthogonalize_to_other_polynomials(pivot_polynomials, ...
@@ -86,7 +86,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
                                              points_shifted, ...
                                              last_pt_included, ...
                                              prob);
-          
+
       part=18; print_soln_body;
 
       if poly_i <= dim+1
@@ -147,9 +147,9 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
           pt_next = last_pt_included + 1;
 
           points_shifted(:, [pt_next, pt_max]) = points_shifted(:, [pt_max, pt_next]);
-          
+
           points_abs(:, [pt_next, pt_max]) = points_abs(:, [pt_max, pt_next]);
-          
+
           fvalues(:, [pt_next, pt_max]) = fvalues(:, [pt_max, pt_next]);
 
           distances([pt_next, pt_max]) = distances([pt_max, pt_next]);
@@ -157,7 +157,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
           pivot_values(pt_next) = max_absval;
 
           part=22; print_soln_body;
-          
+
           % Normalize polynomial value
           [pivot_polynomials(poly_i) prob] = ...
               normalize_polynomial(pivot_polynomials(poly_i), ...
@@ -175,7 +175,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
                                                       prob);
 
           part=23; print_soln_body;
-          
+
           % Orthogonalize polynomials on present block (deffering
           % subsequent ones)
           [pivot_polynomials prob] = ...
@@ -207,7 +207,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
           part=24;
       end
       print_soln_body;
-  
+
   end
 
   model.tr_center = 1;
