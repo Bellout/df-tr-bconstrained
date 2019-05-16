@@ -21,27 +21,65 @@ iterate[0]
 iterate[0]
 setUpTempAllPoints[0]
 reCenterPoints[0]
+reCenterPoints[1]
 nfpBasis[0]
 rowPivotGaussianElimination[0]
 
-evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --multiplyPolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --
+
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[1]
+rowPivotGaussianElimination[2]-Linear
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[5]
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[6]
+rowPivotGaussianElimination[7] - orthogonalize_block
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[1]
+rowPivotGaussianElimination[2]-Linear
+rowPivotGaussianElimination[7] - pivot exchange
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[1]
+rowPivotGaussianElimination[2]-Linear
+findBestPoint
 moveToBestPoint[0]
 
 computePolynomialModels[0]
-evaluatePolynomial[0] --
+
+coefficientsToMatricesevaluatePolynomial[0] --
 nfpFiniteDifferences[0]
 multiplyPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
 shiftPolynomial[0]
+findBestPoint
 moveToBestPoint[0]
 
 computePolynomialModels[0]
-evaluatePolynomial[0] --
+
+coefficientsToMatricesevaluatePolynomial[0] --
 nfpFiniteDifferences[0]
 multiplyPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
 shiftPolynomial[0]
 
 checkInterpolation[0]
 getModelMatrices[0]
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 getModelMatrices[0]
 
 measureCriticality[0]
@@ -52,41 +90,51 @@ measureCriticality[0]
 
 shiftPolynomial[0]
 minimizeTr
-solveTrSubproblem[0]evaluatePolynomial[0] --evaluatePolynomial[0] --
+solveTrSubproblem[0]
+
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 changeTrCenter[0]
 isComplete[0]
 isComplete[0]
-addPoint[0]evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---evaluatePolynomial[0] --multiplyPolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] --addPolynomial[0] --evaluatePolynomial[0] --
-
+addPoint[0]
+choosePivotPolynomial
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+findBestPoint
 moveToBestPoint[0]
 
-
-
 computePolynomialModels[0]
-evaluatePolynomial[0] --evaluatePolynomial[0] --
+
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 nfpFiniteDifferences[0]
-
-multiplyPolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---shiftPolynomial[0]
+multiplyPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+shiftPolynomial[0]
 
 checkInterpolation[0]
 getModelMatrices[0]
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 getModelMatrices[0]
 
 measureCriticality[0]
@@ -99,67 +147,67 @@ shiftPolynomial[0]
 minimizeTr
 solveTrSubproblem[0]
 
-evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 tryToAddPoint[0]
 isComplete[0]
-
 addPoint[0]
-evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
---evaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] 
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] --addPolynomial[0] 
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] --evaluatePolynomial[0] --multiplyPolynomial[0] 
-
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --
-
+choosePivotPolynomial
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+coefficientsToMatricesevaluatePolynomial[0] --
 isComplete[0]
 isOld[0]
 ensure_improvement[0]
-
 improveModelNfp[0]
 improveModelNfp[1]
 improveModelNfp[2]
-
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0]
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+minimizeTrmultiplyPolynomial[0] --
 minimizeTr
-multiplyPolynomial[0] --
-minimizeTr
-
 improveModelNfp[3]
 improveModelNfp[0]
 improveModelNfp[1]
@@ -175,28 +223,26 @@ improveModelNfp[13]
 improveModelNfp[14]
 improveModelNfp[15]
 improveModelNfp[16]
-
-evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 improveModelNfp[17]
-
-evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0]
- --multiplyPolynomial[0] --addPolynomial[0] --evaluatePolynomial[0] 
- --multiplyPolynomial[0] --addPolynomial[0] --evaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
 improveModelNfp[18]
 improveModelNfp[19]
 improveModelNfp[14]
 improveModelNfp[20]
-
 ensure_improvement[8]
+findBestPoint
 moveToBestPoint[0]
 
 computePolynomialModels[0]
@@ -205,6 +251,10 @@ computeQuadraticMNPolynomials[0]
 
 checkInterpolation[0]
 getModelMatrices[0]
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 getModelMatrices[0]
 
 measureCriticality[0]
@@ -217,63 +267,52 @@ shiftPolynomial[0]
 minimizeTr
 solveTrSubproblem[0]
 
-evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 changeTrCenter[0]
 isComplete[0]
 isComplete[0]
 addPoint[0]
-
-evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
-
-
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] --multiplyPolynomial[0] 
-
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] 
---addPolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] --evaluatePolynomial[0] --
-
-
+choosePivotPolynomial
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+findBestPoint
 moveToBestPoint[0]
 
 computePolynomialModels[0]
@@ -282,6 +321,11 @@ computeQuadraticMNPolynomials[0]
 
 checkInterpolation[0]
 getModelMatrices[0]
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 getModelMatrices[0]
 
 measureCriticality[0]
@@ -294,88 +338,60 @@ shiftPolynomial[0]
 minimizeTr
 solveTrSubproblem[0]
 
-evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 tryToAddPoint[0]
 isComplete[0]
-
 addPoint[0]
-evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] 
-
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] 
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] --
-
-
-
-
+choosePivotPolynomial
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+coefficientsToMatricesevaluatePolynomial[0] --
 isComplete[0]
 isOld[0]
 ensure_improvement[0]
-
 improveModelNfp[0]
 improveModelNfp[1]
 improveModelNfp[2]
-
-evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] --evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+minimizeTrmultiplyPolynomial[0] --
 minimizeTr
-multiplyPolynomial[0] --
-minimizeTr
-
 improveModelNfp[3]
 improveModelNfp[0]
 improveModelNfp[1]
@@ -391,81 +407,65 @@ improveModelNfp[13]
 improveModelNfp[14]
 improveModelNfp[15]
 improveModelNfp[16]
-evaluatePolynomial[0] --multiplyPolynomial[0] --evaluatePolynomial[0] --
-
-
-
-
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 improveModelNfp[17]
-evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
-
-
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] --addPolynomial[0] 
-
-
-
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] 
-
-
-
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --
-
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
 improveModelNfp[18]
-evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] --addPolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] -
--evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 improveModelNfp[19]
 improveModelNfp[14]
 improveModelNfp[20]
-
 ensure_improvement[8]
+findBestPoint
 moveToBestPoint[0]
 
 computePolynomialModels[0]
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --
 
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 nfpFiniteDifferences[0]
-multiplyPolynomial[0] 
---multiplyPolynomial[0] 
-
---addPolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] --
+multiplyPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
 shiftPolynomial[0]
 
 checkInterpolation[0]
 getModelMatrices[0]
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 getModelMatrices[0]
 
 measureCriticality[0]
@@ -478,91 +478,74 @@ shiftPolynomial[0]
 minimizeTr
 solveTrSubproblem[0]
 
-
-evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 changeTrCenter[0]
-
 isComplete[0]
-
-evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
-
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
-
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
-
---addPolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] --
-
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+findBestPoint
 moveToBestPoint[0]
 
 computePolynomialModels[0]
 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --
-
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 nfpFiniteDifferences[0]
--- multiplyPolynomial[0] 
---multiplyPolynomial[0] 
-
---addPolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] --multiplyPolynomial[0] 
-
---addPolynomial[0] --
+multiplyPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
 shiftPolynomial[0]
 
 checkInterpolation[0]
 getModelMatrices[0]
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 getModelMatrices[0]
 
 measureCriticality[0]
+
 
 ============================================================
 
@@ -588,15 +571,6 @@ getModelMatrices[0]
 measureCriticality[0]
 
 
-
-
-
-
-
-
-
-
-
 ============================================================
 
 isOld[0]
@@ -612,15 +586,6 @@ getModelMatrices[0]
 measureCriticality[0]
 
 
-
-
-
-
-
-
-
-
-
 ============================================================
 
 isOld[0]
@@ -634,20 +599,6 @@ measureCriticality[0]
 getModelMatrices[0]
 
 measureCriticality[0]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ============================================================
@@ -655,115 +606,165 @@ measureCriticality[0]
 isOld[0]
 isComplete[0]
 isOld[0]
-
 ensure_improvement[2]
-
 setUpTempAllPoints[0]
 reCenterPoints[0]
+reCenterPoints[1]
 nfpBasis[0]
 rowPivotGaussianElimination[0]
 
-evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
 
---multiplyPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0]
-
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] 
-
---addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
-
-
-
-
---multiplyPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
-
---multiplyPolynomial[0] --addPolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
-
---multiplyPolynomial[0] --addPolynomial[0] 
---evaluatePolynomial[0]
-
- --multiplyPolynomial[0] --addPolynomial[0] 
- --evaluatePolynomial[0] --evaluatePolynomial[0] 
- --evaluatePolynomial[0] 
-
-
- --multiplyPolynomial[0] --addPolynomial[0] 
- --evaluatePolynomial[0] 
-
- --multiplyPolynomial[0] --addPolynomial[0] 
- --evaluatePolynomial[0] --evaluatePolynomial[0] 
- --evaluatePolynomial[0] --evaluatePolynomial[0] 
- --evaluatePolynomial[0] --evaluatePolynomial[0] 
- --evaluatePolynomial[0] 
-
- --multiplyPolynomial[0] --addPolynomial[0] 
- --evaluatePolynomial[0] --evaluatePolynomial[0] 
- --evaluatePolynomial[0] 
-
- --multiplyPolynomial[0] --addPolynomial[0] 
- --evaluatePolynomial[0] 
-
- --multiplyPolynomial[0] --addPolynomial[0] 
- --evaluatePolynomial[0] --evaluatePolynomial[0] 
- --evaluatePolynomial[0] 
-
- --multiplyPolynomial[0] --addPolynomial[0] 
- --evaluatePolynomial[0] 
-
- --multiplyPolynomial[0] --addPolynomial[0] 
- --evaluatePolynomial[0] --evaluatePolynomial[0] 
- --evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[1]
+rowPivotGaussianElimination[2]-Linear
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[5]
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[6]
+rowPivotGaussianElimination[7] - orthogonalize_block
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[1]
+rowPivotGaussianElimination[2]-Linear
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[5]
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[6]
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[7] - orthogonalize_block
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[1]
+rowPivotGaussianElimination[2]-Quad
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[5]
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[6]
+rowPivotGaussianElimination[7] - orthogonalize_block
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[1]
+rowPivotGaussianElimination[2]-Quad
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[7] - pivot exchange
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
+rowPivotGaussianElimination[1]
+rowPivotGaussianElimination[2]-Quad
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[4]
+coefficientsToMatricesevaluatePolynomial[0] --
+rowPivotGaussianElimination[4]-break
+rowPivotGaussianElimination[7] - pivot exchange
 ensure_improvement[5]
 ensure_improvement[6]
 ensure_improvement[8]
@@ -778,24 +779,33 @@ measureCriticality[0]
 
 
 ============================================================
+
 getModelMatrices[0]
+
 measureCriticality[0]
+
+
 ============================================================
+
 isOld[0]
 getModelMatrices[0]
+
 measureCriticality[0]
 
 
-
-
 ============================================================
+
 getModelMatrices[0]
+
 measureCriticality[0]
+
+
 ============================================================
+
 isOld[0]
 getModelMatrices[0]
-measureCriticality[0]
 
+measureCriticality[0]
 
 
 ============================================================
@@ -803,16 +813,6 @@ measureCriticality[0]
 getModelMatrices[0]
 
 measureCriticality[0]
-
-
-
-
-
-
-
-
-
-
 
 
 ============================================================
@@ -1024,41 +1024,32 @@ shiftPolynomial[0]
 minimizeTr
 solveTrSubproblem[0]
 
--- evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 isComplete[0]
 isOld[0]
-
 ensure_improvement[0]
 improveModelNfp[0]
 improveModelNfp[1]
 improveModelNfp[2]
--- evaluatePolynomial[0] --evaluatePolynomial[0] 
--- evaluatePolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] --evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
 minimizeTrmultiplyPolynomial[0] --
 minimizeTr
-
-
 improveModelNfp[3]
 improveModelNfp[0]
 improveModelNfp[1]
@@ -1074,40 +1065,29 @@ improveModelNfp[13]
 improveModelNfp[14]
 improveModelNfp[15]
 improveModelNfp[16]
-
-evaluatePolynomial[0] 
---multiplyPolynomial[0] 
---evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 improveModelNfp[17]
-evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --evaluatePolynomial[0] 
-
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --evaluatePolynomial[0] 
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] 
-
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] --evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
+orthogonalizeToOtherPolynomials
 improveModelNfp[18]
-evaluatePolynomial[0] --evaluatePolynomial[0] 
---multiplyPolynomial[0] --addPolynomial[0] 
-
---evaluatePolynomial[0] --multiplyPolynomial[0] 
---addPolynomial[0] --evaluatePolynomial[0] --
-
+coefficientsToMatricesevaluatePolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --multiplyPolynomial[0] --addPolynomial[0] --
+coefficientsToMatricesevaluatePolynomial[0] --
 improveModelNfp[19]
 improveModelNfp[14]
 improveModelNfp[20]

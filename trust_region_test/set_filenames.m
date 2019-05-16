@@ -271,7 +271,10 @@ fn = [ prob.pn '_0067_' CN '_shiftPolynomialToEndBlock' tag '.txt' ];
 prob.fid_shiftPolynomialToEndBlock = fopen([ pdir '/' fn ], 'w');
 prob.trg_shiftPolynomialToEndBlock = [ pdir '/' fn ];
 
-
+% -------------------------------------------------------------------- 67
+fn = [ prob.pn '_0075_' CN '_choosePivotPolynomial' tag '.txt' ];
+prob.fid_choosePivotPolynomial = fopen([ pdir '/' fn ], 'w');
+prob.trg_choosePivotPolynomial = [ pdir '/' fn ];
 
 
 

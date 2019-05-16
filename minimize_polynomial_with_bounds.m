@@ -5,6 +5,8 @@ function [point, value] = minimize_polynomial_with_bounds(polynomial, bl, ...
 dimension = polynomial.dimension;
 coefficients = polynomial.coefficients;
 
+fprintf(prob.fid_coefficientsToMatrices, ...
+[ '[ --> ' pad('minimizePolynomialWithBounds()', 38) ']' ]);
 [c0, g, H] = coefficients_to_matrices(dimension, coefficients);
 
 x0 = zeros(dimension, 1);

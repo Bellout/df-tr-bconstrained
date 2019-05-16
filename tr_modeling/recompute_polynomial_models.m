@@ -4,7 +4,7 @@ function [polynomials prob] = recompute_polynomial_models(shifted_points, fvalue
     n_interpolating_functions = size(fvalues, 1);
     linear_basis_size = dim + 1;
     basis_size = length(basis);
-    
+
     fprintf('%s\n', 'Calling recompute_polynomial_models');
     if points_num <= linear_basis_size
         % Linear interpolation
@@ -13,18 +13,22 @@ function [polynomials prob] = recompute_polynomial_models(shifted_points, fvalue
         M = zeros(points_num, linear_basis_size);
         for m = 1:points_num
             for n = 1:linear_basis_size
+                fprintf(prob.fid_evaluatePolynomial, ['\n[ --> recomputePolynomialModels[a] ]\n']);
                 [M(m, n) prob] = evaluate_polynomial(basis(n), shifted_points(:, m), prob);
             end
         end
-        
+
         [Q, R] = qr(M');
         l_opts.LT = true;
         u = linsolve(R(1:points_num, :)', fvalues', l_opts);
         linear_coefficients = Q(:, 1:points_num)*u;
+
         quadratic_coefficients = zeros(basis_size - linear_basis_size, ...
                                        n_interpolating_functions);
+
         coefficients_basis = [linear_coefficients;
                               quadratic_coefficients];
+
         %% DEBUG
         a_test = M\fvalues';
         linsys_error = linear_coefficients - a_test;
@@ -32,7 +36,7 @@ function [polynomials prob] = recompute_polynomial_models(shifted_points, fvalue
             warning('cmg:interp_error', 'Possible interpolation error');
         end
         %%
-        
+
     else
         % Quadratic interpolation
 
@@ -40,16 +44,17 @@ function [polynomials prob] = recompute_polynomial_models(shifted_points, fvalue
         M = zeros(points_num, basis_size);
         for m = 1:points_num
             for n = 1:basis_size
+                fprintf(prob.fid_evaluatePolynomial, ['\n[ --> recomputePolynomialModels[b] ]\n']);                
                 [M(m, n) prob] = evaluate_polynomial(basis(n), shifted_points(:, m), prob);
             end
         end
         M0 = M(:, 1);
         Ml = M(2:end, 2:linear_basis_size);
         Mq = M(2:end, linear_basis_size+1:end);
-        
+
         % Constant coefficient
         constant_coefficient = fvalues(:, 1)';
-        
+
         Fv = fvalues(:, 2:end)' - M0(2:end)*constant_coefficient;
         % Minimum norm solution
         Mmn = [Mq*Mq', Ml;
@@ -58,17 +63,17 @@ function [polynomials prob] = recompute_polynomial_models(shifted_points, fvalue
                zeros(linear_basis_size-1, n_interpolating_functions)];
         sym_opts.SYM = true;
         [sol_mn, M_rcond] = linsolve(Mmn, fmn, sym_opts);
-        
+
         % Linear coefficients
         linear_coefficients = sol_mn(points_num:end, :);
-        
+
         % Quadratic coefficients
         quadratic_coefficients = Mq'*sol_mn(1:points_num-1, :);
 
         coefficients_basis = [constant_coefficient;
                               linear_coefficients;
                               quadratic_coefficients];
-                         
+
         %% TESTING
         if M_rcond < eps()*1e4
             % This shouldn't happen

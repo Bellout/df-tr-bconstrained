@@ -5,7 +5,7 @@ function [result, prob] = check_nfp_polynomials(model, prob)
     [dim, points_num] = size(points_shifted);
     tol = 1e-6;
     result = 0;
-    
+
     for point_i = 1:points_num
         if point_i == 1
             block_beginning = 1;
@@ -15,6 +15,8 @@ function [result, prob] = check_nfp_polynomials(model, prob)
             block_beginning = dim + 2;
         end
         for poly_i = block_beginning:points_num
+
+            fprintf(prob.fid_evaluatePolynomial, ['[ --> checkNfpPolynomials() ]         ']);
             [val prob] = evaluate_polynomial(nfp_polynomials(poly_i), points_shifted(:, point_i), prob);
             if point_i == poly_i
                 correct_val = 1;

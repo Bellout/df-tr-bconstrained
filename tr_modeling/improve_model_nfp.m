@@ -176,75 +176,83 @@ function [model, exitflag, prob] = improve_model_nfp(model, ...
       % --------------------------------------------------------------
       if point_found && f_succeeded
 
-          % Update this polynomial in the set
-          pivot_polynomials(poly_i) = polynomial;
-          % Swap polynomials
-          pivot_polynomials([next_position, poly_i]) = ...
-              pivot_polynomials([poly_i, next_position]);
-          
-          part=47; print_soln_body;
+        % Update this polynomial in the set
+        pivot_polynomials(poly_i) = polynomial;
 
-          ps = points_shifted;
-          nps = new_point_shifted;
-          pa = model.points_abs;
-          fv = model.fvalues;
-          part=48; print_soln_body;
+        % Swap polynomials
+        pivot_polynomials([next_position, poly_i]) = ...
+            pivot_polynomials([poly_i, next_position]);
+        
+        part=47; print_soln_body;
 
-          % Add point
-          part=49; print_soln_body;
-          points_shifted(:, next_position) = new_point_shifted;
-          
-          % Normalize polynomial value
-          part=50; print_soln_body;
-          [pivot_polynomials(next_position) prob] = ...
-              normalize_polynomial(pivot_polynomials(next_position), ...
-                                   new_point_shifted, prob);
-          % Re-orthogonalize
-          part=51; print_soln_body;
-          pivot_polynomials(next_position) = ...
-              orthogonalize_to_other_polynomials(pivot_polynomials, ...
-                                                      next_position, ...
-                                                      points_shifted, ...
-                                                      p_ini, ...
-                                                      prob);
+        ps = points_shifted;
+        nps = new_point_shifted;
+        pa = model.points_abs;
+        fv = model.fvalues;
+        part=48; print_soln_body;
 
-          % Orthogonalize polynomials on present block (deffering
-          % subsequent ones)
-          part=52; print_soln_body;
-          pivot_polynomials = orthogonalize_block(pivot_polynomials, ...
-                                                  new_point_shifted, ...
-                                                  next_position, ...
-                                                  block_beginning, ...
-                                                  p_ini, ...
-                                                  prob);
-          
-          % Update model and recompute polynomials
-          part=53; print_soln_body;
-          model.points_abs(:, next_position) = new_point_abs;
+        % ------------------------------------------------------------
+        % Add point
+        part=49; print_soln_body;
+        points_shifted(:, next_position) = new_point_shifted;
+        
+        % ------------------------------------------------------------
+        % Normalize polynomial value
+        part=50; print_soln_body;
+        fprintf(prob.fid_normalizePolynomial, ...
+                [ '[ --> ' pad('improveModelNfp()', 38) ']\n' ]);
+        [pivot_polynomials(next_position) prob] = ...
+            normalize_polynomial(pivot_polynomials(next_position), ...
+                                 new_point_shifted, prob);
 
-          model.points_shifted = points_shifted;
-          model.fvalues(:, next_position) = new_fvalues;
-          model.pivot_polynomials = pivot_polynomials;
-          model.pivot_values(:, next_position) = new_pivot_value;
-          model.modeling_polynomials = {};
-          exitflag = true;
+        % ------------------------------------------------------------            
+        % Re-orthogonalize
+        part=51; print_soln_body;
+        pivot_polynomials(next_position) = ...
+            orthogonalize_to_other_polynomials(pivot_polynomials, ...
+                                                    next_position, ...
+                                                    points_shifted, ...
+                                                    p_ini, ...
+                                                    prob);
 
-          ps = points_shifted;
-          pa = model.points_abs;
-          fv = model.fvalues;
-          part=48; print_soln_body;
+        % ------------------------------------------------------------
+        % Orthogonalize polynomials on present block (deffering
+        % subsequent ones)
+        part=52; print_soln_body;
+        pivot_polynomials = orthogonalize_block(pivot_polynomials, ...
+                                                new_point_shifted, ...
+                                                next_position, ...
+                                                block_beginning, ...
+                                                p_ini, ...
+                                                prob);
+        
+        % Update model and recompute polynomials
+        part=53; print_soln_body;
+        model.points_abs(:, next_position) = new_point_abs;
+
+        model.points_shifted = points_shifted;
+        model.fvalues(:, next_position) = new_fvalues;
+        model.pivot_polynomials = pivot_polynomials;
+        model.pivot_values(:, next_position) = new_pivot_value;
+        model.modeling_polynomials = {};
+        exitflag = true;
+
+        ps = points_shifted;
+        pa = model.points_abs;
+        fv = model.fvalues;
+        part=48; print_soln_body;
 
       else
-          exitflag = false;
+        exitflag = false;
       end
 
     else % if: (p_ini < polynomials_num)
 
-        str_mstat1='Model is already complete';
-        part=35; print_soln_body;
+      str_mstat1='Model is already complete';
+      part=35; print_soln_body;
 
-        % The model is already complete,
-        exitflag = false;
+      % The model is already complete,
+      exitflag = false;
 
     end % end-if: (p_ini < polynomials_num)
   end

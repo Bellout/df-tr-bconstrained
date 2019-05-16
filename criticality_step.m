@@ -1,4 +1,4 @@
-    function [model, prob] = ...
+function [model, prob] = ...
   criticality_step(model, funcs, ...
     bl, bu, options, prob)
 
@@ -27,6 +27,7 @@ while ~is_lambda_poised(model, options) || is_old(model, options, prob)
                                                       funcs, bl, bu, ...
                                                       options, prob);
 
+    fprintf(prob.fid_computePolynomialModels, [ '[ --> ' pad('criticalityStep()[a]', 38) ']' ]);
     model.modeling_polynomials = compute_polynomial_models(model, prob);
     
     if ~model_changed
@@ -45,10 +46,12 @@ while (model.radius > mu*measure_criticality(model, bl, bu, prob))
     % ----------------------------------------------------------------
     while ~is_lambda_poised(model, options) || is_old(model, options, prob)
         
+        fprintf(prob.fid_ensureImprovement, [ '[ --> ' pad('criticalityStep()[a]', 38) ']' ]);
         [model, model_changed, prob] = ensure_improvement(model, ...
                                                           funcs, bl, bu, ...
                                                           options, prob);
 
+        fprintf(prob.fid_computePolynomialModels, [ '[ --> ' pad('criticalityStep()[b]', 38) ']' ]);
         [model.modeling_polynomials prob] = compute_polynomial_models(model, prob);
        
         if ~model_changed

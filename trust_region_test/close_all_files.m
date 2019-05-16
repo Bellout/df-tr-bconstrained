@@ -65,6 +65,8 @@ fclose(prob.fid_tryToAddPoint); % 65
 fclose(prob.fid_setRadius); % 66
 fclose(prob.fid_shiftPolynomialToEndBlock); % 67
 
+fclose(prob.fid_choosePivotPolynomial);
+
 
 % ====================================================================
 % OPTIMIZATION
@@ -98,7 +100,7 @@ fclose(prob.fid_projectToBounds); % 71
 % MATH
 
 fclose(prob.fid_sortVectorByIndex); % 72
-fclose(prob.fid_sortVectorByIndexRow); % 73 
+fclose(prob.fid_sortVectorByIndexRow); % 73
 fclose(prob.fid_sortMatrixByIndex); % 74
 
 

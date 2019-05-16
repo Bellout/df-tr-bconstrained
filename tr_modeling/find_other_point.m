@@ -7,7 +7,7 @@ function [point, value, prob] = ...
 % It is assumed one monomial has absolute value of 1
 % Tries to find a sufficiently good point by testing possible
 % candidates. Based on A.R. Conn's result
-    
+
 
 dimension = polynomial.dimension;
 coefficients = polynomial.coefficients;
@@ -28,6 +28,8 @@ if max_coef <= dimension
     x2 = -x1;
 else
     % In case biggest coefficient corresponds to quadratic monomial
+    fprintf(prob.fid_coefficientsToMatrices, ...
+        [ '[ --> ' pad('findOtherPointWithBounds()', 38) ']' ]);
     [~, ~, H] = coefficients_to_matrices(dimension, coefficients);
     [H1, pos_12] = max(H);
     [~, pos_2] = max(H1);
@@ -53,6 +55,9 @@ X = [x0, x1, x2, x3, x4];
 value = 0;
 for k = 1:size(X, 2)
     x = project_to_bounds(X(:, k), bl, bu);
+
+    fprintf(prob.fid_evaluatePolynomial, ...
+    [ '[ --> ' pad('findOtherPointWithBounds()', 38) ']' ]);    
     [v prob] = evaluate_polynomial(polynomial, x, prob);
     if abs(v) > abs(value)
        value = v;

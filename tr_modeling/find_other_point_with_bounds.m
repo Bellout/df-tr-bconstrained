@@ -58,6 +58,8 @@ X = [x0, x1, x2, x3, x4];
 value = 0;
 for k = 1:size(X, 2)
     x = project_to_bounds(X(:, k), bl, bu);
+    
+    fprintf(prob.fid_evaluatePolynomial, ['[ --> findOtherPointWithBounds()[1] ] ']);
     [v prob] = evaluate_polynomial(polynomial, x, prob);
     if v > 0
         Hn = -H;
@@ -80,6 +82,8 @@ for k = 1:size(X, 2)
     if norm(x) > radius
         x = (x/norm(x))*radius;
     end
+
+    fprintf(prob.fid_evaluatePolynomial, ['[ --> findOtherPointWithBounds()[2] ] ']);
     [v prob] = evaluate_polynomial(polynomial, x, prob);
     if abs(v) >= abs(value)
        value = v;

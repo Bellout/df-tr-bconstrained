@@ -1,7 +1,9 @@
-function [c, g, H] = coefficients_to_matrices(dimension, coefficients)
+function [c, g, H] = ...
+  coefficients_to_matrices(dimension, coefficients, prob)
 % Calculates polynomial in the form p(x) = c + g'*x + 0.5*x'*H*x
 
 
+part=120; subp=1; print_soln_body;
 n_terms =  (dimension + 1)*(dimension + 2)/2;
 
 if (nargin == 1)
@@ -28,6 +30,8 @@ for k = 1:dimension
         H(m, k) = H(k, m);
     end
 end
+
+part=120; subp=2; print_soln_body;
 
 end
 
