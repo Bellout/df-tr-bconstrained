@@ -201,7 +201,7 @@ part=3; print_soln_body;
 % Move to best point
 % fprintf(prob.fid_moveToBestPoint, ['[ moveToBestPoint() ]\n']);
 fprintf(prob.fid_moveToBestPoint, ...
-        [ '[ --> ' pad('moveToBestPoint()[a]', 38) ']' ]);
+        [ '[ --> ' pad('iterate()[a]', 38) ']' ]);
 model = move_to_best_point(model, bl, bu, [], prob);
 
 % --------------------------------------------------------------------
@@ -271,7 +271,7 @@ for iter = 1 : iter_max
 
     % Move among points that are part of the model
     fprintf(prob.fid_moveToBestPoint, ...
-        [ '[ --> ' pad('moveToBestPoint()[b]', 38) ']' ]);
+        [ '[ --> ' pad('iterate()[b]', 38) ']' ]);
     model = move_to_best_point(model, bl, bu, [], prob);
 
     fprintf(prob.fid_computePolynomialModels, STARTSTR);

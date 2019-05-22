@@ -605,7 +605,7 @@ case 18
   % fprintf(prob.fid_rowPivotGaussianElimination, '\n');
   fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_threshold ' frmt_f ], pivot_threshold');
   fprintf(prob.fid_rowPivotGaussianElimination, ['farthest_pt     ' frmt_f ], distances(end));
-  fprintf(prob.fid_rowPivotGaussianElimination, ['dist_farthest_pt' frmt_f ], distances(end)/radius);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['radius          ' frmt_f ], radius);
 
   fprintf(prob.fid_rowPivotGaussianElimination, '\n');
   fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_p.coeffs  ' frmt_p ], piv_p');
@@ -843,6 +843,8 @@ case 26
 
     case 1
       fprintf(prob.dbg_file_fid, '\n%s', 'moveToBestPoint[0]');
+
+      % fprintf(prob.fid_moveToBestPoint, STARTSTR);
       fprintf(prob.fid_moveToBestPoint, ['[ moveToBestPoint() ]\n']);
       fprintf(prob.fid_moveToBestPoint, ['idx_tr_center [ %i ]\n'], model.tr_center);
       fprintf(prob.fid_moveToBestPoint, ['idx_best_i    [ %i ]\n'], best_i);
@@ -852,12 +854,12 @@ case 26
       % fprintf(prob.dbg_file_fid, '\n%s', 'moveToBestPoint[1]');
       fprintf(prob.fid_moveToBestPoint, ['idx_tr_center [ %i ]\n'], model.tr_center);
 
-      fprintf(prob.fid_moveToBestPoint, ENDSTRNN);
+      fprintf(prob.fid_moveToBestPoint, ENDSTR);
 
 
     case 3
       % fprintf(prob.dbg_file_fid, '\n%s', 'moveToBestPoint[2]');
-      fprintf(prob.fid_moveToBestPoint, ENDSTRNN);
+      fprintf(prob.fid_moveToBestPoint, ENDSTR);
 
   end
 

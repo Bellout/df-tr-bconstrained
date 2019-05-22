@@ -135,7 +135,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
     for layer = all_layers
       dist_max = layer*radius;
 
-      for n = last_pt_included+1 : p_ini
+      for n = last_pt_included + 1 : p_ini
         if distances(n) > dist_max
           part=21; subp=1; print_soln_body;
           break % for(n)
@@ -143,6 +143,8 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
 
         % ----------------------------------------------------------
         part=21; subp=2; print_soln_body;
+
+points_shifted
 
         fprintf(prob.fid_evaluatePolynomial, ...
                 [ '[ --> ' pad('rowPivotGaussianElimination()', 38) ']' ]);
