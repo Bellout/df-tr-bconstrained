@@ -34,7 +34,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
   % Calculate distances
   points_shifted = zeros(dim, p_ini);
   distances = zeros(1, p_ini);
-  for n = 2:p_ini
+  for n = 2 : p_ini
     % Shift all points to TR center
     % Calculate distances
     points_shifted(:, n) = points_abs(:, n) - points_abs(:, 1);
@@ -69,13 +69,13 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
   polynomials_num = length(pivot_polynomials);
   pivot_values = zeros(1, polynomials_num);
 
-  part=17; print_soln_body;
-
   % ------------------------------------------------------------------
   % Constant term
   last_pt_included = 1;
   pivot_values(1) = 1;  % pivot_values_(0) = 1;
   poly_i = 2;  % int poly_i = 1;
+
+  part=17; print_soln_body;
 
   for iter = 2 : polynomials_num % int iter = 1; iter < polynomials_num; iter++
     % [2 3 4 5 6]; [1 2 3 4 5]
@@ -91,9 +91,10 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
     part=18; print_soln_body;
 
     % ----------------------------------------------------------------
-    if poly_i <= dim+1 % poly_i <= dim
+    if poly_i <= dim + 1 % poly_i <= dim
+
       block_beginning = 2; % block_beginning = 1;
-      block_end = dim+1; % block_end = dim;
+      block_end = dim + 1; % block_end = dim;
 
       % --------------------------------------------------------------
       % Linear block (we allow more points (*2))
@@ -102,7 +103,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
       str_blck = 'Linear block (we allow more points (*2))';
       part=19; subp=1; print_soln_body;
 
-      if iter > dim+1 % iter > dim
+      if iter > dim + 1 % iter > dim
         % We already tested all linear terms
         % We do not have points to build a FL model
         % How did this happen??? see Comment [1]
@@ -114,7 +115,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
       % --------------------------------------------------------------
       % Quadratic block -- being more careful
       maxlayer = min(radius_factor, distances(end)/radius);
-      block_beginning = dim+2; % block_beginning = dim + 1;
+      block_beginning = dim + 2; % block_beginning = dim + 1;
       block_end = polynomials_num; % block_end = polynomials_num - 1;
 
       str_blck = 'Quadratic block (being more careful)';
@@ -249,10 +250,14 @@ points_shifted
   end
 
   % ------------------------------------------------------------------
+  last_pt_included
+  
   model.tr_center = 1;
   model.points_abs = points_abs(:, 1:last_pt_included);
   model.points_shifted = points_shifted(:, 1:last_pt_included);
   model.fvalues = fvalues(:, 1:last_pt_included);
+
+  model.points_shifted
 
   cache_size = min(p_ini - last_pt_included, 3*dim^2);
   model.pivot_polynomials = pivot_polynomials;

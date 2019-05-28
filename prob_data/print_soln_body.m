@@ -568,6 +568,7 @@ case 17
   m22_12 = prob.m22_12;
   frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_abs,1)-1) [m22_12 ' ] \n']];
   frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
+  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(pivot_values,1)-1) [m22_12 ' ] \n']];
 
   fprintf(prob.dbg_file_fid, '\n%s\n\n', 'rowPivotGaussianElimination[0]');
 
@@ -580,10 +581,17 @@ case 17
   % fprintf(prob.fid_rowPivotGaussianElimination, ['rebuildModel() -> rowPivotGaussianElimination()\n']);
 
   fprintf(prob.fid_rowPivotGaussianElimination, ['\nValues b/f rowPivotGaussianElimination\n']);
+
+  fprintf(prob.fid_rowPivotGaussianElimination, ['poly_i          [ %i ]\n' ], poly_i);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['last_pt_incld   [ %i ]\n' ], last_pt_included);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['dim             [ %i ]\n' ], dim);
+
   fprintf(prob.fid_rowPivotGaussianElimination, ['all_points      ' frmt_x ], points_abs);
   fprintf(prob.fid_rowPivotGaussianElimination, ['all_fvalues     ' frmt_f ], fvalues');
   fprintf(prob.fid_rowPivotGaussianElimination, ['fvalues         ' frmt_f ], model.fvalues');  
+  fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_values    ' frmt_p ], pivot_values);
   fprintf(prob.fid_rowPivotGaussianElimination, ['points_shifted  ' frmt_x ], points_shifted);
+
   fprintf(prob.fid_rowPivotGaussianElimination, ENDSTR);
 
 case 18
@@ -743,7 +751,7 @@ case 24
   m22_12 = prob.m22_12;
 
   [pr pc] = size(pivot_polynomials); % [1 6]
-  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(pivot_polynomials(1).coefficients,2)-1) [m22_12 ' ] \n']];
+  frmt_p  = [ '[' repmat([m22_12 ', '], 1, size(pivot_polynomials(1).coefficients,2)-1) [m22_12 ' ] \n']];
 
   switch subp
     case 1
@@ -755,14 +763,16 @@ case 24
   switch subp
     case 1
       fprintf(prob.fid_rowPivotGaussianElimination, ENDSTR);
-      fprintf(prob.fid_rowPivotGaussianElimination, ['%s\n'], str_pts);
+      fprintf(prob.fid_rowPivotGaussianElimination, ['%s\n'], str_pts);             
       fprintf(prob.fid_rowPivotGaussianElimination, ENDSTR);
     case 2
       fprintf(prob.fid_rowPivotGaussianElimination, ['%s\n'], str_pts);
       fprintf(prob.fid_rowPivotGaussianElimination, ENDSTR);
   end
 
-
+  fprintf(prob.fid_rowPivotGaussianElimination, ['poly_i          [ %i ]\n' ], poly_i);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['last_pt_incld   [ %i ]\n' ], last_pt_included);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['dim             [ %i ]\n' ], dim);
 
   for (ii=1:6)
     p = pivot_polynomials(ii).coefficients;
@@ -777,17 +787,22 @@ case 25
   m22_12 = prob.m22_12;
   frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_abs,1)-1) [m22_12 ' ] \n']];
   frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
+  frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(pivot_values,1)-1) [m22_12 ' ] \n']];
 
   % fprintf(prob.dbg_file_fid, '\n%s', 'rowPivotGaussianElimination[8]');
   fprintf(prob.fid_rowPivotGaussianElimination, '\nValues a/f rowPivotGaussianElimination\n');
+
+  fprintf(prob.fid_rowPivotGaussianElimination, ['poly_i          [ %i ]\n' ], poly_i);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['last_pt_incld   [ %i ]\n' ], last_pt_included);
+  fprintf(prob.fid_rowPivotGaussianElimination, ['dim             [ %i ]\n' ], dim);
+
   fprintf(prob.fid_rowPivotGaussianElimination, ['all_points      ' frmt_x ], points_abs);
   fprintf(prob.fid_rowPivotGaussianElimination, ['all_fvalues     ' frmt_f ], fvalues');
   fprintf(prob.fid_rowPivotGaussianElimination, ['fvalues         ' frmt_f ], model.fvalues');
+  fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_values    ' frmt_p ], pivot_values);          
   fprintf(prob.fid_rowPivotGaussianElimination, ['points_shifted  ' frmt_x ], points_shifted);
 
   fprintf(prob.fid_rowPivotGaussianElimination, ENDSTR);
-
-  fprintf(prob.fid_rowPivotGaussianElimination, ['last_pt_included [ %i ]\n' ], last_pt_included);
   fprintf(prob.fid_rowPivotGaussianElimination, ['points_abs      ' frmt_x ], model.points_abs);
 
   fprintf(prob.fid_rebuildModel, ['\n[ rebuildModel() ]\n']);
