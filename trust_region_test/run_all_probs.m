@@ -56,21 +56,21 @@ close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 
 % ----------------------------------------------------------
-fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB2');
-prob.pn = 'prob2';
-prob = set_filenames(prob);
+% fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB2');
+% prob.pn = 'prob2';
+% prob = set_filenames(prob);
 
-f = @(x) log1p(x(1)^2) + x(2)^2;
+% f = @(x) log1p(x(1)^2) + x(2)^2;
 
-x0 = [2;
-      2];
+% x0 = [2;
+%       2];
 
-% fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
-fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
-close_all_files(prob);
-fprintf('----------------------------------------------------\n\n');
+% % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
+% fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
+% [x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+% printxf(x,fval,prob);
+% close_all_files(prob);
+% fprintf('----------------------------------------------------\n\n');
 
 % % ----------------------------------------------------------
 % fprintf(prob.dbg_file_fid, '\n\n%s\n\n', 'PROB3');
@@ -246,4 +246,7 @@ system(['cp ' prob.data_file_src ' ' prob.data_file_trg ]);
 function [] = printxf(x, fval, prob)
   fprintf(prob.dbg_file_fid, [ '\nx= ' repmat('%20.10e', 1, size(x, 1))], x);
   fprintf(prob.dbg_file_fid, [ '\nfval= ' repmat('%20.10e', size(fval, 2), 1)], fval);
+
+  fprintf([ '\nx= ' repmat('%20.10e', 1, size(x, 1))], x);
+  fprintf([ '\nfval= ' repmat('%20.10e\n', size(fval, 2), 1)], fval);
 end

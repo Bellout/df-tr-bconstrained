@@ -573,7 +573,7 @@ case 17
   fprintf(prob.dbg_file_fid, '\n%s\n\n', 'rowPivotGaussianElimination[0]');
 
 
-  fprintf(prob.fid_rowPivotGaussianElimination, '\n\n');
+  % fprintf(prob.fid_rowPivotGaussianElimination, '\n\n');
   fprintf(prob.fid_rowPivotGaussianElimination, STARTSTR);  
 
   fprintf(prob.fid_rowPivotGaussianElimination, [ '[ --> ' pad('rebuildModel()', 38) ']' ]);      
@@ -805,11 +805,12 @@ case 25
   fprintf(prob.fid_rowPivotGaussianElimination, ENDSTR);
   fprintf(prob.fid_rowPivotGaussianElimination, ['points_abs      ' frmt_x ], model.points_abs);
 
-  fprintf(prob.fid_rebuildModel, ['\n[ rebuildModel() ]\n']);
+  fprintf(prob.fid_rebuildModel, ['[ rebuildModel() ]\n']);
   fprintf(prob.fid_rebuildModel, ['last_pt_included [ %i ]\n' ], last_pt_included);
   fprintf(prob.fid_rebuildModel, ['n_points         [ %i ]\n' ], p_ini);
+  fprintf(prob.fid_rebuildModel, ENDSTR);
 
-  fprintf(prob.fid_rowPivotGaussianElimination, ENDSTRNN);
+  fprintf(prob.fid_rowPivotGaussianElimination, ENDSTR);
 
 
 

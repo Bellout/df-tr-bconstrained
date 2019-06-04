@@ -199,15 +199,15 @@ part=3; print_soln_body;
 
 % --------------------------------------------------------------------
 % Move to best point
-% fprintf(prob.fid_moveToBestPoint, ['[ moveToBestPoint() ]\n']);
-fprintf(prob.fid_moveToBestPoint, ...
-        [ '[ --> ' pad('iterate()[a]', 38) ']' ]);
+fprintf(prob.fid_moveToBestPoint, ... 
+        [ STARTSTR '[ --> ' pad('iterate()[a]', 38) ']' ]);
+prob.prev = '[a]';
 model = move_to_best_point(model, bl, bu, [], prob);
 
 % --------------------------------------------------------------------
 % basis = band_prioritizing_basis(size(model.points_shifted, 1));
-fprintf(prob.fid_computePolynomialModels, STARTSTR);
-fprintf(prob.fid_computePolynomialModels, [ '[ --> ' pad('iterate()[a]', 38) ']' ]);
+% fprintf(prob.fid_computePolynomialModels, STARTSTR);
+fprintf(prob.fid_computePolynomialModels, [ STARTSTR '[ --> ' pad('iterate()[a]', 38) ']' ]);
 [ model.modeling_polynomials, prob ] = compute_polynomial_models(model, prob);
 
 % fprintf(['\npoints_abs:\n' repmat('%22.12e %22.12e\n',1,2) '\n'], model.points_abs);
@@ -221,8 +221,8 @@ part=4; print_soln_body;
 
 % --------------------------------------------------------------------
 if size(model.points_abs, 2) < 2
-  fprintf(prob.fid_ensureImprovement, STARTSTR);
-  fprintf(prob.fid_ensureImprovement, [ '[ --> ' pad('iterate()[a]', 38) ']' ]);
+  % fprintf(prob.fid_ensureImprovement, STARTSTR);
+  fprintf(prob.fid_ensureImprovement, [ STARTSTR '[ --> ' pad('iterate()[a]', 38) ']' ]);
   [model, exitflag, prob] = ...
   ensure_improvement(model, funcs, bl, bu, options, prob);
   part=118; subp=1; print_soln_body; % getImprovementCases() -- 20
@@ -271,11 +271,12 @@ for iter = 1 : iter_max
 
     % Move among points that are part of the model
     fprintf(prob.fid_moveToBestPoint, ...
-        [ '[ --> ' pad('iterate()[b]', 38) ']' ]);
+        [ STARTSTR '[ --> ' pad('iterate()[b]', 38) ']' ]);
+    prob.prev = '[b]';
     model = move_to_best_point(model, bl, bu, [], prob);
 
-    fprintf(prob.fid_computePolynomialModels, STARTSTR);
-    fprintf(prob.fid_computePolynomialModels, [ '[ --> ' pad('iterate()[b]', 38) ']' ]);
+    % fprintf(prob.fid_computePolynomialModels, STARTSTR);
+    fprintf(prob.fid_computePolynomialModels, [ STARTSTR '[ --> ' pad('iterate()[b]', 38) ']' ]);
     model.modeling_polynomials = compute_polynomial_models(model, prob);
 
     fval_current = model.fvalues(1, model.tr_center);
@@ -317,8 +318,7 @@ for iter = 1 : iter_max
     (predicted_red < tol_f*abs(fval_current)*1e-3))
 
     rho = -inf;
-    fprintf(prob.fid_ensureImprovement, STARTSTR);
-    fprintf(prob.fid_ensureImprovement, [ '[ --> ' pad('iterate()[b]', 38) ']' ]);
+    fprintf(prob.fid_ensureImprovement, [ STARTSTR '[ --> ' pad('iterate()[b]', 38) ']' ]);
     [model, mchange_flag] = ensure_improvement(model, funcs, ...
                                                bl, bu, options, prob);
   else
@@ -349,14 +349,15 @@ for iter = 1 : iter_max
       if ~iteration_model_fl && mchange_flag == 4
         % Had to rebuild a model that wasn't even Fully Linear
         % This shouldn't happen
-        fprintf(prob.fid_ensureImprovement, STARTSTR);
-        fprintf(prob.fid_ensureImprovement, [ '[ --> ' pad('iterate()[c]', 38) ']' ]);
+        fprintf(prob.fid_ensureImprovement, [ STARTSTR '[ --> ' pad('iterate()[c]', 38) ']' ]);
         [model, mchange_flag] = ensure_improvement(model, funcs, ...
                                                    bl, bu, options, prob);
         % this mchange_flag is not being used (rho > eta_1)
       end
+
     else
       % --------------------------------------------------------------
+      fprintf(prob.fid_tryToAddPoint, [ STARTSTR '[ --> ' pad('handleEvaluatedCase()', 38) ']' ]);
       [model, mchange_flag] = try_to_add_point(model, trial_point, fval_trial, ...
                                                funcs, bl, bu, options, prob);
      % if mchange_flag == 4, we had to rebuild the model
