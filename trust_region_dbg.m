@@ -152,25 +152,27 @@ part=0; print_soln_body;
 % Set prob names -----------------------------------------------------
 part=1; print_soln_body;
 
+part=101; subp=1; print_soln_body; % iterate()
+% !areInitPointsComputed -> true
+% !isInitialized -> true
+part=114; subp=1; print_soln_body; % getInitializationCases()
 
 % Calculating function values for other points of the set
 if length(initial_fvalues) < n_initial_points
-  part=101; subp=1; print_soln_body; % iterate()
-  part=114; subp=1; print_soln_body; % getInitializationCases()
 
   for k = 1:n_initial_points
-
     [initial_fvalues(:, k), succeeded] = ...
     evaluate_new_fvalues(funcs, initial_points(:, k));
-    part=102; subp=1; print_soln_body; %% handleEvaluatedCase()
+
+    part=102; subp=1; print_soln_body; % handleEvaluatedCase()
+    % Iteration, point, value
     
     if ~succeeded
       error('cmg:bad_starting_point', 'Bad starting point');
     end
   end
-
-  part=101; subp=1; print_soln_body; % iterate()  
 end
+
 part=107; subp=2; print_soln_body; % areInitPointsComputed() to true
 
 % --------------------------------------------------------------------
@@ -183,13 +185,16 @@ model = tr_model(initial_points, initial_fvalues, initial_radius);
 
 % --------------------------------------------------------------------
 % Rebuild model
-part=101; subp=1; print_soln_body; % iterate()
+part=101; subp=2; print_soln_body; % iterate()
+% areInitPointsComputed, !areImprovementPointsComputed
+% !areReplacementPointsComputed, !isInitialized
+
 model = rebuild_model(model, options, prob);
 
 part=107; subp=2; print_soln_body; % areInitPointsComputed() -- 3 to true
-part=108; subp=3; print_soln_body; % areImprPointsComputed() -- 4
-part=109; subp=3; print_soln_body; % areReplacementPointsComputed() -- 5
-part=110; subp=3; print_soln_body; % isInitialized() -- 6
+part=108; subp=3; print_soln_body; % areImprPointsComputed() -- 4 to false
+part=109; subp=3; print_soln_body; % areReplacementPointsComputed() -- 5 to false
+part=110; subp=3; print_soln_body; % isInitialized() -- 6 to false
 
 % --------------------------------------------------------------------
 % Print model data: model.tr_center, model.tr_radius,
@@ -220,8 +225,14 @@ fprintf(prob.fid_computePolynomialModels, [ STARTSTR '[ --> ' pad('iterate()[a]'
 part=4; print_soln_body;
 
 % --------------------------------------------------------------------
+part=101; subp=3; print_soln_body; % iterate()
+% hasOnlyOnePoint
+
 if size(model.points_abs, 2) < 2
-  % fprintf(prob.fid_ensureImprovement, STARTSTR);
+
+  part=101; subp=4; print_soln_body; % iterate()
+  % ensureImprovement
+
   fprintf(prob.fid_ensureImprovement, [ STARTSTR '[ --> ' pad('iterate()[a]', 38) ']' ]);
   [model, exitflag, prob] = ...
   ensure_improvement(model, funcs, bl, bu, options, prob);
@@ -229,11 +240,17 @@ if size(model.points_abs, 2) < 2
   part=119; subp=1; print_soln_body; % getReplacementCases() -- 21
 end
 
+% part=101; subp=5; print_soln_body; % iterate()
+% areInitPointsComputed
+% isImprovementNeeded
+% areImprovementPointsComputed
+% !isInitialized
 
-
-
-
-
+% part=101; subp=6; print_soln_body; % iterate()
+% areInitPointsComputed
+% isReplacementNeeded
+% areReplacementPointsComputed
+% !isInitialized
 
 
 
@@ -245,15 +262,23 @@ end
 rho = 0;
 iter = 1;
 
+model.fvalues
+
 fval_current = model.fvalues(1);
 x_current = model.points_abs(:, model.tr_center);
+
+part=101; subp=7; print_soln_body; % iterate()
+% x_current, fval_current
+part=101; subp=8; print_soln_body; % iterate()
+% isImprovementNeeded
+% areImprovementPointsComputed
+% isReplacementNeeded
+% areReplacementPointsComputed
 
 % --------------------------------------------------------------------
 sum_rho = 0;
 sum_rho_sqr = 0;
 delay_reduction = 0;
-
-
 
 
 % --------------------------------------------------------------------
@@ -312,10 +337,13 @@ for iter = 1 : iter_max
   trial_step = trial_point - x_current;
 
   % ------------------------------------------------------------------
-  if ((predicted_red < tol_radius*1e-2) || ...
-    (predicted_red < tol_radius*abs(fval_current) && ...
-     norm(trial_step) < tol_radius) || ...
-    (predicted_red < tol_f*abs(fval_current)*1e-3))
+  cS = predicted_red < tol_radius*1e-2;
+  cT = predicted_red < tol_radius*abs(fval_current);  
+  cU = norm(trial_step) < tol_radius;
+  cV = predicted_red < tol_f*abs(fval_current)*1e-3;         
+  part=101; subp=3; print_soln_body; % iterate()
+
+  if (cS || (cT && cU) || cV)
 
     rho = -inf;
     fprintf(prob.fid_ensureImprovement, [ STARTSTR '[ --> ' pad('iterate()[b]', 38) ']' ]);
@@ -325,7 +353,6 @@ for iter = 1 : iter_max
     % ----------------------------------------------------------------
     % Evaluate objective at trial point
     fval_trial = evaluate_new_fvalues(funcs, trial_point);
-
 
     % Actual reduction
     ared = fval_current - fval_trial;

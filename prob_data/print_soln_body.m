@@ -1755,15 +1755,73 @@ case 101
   switch subp
 
     case 1
+      fprintf(prob.fid_iterate, STARTSTR);
       fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[0]');
       fprintf(prob.fid_iterate, ['[ iterate() ]\n']);
-      fprintf(prob.fid_iterate, ['Iteration#    [ %i ];\n'], 0);
+      fprintf(prob.fid_iterate, ['Iteration#    [ %i ]\n'], 0);
+      fprintf(prob.fid_iterate, ['!areInitPointsComputed [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['!isInitialized         [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ENDSTR);
+
+    case 2
+      fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[1]');
+      fprintf(prob.fid_iterate, ['areInitPointsComputed         [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['!areImprovementPointsComputed [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['!areReplacementPointsComputed [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['!isInitialized                [ %i ]\n'], 1);
 
     case 3
+      fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[2]');
+      fprintf(prob.fid_iterate, ['hasOnlyOnePoint                [ %i ]\n'], size(model.points_abs, 2) < 2);
+      fprintf(prob.fid_iterate, ENDSTR);
+
+    case 4
+      fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[3]');
+      fprintf(prob.fid_iterate, ['[ ensureImprovement ]\n']);
+
+    case 5
+      fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[4]');
+      fprintf(prob.fid_iterate, ['areInitPointsComputed         [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['isImprovementNeeded           [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['areImprovementPointsComputed  [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['!isInitialized                [ %i ]\n'], 1);
+
+    case 6
+      fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[4]');
+      fprintf(prob.fid_iterate, ['areInitPointsComputed         [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['isReplacementNeeded           [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['areReplacementPointsComputed  [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['!isInitialized                [ %i ]\n'], 1);
+
+    case 7
+      fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[4]');
+
+      frmt_x = [ '[' repmat([m22_12 ', '], 1, size(x_current,1)-1) [m22_12 ' ] \n']];
+      frmt_f = [ '[' repmat([m22_12 ', '], 1, size(fval_current,1)-1) [m22_12 ' ] \n']];
+
+      fprintf(prob.fid_iterate, ['x_current:    ' frmt_x ], x_current);
+      fprintf(prob.fid_iterate, ['fval_current: ' frmt_f ], fval_current);
+      fprintf(prob.fid_iterate, ENDSTR);
+
+    case 8
+      fprintf(prob.fid_iterate, ['!isImprovementNeeded           [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['!areImprovementPointsComputed  [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['!isReplacementNeeded           [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['!areReplacementPointsComputed  [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ENDSTR);
+      
+    case 9
+      fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[3]');
+      fprintf(prob.fid_iterate, ['pred_red < tol_radius*1e-2:        [ %i ]\n'], cS);
+      fprintf(prob.fid_iterate, ['pred_red < tol_radius*abs(f_curr): [ %i ]\n'], cT);
+      fprintf(prob.fid_iterate, ['norm(trial_step) < tol_radius:     [ %i ]\n'], cU);
+      fprintf(prob.fid_iterate, ['pred_red < tol_f*abs(f_curr)*1e-3: [ %i ]\n'], cV);            
+
+    case 10
       % fprintf(prob.dbg_file_fid, '\n%s', 'iterate[1]');
       fprintf(prob.fid_iterate, ['[ iterate() ]\n']);
       fprintf(prob.fid_iterate, ['iteration#    [ %i ];\n'], iter);
-      fprintf(prob.fid_iterate, ENDSTRNN);
+      fprintf(prob.fid_iterate, ENDSTR);
 
   end
 
@@ -1778,22 +1836,16 @@ case 102
     case 1
       fprintf(prob.dbg_file_fid, '\n%s', 'handleEvaluatedCase[0]');
       fprintf(prob.fid_handleEvaluatedCase, ['[ handleEvaluatedCase() ]\n']);
-      fprintf(prob.fid_handleEvaluatedCase, ['iteration#    [ %i ]\n'], 0);
-      fprintf(prob.fid_handleEvaluatedCase, ['point:        ' frmt_x ], initial_points(:, k));
-      fprintf(prob.fid_handleEvaluatedCase, ['fvalue:       ' frmt_f ], initial_fvalues(:, k));
-      fprintf(prob.fid_handleEvaluatedCase, ENDSTR);
-      
-    case 2
-      % fprintf(prob.dbg_file_fid, '\n%s', 'handleEvaluatedCase[1]');
-      fprintf(prob.fid_handleEvaluatedCase, ['[ handleEvaluatedCase() ]\n']);
-      fprintf(prob.fid_handleEvaluatedCase, ['iteration#    [ %i ]\n'], 0);
+      fprintf(prob.fid_handleEvaluatedCase, ['Iteration#    [ %i ]\n'], 0);
       fprintf(prob.fid_handleEvaluatedCase, ['point:        ' frmt_x ], initial_points(:, k));
       fprintf(prob.fid_handleEvaluatedCase, ['fvalue:       ' frmt_f ], initial_fvalues(:, k));
       fprintf(prob.fid_handleEvaluatedCase, ENDSTR);
 
     case 3
 
-      fprintf(prob.fid_handleEvaluatedCase, ['[ handleEvaluatedCase() ]\n']);
+      % frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(initial_points(:, 1),1)-1) [m22_12 ' ] \n']];
+      % frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(initial_fvalues(:, 1),1)-1) [m22_12 ' ] \n']];
+
       fprintf(prob.fid_handleEvaluatedCase, ['point:        ' frmt_x ], initial_points(:, k));
       fprintf(prob.fid_handleEvaluatedCase, ['fvalue:       ' frmt_f ], initial_fvalues(:, k));
       fprintf(prob.fid_handleEvaluatedCase, ['eta_1         ' frmt_f ], eta_1);
