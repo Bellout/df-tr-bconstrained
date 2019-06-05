@@ -1014,12 +1014,20 @@ case 34
   m22_12 = prob.m22_12;
   frmt_ps = [ '[' repmat([m22_12 ', '], 1, size(points_shifted,1)-1) [m22_12 ' ] \n']];
   frmt_sc = [ '[' repmat([m22_12 ', '], 1, size(shift_center,1)-1) [m22_12 ' ] \n']];
+  frmt_scs = [ '[' repmat(['%22s' ', '], 1, size(shift_center,1)-1) ['%22s' ' ] \n']];
 
   fprintf(prob.dbg_file_fid, '\n%s', 'improveModelNfp[0]');
   fprintf(prob.fid_improveModelNfp, ['[ improveModelNfp() ]\n']);
   fprintf(prob.fid_improveModelNfp, ['shift_center     ' frmt_sc ], shift_center);
-  fprintf(prob.fid_improveModelNfp, ['bl_shifted       ' frmt_sc ], bl_shifted);
-  fprintf(prob.fid_improveModelNfp, ['bu_shifted       ' frmt_sc ], bu_shifted);
+
+  if(abs(bl_shifted(1)) == Inf)
+    fprintf(prob.fid_improveModelNfp, ['bl_shifted       [                 -inf,               -inf  ]\n' ]);
+    fprintf(prob.fid_improveModelNfp, ['bu_shifted       [                  inf,                inf  ]\n' ]);
+  else
+    fprintf(prob.fid_improveModelNfp, ['bl_shifted       ' frmt_sc ], bl_shifted);
+    fprintf(prob.fid_improveModelNfp, ['bu_shifted       ' frmt_sc ], bu_shifted);
+  end
+
   fprintf(prob.fid_improveModelNfp, ['#points_shifted  [ %i ]\n' ], size(points_shifted,2));
   fprintf(prob.fid_improveModelNfp, ['points_shifted   ' frmt_ps ], points_shifted);
   fprintf(prob.fid_improveModelNfp, ['tr_center_pt     ' frmt_ps ], tr_center_pt);
@@ -1042,9 +1050,14 @@ case 35
 case 36
   % ------------------------------------------------------------------
   % improveModelNfp()
-
-  fprintf(prob.dbg_file_fid, '\n%s', 'improveModelNfp[2]');
-  fprintf(prob.fid_improveModelNfp, ['%s %i/3\n'], str_att0, attempts);
+switch subp
+  case 1
+    fprintf(prob.dbg_file_fid, '\n%s', 'improveModelNfp[2]');
+    fprintf(prob.fid_improveModelNfp, ['%s %i/3\n'], str_att0, attempts);
+  case 2
+    fprintf(prob.fid_improveModelNfp, ['%s %i)\n'], str_att1, poly_i);
+    fprintf(prob.fid_improveModelNfp, ['Re-orthogonalize (orthogonalizeToOtherPolynomials)\n']);
+end
 
 case 37
   % ------------------------------------------------------------------
@@ -1056,11 +1069,11 @@ case 37
   frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(new_pivot_value,1)-1) [m22_12 ' ] \n']];
 
   fprintf(prob.dbg_file_fid, '\n%s', 'improveModelNfp[3]');
-  fprintf(prob.fid_improveModelNfp, ['%s %i)\n'], str_att1, poly_i);
+  
 
   fprintf(prob.fid_improveModelNfp, '\n');
   fprintf(prob.fid_improveModelNfp, ['%i new pts/pivot-pts found (T/F:%i)\n'], ...
-          length(new_points_shifted), point_found);
+          size(new_points_shifted,2), point_found);
   fprintf(prob.fid_improveModelNfp, ['For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (%i/%i)\n'], ...
           found_i, length(new_points_shifted));
 
@@ -1623,8 +1636,8 @@ case 76
       % fprintf(prob.fid_tryToAddPoint, ['new_point:         ' frmt_x ], new_point);
       % fprintf(prob.dbg_file_fid, '\n%s', 'tryToAddPoint[2]');
       fprintf(prob.fid_tryToAddPoint, ['(!point_added):    [ %i ]\n'], ~point_added);
-      fprintf(prob.fid_tryToAddPoint, ['cached_fvalues     ' frmt_cf ], model.cached_fvalues);
-      fprintf(prob.fid_tryToAddPoint, ['cached_points      ' frmt_cf ], model.cached_points);
+      fprintf(prob.fid_tryToAddPoint, ['cached_fvalues     ' frmt_cf ], model.cached_fvalues');
+      fprintf(prob.fid_tryToAddPoint, ['cached_points      ' frmt_cp ], model.cached_points');
 
     case 4
       % fprintf(prob.dbg_file_fid, '\n%s', 'tryToAddPoint[3]');
