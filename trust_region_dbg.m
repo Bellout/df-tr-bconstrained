@@ -212,8 +212,10 @@ model = move_to_best_point(model, bl, bu, [], prob);
 % --------------------------------------------------------------------
 % basis = band_prioritizing_basis(size(model.points_shifted, 1));
 % fprintf(prob.fid_computePolynomialModels, STARTSTR);
-fprintf(prob.fid_computePolynomialModels, [ STARTSTR '[ --> ' pad('iterate()[a]', 38) ']' ]);
-[ model.modeling_polynomials, prob ] = compute_polynomial_models(model, prob);
+fprintf(prob.fid_computePolynomialModels, ...
+        [ STARTSTR '[ --> ' pad('iterate()[a]', 38) ']' ]);
+[ model.modeling_polynomials, prob ] = ...
+compute_polynomial_models(model, prob);
 
 % fprintf(['\npoints_abs:\n' repmat('%22.12e %22.12e\n',1,2) '\n'], model.points_abs);
 % fprintf(['\npoints_shifted:\n' repmat('%22.12e %22.12e\n',1,2) '\n'], model.points_shifted);
@@ -262,18 +264,9 @@ end
 rho = 0;
 iter = 1;
 
-model.fvalues
-
 fval_current = model.fvalues(1);
-x_current = model.points_abs(:, model.tr_center);
-
-part=101; subp=7; print_soln_body; % iterate()
-% x_current, fval_current
-part=101; subp=8; print_soln_body; % iterate()
-% isImprovementNeeded
-% areImprovementPointsComputed
-% isReplacementNeeded
-% areReplacementPointsComputed
+x_current = model.points_abs(:, model.tr_center); 
+% BUG: model.fvalues does do correspond to model.tr_center index
 
 % --------------------------------------------------------------------
 sum_rho = 0;
@@ -281,10 +274,21 @@ sum_rho_sqr = 0;
 delay_reduction = 0;
 
 
-% --------------------------------------------------------------------
+% ====================================================================
 for iter = 1 : iter_max
 
-  part=101; subp=2; print_soln_body; % iterate()
+  part=101; subp=7; print_soln_body; % iterate()
+  % x_current, fval_current, tr_center
+
+  part=101; subp=11; print_soln_body; % iterate()
+  % isImprovementNeeded
+  % areImprovementPointsComputed
+  % isReplacementNeeded
+  % areReplacementPointsComputed
+
+
+
+
 
   % ------------------------------------------------------------------
   if (model.radius < tol_radius)
@@ -301,11 +305,15 @@ for iter = 1 : iter_max
     model = move_to_best_point(model, bl, bu, [], prob);
 
     % fprintf(prob.fid_computePolynomialModels, STARTSTR);
-    fprintf(prob.fid_computePolynomialModels, [ STARTSTR '[ --> ' pad('iterate()[b]', 38) ']' ]);
+    fprintf(prob.fid_computePolynomialModels, ...
+            [ STARTSTR '[ --> ' pad('iterate()[b]', 38) ']' ]);
     model.modeling_polynomials = compute_polynomial_models(model, prob);
 
     fval_current = model.fvalues(1, model.tr_center);
     x_current = model.points_abs(:, model.tr_center);
+
+    part=101; subp=7; print_soln_body; % iterate()
+    % x_current, fval_current, tr_center
 
     [err_model, prob] = check_interpolation(model, prob);
 
@@ -314,11 +322,16 @@ for iter = 1 : iter_max
   % ------------------------------------------------------------------
   % Criticality step -- if we are possibly close to the optimum
   criticality_step_performed = false;
-  if norm(measure_criticality(model, bl, bu, prob)) <= eps_c
+  cW1 = norm(measure_criticality(model, bl, bu, prob)) <= eps_c;
+  part=101; subp=8; print_soln_body; % iterate()
 
+  if cW1
     model = criticality_step(model, funcs, bl, bu, options, prob);
     criticality_step_performed = true;
-    if norm(measure_criticality(model, bl, bu, prob)) < tol_f
+
+    cW2 = norm(measure_criticality(model, bl, bu, prob)) < tol_f;
+    if cW2
+      part=101; subp=9; print_soln_body; % iterate()
       break;
     end
 
@@ -341,12 +354,13 @@ for iter = 1 : iter_max
   cT = predicted_red < tol_radius*abs(fval_current);  
   cU = norm(trial_step) < tol_radius;
   cV = predicted_red < tol_f*abs(fval_current)*1e-3;         
-  part=101; subp=3; print_soln_body; % iterate()
+  part=101; subp=12; print_soln_body; % iterate()
 
   if (cS || (cT && cU) || cV)
 
     rho = -inf;
-    fprintf(prob.fid_ensureImprovement, [ STARTSTR '[ --> ' pad('iterate()[b]', 38) ']' ]);
+    fprintf(prob.fid_ensureImprovement, ...
+            [ STARTSTR '[ --> ' pad('iterate()[b]', 38) ']' ]);
     [model, mchange_flag] = ensure_improvement(model, funcs, ...
                                                bl, bu, options, prob);
   else
@@ -360,10 +374,11 @@ for iter = 1 : iter_max
     rho = ared/(predicted_red);
     % Acceptance of the trial point
 
+    part=102; subp=2; print_soln_body; %% handleEvaluatedCase()
     part=102; subp=3; print_soln_body; %% handleEvaluatedCase()
 
-
-    if rho > eta_1
+    cX = rho > eta_1;
+    if cX
       % --------------------------------------------------------------
       % Successful iteration
       fval_current = fval_trial;
@@ -371,24 +386,33 @@ for iter = 1 : iter_max
       % Including this new point as the TR center
       [model, mchange_flag] = change_tr_center(model, trial_point, ...
                                                fval_trial, options, prob);
+
+      part=102; subp=4; print_soln_body; %% handleEvaluatedCase()
+
       % --------------------------------------------------------------
       % this mchange_flag is not being used (rho > eta_1)
-      if ~iteration_model_fl && mchange_flag == 4
+      cY = (~iteration_model_fl && mchange_flag == 4);
+      if cY
         % Had to rebuild a model that wasn't even Fully Linear
         % This shouldn't happen
-        fprintf(prob.fid_ensureImprovement, [ STARTSTR '[ --> ' pad('iterate()[c]', 38) ']' ]);
+        fprintf(prob.fid_ensureImprovement, ...
+                [ STARTSTR '[ --> ' pad('iterate()[c]', 38) ']' ]);
         [model, mchange_flag] = ensure_improvement(model, funcs, ...
                                                    bl, bu, options, prob);
         % this mchange_flag is not being used (rho > eta_1)
+        part=102; subp=5; print_soln_body; %% handleEvaluatedCase()
+
       end
 
     else
       % --------------------------------------------------------------
-      fprintf(prob.fid_tryToAddPoint, [ STARTSTR '[ --> ' pad('handleEvaluatedCase()', 38) ']' ]);
+      fprintf(prob.fid_tryToAddPoint, ...
+              [ STARTSTR '[ --> ' pad('handleEvaluatedCase()[a]', 38) ']' ]);
       [model, mchange_flag] = try_to_add_point(model, trial_point, fval_trial, ...
                                                funcs, bl, bu, options, prob);
      % if mchange_flag == 4, we had to rebuild the model
      % and the radius will be reduced
+     part=102; subp=4; print_soln_body; %% handleEvaluatedCase()
     end
     % ----------------------------------------------------------------
     sum_rho = sum_rho + rho;

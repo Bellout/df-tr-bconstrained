@@ -14,7 +14,8 @@ function [model, exitflag, prob] = ...
     part=56; print_soln_body;
     % Calculate a new point to add
     % fprintf('%s\n', 'Calling improve_model_nfp');
-    fprintf(prob.fid_improveModelNfp, [ '[ --> ' pad('ensureImprovement()[a]', 38) ']' ]);
+    fprintf(prob.fid_improveModelNfp, ...
+            [ '[ --> ' pad('ensureImprovement()[a]', 38) ']' ]);
     [model, success, prob] = improve_model_nfp(model, funcs, ...
                                          bl, bu, options, prob);
 
@@ -28,7 +29,8 @@ function [model, exitflag, prob] = ...
     part=57; print_soln_body;
     % Replace some point with a new one that improves geometry
     % fprintf('%s\n', 'Calling choose_and_replace_point');
-    fprintf(prob.fid_chooseAndReplacePoint, [ '[ --> ' pad('ensureImprovement()[a]', 38) ']' ]);
+    fprintf(prob.fid_chooseAndReplacePoint, ...
+            [ '[ --> ' pad('ensureImprovement()[a]', 38) ']' ]);
     [model, success, prob] = choose_and_replace_point(model, funcs, ...
                                                 bl, bu, options, prob);
 
@@ -53,7 +55,8 @@ function [model, exitflag, prob] = ...
         % Improve model
         part=59; print_soln_body;
         % fprintf('%s\n', 'Calling improve_model_nfp2');
-        fprintf(prob.fid_improveModelNfp, [ '[ --> ' pad('ensureImprovement()[b]', 38) ']' ]);
+        fprintf(prob.fid_improveModelNfp, ...
+                [ '[ --> ' pad('ensureImprovement()[b]', 38) ']' ]);
         [model, success, prob] = improve_model_nfp(model, funcs, ...
                                              bl, bu, options, prob);
 
@@ -62,7 +65,8 @@ function [model, exitflag, prob] = ...
         % Replace point
         part=60; print_soln_body;
         % fprintf('%s\n', 'Calling choose_and_replace_point2');
-        fprintf(prob.fid_chooseAndReplacePoint, [ '[ --> ' pad('ensureImprovement()[b]', 38) ']' ]);        
+        fprintf(prob.fid_chooseAndReplacePoint, ...
+                [ '[ --> ' pad('ensureImprovement()[b]', 38) ']' ]);        
         [model, success, prob] = choose_and_replace_point(model, funcs, ...
                                                     bl, bu, options, prob);
 
