@@ -8,6 +8,9 @@ function [model, exitflag, prob] = ...
   [model_old prob] = is_old(model, options, prob);
   success = false;
 
+  prob.prev = 'ensureImprovement';
+  exitflag = -1; % ABMB
+
   if ~model_complete && (~model_old || ~model_fl)
 
     % ----------------------------------------------------------------
@@ -43,9 +46,14 @@ function [model, exitflag, prob] = ...
   end
 
   % ------------------------------------------------------------------
-  if ~success
+  cC = (~success);
+  part=58; subp=1; print_soln_body;
 
-    part=58; print_soln_body;
+  if (cC)
+
+    part=58; subp=2; print_soln_body;
+    fprintf(prob.fid_rebuildModel, ... 
+            [ '[ --> ' pad('ensureImprovement()[b]', 38) ']' ]);
     [model, changed, prob] = rebuild_model(model, options, prob);
 
     % ----------------------------------------------------------------

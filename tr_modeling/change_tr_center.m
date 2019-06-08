@@ -30,11 +30,11 @@ function [model, exitflag, prob] = ...
     model.tr_center = size(model.points_abs, 2); % Last among
                                                  % the points
     exitflag = 1;
-    part=78; subp=3; print_soln_body;                                                     
+    part=78; subp=3; print_soln_body;
 
   else
 
-    % ---------------------------------------------------------------- 
+    % ----------------------------------------------------------------
     relative_pivot_threshold = options.pivot_threshold;
 
     part=78; subp=4; print_soln_body;
@@ -54,10 +54,13 @@ function [model, exitflag, prob] = ...
       % add_point and exchange_point failed
       % We still need to add this new point as TR center
       % Model needs rebuilding
-      part=78; subp=5; print_soln_body;            
+      part=78; subp=5; print_soln_body;
       model.points_abs(:, end+1) = new_point;
       model.fvalues(:, end+1) = new_fvalues;
       model.tr_center = size(model.points_abs, 2); % Last
+
+        fprintf(prob.fid_rebuildModel, ...
+                [ '[ --> ' pad('changeTrCenter()', 38) ']' ]);
       [model, changed, prob] = rebuild_model(model, options, prob);
       exitflag = 4;
     end

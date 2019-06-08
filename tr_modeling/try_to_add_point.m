@@ -9,7 +9,8 @@ function [model, exitflag, prob] = ...
   part=76; subp=1; print_soln_body;
   
   % ------------------------------------------------------------------
-  if ~is_complete(model, prob)
+  condA = ~is_complete(model, prob);
+  if condA
 
     % Add this point
     relative_pivot_threshold = options.add_threshold;
@@ -22,7 +23,8 @@ function [model, exitflag, prob] = ...
   end
 
   % ------------------------------------------------------------------
-  if ~point_added
+  condB = ~point_added;
+  if condB
 
     % Save information about this new point, just not to lose
     model.cached_points = [new_point, model.cached_points];

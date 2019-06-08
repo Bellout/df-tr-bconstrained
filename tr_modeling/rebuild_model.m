@@ -66,6 +66,10 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
   % Building model
   pivot_polynomials = nfp_basis(dim, prob); % Basis of Newton
                                       % Fundamental Polynomials
+
+
+
+                                      
   polynomials_num = length(pivot_polynomials);
   pivot_values = zeros(1, polynomials_num);
 
@@ -81,6 +85,8 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
     % [2 3 4 5 6]; [1 2 3 4 5]
 
     % Gaussian elimination (using previuos points)
+    fprintf(prob.fid_orthogonalizeToOtherPolynomials, ...
+            [ '[ --> ' pad('rowPivotGaussianElimination()[a]', 38) ']' ]);    
     [pivot_polynomials(poly_i) prob] = ...
         orthogonalize_to_other_polynomials(pivot_polynomials, ...
                                            poly_i, ...
@@ -201,6 +207,8 @@ points_shifted
       % --------------------------------------------------------------
       % Re-orthogonalize (just to make sure it still assumes
       % 0 in previous points). Unnecessary in infinite precision
+      fprintf(prob.fid_orthogonalizeToOtherPolynomials, ...
+              [ '[ --> ' pad('rowPivotGaussianElimination()[b]', 38) ']' ]);      
       [pivot_polynomials(poly_i) prob] = ...
           orthogonalize_to_other_polynomials(pivot_polynomials, ...
                                                   poly_i, ...

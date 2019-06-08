@@ -4,6 +4,8 @@ ENDSTRN = [ repmat('-', 1, 60) '\n\n' ];
 ENDSTR = [ repmat('-', 1, 60) '\n' ];
 STARTSTR = [ repmat('=', 1, 60) '\n' ];
 
+COUNTSTR = [ repmat('<', 1, 28) ' %02.0f ' repmat('>', 1, 28) '\n' ];
+
 m22_12 = prob.m22_12;
 
 switch(part)
@@ -1045,6 +1047,8 @@ case 35
   fprintf(prob.fid_improveModelNfp, ['B: (p_ini > dim+1)                                  [ %i ]\n'], B);
 
   fprintf(prob.fid_improveModelNfp, ['\n%s\n'], str_mstat0);
+  fprintf(prob.fid_improveModelNfp, ['C: (p_ini < polynomials_num)                        [ %i ]\n'], C);
+  fprintf(prob.fid_improveModelNfp, ['D: (p_ini < dim + 1)                                [ %i ]\n'], D);
   fprintf(prob.fid_improveModelNfp, ['%s\n'], str_mstat1);
 
 case 36
@@ -1303,8 +1307,17 @@ case 57
 case 58
   % ------------------------------------------------------------------
   % ensureImprovement()
-  fprintf(prob.dbg_file_fid, '\n%s', 'ensure_improvement[2]');
-  fprintf(prob.fid_ensureImprovement, ['Rebuild model -> rebuildModel()\n']);
+  switch subp
+
+    case 1
+      fprintf(prob.fid_ensureImprovement, [ '(!success):      [ %i ]\n' ], cC);
+      fprintf(prob.fid_ensureImprovement, [ 'exit_flag:       [ %i ]\n' ], exitflag);
+
+    case 2
+      fprintf(prob.dbg_file_fid, '\n%s', 'ensure_improvement[2]');
+      fprintf(prob.fid_ensureImprovement, ['Rebuild model -> rebuildModel()\n']);
+
+  end
 
 case 59
   % ------------------------------------------------------------------
@@ -1627,16 +1640,17 @@ case 76
       % fprintf(prob.fid_tryToAddPoint, ['exit_flag:         [ %i ]\n' ], exitflag);
 
     case 2
-      % fprintf(prob.dbg_file_fid, '\n%s', 'tryToAddPoint[1]');
+      fprintf(prob.fid_tryToAddPoint, ['(~is_complete)     [ %i ]\n'], condA);
+      
+      fprintf(prob.fid_tryToAddPoint, ['[ Call AddPoint() ]\n']);
       fprintf(prob.fid_tryToAddPoint, ['rel_piv_threshold: [' [m22_12 ' ]\n'] ], relative_pivot_threshold);
       fprintf(prob.fid_tryToAddPoint, ['new_fvalues:       ' frmt_f ], new_fvalues);
       fprintf(prob.fid_tryToAddPoint, ['new_point:         ' frmt_x ], new_point);
 
     case 3
-      % fprintf(prob.fid_tryToAddPoint, ['new_fvalues        ' frmt_f ], new_fvalues);
-      % fprintf(prob.fid_tryToAddPoint, ['new_point:         ' frmt_x ], new_point);
-      % fprintf(prob.dbg_file_fid, '\n%s', 'tryToAddPoint[2]');
+
       fprintf(prob.fid_tryToAddPoint, ['(!point_added):    [ %i ]\n'], ~point_added);
+      fprintf(prob.fid_tryToAddPoint, ['[ Call ensureImprovement() ]\n']);
       fprintf(prob.fid_tryToAddPoint, ['cached_fvalues     ' frmt_cf ], model.cached_fvalues');
       fprintf(prob.fid_tryToAddPoint, ['cached_points      ' frmt_cp ], model.cached_points);
 
@@ -1773,7 +1787,7 @@ case 101
 
     case 3
       fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[2]');
-      fprintf(prob.fid_iterate, ['hasOnlyOnePoint                [ %i ]\n'], size(model.points_abs, 2) < 2);
+      fprintf(prob.fid_iterate, ['hasOnlyOnePoint               [ %i ]\n'], size(model.points_abs, 2) < 2);
 
     case 4
       fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[3]');
@@ -1782,7 +1796,7 @@ case 101
     case 5
       fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[4]');
       fprintf(prob.fid_iterate, ['areInitPointsComputed         [ %i ]\n'], 1);
-      fprintf(prob.fid_iterate, ['isImprovementNeeded           [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['isImprovementNeeded           [ %i ]\n'], ~isImprovementNeeded);
       fprintf(prob.fid_iterate, ['areImprovementPointsComputed  [ %i ]\n'], 1);
       fprintf(prob.fid_iterate, ['!isInitialized                [ %i ]\n'], 1);
 
@@ -1799,7 +1813,6 @@ case 101
       frmt_x = [ '[' repmat([m22_12 ', '], 1, size(x_current,1)-1) [m22_12 ' ] \n']];
       frmt_f = [ '[' repmat([m22_12 ', '], 1, size(fval_current,1)-1) [m22_12 ' ] \n']];
 
-      fprintf(prob.fid_iterate, STARTSTR);
       fprintf(prob.fid_iterate, ['Iteration#    [ %i ]\n'], iter);
       fprintf(prob.fid_iterate, ['x_current:    ' frmt_x ], x_current);
       fprintf(prob.fid_iterate, ['fval_current: ' frmt_f ], fval_current);
@@ -1817,11 +1830,37 @@ case 101
 
 
 
+    case 10 % FAKE COUNTER 1 
+
+      frmt_x = [ '[' repmat([m22_12 ', '], 1, size(x_current,1)-1) [m22_12 ' ] \n']];
+      frmt_f = [ '[' repmat([m22_12 ', '], 1, size(fval_current,1)-1) [m22_12 ' ] \n']];
+
+      areImprovementPointsComputed = [0 1];
+
+      for k=areImprovementPointsComputed
+        fprintf(prob.fid_iterate, STARTSTR);
+        fprintf(prob.fid_iterate, COUNTSTR, 1);
+
+        fprintf(prob.fid_iterate, ['Iteration#    [ %i ]\n'], iter+1);
+        fprintf(prob.fid_iterate, ['x_current:    ' frmt_x ], x_current);
+        fprintf(prob.fid_iterate, ['fval_current: ' frmt_f ], fval_current);
+        fprintf(prob.fid_iterate, ['tr_center:    [ %i ]\n'], model.tr_center);
+
+        fprintf(prob.fid_iterate, ENDSTR);
+        fprintf(prob.fid_iterate, ['!isImprovementNeeded           [ %i ]\n'], 0);
+        fprintf(prob.fid_iterate, ['!areImprovementPointsComputed  [ %i ]\n'], ~k);
+        fprintf(prob.fid_iterate, ['!isReplacementNeeded           [ %i ]\n'], 1);
+        fprintf(prob.fid_iterate, ['!areReplacementPointsComputed  [ %i ]\n'], 1);
+      end
+
+
+
+
 
 
     case 11
       fprintf(prob.fid_iterate, ENDSTR);
-      fprintf(prob.fid_iterate, ['!isImprovementNeeded           [ %i ]\n'], 1);
+      fprintf(prob.fid_iterate, ['!isImprovementNeeded           [ %i ]\n'], ~isImprovementNeeded);
       fprintf(prob.fid_iterate, ['!areImprovementPointsComputed  [ %i ]\n'], 1);
       fprintf(prob.fid_iterate, ['!isReplacementNeeded           [ %i ]\n'], 1);
       fprintf(prob.fid_iterate, ['!areReplacementPointsComputed  [ %i ]\n'], 1);
@@ -1835,10 +1874,11 @@ case 101
       fprintf(prob.fid_iterate, ['pred_red < tol_f*abs(f_curr)*1e-3: [ %i ]\n'], cV);            
 
     case 13
-      % fprintf(prob.dbg_file_fid, '\n%s', 'iterate[1]');
-      fprintf(prob.fid_iterate, ['[ iterate() ]\n']);
-      fprintf(prob.fid_iterate, ['Iteration#    [ %i ]\n'], iter);
       fprintf(prob.fid_iterate, ENDSTR);
+      fprintf(prob.fid_iterate, ['x_current:    ' frmt_x ], x_current);
+      fprintf(prob.fid_iterate, ['fval_current: ' frmt_f ], fval_current);
+      fprintf(prob.fid_iterate, ['trial_point:  ' frmt_x ], trial_point);
+      fprintf(prob.fid_iterate, ['fval_trial:   ' frmt_f ], fval_trial);      
 
   end
 
@@ -1879,13 +1919,15 @@ case 102
       fprintf(prob.fid_handleEvaluatedCase, ENDSTR);
 
     case 4
+      fprintf(prob.fid_handleEvaluatedCase, ['[ Call changeTrCenter() ]\n']);      
       fprintf(prob.fid_handleEvaluatedCase, ['(rho_ > eta_1) [ %i ]\n'], cX);
       fprintf(prob.fid_handleEvaluatedCase, ['mchange_flag_  [ %i ]\n'], mchange_flag);
       fprintf(prob.fid_handleEvaluatedCase, ['fval_trial_:   ' frmt_f ], fval_trial);
       fprintf(prob.fid_handleEvaluatedCase, ['trial_point_:  ' frmt_x ], trial_point);
       fprintf(prob.fid_handleEvaluatedCase, ENDSTR);
 
-    case 5      
+    case 5
+      fprintf(prob.fid_handleEvaluatedCase, ['[ Call ensureImprovement() ]\n']);      
       fprintf(prob.fid_handleEvaluatedCase, ['(!iteration_model_fl_ && mchange_flag_ == 4) [ %i ]\n'], cY);
       fprintf(prob.fid_handleEvaluatedCase, ['mchange_flag_        [ %i ]\n'], mchange_flag);
       fprintf(prob.fid_handleEvaluatedCase, ['!iteration_model_fl_ [ %i ]\n'], ~iteration_model_fl);
@@ -2178,13 +2220,17 @@ case 115
 case 116
   % ------------------------------------------------------------------
   % setUpTempAllPoints()
-  % frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(new_point,1)-1) [m22_12 ' ] \n']];
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_abs,1)-1) [m22_12 ' ] \n']];
+  frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
 
   switch subp
 
     case 1
       fprintf(prob.dbg_file_fid, '\n%s', 'setUpTempAllPoints[0]');
       fprintf(prob.fid_setUpTempAllPoints, ['[ setUpTempAllPoints() ]\n']);
+
+      fprintf(prob.fid_setUpTempAllPoints, ['points_abs:        ' frmt_x ], points_abs);
+      fprintf(prob.fid_setUpTempAllPoints, ['fvalues:           ' frmt_f ], fvalues);      
 
     case 2
 
@@ -2193,6 +2239,8 @@ case 116
       fprintf(prob.fid_setUpTempAllPoints, ENDSTRNN);
 
   end
+
+
 
 case 117
   % ------------------------------------------------------------------
@@ -2363,8 +2411,18 @@ case 123
 
   end
 
+case 124
+  % ------------------------------------------------------------------
+  % orthogonalizeBlock()
 
+  switch subp
 
+    case 1
+
+      fprintf(prob.dbg_file_fid, '\n%s', 'orthogonalizeBlock');
+      fprintf(fid_orthogonalizeBlock, ['[ orthogonalizeBlock() ]\n']);
+
+  end
 
 
 end

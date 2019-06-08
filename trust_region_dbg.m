@@ -189,6 +189,9 @@ part=101; subp=2; print_soln_body; % iterate()
 % areInitPointsComputed, !areImprovementPointsComputed
 % !areReplacementPointsComputed, !isInitialized
 
+
+fprintf(prob.fid_rebuildModel, ... 
+        [ STARTSTR '[ --> ' pad('iterate()[a]', 38) ']' ]);
 model = rebuild_model(model, options, prob);
 
 part=107; subp=2; print_soln_body; % areInitPointsComputed() -- 3 to true
@@ -254,7 +257,7 @@ end
 % areReplacementPointsComputed
 % !isInitialized
 
-
+isImprovementNeeded=0;
 
 
 % ====================================================================
@@ -277,7 +280,10 @@ delay_reduction = 0;
 % ====================================================================
 for iter = 1 : iter_max
 
-  part=101; subp=7; print_soln_body; % iterate()
+  % <<<<<<<<<<<<<<<<< COUNTER 1 >>>>>>>>>>>>>>>>>>>>
+  fprintf(prob.fid_iterate, STARTSTR);
+  fprintf(prob.fid_iterate, COUNTSTR, 1);
+  part=101; subp=7; print_soln_body; % iterate()  
   % x_current, fval_current, tr_center
 
   part=101; subp=11; print_soln_body; % iterate()
@@ -312,6 +318,8 @@ for iter = 1 : iter_max
     fval_current = model.fvalues(1, model.tr_center);
     x_current = model.points_abs(:, model.tr_center);
 
+    % <<<<<<<<<<<<<<<<< COUNTER 2 >>>>>>>>>>>>>>>>>>>>
+    fprintf(prob.fid_iterate, COUNTSTR, 2);    
     part=101; subp=7; print_soln_body; % iterate()
     % x_current, fval_current, tr_center
 
@@ -356,6 +364,8 @@ for iter = 1 : iter_max
   cV = predicted_red < tol_f*abs(fval_current)*1e-3;         
   part=101; subp=12; print_soln_body; % iterate()
 
+
+
   if (cS || (cT && cU) || cV)
 
     rho = -inf;
@@ -367,6 +377,9 @@ for iter = 1 : iter_max
     % ----------------------------------------------------------------
     % Evaluate objective at trial point
     fval_trial = evaluate_new_fvalues(funcs, trial_point);
+    part=101; subp=13; print_soln_body; % iterate()
+
+
 
     % Actual reduction
     ared = fval_current - fval_trial;
@@ -374,8 +387,12 @@ for iter = 1 : iter_max
     rho = ared/(predicted_red);
     % Acceptance of the trial point
 
+    % <<<<<<<<<<<<<<<<< COUNTER 1: HANDLEEVALUATEDCASE >>>>>>>>>>>>>>>>>>>>
+    fprintf(prob.fid_handleEvaluatedCase, STARTSTR);
+    fprintf(prob.fid_handleEvaluatedCase, COUNTSTR, 1);
     part=102; subp=2; print_soln_body; %% handleEvaluatedCase()
     part=102; subp=3; print_soln_body; %% handleEvaluatedCase()
+    % eta_1, ared_, rho_, x_current
 
     cX = rho > eta_1;
     if cX
@@ -388,19 +405,23 @@ for iter = 1 : iter_max
                                                fval_trial, options, prob);
 
       part=102; subp=4; print_soln_body; %% handleEvaluatedCase()
+      % (rho_ > eta_1), mchange_flag_, fval_trial_, trial_point_
 
       % --------------------------------------------------------------
       % this mchange_flag is not being used (rho > eta_1)
       cY = (~iteration_model_fl && mchange_flag == 4);
       if cY
+        
         % Had to rebuild a model that wasn't even Fully Linear
         % This shouldn't happen
         fprintf(prob.fid_ensureImprovement, ...
                 [ STARTSTR '[ --> ' pad('iterate()[c]', 38) ']' ]);
         [model, mchange_flag] = ensure_improvement(model, funcs, ...
                                                    bl, bu, options, prob);
+
         % this mchange_flag is not being used (rho > eta_1)
         part=102; subp=5; print_soln_body; %% handleEvaluatedCase()
+        % mchange_flag, ~iteration_model_fl
 
       end
 
@@ -410,6 +431,12 @@ for iter = 1 : iter_max
               [ STARTSTR '[ --> ' pad('handleEvaluatedCase()[a]', 38) ']' ]);
       [model, mchange_flag] = try_to_add_point(model, trial_point, fval_trial, ...
                                                funcs, bl, bu, options, prob);
+
+    % <<<<<<<<<<<<<<<<< FAKE COUNTER 1 >>>>>>>>>>>>>>>>>>>>
+    % REPEATE BC WE NEED TO BREAK THE ITERATE LOOP TO CONPUTE
+    % THE FUNCTION FUNCTION VALUES 
+    part=101; subp=10; print_soln_body; % iterate()
+
      % if mchange_flag == 4, we had to rebuild the model
      % and the radius will be reduced
      part=102; subp=4; print_soln_body; %% handleEvaluatedCase()
