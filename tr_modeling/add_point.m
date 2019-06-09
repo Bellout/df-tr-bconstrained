@@ -10,19 +10,26 @@ function [model, exitflag, prob] = add_point(model, new_point, ...
   polynomials_num = length(model.pivot_polynomials);
   
   % ------------------------------------------------------------------
-  if last_p >= 1
+  cA = (last_p >= 1);
+  if cA
       shift_center = model.points_abs(:, 1);
       new_point_shifted = new_point - shift_center;
       points_shifted = [model.points_shifted, new_point_shifted];
   else
       false; % should this ever happen?
   end
-
-  part=77; subp=1; print_soln_body;
-
   % ------------------------------------------------------------------  
-  next_position = last_p+1;
-  if next_position == 1
+  next_position = last_p + 1;
+
+  cB = (next_position == 1);
+  part=77; subp=1; print_soln_body;
+  % pivot_threshold, new_point_shifted, shift_center, points_shifted
+
+
+  cC = (next_position <= polynomials_num);
+  cD = (next_position <= dim+1);
+
+  if cB
     % Should be rebuilding model!!!
     model.tr_center = 1;
     pivot_polynomials = band_prioritizing_basis(dim);
@@ -30,18 +37,25 @@ function [model, exitflag, prob] = add_point(model, new_point, ...
     warning('cmg:no_point', ['TR model had no point. '...
             'This should never happen']);
 
-  elseif next_position <= polynomials_num
+    part=77; subp=2; print_soln_body;
+
+  elseif cC
+
     if next_position <= dim+1
       % Add to linear block
       block_beginning = 2;
       block_end = dim+1;
+
     else
       % Add to quadratic block
       block_beginning = dim+2;
       block_end = polynomials_num;
+
     end
 
     % ----------------------------------------------------------------
+    fprintf(prob.fid_choosePivotPolynomial, ...
+            [ '[ --> ' pad('addPoint()', 38) ']' ]);    
     [pivot_polynomials, pivot_value, success, prob] = ...
     choose_pivot_polynomial(pivot_polynomials, ...
                             points_shifted, ...
@@ -49,6 +63,8 @@ function [model, exitflag, prob] = add_point(model, new_point, ...
                             block_end, ...
                             pivot_threshold,...
                             prob);
+
+    part=77; subp=3; print_soln_body;
 
     % ----------------------------------------------------------------
     if success
@@ -60,6 +76,8 @@ function [model, exitflag, prob] = add_point(model, new_point, ...
                            new_point_shifted, ...
                            prob);
 
+      part=77; subp=4; print_soln_body;
+
       % --------------------------------------------------------------
       % Re-orthogonalize
       fprintf(prob.fid_orthogonalizeToOtherPolynomials, ...
@@ -70,25 +88,36 @@ function [model, exitflag, prob] = add_point(model, new_point, ...
                                          points_shifted, ...
                                          next_position-1, ...
                                          prob);
+
+      part=77; subp=5; print_soln_body;
       
       % --------------------------------------------------------------
       % Orthogonalize polynomials on present block (deffering
-      % subsequent ones)
+      % subsequent ones)    
+      fprintf(prob.fid_orthogonalizeBlock, ...
+              [ '[ --> ' pad('addPoint()', 38) ']\n' ]);      
       [pivot_polynomials prob] = orthogonalize_block(pivot_polynomials, ...
                                               new_point_shifted, ...
                                               next_position, ...
                                               block_beginning, ...
                                               next_position-1, ...
                                               prob);
+
       exitflag = 1;
+      part=77; subp=6; print_soln_body;
+
     else
       exitflag = 0;
     end
+
+    part=77; subp=7; print_soln_body;
 
   else
     % Model is full. Should remove another 
     % point to add this one
     exitflag = 0;
+    part=77; subp=8; print_soln_body;
+
   end
 
   % ------------------------------------------------------------------
@@ -105,6 +134,9 @@ function [model, exitflag, prob] = add_point(model, new_point, ...
     model.points_shifted = points_shifted;
     model.pivot_polynomials = pivot_polynomials;
     model.pivot_values(:, next_position) = pivot_value;
+
   end
+
+part=77; subp=9; print_soln_body;
 
 end

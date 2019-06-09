@@ -138,7 +138,7 @@ function [model, exitflag, prob] = improve_model_nfp(model, ...
               end
               part=34; print_soln_body;
               part=35; print_soln_body;
-              part=36; print_soln_body;
+              part=36; subp=1; print_soln_body;
               part=38; print_soln_body;
 
               % ------------------------------------------------------
