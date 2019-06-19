@@ -9,6 +9,8 @@ function [model, exitflag, prob] = ...
   part=76; subp=1; print_soln_body;
   
   % ------------------------------------------------------------------
+  fprintf(prob.fid_isComplete, ...
+        [ '[ --> ' pad('tryToAddPoint()', 38) ']' ]);    
   condA = ~is_complete(model, prob);
   if condA
 

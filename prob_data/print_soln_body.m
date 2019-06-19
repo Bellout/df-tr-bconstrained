@@ -446,8 +446,8 @@ case 12
   frmt_H    = [ '[' repmat([m22_12 ', '], 1, size(H,1)-1) [m22_12 ' ] \n']];
 
   % fprintf(prob.dbg_file_fid, '\n%s', 'checkInterpolation[1]');
-  fprintf(prob.fid_checkInterpolation, '\n');
-  fprintf(prob.fid_checkInterpolation, ['Debug p-matrices c, g, H:\n']);
+  % fprintf(prob.fid_checkInterpolation, '\n');
+  % fprintf(prob.fid_checkInterpolation, ['Debug p-matrices c, g, H:\n']);
   fprintf(prob.fid_checkInterpolation, ['c:      [' [m22_12 ' ]\n'] ], c);
   fprintf(prob.fid_checkInterpolation, ['g:      ' frmt_g ], g);
   fprintf(prob.fid_checkInterpolation, ['H:      ' frmt_H ], H);
@@ -458,7 +458,7 @@ case 13
   % checkInterpolation()
 
   m22_12 = prob.m22_12;
-  frmt_A    = [ '[' repmat([m22_12 ', '], 1, size(A,2)-1) [m22_12 ' ] \n']];
+  frmt_A    = [ '[' repmat([m22_12 ', '], 1, size(A,1)-1) [m22_12 ' ] \n']];
 
   % fprintf(prob.dbg_file_fid, '\n%s', 'checkInterpolation[2]');
 
@@ -467,13 +467,13 @@ case 13
   fprintf(prob.fid_checkInterpolation, ['cdiff       [' [m22_12 ' ]\n'] ], difference);
   fprintf(prob.fid_checkInterpolation, ['max_diff    [' [m22_12 ' ]\n'] ], max_diff);
 
-  fprintf(prob.fid_checkInterpolation, '\n');
-  fprintf(prob.fid_checkInterpolation, ['A: fvalues(k, :)      ' frmt_A ], A');
+  fprintf(prob.fid_checkInterpolation, ENDSTR);
+  fprintf(prob.fid_checkInterpolation, ['A: fvalues(k, :)      ' frmt_A ], A);
   fprintf(prob.fid_checkInterpolation, ['B: max(fvalues(k, :)) [' [m22_12 ' ]\n'] ], B);
   fprintf(prob.fid_checkInterpolation, ['C: tol_1*B            [' [m22_12 ' ]\n'] ], C);
   fprintf(prob.fid_checkInterpolation, ['D: max(C, tol_2)      [' [m22_12 ' ]\n'] ], D);
 
-  fprintf(prob.fid_checkInterpolation, ENDSTRNN);
+  fprintf(prob.fid_checkInterpolation, ENDSTR);
 
 case 14
 
@@ -578,9 +578,9 @@ case 17
 
 
   % fprintf(prob.fid_rowPivotGaussianElimination, '\n\n');
-  fprintf(prob.fid_rowPivotGaussianElimination, STARTSTR);  
+  fprintf(prob.fid_rowPivotGaussianElimination, STARTSTR);
 
-  fprintf(prob.fid_rowPivotGaussianElimination, [ '[ --> ' pad('rebuildModel()', 38) ']' ]);      
+  fprintf(prob.fid_rowPivotGaussianElimination, [ '[ --> ' pad('rebuildModel()', 38) ']' ]);
   fprintf(prob.fid_rowPivotGaussianElimination, ['[ rowPivotGaussianElimination() ]\n']);
   % fprintf(prob.fid_rowPivotGaussianElimination, ['rebuildModel() -> rowPivotGaussianElimination()\n']);
 
@@ -592,7 +592,7 @@ case 17
 
   fprintf(prob.fid_rowPivotGaussianElimination, ['all_points      ' frmt_x ], points_abs);
   fprintf(prob.fid_rowPivotGaussianElimination, ['all_fvalues     ' frmt_f ], fvalues');
-  fprintf(prob.fid_rowPivotGaussianElimination, ['fvalues         ' frmt_f ], model.fvalues');  
+  fprintf(prob.fid_rowPivotGaussianElimination, ['fvalues         ' frmt_f ], model.fvalues');
   fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_values    ' frmt_p ], pivot_values);
   fprintf(prob.fid_rowPivotGaussianElimination, ['points_shifted  ' frmt_x ], points_shifted);
 
@@ -637,7 +637,7 @@ case 19
     case 2
       fprintf(prob.dbg_file_fid, '\n%s', 'rowPivotGaussianElimination[2]-Quad');
   end
-  
+
   fprintf(prob.fid_rowPivotGaussianElimination, ['%s\n'], str_blck);
   fprintf(prob.fid_rowPivotGaussianElimination, ['max_layer       ' frmt_f ], maxlayer);
   fprintf(prob.fid_rowPivotGaussianElimination, ['dist_farthest_pt' frmt_f ], distances(end)/radius);
@@ -725,7 +725,7 @@ case 22
 
 
   if (pt_next ~= pt_max)
-    fprintf(prob.fid_rowPivotGaussianElimination, 'pt_next != pt_max\n');  
+    fprintf(prob.fid_rowPivotGaussianElimination, 'pt_next != pt_max\n');
     fprintf(prob.fid_rowPivotGaussianElimination, ['all_points      ' frmt_x ], points_abs);
     fprintf(prob.fid_rowPivotGaussianElimination, ['points_shifted  ' frmt_x ], points_shifted(:, n));
     fprintf(prob.fid_rowPivotGaussianElimination, ['all_fvalues     ' frmt_f ], fvalues');
@@ -763,11 +763,11 @@ case 24
     case 2
      fprintf(prob.dbg_file_fid, '\n%s', 'rowPivotGaussianElimination[7] - pivot exchange');
   end
-  
+
   switch subp
     case 1
       fprintf(prob.fid_rowPivotGaussianElimination, ENDSTR);
-      fprintf(prob.fid_rowPivotGaussianElimination, ['%s\n'], str_pts);             
+      fprintf(prob.fid_rowPivotGaussianElimination, ['%s\n'], str_pts);
       fprintf(prob.fid_rowPivotGaussianElimination, ENDSTR);
     case 2
       fprintf(prob.fid_rowPivotGaussianElimination, ['%s\n'], str_pts);
@@ -803,7 +803,7 @@ case 25
   fprintf(prob.fid_rowPivotGaussianElimination, ['all_points      ' frmt_x ], points_abs);
   fprintf(prob.fid_rowPivotGaussianElimination, ['all_fvalues     ' frmt_f ], fvalues');
   fprintf(prob.fid_rowPivotGaussianElimination, ['fvalues         ' frmt_f ], model.fvalues');
-  fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_values    ' frmt_p ], pivot_values);          
+  fprintf(prob.fid_rowPivotGaussianElimination, ['pivot_values    ' frmt_p ], pivot_values);
   fprintf(prob.fid_rowPivotGaussianElimination, ['points_shifted  ' frmt_x ], points_shifted);
 
   fprintf(prob.fid_rowPivotGaussianElimination, ENDSTR);
@@ -895,18 +895,18 @@ case 28
   fprintf(prob.dbg_file_fid, '\n\n%s\n', 'measureCriticality[0]');
   fprintf(prob.dbg_file_fid, '\n\n%s\n', ...
           '============================================================');
+
   fprintf(prob.fid_measureCriticality, ['[ measureCriticality() ]\n']);
   % fprintf(prob.fid_measureCriticality, ['Debug p-matrices g:\n']);
   fprintf(prob.fid_measureCriticality, ['g  ' frmt_g ], grad);
-
-  fprintf(prob.fid_measureCriticality, '\n');
+  % fprintf(prob.fid_measureCriticality, '\n');
   fprintf(prob.fid_measureCriticality, ['x_center             ' frmt_g ], x_center');
   fprintf(prob.fid_measureCriticality, ['A: (x_center - grad) ' frmt_g ], A');
   fprintf(prob.fid_measureCriticality, ['B: max(bl, A)        ' frmt_g ], B');
   fprintf(prob.fid_measureCriticality, ['C: min(bu, B)        ' frmt_g ], C');
   fprintf(prob.fid_measureCriticality, ['D: C - x_center      ' frmt_g ], m');
 
-  fprintf(prob.fid_measureCriticality, ENDSTRNN);
+  fprintf(prob.fid_measureCriticality, ENDSTR);
 
 case 29
 
@@ -945,13 +945,13 @@ case 30
   frmt_H    = [ '[' repmat([m22_12 ', '], 1, size(H,1)-1) [m22_12 ' ] \n']];
 
   fprintf(prob.dbg_file_fid, '\n%s', 'getModelMatrices[0]');
-  fprintf(prob.fid_getModelMatrices, ['[ %s() ] -> [ getModelMatrices() ]\n'], prob.prev);
-  fprintf(prob.fid_getModelMatrices, ['Debug p-matrices c, g, H:\n']);
-  fprintf(prob.fid_getModelMatrices, ['c  [' [m22_12 ' ]\n'] ], c);
-  fprintf(prob.fid_getModelMatrices, ['g  ' frmt_g ], g);
-  fprintf(prob.fid_getModelMatrices, ['H  ' frmt_H ], H);
+  fprintf(prob.fid_getModelMatrices, ['[ getModelMatrices() ]\n']);
+  % fprintf(prob.fid_getModelMatrices, ['Debug p-matrices c, g, H:\n']);
+  fprintf(prob.fid_getModelMatrices, ['c:  [' [m22_12 ' ]\n'] ], c);
+  fprintf(prob.fid_getModelMatrices, ['g:  ' frmt_g ], g);
+  fprintf(prob.fid_getModelMatrices, ['H:  ' frmt_H ], H);
 
-  fprintf(prob.fid_getModelMatrices, ENDSTRNN);
+  fprintf(prob.fid_getModelMatrices, ENDSTR);
 
 case 31
 
@@ -1010,6 +1010,11 @@ case 33
 
   fprintf(prob.fid_criticalityStep, ENDSTRNN);
 
+
+
+
+
+
 case 34
 
   % ------------------------------------------------------------------
@@ -1060,7 +1065,7 @@ switch subp
   case 1
     fprintf(prob.dbg_file_fid, '\n%s', 'improveModelNfp[2]');
     fprintf(prob.fid_improveModelNfp, ['%s %i/3\n'], str_att0, attempts);
-    
+
   case 2
     fprintf(prob.fid_improveModelNfp, ['%s %i)\n'], str_att1, poly_i);
     fprintf(prob.fid_improveModelNfp, ['Re-orthogonalize (orthogonalizeToOtherPolynomials)\n']);
@@ -1076,7 +1081,6 @@ case 37
   frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(new_pivot_value,1)-1) [m22_12 ' ] \n']];
 
   fprintf(prob.dbg_file_fid, '\n%s', 'improveModelNfp[3]');
-  
 
   fprintf(prob.fid_improveModelNfp, '\n');
   fprintf(prob.fid_improveModelNfp, ['%i new pts/pivot-pts found (T/F:%i)\n'], ...
@@ -1087,8 +1091,7 @@ case 37
   fprintf(prob.fid_improveModelNfp, ['nfp_new_point_shifted ' frmt_x ], new_point_shifted);
   fprintf(prob.fid_improveModelNfp, ['nfp_new_point_abs     ' frmt_x ], new_point_abs);
   fprintf(prob.fid_improveModelNfp, ['nfp_new_pivots        ' frmt_p ], new_pivot_value);
-
-  fprintf(prob.fid_minimizeTr, ENDSTRNN);
+  fprintf(prob.fid_improveModelNfp, 'uuid#0: {00000000-0000-0000-0000-000000000000}\n');
 
   fprintf(prob.fid_improveModelNfp, '\nnew_case -> impr_case\n');
   fprintf(prob.fid_improveModelNfp, 'Return-for-loop[3]: issue return->iterate()\n');
@@ -1111,6 +1114,7 @@ case 38
   fprintf(prob.fid_improveModelNfp, ['For-loop[3]: (found_i < nfp_new_points_shifted_.cols()) (%i/%i)\n'], ...
           found_i, length(new_points_shifted));
 
+  fprintf(prob.fid_improveModelNfp, 'uuid#0: {00000000-0000-0000-0000-000000000000}\n');
   fprintf(prob.fid_improveModelNfp, ['nfp_new_point_abs#%i  ' frmt_x ], ...
           size(new_point_abs,2)-1, new_point_abs);
     fprintf(prob.fid_improveModelNfp, ['nfp_new_fvalues#%i    ' frmt_f ], ...
@@ -1215,12 +1219,13 @@ case 48
     fprintf(prob.fid_improveModelNfp, ['points_abs_#%i:                 ' frmt_x ], ii, pa(:,ii)');
   end
 
-  % fvalues
-  fprintf(prob.fid_improveModelNfp, 'fvalues_.cols():               %i\n', size(fv,2));
-  fprintf(prob.fid_improveModelNfp, 'fvalues_.rows():               %i\n', size(fv,1));
+  % fvalues -> switch of dims (fv = model.fvalues;)
+  fprintf(prob.fid_improveModelNfp, 'fvalues_.cols():               %i\n', size(fv,1));
+  fprintf(prob.fid_improveModelNfp, 'fvalues_.rows():               %i\n', size(fv,2));
   for ii=1:size(fv, 2)
     fprintf(prob.fid_improveModelNfp, ['fvalues_#%i:                    ' frmt_f ], ii, fv(:,ii)');
   end
+  fprintf(prob.fid_improveModelNfp, ENDSTR);
 
   % fprintf(prob.fid_improveModelNfp, '------------------------------------------\n\n');
 
@@ -1242,7 +1247,7 @@ case 51
   % ------------------------------------------------------------------
   % improveModelNfp()
   fprintf(prob.dbg_file_fid, '\n%s', 'improveModelNfp[17]');
-  fprintf(prob.fid_improveModelNfp, 'Re-orthogonalize\n');
+  fprintf(prob.fid_improveModelNfp, ['Re-orthogonalize (orthogonalizeToOtherPolynomials)\n']);
 
 case 52
   % ------------------------------------------------------------------
@@ -1263,16 +1268,21 @@ case 54
   % ------------------------------------------------------------------
   % improveModelNfp()
   fprintf(prob.dbg_file_fid, '\n%s', 'improveModelNfp[20]');
+
   fprintf(prob.fid_improveModelNfp, 'exit_flag=%i\n', exitflag);
   fprintf(prob.fid_improveModelNfp, '=====================================\n\n\n');
-
-  fprintf(prob.fid_improveModelNfp, ENDSTRNN);
 
 case 55
   % ------------------------------------------------------------------
   % improveModelNfp()
 
   % fprintf(prob.fid_minimizeTr, ENDSTRNN);
+
+
+
+
+
+
 
 
 
@@ -1286,6 +1296,7 @@ case 56
   frmt_x = [ '[' repmat([m22_12 ', '], 1, size(ps,1)-1) [m22_12 ' ] \n']];
 
   fprintf(prob.dbg_file_fid, '\n%s', 'ensure_improvement[0]');
+
   fprintf(prob.fid_ensureImprovement, ['[ ensureImprovement() ]\n']);
   fprintf(prob.fid_ensureImprovement, ['Calculate a new point to add\n']);
 
@@ -1313,6 +1324,7 @@ case 58
   switch subp
 
     case 1
+      fprintf(prob.fid_ensureImprovement, ['[ ensureImprovement() ]\n']);
       fprintf(prob.fid_ensureImprovement, [ '(!success):      [ %i ]\n' ], cC);
       fprintf(prob.fid_ensureImprovement, [ 'exit_flag:       [ %i ]\n' ], exitflag);
 
@@ -1372,8 +1384,8 @@ case 64
   fprintf(prob.fid_ensureImprovement, [ 'exit_flag=%i\n' ], exitflag);
   fprintf(prob.fid_ensureImprovement, [ '[ %s ]\n' ], msg);
 
-  fprintf(prob.fid_ensureImprovement, ENDSTR);  
-  fprintf(prob.fid_improveModelNfp, '=====================================\n\n\n');
+  fprintf(prob.fid_ensureImprovement, ENDSTR);
+  % fprintf(prob.fid_ensureImprovement, STARTSTR);
 
 case 65
   % ------------------------------------------------------------------
@@ -1382,7 +1394,7 @@ case 65
   fprintf(prob.fid_ensureImprovement, 'exit_flag=%i [after choose_and_replace_point]\n', exitflag);
 
   fprintf(prob.fid_ensureImprovement, ENDSTR);
-  fprintf(prob.fid_improveModelNfp, '=====================================\n\n\n');
+  fprintf(prob.fid_ensureImprovement, STARTSTR);
 
 
 
@@ -1399,18 +1411,18 @@ case 66
   frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(model.fvalues,1)-1) [m22_12 ' ] \n']];
   frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(model.points_abs,1)-1) [m22_12 ' ] \n']];
 
-
 switch subp
 
   case 1
     fprintf(prob.dbg_file_fid, '\n\n%s\n', 'computePolynomialModels[0]');
-   
-    fprintf(prob.fid_computePolynomialModels, ['[ computePolynomialModels() ]\n']);
-    fprintf(prob.fid_computePolynomialModels, ['linear terms:                 [ %i ]\n'], linear_terms);
-    fprintf(prob.fid_computePolynomialModels, ['full quad terms:              [ %i ]\n'], full_q_terms);
-    fprintf(prob.fid_computePolynomialModels, ['points_num:                   [ %i ]\n'], points_num);
 
-    fprintf(prob.fid_computePolynomialModels, ['points_abs_:                  ' frmt_p ], model.points_abs);    
+    fprintf(prob.fid_computePolynomialModels, ['[ computePolynomialModels() ]\n']);
+    fprintf(prob.fid_computePolynomialModels, ['linear terms:    [ %i ]\n'], linear_terms);
+    fprintf(prob.fid_computePolynomialModels, ['full quad terms: [ %i ]\n'], full_q_terms);
+    fprintf(prob.fid_computePolynomialModels, ['points_num:      [ %i ]\n'], points_num);
+
+    fprintf(prob.fid_computePolynomialModels, ['points_abs_:      ' frmt_p ], model.points_abs);
+    fprintf(prob.fid_computePolynomialModels, ['points_shifted_:  ' frmt_p ], model.points_shifted);
 
   case 2
     % fprintf(prob.dbg_file_fid, '\n%s', 'computePolynomialModels[1]');
@@ -1429,12 +1441,12 @@ switch subp
 
   case 4
     % fprintf(prob.dbg_file_fid, '\n%s', 'computePolynomialModels[3]');
-    fprintf(prob.fid_computePolynomialModels, ['l_alpha:                      ' frmt_x ], l_alpha');
+    fprintf(prob.fid_computePolynomialModels, ['l_alpha:     ' frmt_x ], l_alpha');
 
   case 5
-    
-    fprintf(prob.fid_computePolynomialModels, ['points_abs_                   ' frmt_p ], model.points_abs);
-    fprintf(prob.fid_computePolynomialModels, ['p[0].coeffs:                  ' frmt_x ], ...
+
+    fprintf(prob.fid_computePolynomialModels, ['points_abs_  ' frmt_p ], model.points_abs);
+    fprintf(prob.fid_computePolynomialModels, ['p[0].coeffs: ' frmt_x ], ...
             polynomials{1}.coefficients');
     fprintf(prob.fid_computePolynomialModels, ENDSTR);
 
@@ -1497,7 +1509,7 @@ case 69
       fprintf(prob.fid_multiplyPolynomial, ['[ multiplyPolynomial() ]\n']);
       fprintf(prob.fid_multiplyPolynomial, ['ps: ' frmt_x ], polynomial.coefficients);
 
-      fprintf(prob.fid_multiplyPolynomial, ENDSTRNN);
+      fprintf(prob.fid_multiplyPolynomial, ENDSTR);
 
   end
 
@@ -1505,16 +1517,30 @@ case 70
   % ------------------------------------------------------------------
   % nfpFiniteDifferences()
   m22_12 = prob.m22_12;
-  frmt_x = [ '[' repmat([m22_12 ', '], 1, size(l_alpha,1)-1) [m22_12 ' ] \n']];
+  frmt_a = [ '[' repmat([m22_12 ', '], 1, size(l_alpha,1)-1) [m22_12 ' ] \n']];
+  frmt_x = [ '[' repmat([m22_12 ', '], 1, size(points,1)-1) [m22_12 ' ] \n']];
 
   switch subp
 
     case 1
       fprintf(prob.dbg_file_fid, '\n%s\n', 'nfpFiniteDifferences[0]');
       fprintf(prob.fid_nfpFiniteDifferences, ['[ nfpFiniteDifferences() ]\n']);
-      fprintf(prob.fid_nfpFiniteDifferences, ['l_alpha:                      ' frmt_x ], l_alpha');
+      fprintf(prob.fid_nfpFiniteDifferences, ['fvalues_:    ' frmt_a ], l_alpha');
+      fprintf(prob.fid_nfpFiniteDifferences, ['points:      ' frmt_x ], points);
+      fprintf(prob.fid_nfpFiniteDifferences, ENDSTR);
 
-      fprintf(prob.fid_nfpFiniteDifferences, ENDSTRNN);
+    case 2
+      fprintf(prob.fid_nfpFiniteDifferences, ['m = dim+1:   [ %i ]\n'], dim+1);
+      fprintf(prob.fid_nfpFiniteDifferences, ['points_num:  [ %i ]\n'], points_num);
+
+    case 3
+      fprintf(prob.fid_nfpFiniteDifferences, ['l_alpha(m):   ' frmt_a ], l_alpha(:, m));
+      fprintf(prob.fid_nfpFiniteDifferences, ['l_alpha(n):   ' frmt_a ], l_alpha(:, n));
+      fprintf(prob.fid_nfpFiniteDifferences, ['val:          ' frmt_a ], val);
+
+    case 4
+      fprintf(prob.fid_nfpFiniteDifferences, ['l_alpha:      ' frmt_a ], l_alpha');
+      fprintf(prob.fid_nfpFiniteDifferences, ENDSTR);
 
   end
 
@@ -1522,6 +1548,7 @@ case 71
   % ------------------------------------------------------------------
   % isComplete()
   % part=71; subp=1; print_soln_body;
+  frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(model.points_abs,1)-1) [m22_12 ' ] \n']];
 
   switch subp
 
@@ -1532,7 +1559,11 @@ case 71
       fprintf(prob.fid_isComplete, ['max_terms:                 [ %i ]\n'], max_terms);
       fprintf(prob.fid_isComplete, ['(points_num >= max_terms): [ %i ]\n'], result);
 
-      fprintf(prob.fid_isComplete, ENDSTRNN);
+      fprintf(prob.fid_isComplete, ['points_abs:           ' frmt_x ], model.points_abs);
+
+
+
+      fprintf(prob.fid_isComplete, ENDSTR);
 
   end
 
@@ -1644,7 +1675,8 @@ case 76
 
     case 2
       fprintf(prob.fid_tryToAddPoint, ['(~is_complete)     [ %i ]\n'], condA);
-      
+      fprintf(prob.fid_tryToAddPoint, ['points_abs:           ' frmt_x ], model.points_abs);
+
       fprintf(prob.fid_tryToAddPoint, ['[ Call AddPoint() ]\n']);
       fprintf(prob.fid_tryToAddPoint, ['rel_piv_threshold: [' [m22_12 ' ]\n'] ], relative_pivot_threshold);
       fprintf(prob.fid_tryToAddPoint, ['new_fvalues:       ' frmt_f ], new_fvalues);
@@ -1685,12 +1717,14 @@ case 77
       fprintf(prob.fid_addPoint, ENDSTR);
       fprintf(prob.fid_addPoint, ['points_abs:           ' frmt_x ], model.points_abs);
       fprintf(prob.fid_addPoint, ENDSTR);
+      fprintf(prob.fid_addPoint, ['pivot_values:     ' frmt_f ], model.pivot_values);
+      fprintf(prob.fid_addPoint, ENDSTR);
 
       fprintf(prob.fid_addPoint, ['next_position:        [ %i ]\n'], next_position);
       fprintf(prob.fid_addPoint, ['(next_position == 1): [ %i ]\n'], cB);
       fprintf(prob.fid_addPoint, ENDSTR);
 
-    case 2      
+    case 2
       fprintf(prob.fid_addPoint, ['next_position:     [ %i ]\n'], next_position);
       fprintf(prob.fid_addPoint, ['exit_flag:         [ %i ]\n'], exitflag);
       fprintf(prob.fid_addPoint, ['tr_center_:        [ %i ]\n'], model.tr_center);
@@ -1709,7 +1743,7 @@ case 77
     case 4
       piv_p = pivot_polynomials(next_position).coefficients;
       frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(piv_p,2)-1) [m22_12 ' ] \n']];
-      
+
       fprintf(prob.fid_addPoint, ['[ normalizePolynomial() ]\n']);
       fprintf(prob.fid_addPoint, ['next_position:     [ %i ]\n'], next_position);
       fprintf(prob.fid_addPoint, ['new_point_shifted: ' frmt_x ], new_point_shifted);
@@ -1724,13 +1758,13 @@ case 77
       fprintf(prob.fid_addPoint, ['next_position:     [ %i ]\n'], next_position);
       fprintf(prob.fid_addPoint, ['new_point_shifted: ' frmt_x ], new_point_shifted);
       fprintf(prob.fid_addPoint, ['pivot_p.coeffs     ' frmt_p ], piv_p');
-      fprintf(prob.fid_addPoint, ENDSTR);      
+      fprintf(prob.fid_addPoint, ENDSTR);
 
     case 6
       piv_p = pivot_polynomials(next_position).coefficients;
       frmt_p    = [ '[' repmat([m22_12 ', '], 1, size(piv_p,2)-1) [m22_12 ' ] \n']];
 
-      fprintf(prob.fid_addPoint, ['[ orthogonalizeBlock() ]\n']);            
+      fprintf(prob.fid_addPoint, ['[ orthogonalizeBlock() ]\n']);
       fprintf(prob.fid_addPoint, ['next_position:     [ %i ]\n'], next_position);
       fprintf(prob.fid_addPoint, ['block_beginning:   [ %i ]\n'], block_beginning);
       fprintf(prob.fid_addPoint, ['next_position-1:   [ %i ]\n'], next_position-1);
@@ -1776,11 +1810,15 @@ case 78
       fprintf(prob.dbg_file_fid, '\n%s', 'changeTrCenter[0]');
       fprintf(prob.fid_changeTrCenter, ['[ changeTrCenter() ]\n']);
 
-    case 2
       % fprintf(prob.dbg_file_fid, '\n%s', 'changeTrCenter[1]');
       fprintf(prob.fid_changeTrCenter, ['rel_piv_threshold: [' [m22_12 ' ]\n'] ], options.pivot_threshold);
-      fprintf(prob.fid_changeTrCenter, ['(!is_complete):    [ %i ]\n'], ~is_complete(model, prob));
+      fprintf(prob.fid_changeTrCenter, ['(!is_complete):    [ %i ]\n'], condA);
       fprintf(prob.fid_changeTrCenter, ['exit_flag:         [ %i ]\n'], exitflag);
+
+      fprintf(prob.fid_changeTrCenter, ['points_abs:           ' frmt_x ], model.points_abs);
+      fprintf(prob.fid_changeTrCenter, ['points_shifted:       ' frmt_x ], model.points_shifted);
+
+    case 2
 
       fprintf(prob.fid_changeTrCenter, ['new_fvalue:        [' [m22_12 ' ]\n'] ], new_fvalues);
       fprintf(prob.fid_changeTrCenter, ['exit_flag:         [ %i ]\n'], exitflag);
@@ -1910,16 +1948,15 @@ case 101
     case 8
       fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[5]');
       fprintf(prob.fid_iterate, ENDSTR);
-      fprintf(prob.fid_iterate, ['norm(measure_crit) <= eps_c:       [ %i ]\n'], cW1);
+      fprintf(prob.fid_iterate, ['norm(measure_crit) <= eps_c:    [ %i ]\n'], cW1);
+      fprintf(prob.fid_iterate, ['model_criticality:              ' frmt_f ], model_criticality);
 
     case 9
       fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[6]');
       fprintf(prob.fid_iterate, ENDSTR);
-      fprintf(prob.fid_iterate, ['norm(measure_crit) < tol_f:        [ %i ]\n'], cW2);
+      fprintf(prob.fid_iterate, ['norm(measure_crit) < tol_f:     [ %i ]\n'], cW2);
 
-
-
-    case 10 % FAKE COUNTER 1 
+    case 10 % FAKE COUNTER 1
 
       frmt_x = [ '[' repmat([m22_12 ', '], 1, size(x_current,1)-1) [m22_12 ' ] \n']];
       frmt_f = [ '[' repmat([m22_12 ', '], 1, size(fval_current,1)-1) [m22_12 ' ] \n']];
@@ -1938,7 +1975,7 @@ case 101
         fprintf(prob.fid_iterate, ['points_shifted  ' frmt_x ], model.points_shifted);
         fprintf(prob.fid_iterate, ENDSTR);
         fprintf(prob.fid_iterate, ['points_abs      ' frmt_x ], model.points_abs);
-      
+
         fprintf(prob.fid_iterate, ENDSTR);
         fprintf(prob.fid_iterate, ['!isImprovementNeeded           [ %i ]\n'], 0);
         fprintf(prob.fid_iterate, ['!areImprovementPointsComputed  [ %i ]\n'], ~k);
@@ -1957,23 +1994,27 @@ case 101
       fprintf(prob.fid_iterate, ['!areImprovementPointsComputed  [ %i ]\n'], 1);
       fprintf(prob.fid_iterate, ['!isReplacementNeeded           [ %i ]\n'], 1);
       fprintf(prob.fid_iterate, ['!areReplacementPointsComputed  [ %i ]\n'], 1);
-      
+
     case 12
       fprintf(prob.dbg_file_fid, '\n\n%s', 'iterate[3]');
       fprintf(prob.fid_iterate, ENDSTR);
-      fprintf(prob.fid_iterate, ['pred_red < tol_radius*1e-2:        [ %i ]\n'], cS);
-      fprintf(prob.fid_iterate, ['pred_red < tol_radius*abs(f_curr): [ %i ]\n'], cT);
-      fprintf(prob.fid_iterate, ['norm(trial_step) < tol_radius:     [ %i ]\n'], cU);
-      fprintf(prob.fid_iterate, ['pred_red < tol_f*abs(f_curr)*1e-3: [ %i ]\n'], cV);            
+      fprintf(prob.fid_iterate, ['pred_red < tol_rad*1e-2:        [ %i ]\n'], cS);
+      fprintf(prob.fid_iterate, ['pred_red < tol_rad*|f_curr|:    [ %i ]\n'], cT);
+      fprintf(prob.fid_iterate, ['norm(trial_step) < tol_rad:     [ %i ]\n'], cU);
+      fprintf(prob.fid_iterate, ['pred_red < tol_f*|f_curr|*1e-3: [ %i ]\n'], cV);
 
     case 13
       fprintf(prob.fid_iterate, ENDSTR);
       fprintf(prob.fid_iterate, ['x_current:    ' frmt_x ], x_current);
       fprintf(prob.fid_iterate, ['fval_current: ' frmt_f ], fval_current);
       fprintf(prob.fid_iterate, ['trial_point:  ' frmt_x ], trial_point);
-      fprintf(prob.fid_iterate, ['fval_trial:   ' frmt_f ], fval_trial);      
+      fprintf(prob.fid_iterate, ['fval_trial:   ' frmt_f ], fval_trial);
 
   end
+
+
+
+
 
 case 102
   % ------------------------------------------------------------------
@@ -1998,7 +2039,7 @@ case 102
       fprintf(prob.fid_handleEvaluatedCase, ['x_current:    ' frmt_x ], x_current);
       fprintf(prob.fid_handleEvaluatedCase, ['fval_current: ' frmt_f ], fval_current);
       fprintf(prob.fid_handleEvaluatedCase, ['trial_point:  ' frmt_x ], trial_point);
-      fprintf(prob.fid_handleEvaluatedCase, ['fval_trial:   ' frmt_f ], fval_trial);      
+      fprintf(prob.fid_handleEvaluatedCase, ['fval_trial:   ' frmt_f ], fval_trial);
       fprintf(prob.fid_handleEvaluatedCase, ENDSTR);
 
     case 3
@@ -2012,7 +2053,7 @@ case 102
       fprintf(prob.fid_handleEvaluatedCase, ENDSTR);
 
     case 4
-      fprintf(prob.fid_handleEvaluatedCase, ['[ Call changeTrCenter() ]\n']);      
+      fprintf(prob.fid_handleEvaluatedCase, ['[ Call changeTrCenter() ]\n']);
       fprintf(prob.fid_handleEvaluatedCase, ['(rho_ > eta_1) [ %i ]\n'], cX);
       fprintf(prob.fid_handleEvaluatedCase, ['mchange_flag_  [ %i ]\n'], mchange_flag);
       fprintf(prob.fid_handleEvaluatedCase, ['fval_trial_:   ' frmt_f ], fval_trial);
@@ -2020,7 +2061,7 @@ case 102
       fprintf(prob.fid_handleEvaluatedCase, ENDSTR);
 
     case 5
-      fprintf(prob.fid_handleEvaluatedCase, ['[ Call ensureImprovement() ]\n']);      
+      fprintf(prob.fid_handleEvaluatedCase, ['[ Call ensureImprovement() ]\n']);
       fprintf(prob.fid_handleEvaluatedCase, ['(!iteration_model_fl_ && mchange_flag_ == 4) [ %i ]\n'], cY);
       fprintf(prob.fid_handleEvaluatedCase, ['mchange_flag_        [ %i ]\n'], mchange_flag);
       fprintf(prob.fid_handleEvaluatedCase, ['!iteration_model_fl_ [ %i ]\n'], ~iteration_model_fl);
@@ -2323,7 +2364,7 @@ case 116
       fprintf(prob.fid_setUpTempAllPoints, ['[ setUpTempAllPoints() ]\n']);
 
       fprintf(prob.fid_setUpTempAllPoints, ['points_abs:        ' frmt_x ], points_abs);
-      fprintf(prob.fid_setUpTempAllPoints, ['fvalues:           ' frmt_f ], fvalues);      
+      fprintf(prob.fid_setUpTempAllPoints, ['fvalues:           ' frmt_f ], fvalues);
 
     case 2
 
@@ -2345,7 +2386,7 @@ case 117
     case 1
       fprintf(prob.dbg_file_fid, '\n%s', 'nfpBasis[0]');
 
-      fprintf(prob.fid_nfpBasis, [ '[ --> ' pad('rebuildModel()', 38) ']' ]);      
+      fprintf(prob.fid_nfpBasis, [ '[ --> ' pad('rebuildModel()', 38) ']' ]);
       fprintf(prob.fid_nfpBasis, ['[ nfpBasis() ]\n']);
 
     case 2
@@ -2409,7 +2450,7 @@ case 120
 
       fprintf(prob.dbg_file_fid, '\n%s', 'coefficientsToMatrices');
       fprintf(prob.fid_coefficientsToMatrices, ['[ coefficientsToMatrices() ]\n']);
-      
+
       fprintf(prob.fid_coefficientsToMatrices, ...
               ['p.size():       [' [m22_12 ' ]\n'] ], size(coefficients,1));
       fprintf(prob.fid_coefficientsToMatrices, ...
@@ -2418,7 +2459,7 @@ case 120
     case 2
 
       frmt_g    = [ '[' repmat([m22_12 ', '], 1, size(g,1)-1) [m22_12 ' ] \n']];
-      frmt_H    = [ '[' repmat([m22_12 ', '], 1, size(H,1)-1) [m22_12 ' ] \n']];      
+      frmt_H    = [ '[' repmat([m22_12 ', '], 1, size(H,1)-1) [m22_12 ' ] \n']];
 
       fprintf(prob.fid_coefficientsToMatrices, ['Debug p-matrices c, g, H:\n']);
       fprintf(prob.fid_coefficientsToMatrices, ['c:      [' [m22_12 ' ]\n'] ], c);
@@ -2466,15 +2507,19 @@ case 122
       fprintf(prob.fid_choosePivotPolynomial, ['[ choosePivotPolynomial() ]\n']);
       fprintf(prob.fid_choosePivotPolynomial, ['last_point:        [ %i ]\n'], last_point);
       fprintf(prob.fid_choosePivotPolynomial, ['success:           [ %i ]\n'], success);
-      fprintf(prob.fid_choosePivotPolynomial, ['pivot_value:       [ %i ]\n'], pivot_value);
+      fprintf(prob.fid_choosePivotPolynomial, ['pivot_value:       [  ' m22_12 ' ]\n'], pivot_value);
 
       fprintf(prob.fid_choosePivotPolynomial, ['incumbent_point:   ' frmt_x ], incumbent_point);
-      fprintf(prob.fid_choosePivotPolynomial, ['points_shifted:    ' frmt_s ], points);      
+      fprintf(prob.fid_choosePivotPolynomial, ['points_shifted:    ' frmt_s ], points);
       fprintf(prob.fid_choosePivotPolynomial, ENDSTR);
 
     case 2
+      fprintf(prob.fid_choosePivotPolynomial, ['k:                 [ %i ]\n'], k);
 
     case 3
+      fprintf(prob.fid_choosePivotPolynomial, ['pivot_value:       [  ' m22_12 ' ]\n'], val);
+
+
 
   end
 

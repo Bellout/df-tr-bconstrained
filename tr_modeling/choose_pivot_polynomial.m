@@ -13,7 +13,7 @@ function [pivot_polynomials, pivot_value, success, prob] = ...
 % ----------------------------------------------------------
   for k = initial_i : final_i
 
-
+    part=122; subp=2; print_soln_body;
     fprintf(prob.fid_orthogonalizeToOtherPolynomials, ...
             [ '[ --> ' pad('choosePivotPolynomial()', 38) ']' ]);
     [polynomial prob] = ...
@@ -27,7 +27,7 @@ function [pivot_polynomials, pivot_value, success, prob] = ...
                                      incumbent_point, ...
                                      prob);
 
-    part=122; subp=2; print_soln_body;
+    part=122; subp=3; print_soln_body;
 
     % ------------------------------------------------------
     if abs(val) > tol
@@ -38,7 +38,7 @@ function [pivot_polynomials, pivot_value, success, prob] = ...
       pivot_polynomials(initial_i) = polynomial;
       pivot_value = val;
 
-      part=122; subp=3; print_soln_body;
+      part=122; subp=4; print_soln_body;
       break
 
     else

@@ -4,11 +4,16 @@ function [model, exitflag, prob] = ...
 
   point_added = false;
   point_exchanged = false;
-  part=78; subp=1; print_soln_body;
   exitflag = 0; % Added by MB
 
   % ------------------------------------------------------------------
-  if ~is_complete(model, prob)
+  fprintf(prob.fid_isComplete, ...
+        [ '[ --> ' pad('changeTrCenter()', 38) ']' ]);
+  condA = ~is_complete(model, prob);
+
+part=78; subp=1; print_soln_body;
+
+  if condA
 
     % Add this point
     part=78; subp=2; print_soln_body;
@@ -50,6 +55,7 @@ function [model, exitflag, prob] = ...
       model.tr_center = pt_i;
       point_exchanged = true;
       exitflag = 2;
+
     else
       % add_point and exchange_point failed
       % We still need to add this new point as TR center
@@ -57,6 +63,7 @@ function [model, exitflag, prob] = ...
       part=78; subp=5; print_soln_body;
       model.points_abs(:, end+1) = new_point;
       model.fvalues(:, end+1) = new_fvalues;
+
       model.tr_center = size(model.points_abs, 2); % Last
 
         fprintf(prob.fid_rebuildModel, ...

@@ -58,10 +58,10 @@ function [model, exitflag, prob] = add_point(model, new_point, ...
             [ '[ --> ' pad('addPoint()', 38) ']' ]);    
     [pivot_polynomials, pivot_value, success, prob] = ...
     choose_pivot_polynomial(pivot_polynomials, ...
-                            points_shifted, ...
-                            next_position, ...
-                            block_end, ...
-                            pivot_threshold,...
+                            points_shifted, ... points
+                            next_position, ... initial_i <--- !!!!
+                            block_end, ... final_i
+                            pivot_threshold,... tol
                             prob);
 
     part=77; subp=3; print_soln_body;
@@ -122,13 +122,20 @@ function [model, exitflag, prob] = add_point(model, new_point, ...
 
   % ------------------------------------------------------------------
   if exitflag > 0
+    
+    % Add values to vectors/matrices
     points_shifted(:, next_position) = new_point_shifted;
+    
     fvalues = model.fvalues;
     fvalues(:, next_position) = new_fvalues;
+
     points_abs = model.points_abs;
     points_abs(:, next_position) = new_point;
+
+    % empty modeling polynomials
     model.modeling_polynomials = {};
 
+    % Uploaded updated vectors/matrices to model struc
     model.points_abs = points_abs;
     model.fvalues = fvalues;
     model.points_shifted = points_shifted;

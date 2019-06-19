@@ -93,7 +93,7 @@ if (~isempty(bl) && ~isempty(find(initial_points(:, 1) < bl, 1))) || ...
 
      initial_fvalues(:, 1) = ...
      evaluate_new_fvalues(funcs, initial_points(:, 1));
-     
+
   end
 end
 part=104; subp=1;print_soln_body; % computeInitialPoints() -- 10
@@ -166,7 +166,7 @@ if length(initial_fvalues) < n_initial_points
 
     part=102; subp=1; print_soln_body; % handleEvaluatedCase()
     % Iteration, point, value
-    
+
     if ~succeeded
       error('cmg:bad_starting_point', 'Bad starting point');
     end
@@ -190,7 +190,7 @@ part=101; subp=2; print_soln_body; % iterate()
 % !areReplacementPointsComputed, !isInitialized
 
 
-fprintf(prob.fid_rebuildModel, ... 
+fprintf(prob.fid_rebuildModel, ...
         [ STARTSTR '[ --> ' pad('iterate()[a]', 38) ']' ]);
 model = rebuild_model(model, options, prob);
 
@@ -207,7 +207,7 @@ part=3; print_soln_body;
 
 % --------------------------------------------------------------------
 % Move to best point
-fprintf(prob.fid_moveToBestPoint, ... 
+fprintf(prob.fid_moveToBestPoint, ...
         [ STARTSTR '[ --> ' pad('iterate()[a]', 38) ']' ]);
 prob.prev = '[a]';
 model = move_to_best_point(model, bl, bu, [], prob);
@@ -237,10 +237,11 @@ if size(model.points_abs, 2) < 2
 
   part=101; subp=4; print_soln_body; % iterate()
   % ensureImprovement
-
-  fprintf(prob.fid_ensureImprovement, [ STARTSTR '[ --> ' pad('iterate()[a]', 38) ']' ]);
+  fprintf(prob.fid_ensureImprovement, ...
+          [ STARTSTR '[ --> ' pad('iterate()[a]', 38) ']' ]);
   [model, exitflag, prob] = ...
   ensure_improvement(model, funcs, bl, bu, options, prob);
+
   part=118; subp=1; print_soln_body; % getImprovementCases() -- 20
   part=119; subp=1; print_soln_body; % getReplacementCases() -- 21
 end
@@ -260,6 +261,13 @@ end
 isImprovementNeeded=0;
 
 
+
+
+
+
+
+
+
 % ====================================================================
 % Start opt.loop
 
@@ -268,7 +276,7 @@ rho = 0;
 iter = 1;
 
 fval_current = model.fvalues(1);
-x_current = model.points_abs(:, model.tr_center); 
+x_current = model.points_abs(:, model.tr_center);
 % BUG: model.fvalues does do correspond to model.tr_center index
 
 % --------------------------------------------------------------------
@@ -283,7 +291,7 @@ for iter = 1 : iter_max
   % <<<<<<<<<<<<<<<<< COUNTER 1 >>>>>>>>>>>>>>>>>>>>
   fprintf(prob.fid_iterate, STARTSTR);
   fprintf(prob.fid_iterate, COUNTSTR, 1);
-  part=101; subp=7; print_soln_body; % iterate()  
+  part=101; subp=7; print_soln_body; % iterate()
   % x_current, fval_current, tr_center
 
   part=101; subp=11; print_soln_body; % iterate()
@@ -319,7 +327,7 @@ for iter = 1 : iter_max
     x_current = model.points_abs(:, model.tr_center);
 
     % <<<<<<<<<<<<<<<<< COUNTER 2 >>>>>>>>>>>>>>>>>>>>
-    fprintf(prob.fid_iterate, COUNTSTR, 2);    
+    fprintf(prob.fid_iterate, COUNTSTR, 2);
     part=101; subp=7; print_soln_body; % iterate()
     % x_current, fval_current, tr_center
 
@@ -330,7 +338,9 @@ for iter = 1 : iter_max
   % ------------------------------------------------------------------
   % Criticality step -- if we are possibly close to the optimum
   criticality_step_performed = false;
-  cW1 = norm(measure_criticality(model, bl, bu, prob)) <= eps_c;
+  model_criticality = measure_criticality(model, bl, bu, prob);
+
+  cW1 = norm(model_criticality) <= eps_c;
   part=101; subp=8; print_soln_body; % iterate()
 
   if cW1
@@ -359,9 +369,9 @@ for iter = 1 : iter_max
 
   % ------------------------------------------------------------------
   cS = predicted_red < tol_radius*1e-2;
-  cT = predicted_red < tol_radius*abs(fval_current);  
+  cT = predicted_red < tol_radius*abs(fval_current);
   cU = norm(trial_step) < tol_radius;
-  cV = predicted_red < tol_f*abs(fval_current)*1e-3;         
+  cV = predicted_red < tol_f*abs(fval_current)*1e-3;
   part=101; subp=12; print_soln_body; % iterate()
 
 
@@ -401,6 +411,8 @@ for iter = 1 : iter_max
       fval_current = fval_trial;
       x_current = trial_point;
       % Including this new point as the TR center
+      fprintf(prob.fid_changeTrCenter, ...
+              [ STARTSTR '[ --> ' pad('handleEvaluatedCase()[a]', 38) ']' ]);
       [model, mchange_flag] = change_tr_center(model, trial_point, ...
                                                fval_trial, options, prob);
 
@@ -411,7 +423,7 @@ for iter = 1 : iter_max
       % this mchange_flag is not being used (rho > eta_1)
       cY = (~iteration_model_fl && mchange_flag == 4);
       if cY
-        
+
         % Had to rebuild a model that wasn't even Fully Linear
         % This shouldn't happen
         fprintf(prob.fid_ensureImprovement, ...
@@ -434,7 +446,7 @@ for iter = 1 : iter_max
 
     % <<<<<<<<<<<<<<<<< FAKE COUNTER 1 >>>>>>>>>>>>>>>>>>>>
     % REPEATE BC WE NEED TO BREAK THE ITERATE LOOP TO CONPUTE
-    % THE FUNCTION FUNCTION VALUES 
+    % THE FUNCTION FUNCTION VALUES
     part=101; subp=10; print_soln_body; % iterate()
 
      % if mchange_flag == 4, we had to rebuild the model
@@ -453,7 +465,7 @@ for iter = 1 : iter_max
   % ------------------------------------------------------------------
   % Radius update
   if rho > eta_1
-      
+
       radius_inc = max(1, gamma_2*(step_size/model.radius));
       model.radius = min(radius_inc*model.radius, radius_max);
 

@@ -1,9 +1,13 @@
 function [model, exitflag, prob] = ...
   ensure_improvement(model, funcs, bl, bu, ...
                      options, prob)
-
+  
   % ------------------------------------------------------------------
+  fprintf(prob.fid_isComplete, [ '[ --> ' pad('ensureImprovement()', 38) ']' ]);  
   [model_complete prob] = is_complete(model, prob);
+  fprintf(prob.fid_isComplete, [ '[ --> ' pad('ensureImprovement()', 38) ']' ]);  
+  is_complete(model, prob); % JUST TO PRINT OUT DOUBLE DBG
+
   model_fl = is_lambda_poised(model, options);
   [model_old prob] = is_old(model, options, prob);
   success = false;
@@ -47,10 +51,9 @@ function [model, exitflag, prob] = ...
 
   % ------------------------------------------------------------------
   cC = (~success);
-  part=58; subp=1; print_soln_body;
-
   if (cC)
 
+    part=58; subp=1; print_soln_body;
     part=58; subp=2; print_soln_body;
     fprintf(prob.fid_rebuildModel, ... 
             [ '[ --> ' pad('ensureImprovement()[b]', 38) ']' ]);
@@ -102,4 +105,26 @@ function [model, exitflag, prob] = ...
   % exit_flag=%i [is no success after improve_model_nfp()
   % or choose_and_replace_point()
   part=64; print_soln_body;
+
+
+
+
+
+  % REPLICATING LOGIC ABOVE AND DBG CALLS TO DBG OUTPUT 
+  % MATCH++ IMPLEMENTATION
+  fprintf(prob.fid_ensureImprovement, ...
+        [ STARTSTR '[ --> ' pad('iterate()[e]', 38) ']' ]);
+
+  if ~model_complete && (~model_old || ~model_fl)
+    part=56; print_soln_body;
+  elseif model_complete && ~model_old
+    part=57; print_soln_body;
+    if success
+      part=65; print_soln_body;
+    end
+  end
+  part=58; subp=1; print_soln_body;
+  % MISSING B-LOOP HERE
+  part=64; print_soln_body;
+
 end
