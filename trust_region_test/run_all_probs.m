@@ -3,10 +3,12 @@
 % ----------------------------------------------------------
 prob = struct();
 
-prob.dbg_iters='prob-soln-iters-bport.txt';
+mach = 'xe';
+% mach = 'bport';
+prob.dbg_iters=['prob-soln-iters-' mach '.txt'];
 prob.dbg_iters_fid = fopen(prob.dbg_iters, 'w');
 
-prob.dbg_file='prob-soln-flow-bport.txt';
+prob.dbg_file=['prob-soln-flow-' mach '.txt'];
 prob.dbg_file_fid = fopen(prob.dbg_file, 'w');
 
 % ----------------------------------------------------------
