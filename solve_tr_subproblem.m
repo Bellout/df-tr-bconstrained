@@ -19,8 +19,8 @@ function [trial_point, trial_decrease, prob] = ...
 
   % ------------------------------------------------------------------
   % Print polynomial [-polynomial_max] (input data)
-  part=0; print_soln_body;
-  part=6; print_soln_body;
+  % part=0; print_soln_body;
+  % part=6; print_soln_body; % C++ POINT SOLVE TR SUBPROBLEM
 
   % ------------------------------------------------------------------  
   fprintf(prob.fid_minimizeTr, [ '[ --> ' pad('solveTrSubproblem()', 38) ']' ]);
@@ -59,7 +59,7 @@ function [trial_point, trial_decrease, prob] = ...
 
   % ------------------------------------------------------------------
   % Print polynomial [-polynomial_max] (input data)
-  part=0; print_soln_body;
-  part=9; print_soln_body;
+  % part=0; print_soln_body;
+  % part=9; print_soln_body; % Trial point found
 
 end

@@ -532,11 +532,16 @@ case 15
   fprintf(prob.fid_reCenterPoints, STARTSTR);
   fprintf(prob.fid_reCenterPoints, [ '[ --> ' pad('rebuildModel()', 38) ']' ]);
   fprintf(prob.fid_reCenterPoints, ['[ reCenterPoints() ]\n']);
+
   fprintf(prob.fid_reCenterPoints, ['\nValues b/f reCentering\n']);
-  fprintf(prob.fid_reCenterPoints, [ 'dim        [ %i ]\n' ], size(points_abs,1));
-  fprintf(prob.fid_reCenterPoints, [ 'n_points   [ %i ]\n' ], size(points_abs,2));
-  fprintf(prob.fid_reCenterPoints, ['all_points      ' frmt_x ], points_abs);
-  fprintf(prob.fid_reCenterPoints, ['all_fvalues     ' frmt_f ], fvalues');
+  fprintf(prob.fid_reCenterPoints, [ 'dim                    [ %i ]\n' ], size(points_abs,1));
+  fprintf(prob.fid_reCenterPoints, [ 'n_points               [ %i ]\n' ], size(points_abs,2));
+  fprintf(prob.fid_reCenterPoints, [ 'tr_center              [ %i ]\n' ], model.tr_center);
+  fprintf(prob.fid_reCenterPoints, ENDSTR);
+
+  fprintf(prob.fid_reCenterPoints, ['all_points [b/f]     ' frmt_x ], points_abs);
+  fprintf(prob.fid_reCenterPoints, ['all_fvalues [b/f]    ' frmt_f ], fvalues');
+  fprintf(prob.fid_reCenterPoints, ENDSTR);
 
 case 16
 
@@ -547,17 +552,33 @@ case 16
   frmt_x    = [ '[' repmat([m22_12 ', '], 1, size(points_shifted,1)-1) [m22_12 ' ] \n']];
   frmt_f    = [ '[' repmat([m22_12 ', '], 1, size(fvalues,1)-1) [m22_12 ' ] \n']];
 
-  fprintf(prob.dbg_file_fid, '\n%s', 'reCenterPoints[1]');
-  fprintf(prob.fid_reCenterPoints, ['\nValues a/f reCentering\n']);
-  fprintf(prob.fid_reCenterPoints, ['all_points      ' frmt_x ], points_abs);
-  fprintf(prob.fid_reCenterPoints, ['all_fvalues     ' frmt_f ], fvalues');
+  switch subp
 
-  fprintf(prob.fid_reCenterPoints, '\nPoints shifted / distances\n');
-  fprintf(prob.fid_reCenterPoints, ['points_shifted  ' frmt_x ], points_shifted);
-  fprintf(prob.fid_reCenterPoints, ['distances       ' frmt_f ], distances');
+    case 1
+      fprintf(prob.dbg_file_fid, '\n%s', 'reCenterPoints[1]');
+      fprintf(prob.fid_reCenterPoints, ['distances [b/f]      ' frmt_f ], distances');
+      % fprintf(prob.fid_reCenterPoints, ['index_vector [b/f]   ' frmt_f ], pt_order');
+      
+      fprintf(prob.fid_reCenterPoints, ['dist.sz                [ %i ]\n' ], size(distances,2));
 
-  fprintf(prob.fid_reCenterPoints, ENDSTRNN);
+    case 2
+      fprintf(prob.fid_reCenterPoints, ['idxvec.sz              [ %i ]\n' ], size(pt_order,2));
+      fprintf(prob.fid_reCenterPoints, ['points_shifted [b/f] ' frmt_x ], points_shifted);
+      fprintf(prob.fid_reCenterPoints, ENDSTR);
 
+    case 3
+
+      fprintf(prob.fid_reCenterPoints, ['Values a/f reCentering\n']);
+      fprintf(prob.fid_reCenterPoints, ['all_points [a/f]     ' frmt_x ], points_abs);
+      fprintf(prob.fid_reCenterPoints, ['all_fvalues [a/f]    ' frmt_f ], fvalues');
+      fprintf(prob.fid_reCenterPoints, ENDSTR);
+
+      fprintf(prob.fid_reCenterPoints, ['distances [a/f]      ' frmt_f ], distances'); 
+      fprintf(prob.fid_reCenterPoints, ['index_vector [a/f]   ' frmt_f ], pt_order');
+
+      fprintf(prob.fid_reCenterPoints, ['points_shifted [a/f] ' frmt_x ], points_shifted);
+      fprintf(prob.fid_reCenterPoints, ENDSTR);
+  end
 
 
 

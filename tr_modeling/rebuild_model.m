@@ -30,7 +30,7 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
   % Center will be first
   points_abs(:, [1, model.tr_center]) = points_abs(:, [model.tr_center, 1]);
   fvalues(:, [1, model.tr_center]) = fvalues(:, [model.tr_center, 1]);
-
+  
   % Calculate distances
   points_shifted = zeros(dim, p_ini);
   distances = zeros(1, p_ini);
@@ -40,16 +40,18 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
     points_shifted(:, n) = points_abs(:, n) - points_abs(:, 1);
     distances(n) = norm(points_shifted(:, n), inf); % or 2 norm
   end
+  part=16; subp=1; print_soln_body; % reCenterPoints() -> reBuildModel()
 
   % ------------------------------------------------------------------
   % Reorder
   [distances, pt_order] = sort(distances);
-  points_shifted = points_shifted(:, pt_order);
+  part=16; subp=2; print_soln_body; % reCenterPoints() -> reBuildModel()
 
+  points_shifted = points_shifted(:, pt_order);
   points_abs = points_abs(:, pt_order);
   fvalues = fvalues(:, pt_order);
 
-  part=16; subp=1; print_soln_body; % reCenterPoints() -> reBuildModel()
+  part=16; subp=3; print_soln_body; % reCenterPoints() -> reBuildModel()
 
 
 
@@ -150,8 +152,6 @@ function [model, model_changed, prob] = rebuild_model(model, options, prob)
 
         % ----------------------------------------------------------
         part=21; subp=2; print_soln_body;
-
-points_shifted
 
         fprintf(prob.fid_evaluatePolynomial, ...
                 [ '[ --> ' pad('rowPivotGaussianElimination()', 38) ']' ]);
@@ -258,8 +258,6 @@ points_shifted
   end
 
   % ------------------------------------------------------------------
-  last_pt_included
-  
   model.tr_center = 1;
   model.points_abs = points_abs(:, 1:last_pt_included);
   model.points_shifted = points_shifted(:, 1:last_pt_included);

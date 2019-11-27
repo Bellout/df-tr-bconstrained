@@ -4,8 +4,8 @@ function [new_points, new_pivot_values, point_found, prob] = ...
 
   % ------------------------------------------------------------------
   % Print polynomial [-polynomial_max] (input data)
-  part=0; print_soln_body;
-  part=5; print_soln_body;  
+  % part=0; print_soln_body;
+  % part=5; print_soln_body; % C++ POINT NEW FUNCTION
 
   % ------------------------------------------------------------------
   fprintf(prob.fid_minimizeTr, [ '[ --> ' pad('pointNew()', 38) ']' ]);
@@ -57,7 +57,7 @@ function [new_points, new_pivot_values, point_found, prob] = ...
 
   % ------------------------------------------------------------------
   % Print new points found (output data)
-  part=0; print_soln_body;
-  part=7; print_soln_body; 
+  % part=0; print_soln_body;
+  % part=7; print_soln_body; % New points (output data)
 
 end
