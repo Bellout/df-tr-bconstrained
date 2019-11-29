@@ -3,8 +3,8 @@
 % ----------------------------------------------------------
 prob = struct();
 
-mach = 'xe';
-% mach = 'bport';
+mach = 'xe-snopt';
+% mach = 'bport-snopt';
 
 prob.dbg_iters=['prob-soln-iters-' mach ];
 
@@ -60,8 +60,8 @@ x0 = [-1.2;
 
 % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 fi=[]; bl=[]; bu=[]; opt=[];
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
+[x, fval, tc] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,tc,prob);
 close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 fprintf(prob.dbg_iters_fid, '\n%s\n', '\end{alltt}');
@@ -82,8 +82,8 @@ x0 = [2;
 
 % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
+[x, fval, tc] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,tc,prob);
 close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 fprintf(prob.dbg_iters_fid, '\n%s\n', '\end{alltt}');
@@ -104,8 +104,8 @@ x0 = [0;
 
 % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
+[x, fval, tc] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,tc,prob);
 close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 fprintf(prob.dbg_iters_fid, '\n%s\n', '\end{alltt}');
@@ -127,8 +127,8 @@ x0 = [2;
 
 % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
+[x, fval, tc] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,tc,prob);
 close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 fprintf(prob.dbg_iters_fid, '\n%s\n', '\end{alltt}');
@@ -148,8 +148,8 @@ x0 = [-2.6 ; 2 ; 2];
 
 % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
+[x, fval, tc] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,tc,prob);
 close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 fprintf(prob.dbg_iters_fid, '\n%s\n', '\end{alltt}');
@@ -171,8 +171,8 @@ x0 = [-4;
 
 % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
+[x, fval, tc] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,tc,prob);
 close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 fprintf(prob.dbg_iters_fid, '\n%s\n', '\end{alltt}');
@@ -195,8 +195,8 @@ x0 = [2;
 
 % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
+[x, fval, tc] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,tc,prob);
 close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 fprintf(prob.dbg_iters_fid, '\n%s\n', '\end{alltt}');
@@ -220,8 +220,8 @@ x0 = [0.8;
 
 % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
+[x, fval, tc] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,tc,prob);
 close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 fprintf(prob.dbg_iters_fid, '\n%s\n', '\end{alltt}');
@@ -244,8 +244,8 @@ x0 = [1;
 
 % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
+[x, fval, tc] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,tc,prob);
 close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 fprintf(prob.dbg_iters_fid, '\n%s\n', '\end{alltt}');
@@ -270,8 +270,8 @@ x0 = [2;
 
 % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
+[x, fval, tc] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,tc,prob);
 close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 fprintf(prob.dbg_iters_fid, '\n%s\n', '\end{alltt}');
@@ -291,8 +291,8 @@ x0 = ones(4, 1);
 
 % fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
 fi=[]; bl=[]; bu=[]; opt=[]; % def. bound in FO
-[x, fval] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
-printxf(x,fval,prob);
+[x, fval, tc] = trust_region_dbg({f}, x0, fi, bl, bu, opt, prob);
+printxf(x,fval,tc,prob);
 close_all_files(prob);
 fprintf('----------------------------------------------------\n\n');
 fprintf(prob.dbg_iters_fid, '\n%s\n', '\end{alltt}');
@@ -304,13 +304,14 @@ fclose(prob.fid);
 
 % system(['cp ' prob.data_file_src ' ' prob.data_file_trg ]);
 
-function [] = printxf(x, fval, prob)  
+function [] = printxf(x, fval, tc, prob)  
   frmtx = '%12.6e  ';
   frmtf = '%12.6e';
 
   fprintf(prob.dbg_iters_fid, '%s', prob.flnstr);
   fprintf(prob.dbg_iters_fid, [ '\nx* = ' repmat(frmtx, 1, size(x, 1))], x');
   fprintf(prob.dbg_iters_fid, [ '\nf* = ' repmat(frmtf, size(fval, 2), 1)], fval);
+  fprintf(prob.dbg_iters_fid, [ '\ntc: %s' ], tc);
 
   fprintf([ '\nx* = ' repmat(frmtx, 1, size(x, 1))], x);
   fprintf([ '\nf* = ' repmat(frmtf, size(fval, 2), 1)], fval);
