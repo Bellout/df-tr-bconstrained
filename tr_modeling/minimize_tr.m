@@ -2,7 +2,9 @@ function [x, fval, exitflag, prob] = minimize_tr(polynomial, x_tr_center, ...
                                           radius, bl, bu, prob, prnt)
 
   % ------------------------------------------------------------------
-  matlab_solver = true;
+  matlab_solver = false;
+  snopt_solver = true;
+
   dim = size(x_tr_center, 1);
   if isempty(bl)
       bl = -inf(dim, 1);
@@ -60,10 +62,6 @@ function [x, fval, exitflag, prob] = minimize_tr(polynomial, x_tr_center, ...
   solver_x_tol = min(1e-8, 1e-2*min(min(bu_mod - bl_mod)));
   solver_constr_tol = min(1e-10, 1e-2*min(min(bu_mod - bl_mod)));
 
-  if ~matlab_solver && exist('ipopt', 'file') ~= 3
-      % Override option
-      matlab_solver = true;
-  end
 
   % ------------------------------------------------------------------
   if matlab_solver
@@ -99,10 +97,10 @@ function [x, fval, exitflag, prob] = minimize_tr(polynomial, x_tr_center, ...
                fval = fval2;
                exitflag = exitflag2;
            end
-         end
+     end
 
       % --------------------------------------------------------------
-      else
+    else
 
           linprog_problem.f = g;
           linprog_problem.solver = 'linprog';
@@ -111,14 +109,24 @@ function [x, fval, exitflag, prob] = minimize_tr(polynomial, x_tr_center, ...
           linprog_problem.options.Display = 'off';
           [x, ~, exitflag, output] = linprog(linprog_problem);
           fval = f(x);
-      end
+    end
 
       % --------------------------------------------------------------
-      if exitflag >= 0
-           exitflag = 0;
-      else
-           warning('cmg:tr_minimization_failed', 'TR minimization failed');
-      end
+    if exitflag >= 0
+         exitflag = 0;
+    else
+         warning('cmg:tr_minimization_failed', 'TR minimization failed');
+    end
+
+  % ------------------------------------------------------------------
+   elseif snopt_solver
+
+
+
+    [x, fval] = snopt_minimize_quadratic(H, g, c, x0, bl_mod, bu_mod);
+    exitflag = 0;
+
+
 
   % ------------------------------------------------------------------
   else
