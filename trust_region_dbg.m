@@ -1,7 +1,8 @@
-function [x, fval] = trust_region_dbg(...
+function [x, fval, tc] = trust_region_dbg(...
     funcs, initial_points, initial_fvalues, ...
     bl, bu, options, prob)
 % TRUST_REGION - Derivative-free trust-region algorithm
+tc = 'NOT_SET';
 
 % --------------------------------------------------------------------
 defaultoptions = struct(...
@@ -306,6 +307,7 @@ for iter = 1 : iter_max
 
   % ------------------------------------------------------------------
   if (model.radius < tol_radius)
+    tc = 'MINIMUM_STEP_LENGTH_REACHED';
     break
   end
 
