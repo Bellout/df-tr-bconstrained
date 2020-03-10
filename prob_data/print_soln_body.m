@@ -1230,7 +1230,7 @@ case 48
   fprintf(prob.fid_improveModelNfp, 'nfp_new_point_shifted_.cols(): %i\n', size(nps,2));
   fprintf(prob.fid_improveModelNfp, 'nfp_new_point_shifted_.rows(): %i\n', size(nps,1));
   for ii=1:size(nps, 2)
-    fprintf(prob.fid_improveModelNfp, ['nfp_new_point_shifted_#%i       ' frmt_x ], ii, nps(:,ii)');
+    fprintf(prob.fid_improveModelNfp, ['nfp_new_point_shifted_#%i:      ' frmt_x ], ii, nps(:,ii)');
   end
 
   % points_abs

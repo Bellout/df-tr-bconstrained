@@ -71,6 +71,7 @@ fprintf(prob.fid, '%s\n', '        prob prob7;');
 fprintf(prob.fid, '%s\n', '        prob prob8;');
 fprintf(prob.fid, '%s\n', '        prob prob9;');
 fprintf(prob.fid, '%s\n', '        prob prob10;');
+fprintf(prob.fid, '%s\n', '        prob prob11;');
 fprintf(prob.fid, '%s\n', '');
 fprintf(prob.fid, '%s\n', '        TrustRegionModelData() {');
 fprintf(prob.fid, '%s\n', '');
