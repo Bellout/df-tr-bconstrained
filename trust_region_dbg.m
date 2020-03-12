@@ -29,16 +29,21 @@ defaultoptions = struct(...
 if nargin < 7
     prob = [];
 end
+
 if nargin < 6
     options = [];
 end
-options = parse_trust_region_inputs(options, defaultoptions);
+
+options = parse_trust_region_inputs(options, defaultoptions, prob);
+
 if nargin < 5
     bu = [];
 end
+
 if nargin < 4
     bl = [];
 end
+
 if nargin < 3
     initial_fvalues = [];
 end

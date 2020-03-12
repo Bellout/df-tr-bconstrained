@@ -2,8 +2,17 @@ function [x, fval, exitflag, prob] = minimize_tr(polynomial, x_tr_center, ...
                                           radius, bl, bu, prob, prnt)
 
   % ------------------------------------------------------------------
-  matlab_solver = false;
-  snopt_solver = true;
+  if prob.solver == "snopt"
+
+    matlab_solver = false;
+    snopt_solver = true;
+
+  elseif prob.solver == "fmincon"
+
+    matlab_solver = true;
+    snopt_solver = false;
+
+  end
 
   dim = size(x_tr_center, 1);
   if isempty(bl)

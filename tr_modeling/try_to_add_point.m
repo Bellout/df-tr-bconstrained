@@ -3,7 +3,7 @@ function [model, exitflag, prob] = ...
                    new_fvalues, funcs, ...
                    bl, bu, options, prob)
 
-  fprintf('%s\n', 'Calling try_to_add_point');
+  % fprintf('%s\n', 'Calling try_to_add_point');
   % Step was not accepted. Smaller effort in including point
   point_added = false;
   part=76; subp=1; print_soln_body;
