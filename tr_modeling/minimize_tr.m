@@ -2,12 +2,12 @@ function [x, fval, exitflag, prob] = minimize_tr(polynomial, x_tr_center, ...
                                           radius, bl, bu, prob, prnt)
 
   % ------------------------------------------------------------------
-  if prob.solver == "snopt"
+  if prob.solver == 'snopt'
 
     matlab_solver = false;
     snopt_solver = true;
 
-  elseif prob.solver == "fmincon"
+  elseif prob.solver == 'fmincon'
 
     matlab_solver = true;
     snopt_solver = false;
