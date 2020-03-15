@@ -10,8 +10,8 @@ mach = 'xe-';
 
 % ----------------------------------------------------------
 % tr subproblem solver
-% prob.solver = 'snopt';
-prob.solver = 'fmincon';
+prob.solver = 'snopt';
+% prob.solver = 'fmincon';
 
 % ----------------------------------------------------------
 % Bounds
@@ -21,7 +21,8 @@ btag = '-1e3b';
 % ----------------------------------------------------------
 % time tag
 % dtag = '-20200310';
-dtag= '-20200311';
+% dtag= '-20200311';
+dtag= '-20200313';
 
 % ----------------------------------------------------------
 % iter file name
@@ -66,14 +67,14 @@ PN = [ ...
 1 ... % 1  prob1
 1 ... % 2  prob2
 1 ... % 3  prob3
-1 ... % 4  prob4
-1 ... % 5  prob5
-1 ... % 6  prob6
-1 ... % 7  prob7
-1 ... % 8  prob8
-1 ... % 9  prob9
-1 ... % 10 prob10
-1 ... % 11 prob11
+0 ... % 4  prob4
+0 ... % 5  prob5
+0 ... % 6  prob6
+0 ... % 7  prob7
+0 ... % 8  prob8
+0 ... % 9  prob9
+0 ... % 10 prob10
+0 ... % 11 prob11
 ...
 0 ... % 12 hs1
 0 ... % 13 hs2
@@ -87,8 +88,8 @@ PN = [ ...
 
 
 % digits(128)
-lbl = 'iter        fval         rho      radius  pts';
-frmt= '%s\n%s\n%s\n';
+prob.lbl = 'iter        fval         rho      radius  pts';
+prob.frmt= '%s\n%s\n%s\n';
 prob.flnstr = '---------------------------------------------';
 
 if PN(1)==1
@@ -96,15 +97,10 @@ if PN(1)==1
 % ----------------------------------------------------------
   prob.pn = 'prob1';
   prob = set_filenames(prob);
-
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
-  fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, 'prob1', prob.flnstr, lbl);
 
   f = @(x) (1 - x(1))^2;
-
-  x0 = [-1.2;
-        2];
+  x0 = [ -1.2; 2.0 ];
 
   if btag == '-1e3b'
     fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
@@ -131,13 +127,9 @@ if PN(2)==1
   prob = set_filenames(prob);
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
-  fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, 'prob2', prob.flnstr, lbl);
 
   f = @(x) log1p(x(1)^2) + x(2)^2;
-
-  x0 = [2;
-        2];
+  x0 = [ 2; 2 ];
 
   if btag == '-1e3b'
     fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
@@ -164,13 +156,9 @@ if PN(3)==1
   prob = set_filenames(prob);
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
-  fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, 'prob3', prob.flnstr, lbl);
 
   f = @(x) sin(pi*x(1)/12)*cos(pi*x(2)/16);
-
-  x0 = [0;
-        0];
+  x0 = [ 0; 0 ];
 
   if btag == '-1e3b'
     fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
@@ -197,14 +185,9 @@ if PN(4)==1
   prob = set_filenames(prob);
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
-  fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, 'prob4', prob.flnstr, lbl);
 
   f = @(x) 0.01*(x(1) - 1)^2 + (x(2) - x(1)^2)^2;
-
-  x0 = [2;
-        2;
-        2];
+  x0 = [2; 2; 2];
 
   if btag == '-1e3b'
     fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
@@ -231,12 +214,9 @@ if PN(5)==1
   prob = set_filenames(prob);
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
-  fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, 'prob5', prob.flnstr, lbl);
 
   f = @(x) (x(1)-x(2))^2 + (x(2) - x(3))^4;
-
-  x0 = [-2.6 ; 2 ; 2];
+  x0 = [ -2.6; 2; 2 ];
 
   if btag == '-1e3b'
     fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
@@ -263,14 +243,9 @@ if PN(6)==1
   prob = set_filenames(prob);
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
-  fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, 'prob6', prob.flnstr, lbl);
 
   f = @(x) (x(1) + x(2))^2 + (x(2) + x(3))^2;
-
-  x0 = [-4;
-        1;
-        1];
+  x0 = [ -4; 1; 1 ];
 
   if btag == '-1e3b'
     fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
@@ -297,15 +272,9 @@ if PN(7)==1
   prob = set_filenames(prob);
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
-  fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, 'prob7', prob.flnstr, lbl);
 
   f = @(x) log1p(x(1)^2) + log1p((x(1) - x(2))^2) + log1p((x(2) - x(3))^2) + log1p((x(3) - x(4))^2);
-
-  x0 = [2;
-        2;
-        2;
-        2];
+  x0 = [ 2; 2; 2; 2 ];
 
   if btag == '-1e3b'
     fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
@@ -332,16 +301,9 @@ if PN(8)==1
   prob = set_filenames(prob);
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
-  fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, 'prob8', prob.flnstr, lbl);
 
   f = @(x) (x(1)*x(2)*x(3)*x(4))^2;
-
-  x0 = [0.8;
-        0.8;
-        0.8;
-        0.8];
-
+  x0 = [ 0.8; 0.8; 0.8; 0.8 ];
 
   if btag == '-1e3b'
     fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
@@ -368,15 +330,9 @@ if PN(9)==1
   prob = set_filenames(prob);
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
-  fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, 'prob9', prob.flnstr, lbl);
 
   f = @(x) (x(1)-1)^2 + (x(2)-2)^2 + (x(3)-3)^2 + (x(4)-4)^2;
-
-  x0 = [1;
-        1;
-        1;
-        1];
+  x0 = [ 1; 1; 1; 1];
 
   if btag == '-1e3b'
     fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
@@ -404,17 +360,11 @@ if PN(10)==1
   prob = set_filenames(prob);
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
-  fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, 'prob10', prob.flnstr, lbl);
 
   f = @(x) (x(1) - x(2))^2 + (x(2) - x(3))^2 + (x(3) - x(4))^4 + ...
       (x(4) - x(5))^4;
 
-  x0 = [2;
-        sqrt(2);
-        -1;
-        2-sqrt(2);
-        0.5];
+  x0 = [ 2; sqrt(2); -1.0; 2-sqrt(2); 0.5 ];
 
   if btag == '-1e3b'
     fi=[]; bl=-1e3; bu=1e3; opt=[]; % def. bound in FO
@@ -441,11 +391,8 @@ if PN(11)==1
   prob = set_filenames(prob);
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
-  fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, 'prob11', prob.flnstr, lbl);
 
   f = @(x) sum(2*x./(x.*x + 1));
-
   x0 = ones(4, 1);
 
   if btag == '-1e3b'
@@ -493,7 +440,7 @@ if PN(12)==1
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
   fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, lbl);
+  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, prob.lbl);
 
   % ORIG:
   % Model hs01
@@ -546,7 +493,7 @@ if PN(13)==1
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
   fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, lbl);
+  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, prob.lbl);
 
   % ORIG:
   % Model hs02
@@ -598,7 +545,7 @@ if PN(14)==1
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
   fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, lbl);
+  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, prob.lbl);
 
   % ORIG:
   % Model hs03
@@ -650,7 +597,7 @@ if PN(15)==1
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
   fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, lbl);
+  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, prob.lbl);
 
   % ORIG:
   % Model hs04
@@ -702,7 +649,7 @@ if PN(16)==1
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
   fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, lbl);
+  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, prob.lbl);
 
   % ORIG:
   % Model hs05
@@ -760,7 +707,7 @@ prob = set_filenames(prob);
 
 prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
 fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, lbl);
+fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, prob.lbl);
 
 % ORIG:
 % Model hs25
@@ -835,7 +782,7 @@ if PN(18)==1
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
   fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, lbl);
+  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, prob.lbl);
 
   % ORIG:
   % Model hs38
@@ -902,7 +849,7 @@ if PN(19)==1
 
   prob.dbg_iters_fid = fopen([prob.pn '/' prob.dbg_iters '-' prob.pn '-MATLAB.tex'], 'w');
   fprintf(prob.dbg_iters_fid, '%s\n', '\begin{alltt}');
-  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, lbl);
+  fprintf(prob.dbg_iters_fid, frmt, prob.pn, prob.flnstr, prob.lbl);
 
   % ORIG:
   % Model hs45
