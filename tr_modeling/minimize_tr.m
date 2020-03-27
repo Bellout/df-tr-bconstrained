@@ -2,12 +2,12 @@ function [x, fval, exitflag, prob] = minimize_tr(polynomial, x_tr_center, ...
                                           radius, bl, bu, prob, prnt)
 
   % ------------------------------------------------------------------
-  if prob.solver == 'snopt'
+  if strcmp(prob.solver, 'snopt')
 
     matlab_solver = false;
     snopt_solver = true;
 
-  elseif prob.solver == 'fmincon'
+  elseif strcmp(prob.solver, 'fmincon')
 
     matlab_solver = true;
     snopt_solver = false;
@@ -85,13 +85,13 @@ function [x, fval, exitflag, prob] = minimize_tr(polynomial, x_tr_center, ...
                                      %'StepTolerance', solver_x_tol, ...
                                      %'OptimalityTolerance', 1e-6);
                                      %'ConstraintTolerance', solver_constr_tol);
-      fprintf('%s\n', 'fmincon to find x');
+      % fprintf('%s\n', 'fmincon to find x');
       [x, fval, exitflag] = fmincon(f, x0, [], [], [], [], ...
                                     bl_mod, bu_mod, [], ...
                                     fmincon_options);
 
-      fprintf([ 'x  = ' repmat('%10.6f', 1, size(x,1)) '\n'], x);
-      fprintf([ 'f  = ' repmat('%10.6f', 1, size(fval,2)) '\n'], fval);
+      % fprintf([ 'x  = ' repmat('%10.6f', 1, size(x,1)) '\n'], x);
+      % fprintf([ 'f  = ' repmat('%10.6f', 1, size(fval,2)) '\n'], fval);
 
       % --------------------------------------------------------------
       if exitflag < 0 || norm(x) < 0.001*radius
@@ -190,9 +190,9 @@ function [x, fval, exitflag, prob] = minimize_tr(polynomial, x_tr_center, ...
     [x, fval] = snopt_minimize_quadratic(H, g, c, x0, bl_mod, bu_mod);
     exitflag = 0;
 
-    fprintf('%s\n', 'snopt to find x');
-    fprintf([ 'x  = ' repmat('%10.6f', 1, size(x,1)) '\n'], x);
-    fprintf([ 'f  = ' repmat('%10.6f', 1, size(fval,2)) '\n'], fval);
+    % fprintf('%s\n', 'snopt to find x');
+    % fprintf([ 'x  = ' repmat('%10.6f', 1, size(x,1)) '\n'], x);
+    % fprintf([ 'f  = ' repmat('%10.6f', 1, size(fval,2)) '\n'], fval);
 
 
   % ------------------------------------------------------------------
